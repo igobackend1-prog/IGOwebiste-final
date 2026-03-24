@@ -1,14 +1,16 @@
+import React, { useState, useEffect } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { AuthProvider } from "@/hooks/useAuth";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Chatbot from "@/components/Chatbot";
 import FloatingBackground from "@/components/FloatingBackground";
+import LoadingScreen from "@/components/LoadingScreen";
 import Index from "./pages/Index";
 import About from "./pages/About";
 import Projects from "./pages/Projects";
@@ -34,19 +36,127 @@ import AdsDashboard from "./pages/AdsDashboard";
 import OffersPage from "./pages/OffersPage";
 import NotFound from "./pages/NotFound";
 
-import React, { useState, useEffect } from "react";
-import LoadingScreen from "@/components/LoadingScreen";
-
 const queryClient = new QueryClient();
 
-const App = () => {
-  const [isInitialLoad, setIsInitialLoad] = useState(true);
+// ─── Error Boundary ───────────────────────────────────────────────────────────
+class ErrorBoundary extends React.Component<
+  { children: React.ReactNode },
+  { hasError: boolean }
+> {
+  constructor(props: { children: React.ReactNode }) {
+    super(props);
+    this.state = { hasError: false };
+  }
+  static getDerivedStateFromError() {
+    return { hasError: true };
+  }
+  componentDidCatch(error: Error, info: React.ErrorInfo) {
+    console.error("Page error caught by ErrorBoundary:", error, info);
+  }
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div className="min-h-screen flex flex-col items-center justify-center gap-4 p-8 text-center">
+          <h2 className="text-2xl font-bold text-[#1A4231]">Something went wrong</h2>
+          <p className="text-gray-500">Please refresh the page or go back home.</p>
+          <a href="/" className="px-6 py-2.5 bg-[#1A4231] text-white rounded-full text-sm font-semibold hover:opacity-80 transition-opacity">
+            Go Home
+          </a>
+        </div>
+      );
+    }
+    return this.props.children;
+  }
+}
 
-  // Fallback to prevent infinite loading in case of unexpected errors
+// Module-level flag — lives in JS memory for the lifetime of the loaded bundle.
+// • Browser F5 / hard reload  → JS re-executes → resets to false → loading shows ✅
+// • SPA link navigation       → bundle stays in memory → stays true → loading skipped ✅
+// • React StrictMode (dev)    → second mount sees true → loading skipped ✅
+let hasLoadedOnce = false;
+
+// ─── ScrollToTop ──────────────────────────────────────────────────────────────
+// Resets scroll position to top on every route change.
+// Must be rendered inside <BrowserRouter> to use useLocation().
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
   useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" as ScrollBehavior });
+  }, [pathname]);
+  return null;
+};
+
+// ─── AppRoutes ────────────────────────────────────────────────────────────────
+// AnimatePresence wraps a motion.div (not Routes itself).
+// The motion.div carries the key so Framer Motion animates it in/out.
+// Routes stays stable — no blank-page unmount gap.
+// initial={false} on AnimatePresence prevents the entrance animation
+// on first render (page reload), so there is no blank flash on reload.
+const AppRoutes = () => {
+  const location = useLocation();
+  return (
+    <AnimatePresence mode="wait" initial={false}>
+      <motion.div
+        key={location.pathname}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.25, ease: "easeInOut" }}
+      >
+        <Routes location={location}>
+          <Route path="/" element={<Index />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/projects/legacy/:id" element={<Projects />} />
+          <Route path="/projects/:category" element={<ProjectRouter />} />
+          <Route path="/projects/:category/:subcategory" element={<ProjectRouter />} />
+          <Route path="/projects/:category/:subcategory/:feature" element={<ProjectRouter />} />
+          <Route path="/services" element={<Services />} />
+          <Route path="/services/:category" element={<ServiceRouter />} />
+          <Route path="/services/:category/:subcategory" element={<ServiceRouter />} />
+          <Route path="/services/:category/:subcategory/:feature" element={<ServiceRouter />} />
+          <Route path="/courses" element={<Courses />} />
+          <Route path="/faq" element={<FAQ />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:id" element={<BlogPost />} />
+          <Route path="/careers" element={<Careers />} />
+          <Route path="/products" element={<Products />} />
+          <Route path="/products/:category" element={<ProductRouter />} />
+          <Route path="/products/:category/:productSlug" element={<ProductRouter />} />
+          <Route path="/agri-startup-platform" element={<AgriStartupPlatform />} />
+          <Route path="/igo-groups" element={<IgoGroupBrands />} />
+          <Route path="/startup-enquiry" element={<AgriStartupEnquiry />} />
+          <Route path="/admin/login" element={<AdminLogin />} />
+          <Route path="/admin/dashboard" element={<AdminDashboard />} />
+          <Route path="/offers" element={<OffersPage />} />
+          <Route path="/ads/login" element={<AdsLogin />} />
+          <Route path="/ads/dashboard" element={<AdsDashboard />} />
+          {/* /startup-platform is an alias handled by /agri-startup-platform above */}
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </motion.div>
+    </AnimatePresence>
+  );
+};
+
+// ─── App ──────────────────────────────────────────────────────────────────────
+const App = () => {
+  // Initialiser runs once per mount.
+  // If hasLoadedOnce is already true (SPA navigation caused remount, or StrictMode
+  // double-render) we skip the loading screen entirely.
+  const [isInitialLoad, setIsInitialLoad] = useState<boolean>(() => {
+    if (hasLoadedOnce) return false;
+    hasLoadedOnce = true;
+    return true;
+  });
+
+  // Failsafe: force-dismiss loading screen after 4s in case onComplete never fires
+  useEffect(() => {
+    if (!isInitialLoad) return;
     const fallbackTimer = setTimeout(() => {
       setIsInitialLoad(false);
-    }, 4000); // Failsafe unmount after 4s
+    }, 4000);
     return () => clearTimeout(fallbackTimer);
   }, []);
 
@@ -56,14 +166,14 @@ const App = () => {
         <AuthProvider>
           <Toaster />
           <Sonner />
-          
+
           <AnimatePresence mode="wait">
             {isInitialLoad && (
               <LoadingScreen key="loading-screen" onComplete={() => setIsInitialLoad(false)} />
             )}
           </AnimatePresence>
 
-          {/* Reveal content smoothly slightly before the loading screen completes */}
+          {/* Reveal content after loading screen completes */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: isInitialLoad ? 0 : 1 }}
@@ -71,52 +181,13 @@ const App = () => {
             className={isInitialLoad ? "h-screen overflow-hidden pointer-events-none" : ""}
           >
             <BrowserRouter>
+              <ScrollToTop />
               <Navbar />
-              <main className="min-h-screen relative z-10">
-                <AnimatePresence mode="wait">
-                  <Routes>
-                    <Route path="/" element={<Index />} />
-                    <Route path="/about" element={<About />} />
-                    <Route path="/projects" element={<Projects />} />
-                    
-                    {/* Legacy specific project by ID handled by Projects page */}
-                    <Route path="/projects/legacy/:id" element={<Projects />} />
-                    
-                    {/* 4-Layer Dynamic Project Structure handling */}
-                    <Route path="/projects/:category" element={<ProjectRouter />} />
-                    <Route path="/projects/:category/:subcategory" element={<ProjectRouter />} />
-                    <Route path="/projects/:category/:subcategory/:feature" element={<ProjectRouter />} />
-
-                     <Route path="/services" element={<Services />} />
-                    
-                    {/* 4-Layer Dynamic Services Structure handling */}
-                    <Route path="/services/:category" element={<ServiceRouter />} />
-                    <Route path="/services/:category/:subcategory" element={<ServiceRouter />} />
-                    <Route path="/services/:category/:subcategory/:feature" element={<ServiceRouter />} />
-                    <Route path="/courses" element={<Courses />} />
-                    <Route path="/faq" element={<FAQ />} />
-                    <Route path="/contact" element={<Contact />} />
-                    <Route path="/blog" element={<Blog />} />
-                    <Route path="/blog/:id" element={<BlogPost />} />
-                    <Route path="/careers" element={<Careers />} />
-                    <Route path="/products" element={<Products />} />
-                    
-                    {/* Dynamic Products Structure handling */}
-                    <Route path="/products/:category" element={<ProductRouter />} />
-                    <Route path="/products/:category/:productSlug" element={<ProductRouter />} />
-                    <Route path="/agri-startup-platform" element={<AgriStartupPlatform />} />
-                    <Route path="/igo-groups" element={<IgoGroupBrands />} />
-                    <Route path="/startup-enquiry" element={<AgriStartupEnquiry />} />
-                    <Route path="/admin/login" element={<AdminLogin />} />
-                    <Route path="/admin/dashboard" element={<AdminDashboard />} />
-                    <Route path="/offers" element={<OffersPage />} />
-                    <Route path="/ads/login" element={<AdsLogin />} />
-                    <Route path="/ads/dashboard" element={<AdsDashboard />} />
-                    <Route path="/startup-platform" element={<AgriStartupPlatform />} />
-                    <Route path="*" element={<NotFound />} />
-                  </Routes>
-                </AnimatePresence>
-              </main>
+              <ErrorBoundary>
+                <main className="min-h-screen relative z-10">
+                  <AppRoutes />
+                </main>
+              </ErrorBoundary>
               <Footer />
               <Chatbot />
             </BrowserRouter>

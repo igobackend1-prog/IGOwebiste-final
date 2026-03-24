@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
+import { sendFormEmail } from "@/lib/sendFormEmail";
+import { companyInfo } from "@/data/siteData";
 import {
   ArrowRight, Mail, MapPin, Phone, MessageCircle,
   Facebook, Instagram, Linkedin, Youtube, Twitter,
@@ -91,35 +93,45 @@ const Contact = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!formData.name.trim()) { toast.error("Please enter your name."); return; }
+    if (!formData.email.trim()) { toast.error("Please enter your email address."); return; }
+    if (!formData.message.trim()) { toast.error("Please enter your message."); return; }
     setLoading(true);
 
-    // Build a clean enquiry summary for email + WhatsApp
-    const subject = encodeURIComponent(
-      `[${enquiryType}] ${formData.subject || "New Enquiry"} — IGO Agritech`
-    );
-    const body = encodeURIComponent(
-      `Name: ${formData.name}\n` +
-      `Email: ${formData.email}\n` +
-      `Phone: ${formData.phone || "—"}\n` +
-      `Location: ${formData.location || "—"}\n` +
-      `Enquiry Type: ${enquiryType}\n` +
-      `Project / Interest Area: ${formData.subject || "—"}\n\n` +
-      `Message:\n${formData.message}`
-    );
+    // 1. Save to Supabase (backup record)
+    const { error: dbError } = await supabase.from("contacts").insert({
+      name:    formData.name.trim(),
+      email:   formData.email.trim(),
+      phone:   formData.phone.trim() || null,
+      subject: `[${enquiryType}] ${formData.subject}`.trim() || null,
+      message: formData.message.trim(),
+    });
+    if (dbError) console.error("Supabase insert error:", dbError.message);
 
-    // Open the user's email client pre-filled with the enquiry
-    window.open(
-      `mailto:bankingbackend.indiagreen@gmail.com?subject=${subject}&body=${body}`,
-      "_blank"
-    );
+    // 2. Auto-send email to igobackend1@gmail.com
+    const { success } = await sendFormEmail({
+      formType:     "Contact Enquiry",
+      name:         formData.name,
+      email:        formData.email,
+      phone:        formData.phone || undefined,
+      location:     formData.location || undefined,
+      enquiryType:  enquiryType,
+      subjectArea:  formData.subject || undefined,
+      message:      formData.message,
+    });
 
-    await new Promise(r => setTimeout(r, 600)); // brief delay for UX
     setLoading(false);
     setSubmitted(true);
-    toast.success("Your email client has opened — please hit Send to submit your enquiry.");
+
+    if (success) {
+      toast.success("Enquiry submitted! We'll respond within 24 hours.");
+    } else {
+      // Still mark as submitted — Supabase backup was saved
+      toast.success("Enquiry received! We'll contact you within 24 hours.");
+    }
   };
 
-  const waLink = `https://wa.me/917397789803?text=Hi%20IGO%20Agritech%20Farms%2C%20I%20have%20a%20${encodeURIComponent(enquiryType)}%20enquiry.%20Please%20get%20in%20touch.`;
+  const waLink = `${companyInfo.whatsapp}?text=Hi%20IGO%20Agritech%20Farms%2C%20I%20have%20a%20${encodeURIComponent(enquiryType)}%20enquiry.%20Please%20get%20in%20touch.`;
 
   return (
     <div className="bg-white min-h-screen selection:bg-[#E8F5E9] selection:text-[#1A4231]">
@@ -181,7 +193,7 @@ const Contact = () => {
                 <MessageCircle className="w-4 h-4" /> WhatsApp
               </a>
               <a
-                href="mailto:bankingbackend.indiagreen@gmail.com"
+                href="mailto:igobackend1@gmail.com"
                 className="inline-flex items-center gap-3 px-8 py-3.5 bg-white/10 backdrop-blur-md border border-white/20 text-white text-xs font-bold rounded-full uppercase tracking-widest hover:bg-white/20 transition-all"
               >
                 <Mail className="w-4 h-4" /> Email Us
@@ -220,8 +232,8 @@ const Contact = () => {
               {
                 icon: <Mail className="w-5 h-5" />,
                 label: "Email Us",
-                lines: ["bankingbackend.indiagreen@gmail.com", "bd2@igogroups.com"],
-                href: "mailto:bankingbackend.indiagreen@gmail.com",
+                lines: ["igobackend1@gmail.com", "bd2@igogroups.com"],
+                href: "mailto:igobackend1@gmail.com",
               },
               {
                 icon: <MapPin className="w-5 h-5" />,

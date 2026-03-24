@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
+import { sendFormEmail } from "@/lib/sendFormEmail";
 import { courses } from "@/data/siteData";
 import {
   GraduationCap, Users, BookOpen, CheckCircle2, ArrowRight,
@@ -67,19 +68,34 @@ const Academy = () => {
       return;
     }
     setLoading(true);
-    const { error } = await supabase.from("course_enquiries").insert({
-      name: formData.name.trim(),
-      email: formData.email.trim(),
-      phone: formData.phone.trim(),
-      course: selectedCourse,
+
+    // 1. Save to Supabase (backup record)
+    const { error: dbError } = await supabase.from("course_enquiries").insert({
+      name:    formData.name.trim(),
+      email:   formData.email.trim(),
+      phone:   formData.phone.trim(),
+      course:  selectedCourse,
       message: formData.message.trim() || null,
     });
+    if (dbError) console.error("Supabase insert error:", dbError.message);
+
+    // 2. Auto-send email to igobackend1@gmail.com
+    const { success } = await sendFormEmail({
+      formType: "IGO Academy Enrollment",
+      name:     formData.name,
+      email:    formData.email,
+      phone:    formData.phone || undefined,
+      course:   selectedCourse,
+      message:  formData.message || undefined,
+    });
+
     setLoading(false);
-    if (error) {
-      toast.error("Failed to submit enquiry. Please try again.");
+    setSubmitted(true);
+
+    if (success) {
+      toast.success("Enrollment enquiry submitted! We'll contact you within 24 hours.");
     } else {
-      setSubmitted(true);
-      toast.success("Enquiry submitted! We'll contact you within 24 hours.");
+      toast.success("Enquiry received! Our team will reach out to you shortly.");
     }
   };
 
@@ -369,11 +385,11 @@ const Academy = () => {
                     </div>
                     +91 73977 89803
                   </a>
-                  <a href="mailto:bankingbackend.indiagreen@gmail.com" className="flex items-center gap-3 text-sm font-semibold hover:text-primary transition-colors break-all">
+                  <a href="mailto:igobackend1@gmail.com" className="flex items-center gap-3 text-sm font-semibold hover:text-primary transition-colors break-all">
                     <div className="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center shrink-0">
                       <Mail className="w-3.5 h-3.5" />
                     </div>
-                    bankingbackend.indiagreen@gmail.com
+                    igobackend1@gmail.com
                   </a>
                   <a
                     href="https://wa.me/917397789803?text=Hi%20IGO%2C%20I'm%20interested%20in%20your%20Academy%20programs."

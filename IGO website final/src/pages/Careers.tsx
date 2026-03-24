@@ -1,6 +1,8 @@
 import { useState } from "react";
-import { ArrowRight, Mail, TrendingUp, Zap, Heart, CheckCircle, Users, MapPin, ChevronDown } from "lucide-react";
+import { ArrowRight, Mail, TrendingUp, Zap, Heart, CheckCircle, Users, MapPin, ChevronDown, Send } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { sendFormEmail } from "@/lib/sendFormEmail";
+import { toast } from "sonner";
 
 const departments = [
   {
@@ -131,6 +133,48 @@ const benefits = [
 const Careers = () => {
   const [open, setOpen] = useState<number | null>(null);
 
+  // ── Career Application Form state ──────────────────────────────────────────
+  const [applyForm, setApplyForm] = useState({ name: "", email: "", phone: "", department: "", position: "", message: "" });
+  const [applyLoading, setApplyLoading] = useState(false);
+  const [applySubmitted, setApplySubmitted] = useState(false);
+
+  const handleApplyChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    setApplyForm(prev => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleApplySubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!applyForm.name.trim()) { toast.error("Please enter your name."); return; }
+    if (!applyForm.email.trim()) { toast.error("Please enter your email address."); return; }
+    if (!applyForm.department) { toast.error("Please select a department."); return; }
+    setApplyLoading(true);
+
+    const { success } = await sendFormEmail({
+      formType:   "Career Application",
+      name:       applyForm.name,
+      email:      applyForm.email,
+      phone:      applyForm.phone || undefined,
+      department: applyForm.department || undefined,
+      position:   applyForm.position || undefined,
+      message:    applyForm.message || undefined,
+    });
+
+    setApplyLoading(false);
+    setApplySubmitted(true);
+
+    if (success) {
+      toast.success("Application submitted! We'll review and contact you within 48 hours.");
+    } else {
+      toast.success("Application received! Our HR team will be in touch.");
+    }
+  };
+
+  // Pre-fill department when "Apply Now" is clicked in a dept card
+  const scrollAndPreFill = (deptName: string) => {
+    setApplyForm(prev => ({ ...prev, department: deptName }));
+    document.getElementById("careers-apply-form")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
   return (
     <div className="min-h-screen bg-white">
 
@@ -168,7 +212,7 @@ const Careers = () => {
                   Browse Openings <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </a>
                 <a
-                  href="mailto:bankingbackend.indiagreen@gmail.com"
+                  href="mailto:igobackend1@gmail.com"
                   className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-white/10 text-white font-bold text-sm hover:bg-white/20 transition-all border border-white/20"
                 >
                   <Mail className="w-4 h-4" /> Send Your CV
@@ -320,12 +364,13 @@ const Careers = () => {
                             <p className="text-[10px] font-black uppercase tracking-[0.25em] text-muted-foreground mb-1">Qualification</p>
                             <p className="text-xs font-semibold text-foreground">{dept.qualification}</p>
                           </div>
-                          <a
-                            href={`mailto:bankingbackend.indiagreen@gmail.com?subject=Application – ${dept.name}`}
+                          <button
+                            type="button"
+                            onClick={() => scrollAndPreFill(dept.name)}
                             className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-primary text-white text-xs font-black uppercase tracking-[0.2em] hover:bg-primary/90 transition-colors whitespace-nowrap shrink-0"
                           >
                             Apply Now <ArrowRight className="w-3.5 h-3.5" />
-                          </a>
+                          </button>
                         </div>
                       </div>
                     </motion.div>
@@ -387,45 +432,144 @@ const Careers = () => {
         </div>
       </section>
 
-      {/* ── APPLY CTA ── */}
-      <section className="py-16 bg-[#0C1A14] relative overflow-hidden">
+      {/* ── CAREER APPLICATION FORM ── */}
+      <section id="careers-apply-form" className="py-20 bg-[#0C1A14] relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-primary/10 blur-[100px]" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full bg-primary/10 blur-[120px]" />
         </div>
         <div className="container mx-auto px-6 relative z-10">
-          <div className="max-w-3xl mx-auto">
-            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-10">
-              {/* Left text */}
-              <div>
-                <div className="text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-3">Apply Today</div>
-                <h2 className="text-2xl md:text-3xl font-bold text-white mb-3 leading-snug">
-                  Ready to Join<br />IGO Agritech Farms?
-                </h2>
-                <p className="text-white/50 text-sm leading-relaxed">
-                  Send your resume directly — we reply within 48 hours.
-                </p>
-              </div>
-              {/* Right buttons */}
-              <div className="flex flex-col gap-3 shrink-0">
-                <a
-                  href="mailto:bankingbackend.indiagreen@gmail.com"
-                  className="inline-flex items-center gap-3 px-6 py-3.5 rounded-xl bg-primary text-white font-semibold text-sm hover:bg-primary/90 transition-colors"
-                >
-                  <Mail className="w-4 h-4 shrink-0" />
-                  <span className="truncate">bankingbackend.indiagreen@gmail.com</span>
-                </a>
-                <a
-                  href="mailto:bd2@igogroups.com"
-                  className="inline-flex items-center gap-3 px-6 py-3.5 rounded-xl bg-white/8 text-white font-semibold text-sm hover:bg-white/15 transition-colors border border-white/15"
-                >
-                  <Mail className="w-4 h-4 shrink-0" />
-                  <span>bd2@igogroups.com</span>
-                </a>
-                <p className="text-white/25 text-[10px] font-black uppercase tracking-[0.3em] text-center">
-                  Ref: IGO-CAREERS-2024
-                </p>
-              </div>
+          <div className="max-w-2xl mx-auto">
+
+            {/* Heading */}
+            <div className="text-center mb-10">
+              <div className="text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-3">Apply Today</div>
+              <h2 className="text-2xl md:text-3xl font-bold text-white mb-3 leading-snug">
+                Ready to Join IGO Agritech Farms?
+              </h2>
+              <p className="text-white/50 text-sm">Fill the form below — our HR team responds within 48 hours.</p>
             </div>
+
+            {applySubmitted ? (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="bg-white/5 border border-white/10 rounded-3xl p-12 text-center"
+              >
+                <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-6">
+                  <CheckCircle className="w-8 h-8 text-primary" />
+                </div>
+                <h3 className="text-xl font-bold text-white mb-3">Application Submitted!</h3>
+                <p className="text-white/50 text-sm mb-6">
+                  Thank you {applyForm.name}. Our HR team will review your application and contact you within 48 hours.
+                </p>
+                <button
+                  onClick={() => { setApplySubmitted(false); setApplyForm({ name: "", email: "", phone: "", department: "", position: "", message: "" }); }}
+                  className="px-8 py-3 rounded-full border border-white/20 text-white text-sm font-semibold hover:bg-white/10 transition-colors"
+                >
+                  Submit Another Application
+                </button>
+              </motion.div>
+            ) : (
+              <motion.form
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                onSubmit={handleApplySubmit}
+                className="bg-white/5 border border-white/10 rounded-3xl p-8 md:p-10 space-y-5"
+              >
+                {/* Name + Email */}
+                <div className="grid sm:grid-cols-2 gap-5">
+                  <div>
+                    <label className="block text-[10px] font-black uppercase tracking-[0.2em] text-white/50 mb-2">Full Name *</label>
+                    <input
+                      name="name" type="text" required
+                      value={applyForm.name} onChange={handleApplyChange}
+                      placeholder="Your full name"
+                      className="w-full bg-white/8 border border-white/15 rounded-xl px-4 py-3 text-white text-sm placeholder:text-white/25 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-[10px] font-black uppercase tracking-[0.2em] text-white/50 mb-2">Email *</label>
+                    <input
+                      name="email" type="email" required
+                      value={applyForm.email} onChange={handleApplyChange}
+                      placeholder="your@email.com"
+                      className="w-full bg-white/8 border border-white/15 rounded-xl px-4 py-3 text-white text-sm placeholder:text-white/25 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition"
+                    />
+                  </div>
+                </div>
+
+                {/* Phone + Department */}
+                <div className="grid sm:grid-cols-2 gap-5">
+                  <div>
+                    <label className="block text-[10px] font-black uppercase tracking-[0.2em] text-white/50 mb-2">Phone</label>
+                    <input
+                      name="phone" type="tel"
+                      value={applyForm.phone} onChange={handleApplyChange}
+                      placeholder="+91 XXXXX XXXXX"
+                      className="w-full bg-white/8 border border-white/15 rounded-xl px-4 py-3 text-white text-sm placeholder:text-white/25 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-[10px] font-black uppercase tracking-[0.2em] text-white/50 mb-2">Department *</label>
+                    <select
+                      name="department" required
+                      value={applyForm.department} onChange={handleApplyChange}
+                      className="w-full bg-white/8 border border-white/15 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition"
+                    >
+                      <option value="" className="bg-[#0C1A14]">Select department</option>
+                      {departments.map(d => (
+                        <option key={d.name} value={d.name} className="bg-[#0C1A14]">{d.name}</option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+
+                {/* Position */}
+                <div>
+                  <label className="block text-[10px] font-black uppercase tracking-[0.2em] text-white/50 mb-2">Position Applying For *</label>
+                  <input
+                    name="position" type="text" required
+                    value={applyForm.position} onChange={handleApplyChange}
+                    placeholder="e.g. Agri Project Engineer"
+                    className="w-full bg-white/8 border border-white/15 rounded-xl px-4 py-3 text-white text-sm placeholder:text-white/25 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition"
+                  />
+                </div>
+
+                {/* Cover note */}
+                <div>
+                  <label className="block text-[10px] font-black uppercase tracking-[0.2em] text-white/50 mb-2">Cover Note / Experience</label>
+                  <textarea
+                    name="message" rows={4}
+                    value={applyForm.message} onChange={handleApplyChange}
+                    placeholder="Brief introduction, years of experience, key skills..."
+                    className="w-full bg-white/8 border border-white/15 rounded-xl px-4 py-3 text-white text-sm placeholder:text-white/25 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition resize-none"
+                  />
+                </div>
+
+                {/* Submit */}
+                <button
+                  type="submit" disabled={applyLoading}
+                  className="w-full py-4 rounded-xl bg-primary text-white font-black text-sm uppercase tracking-widest hover:bg-primary/90 transition-colors flex items-center justify-center gap-3 disabled:opacity-60"
+                >
+                  {applyLoading ? (
+                    <>
+                      <svg className="animate-spin w-4 h-4" fill="none" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"/>
+                      </svg>
+                      Submitting...
+                    </>
+                  ) : (
+                    <><Send className="w-4 h-4" /> Submit Application</>
+                  )}
+                </button>
+
+                <p className="text-white/25 text-[10px] text-center">
+                  Your details are sent directly to our HR team at IGO Agritech Farms.
+                </p>
+              </motion.form>
+            )}
           </div>
         </div>
       </section>

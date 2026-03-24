@@ -5,21 +5,21 @@ import { ChevronLeft, ChevronRight, Clock, ArrowRight } from "lucide-react";
 import { getActiveOffers, initDefaultOffers, OfferPoster } from "@/data/offersData";
 
 /* ─────────────────────────────────────────────────────────────
-   Smooth crossfade — like a video dissolve.
-   No scale: object-contain means edges would show on scale.
+   Crossfade variants — same timing for BOTH the ambient
+   background AND the poster image, so they dissolve together.
 ───────────────────────────────────────────────────────────── */
 const fadeIn  = { opacity: 0 };
-const fadeOut = { opacity: 0, transition: { duration: 0.45, ease: "easeInOut" } };
-const visible = { opacity: 1, transition: { duration: 0.55, ease: "easeInOut" } };
+const fadeOut = { opacity: 0, transition: { duration: 0.55, ease: "easeInOut" } };
+const visible = { opacity: 1, transition: { duration: 0.65, ease: "easeInOut" } };
 
 /* ─── Badge colours ──────────────────────────────────────────── */
 const BADGE_COLOR: Record<string, string> = {
-  "HOT DEAL":  "bg-red-500",
-  "NEW":        "bg-blue-500",
-  "LIMITED":    "bg-orange-500",
-  "SPECIAL":    "bg-purple-500",
-  "SEASONAL":   "bg-teal-500",
-  "FLASH SALE": "bg-yellow-400 text-black",
+  "HOT DEAL":   "bg-red-500",
+  "NEW":         "bg-blue-500",
+  "LIMITED":     "bg-orange-500",
+  "SPECIAL":     "bg-purple-500",
+  "SEASONAL":    "bg-teal-500",
+  "FLASH SALE":  "bg-yellow-400 text-black",
 };
 
 /* ─── Countdown timer ────────────────────────────────────────── */
@@ -72,8 +72,56 @@ const Slide = ({
         if (Math.abs(diff) > 50) diff > 0 ? onSwipeLeft() : onSwipeRight();
       }}
     >
-      {/* ── Full poster — object-contain, zero cropping ── */}
-      <div className="flex-1 flex items-center justify-center w-full min-h-0">
+
+      {/* ══════════════════════════════════════════════════════════
+          LAYER 1 — Ambient blurred background
+          Scales up the same poster image, blurs it heavily so
+          only the colour tones remain. Works automatically for
+          every poster — current and future — with zero manual
+          configuration.
+      ══════════════════════════════════════════════════════════ */}
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        {poster.image ? (
+          <img
+            src={poster.image}
+            alt=""
+            aria-hidden
+            draggable={false}
+            className="absolute inset-0 w-full h-full object-cover"
+            style={{
+              transform:  "scale(1.55)",   // overshoot edges so blur has no gaps
+              filter:     "blur(90px)",    // heavy blur — only colour, no detail
+              opacity:    0.72,
+            }}
+          />
+        ) : (
+          /* Fallback for colour-only posters (no image) */
+          <div
+            className="absolute inset-0"
+            style={{ background: poster.bgColor || "#0a3d0a" }}
+          />
+        )}
+
+        {/* Dark vignette — deepens edges, improves text contrast */}
+        <div className="absolute inset-0 bg-black/28" />
+        {/* Subtle gradient — top lighter, bottom darker */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/45" />
+        {/* Side vignettes — soften left/right edges */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-transparent to-black/30" />
+      </div>
+
+      {/* ══════════════════════════════════════════════════════════
+          LAYER 2 — Poster image (sharp, object-contain, centred)
+          Masked at edges so it dissolves into the ambient layer
+          for a seamless, premium blended look.
+      ══════════════════════════════════════════════════════════ */}
+      <div
+        className="flex-1 flex items-center justify-center w-full min-h-0 relative z-10"
+        style={{
+          WebkitMaskImage: "radial-gradient(ellipse 88% 82% at 50% 50%, black 52%, transparent 100%)",
+          maskImage:        "radial-gradient(ellipse 88% 82% at 50% 50%, black 52%, transparent 100%)",
+        }}
+      >
         {poster.image ? (
           <img
             src={poster.image}
@@ -87,10 +135,12 @@ const Slide = ({
         )}
       </div>
 
-      {/* ── Text overlay — only when poster has title/badge fields ── */}
+      {/* ══════════════════════════════════════════════════════════
+          LAYER 3 — Text overlay (title / badge / countdown / CTA)
+          Only rendered when the poster has text fields set.
+      ══════════════════════════════════════════════════════════ */}
       {hasOverlay && (
-        <div className="absolute inset-0 flex items-end pointer-events-none">
-          {/* Left-side gradient for readability */}
+        <div className="absolute inset-0 flex items-end pointer-events-none z-20">
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
 
           <div className={`relative z-10 pointer-events-auto pb-16 ${heroMode ? "px-10 md:px-20" : "px-8 md:px-14"}`}>
@@ -163,13 +213,12 @@ const Slide = ({
       {/* ── CTA only (full-image posters with no title set) ── */}
       {!hasOverlay && (poster.ctaLabel || poster.ctaLink) && (
         <>
-          {/* Subtle bottom gradient so CTA is readable */}
-          <div className="absolute bottom-0 left-0 right-0 h-28 bg-gradient-to-t from-black/50 to-transparent pointer-events-none" />
+          <div className="absolute bottom-0 left-0 right-0 h-28 bg-gradient-to-t from-black/50 to-transparent pointer-events-none z-20" />
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5 }}
-            className={`absolute z-10 pointer-events-auto ${heroMode ? "bottom-16 left-10 md:left-20" : "bottom-12 left-8 md:left-12"}`}
+            className={`absolute z-20 pointer-events-auto ${heroMode ? "bottom-16 left-10 md:left-20" : "bottom-12 left-8 md:left-12"}`}
           >
             <Link
               to={poster.ctaLink || "/contact"}
@@ -218,7 +267,6 @@ const OffersBanner = ({ heroMode = false }: OffersBannerProps) => {
     setIdx(i => (i - 1 + (posters.length || 1)) % (posters.length || 1)),
   [posters.length]);
 
-  // Auto-advance every 3 s
   useEffect(() => {
     if (posters.length <= 1 || isPaused) return;
     const id = setInterval(goNext, 3_000);
@@ -233,15 +281,14 @@ const OffersBanner = ({ heroMode = false }: OffersBannerProps) => {
 
   const poster = posters[idx];
 
-  /*
-   * heroMode  → 100dvh (fills the viewport as the page hero)
-   * strip     → auto height based on poster aspect ratio, min 260px
-   */
-  const sectionClass = heroMode
-    ? "relative w-full select-none bg-[#060e08] overflow-hidden"
-    : "relative w-full select-none bg-[#060e08] overflow-hidden";
+  const NAVBAR_H = 88; // fixed navbar: h-14 logo (56px) + py-4 (16×2) = 88px
 
-  const NAVBAR_H = 88; // fixed navbar: h-14 logo (56px) + py-4 (16px × 2) = 88px
+  /*
+   * bg-black is just a brief flash fallback during the first image load.
+   * Once the blurred ambient layer renders, it covers this completely.
+   */
+  const sectionClass = "relative w-full select-none bg-black overflow-hidden";
+
   const sectionStyle = heroMode
     ? { marginTop: NAVBAR_H, height: `calc(100dvh - ${NAVBAR_H}px)`, minHeight: 500 - NAVBAR_H }
     : {};
@@ -249,7 +296,7 @@ const OffersBanner = ({ heroMode = false }: OffersBannerProps) => {
   return (
     <section className={sectionClass} style={sectionStyle}>
 
-      {/* ── Slides — true video-style crossfade ── */}
+      {/* ── Slides (ambient bg + poster + overlays, all crossfade together) ── */}
       <AnimatePresence mode="sync">
         <Slide
           key={poster.id}
@@ -284,7 +331,6 @@ const OffersBanner = ({ heroMode = false }: OffersBannerProps) => {
 
       {/* ── Dot indicators + counter + view-all ── */}
       <div className={`absolute left-0 right-0 z-30 flex items-center justify-between ${heroMode ? "bottom-6 px-8 md:px-14" : "bottom-3 px-5 md:px-12"}`}>
-
         <div className="flex items-center gap-2">
           {posters.map((_, i) => (
             <motion.button

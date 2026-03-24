@@ -11,12 +11,24 @@ const AdminDashboard = () => {
   const [enquiries, setEnquiries] = useState<any[]>([]);
   const [contacts, setContacts] = useState<any[]>([]);
   const [loadingData, setLoadingData] = useState(true);
+  const [authTimeout, setAuthTimeout] = useState(false);
 
   useEffect(() => {
     if (!loading && (!user || !isAdmin)) {
       navigate("/admin/login");
     }
   }, [user, isAdmin, loading, navigate]);
+
+  // Failsafe: redirect to login if auth hangs for more than 8s
+  useEffect(() => {
+    const t = setTimeout(() => {
+      if (loading) {
+        setAuthTimeout(true);
+        navigate("/admin/login");
+      }
+    }, 8000);
+    return () => clearTimeout(t);
+  }, []);
 
   useEffect(() => {
     if (isAdmin) {
@@ -30,6 +42,8 @@ const AdminDashboard = () => {
       supabase.from("course_enquiries").select("*").order("created_at", { ascending: false }),
       supabase.from("contacts").select("*").order("created_at", { ascending: false }),
     ]);
+    if (enqRes.error) console.error("Failed to load course enquiries:", enqRes.error.message);
+    if (conRes.error) console.error("Failed to load contacts:", conRes.error.message);
     setEnquiries(enqRes.data || []);
     setContacts(conRes.data || []);
     setLoadingData(false);

@@ -99,8 +99,8 @@ const Blog = () => (
     <section className="py-16 bg-white">
       <div className="container mx-auto px-4">
         <div className="bg-[#0C1A14] rounded-[40px] p-12 md:p-16 text-center relative overflow-hidden text-white shadow-[0_40px_80px_-20px_rgba(26,66,49,0.3)]">
-          <BookOpen className="w-12 h-12 text-primary mx-auto mb-6 opacity-50" />
-          <h2 className="text-3xl md:text-4xl font-bold mb-5 leading-snug">
+          <BookOpen className="w-12 h-12 text-white mx-auto mb-6 opacity-80" />
+          <h2 className="text-3xl md:text-4xl font-bold mb-5 leading-snug text-white">
             Subscribe to <span className="text-secondary italic font-serif">Agri-Weekly</span>
           </h2>
           <p className="text-white/60 text-base font-medium mb-10 max-w-xl mx-auto leading-relaxed">

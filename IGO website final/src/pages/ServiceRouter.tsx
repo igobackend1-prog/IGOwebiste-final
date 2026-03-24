@@ -41,6 +41,7 @@ const CategoryView: React.FC<{ categorySlug: string }> = ({ categorySlug }) => {
             src={cat.cardImage || LOCAL_FALLBACK}
             alt={cat.label}
             className="w-full h-full object-cover"
+            onError={e => { (e.currentTarget as HTMLImageElement).src = LOCAL_FALLBACK; }}
           />
         </motion.div>
 
@@ -94,6 +95,7 @@ const CategoryView: React.FC<{ categorySlug: string }> = ({ categorySlug }) => {
                     src={service.image || LOCAL_FALLBACK}
                     alt={service.label}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
+                    onError={e => { (e.currentTarget as HTMLImageElement).src = LOCAL_FALLBACK; }}
                   />
                   <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors" />
                   <div className="absolute top-6 right-6 w-12 h-12 bg-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-500 shadow-xl">
@@ -209,6 +211,7 @@ const DetailView: React.FC<{ categorySlug: string; serviceSlug: string }> = ({ c
                 src={serviceImage}
                 alt={service.label}
                 className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+                onError={e => { (e.currentTarget as HTMLImageElement).src = LOCAL_FALLBACK; }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
             </div>
@@ -306,7 +309,7 @@ const ServiceRouter: React.FC = () => {
   const { category, subcategory } = useParams<{ category: string; subcategory: string }>();
 
   React.useEffect(() => {
-    window.scrollTo(0, 0);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }, [category, subcategory]);
 
   if (!category) return <Navigate to="/services" />;

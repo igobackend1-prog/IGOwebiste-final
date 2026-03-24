@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ArrowRight, Wheat, Fish, Tractor, Droplets, Leaf, Shield, Hammer } from "lucide-react";
 import { stats, projects, services, navLinks } from "@/data/siteData";
 import { motion, AnimatePresence, Variants } from "framer-motion";
@@ -448,6 +448,7 @@ const VisionSection = () => (
 
 // ── Featured Projects Gallery (Overlapping Cards) ──────────────────────────
 const ProjectGallerySection = () => {
+  const navigate = useNavigate();
   const gallProjects = [
     {
       id: "01",
@@ -514,7 +515,7 @@ const ProjectGallerySection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               whileHover={{ y: -5 }}
-              onClick={() => window.location.href = p.href}
+              onClick={() => navigate(p.href)}
               className={`group relative ${p.bg} ${p.hoverBg} rounded-[2rem] p-8 min-h-[480px] flex flex-col border border-black/5 hover:border-primary/20 transition-all hover:shadow-[0_20px_40px_rgba(0,0,0,0.05)] cursor-pointer overflow-hidden`}
             >
               <div className="text-xl font-bold text-black/20 mb-6 tracking-widest">{p.id}</div>

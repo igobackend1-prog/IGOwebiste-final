@@ -533,7 +533,7 @@ const DetailView: React.FC<{ product: ProductDetail; category: string }> = ({ pr
                   >
                     <div className="relative aspect-square overflow-hidden bg-slate-100">
                       <img
-                        src={relatedMeta?.cardImage || LOCAL_FALLBACK}
+                        src={PRODUCT_IMAGES[related.id] || relatedMeta?.cardImage || LOCAL_FALLBACK}
                         alt={related.name}
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                       />
@@ -568,7 +568,7 @@ const DetailView: React.FC<{ product: ProductDetail; category: string }> = ({ pr
 const ProductRouter: React.FC = () => {
   const { category, productSlug } = useParams<{ category: string; productSlug: string }>();
 
-  useEffect(() => { window.scrollTo(0, 0); }, [category, productSlug]);
+  useEffect(() => { window.scrollTo({ top: 0, behavior: "smooth" }); }, [category, productSlug]);
 
   // Mode 1: no productSlug → Category listing
   if (!productSlug) {

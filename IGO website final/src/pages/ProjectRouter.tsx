@@ -822,7 +822,7 @@ const ProjectRouter: React.FC = () => {
     feature: string;
   }>();
 
-  React.useEffect(() => { window.scrollTo(0, 0); }, [category, subcategory, feature]);
+  React.useEffect(() => { window.scrollTo({ top: 0, behavior: "smooth" }); }, [category, subcategory, feature]);
 
   if (!category)    return <Navigate to="/projects" />;
   if (!subcategory) return <CategoryView category={category} />;

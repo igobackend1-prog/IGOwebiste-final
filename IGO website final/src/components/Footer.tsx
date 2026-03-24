@@ -15,7 +15,7 @@ const serviceLinks = [
 ];
 
 const phones = ["+91 73977 89803", "+91 73977 89804", "+91 73977 89805"];
-const emails = ["bankingbackend.indiagreen@gmail.com", "bd2@igogroups.com"];
+const emails = ["igobackend1@gmail.com", "bd2@igogroups.com"];
 
 const socials = [
   { Icon: Facebook,  href: "https://www.facebook.com/IGOAgriTechfarms/",          label: "Facebook" },
