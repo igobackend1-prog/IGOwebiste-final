@@ -152,8 +152,8 @@ const MegaMenu = ({ link }: { link: any }) => {
                         className="flex items-center gap-4 group/service bg-slate-50/40 hover:bg-slate-50 border border-black/5 hover:border-black/10 rounded-2xl p-4 transition-all shadow-[0_2px_8px_rgba(0,0,0,0.02)] hover:shadow-md"
                       >
                          <div className="w-12 h-12 rounded-xl bg-white border border-black/5 flex items-center justify-center text-black/40 group-hover/service:text-primary shadow-sm shrink-0 transition-colors overflow-hidden">
-                            {typeof subSector.icon === 'string' && subSector.icon.startsWith('/') ? (
-                              <img src={subSector.icon} className="w-full h-full object-cover object-center rounded-xl" alt="" />
+                            {(subSector.icon || subSector.image) && typeof (subSector.icon || subSector.image) === 'string' && (subSector.icon || subSector.image).startsWith('/') ? (
+                              <img src={subSector.icon || subSector.image} className="w-full h-full object-cover object-center rounded-xl" alt="" />
                             ) : typeof subSector.icon === 'string' ? (
                               <span className="text-xl">{subSector.icon}</span>
                             ) : subSector.icon ? (
@@ -271,13 +271,11 @@ const Navbar = () => {
 
   if (isAdmin) return null;
 
-  const navClasses = scrolled || !isHome
-    ? "bg-white/95 backdrop-blur-md border-b border-black/[0.05] py-4 shadow-sm"
-    : "bg-black/20 backdrop-blur-sm py-6 border-b border-white/5";
+  const navClasses = "bg-white/95 backdrop-blur-md border-b border-black/[0.05] py-4 shadow-sm";
 
-  const textColorClass = scrolled || !isHome ? "text-black" : "text-white";
-  const linkColorClass = scrolled || !isHome ? "text-black/70" : "text-white/90";
-  const logoInvertClass = scrolled || !isHome ? "" : "brightness-0 invert";
+  const textColorClass = "text-black";
+  const linkColorClass = "text-black/70";
+  const logoInvertClass = "";
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${navClasses}`}>
@@ -285,8 +283,7 @@ const Navbar = () => {
         <Link to="/" className="flex items-center gap-4 group z-50">
           <img src={companyInfo.logo} alt="IGO Logo" className={`h-14 w-auto drop-shadow-md group-hover:scale-105 transition-transform ${logoInvertClass}`} />
           <div className="flex flex-col leading-none drop-shadow-sm">
-            <span className={`text-2xl font-black tracking-tight uppercase font-display ${textColorClass}`}>IGO <span className={scrolled || !isHome ? "text-primary" : "text-white/80"}>Agritech</span></span>
-            {!scrolled && isHome && <span className="text-[10px] uppercase tracking-[0.25em] font-bold text-white/80 hidden md:block mt-1">Industrial Excellence</span>}
+            <span className={`text-2xl font-black tracking-tight uppercase font-display ${textColorClass}`}>IGO <span className="text-primary">Agritech</span></span>
           </div>
         </Link>
 
@@ -343,11 +340,9 @@ const Navbar = () => {
             })}
           </LayoutGroup>
           
-          <Link 
-            to="/startup-platform"
-            className={`px-6 py-2.5 text-xs font-semibold rounded-full transition-all uppercase tracking-widest ${
-              scrolled || !isHome ? "bg-black text-white shadow-lg shadow-black/10" : "bg-white text-black shadow-lg shadow-white/5"
-            }`}
+          <Link
+            to="/agri-startup-platform"
+            className="px-6 py-2.5 text-xs font-semibold rounded-full transition-all uppercase tracking-widest bg-black text-white shadow-lg shadow-black/10"
           >
             Agri Startup Platform
           </Link>

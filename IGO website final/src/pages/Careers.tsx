@@ -1,87 +1,437 @@
-import { ArrowRight, Briefcase, CheckCircle2, Mail, MapPin, Users } from "lucide-react";
-import agriPattern from "@/assets/agri-pattern.png";
-import { companyInfo } from "@/data/siteData";
+import { useState } from "react";
+import { ArrowRight, Mail, TrendingUp, Zap, Heart, CheckCircle, Users, MapPin, ChevronDown } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
-const Careers = () => (
-  <div className="pt-20">
-    <section className="py-24 bg-white border-b border-border relative overflow-hidden text-center">
-      <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: `url(${agriPattern})`, backgroundSize: "600px", backgroundRepeat: "repeat" }} />
-      <div className="container mx-auto px-4 relative z-10 max-w-4xl">
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-xs font-black uppercase tracking-[0.2em] mb-6 border border-primary/20">
-          Grow with us
+const departments = [
+  {
+    name: "Digital Marketing Team",
+    emoji: "📣",
+    color: "bg-violet-50 border-violet-200 text-violet-700",
+    iconBg: "bg-violet-100",
+    roles: ["Digital Marketing Manager", "SEO Analyst", "Content Creator", "Video Editor", "Social Media Executive", "Accounts Executive"],
+    qualification: "Any Degree",
+    type: "Full Time",
+  },
+  {
+    name: "Business Development Team",
+    emoji: "📈",
+    color: "bg-blue-50 border-blue-200 text-blue-700",
+    iconBg: "bg-blue-100",
+    roles: ["Business Development Executive", "Business Development Manager", "Sales Executive"],
+    qualification: "Any Degree",
+    type: "Full Time",
+  },
+  {
+    name: "Agriculture Engineering Team",
+    emoji: "🌱",
+    color: "bg-emerald-50 border-emerald-200 text-emerald-700",
+    iconBg: "bg-emerald-100",
+    roles: ["Agri Project Engineer", "Agronomist", "Horticulturist", "Irrigation Specialist", "Soil Scientist"],
+    qualification: "B.Sc. / B.Tech – Agriculture, Agronomy, Horticulture, Soil Science, Forestry",
+    type: "Full Time",
+  },
+  {
+    name: "Civil Engineering Team",
+    emoji: "🏗️",
+    color: "bg-orange-50 border-orange-200 text-orange-700",
+    iconBg: "bg-orange-100",
+    roles: ["Civil Engineer", "Site Supervisor", "Structural Engineer", "Project Coordinator"],
+    qualification: "B.E. Civil Engineering",
+    type: "Full Time",
+  },
+  {
+    name: "Farmers Factory",
+    emoji: "🏭",
+    color: "bg-yellow-50 border-yellow-200 text-yellow-700",
+    iconBg: "bg-yellow-100",
+    roles: ["Operations Executive", "Production Staff", "Packing Executive", "Unskilled Labour"],
+    qualification: "10th / 12th / Any Degree",
+    type: "Full Time",
+  },
+  {
+    name: "Logistics Manager",
+    emoji: "🚚",
+    color: "bg-sky-50 border-sky-200 text-sky-700",
+    iconBg: "bg-sky-100",
+    roles: ["Logistics Manager", "Supply Chain Executive", "Driver"],
+    qualification: "Any Degree",
+    type: "Full Time",
+  },
+  {
+    name: "Quality Control",
+    emoji: "✅",
+    color: "bg-teal-50 border-teal-200 text-teal-700",
+    iconBg: "bg-teal-100",
+    roles: ["QC Manager", "Quality Inspector", "Lab Technician"],
+    qualification: "Any Degree / Science Background",
+    type: "Full Time",
+  },
+  {
+    name: "Field Executive",
+    emoji: "🌾",
+    color: "bg-lime-50 border-lime-200 text-lime-700",
+    iconBg: "bg-lime-100",
+    roles: ["Field Executive", "Field Coordinator", "Ground-Level Supervisor"],
+    qualification: "10th / 12th / Any Degree",
+    type: "Full Time",
+  },
+  {
+    name: "Warehouse Incharge",
+    emoji: "📦",
+    color: "bg-amber-50 border-amber-200 text-amber-700",
+    iconBg: "bg-amber-100",
+    roles: ["Warehouse Incharge", "Inventory Executive", "Store Keeper"],
+    qualification: "10th / 12th / Any Degree",
+    type: "Full Time",
+  },
+  {
+    name: "Farm Manager",
+    emoji: "🌿",
+    color: "bg-green-50 border-green-200 text-green-700",
+    iconBg: "bg-green-100",
+    roles: ["Farm Manager", "Assistant Farm Manager", "Crop Production Specialist"],
+    qualification: "B.Sc. Agriculture / B.Tech Agriculture Engineering",
+    type: "Full Time",
+  },
+  {
+    name: "Livestock Manager",
+    emoji: "🐄",
+    color: "bg-rose-50 border-rose-200 text-rose-700",
+    iconBg: "bg-rose-100",
+    roles: ["Livestock Manager", "Veterinary Assistant", "Animal Husbandry Specialist"],
+    qualification: "Animal Husbandry / Bachelor of Veterinary Science",
+    type: "Full Time",
+  },
+];
+
+const benefits = [
+  {
+    icon: <TrendingUp className="w-6 h-6" />,
+    title: "Real Career Growth",
+    desc: "Work on 1000+ live projects across India with direct career advancement and structured skill development at every level.",
+    stat: "1000+",
+    statLabel: "Live Projects",
+  },
+  {
+    icon: <Zap className="w-6 h-6" />,
+    title: "Tech-Driven Work",
+    desc: "Use IoT, AI, and automation in real agricultural projects — not just theory, but hands-on experience with cutting-edge agritech.",
+    stat: "IoT + AI",
+    statLabel: "Technology Used",
+  },
+  {
+    icon: <Heart className="w-6 h-6" />,
+    title: "Meaningful Impact",
+    desc: "Every project directly impacts farmers' livelihoods and India's food security — your work creates visible change.",
+    stat: "25,000+",
+    statLabel: "Jobs Created",
+  },
+];
+
+const Careers = () => {
+  const [open, setOpen] = useState<number | null>(null);
+
+  return (
+    <div className="min-h-screen bg-white">
+
+      {/* ── HERO ── */}
+      <section className="relative bg-[#0C1A14] overflow-hidden pt-20">
+        {/* Decorative circles */}
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-primary/10 blur-[120px] -translate-y-1/2 translate-x-1/3 pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-[300px] h-[300px] rounded-full bg-primary/5 blur-[80px] translate-y-1/2 -translate-x-1/4 pointer-events-none" />
+
+        <div className="container mx-auto px-6 py-16 md:py-20 relative z-10">
+          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-12">
+
+            {/* Left */}
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7 }}
+              className="max-w-xl"
+            >
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 text-[#6FD898] text-[10px] font-black uppercase tracking-[0.3em] mb-6 border border-white/20">
+                We're Hiring · 11 Departments Open
+              </div>
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight tracking-tight text-white mb-5">
+                Build Your Career in <br />
+                <span className="text-[#6FD898] italic font-serif">India's #1 Agritech</span> Brand
+              </h1>
+              <p className="text-white/70 text-base font-medium leading-relaxed mb-8">
+                Join 2000+ passionate professionals working across polyhouse engineering, hydroponics, livestock, marketing, and more — shaping the future of Indian agriculture.
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <a
+                  href="#openings"
+                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-[#6FD898] text-[#0C1A14] font-bold text-sm hover:bg-[#4ade80] transition-all group"
+                >
+                  Browse Openings <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </a>
+                <a
+                  href="mailto:bankingbackend.indiagreen@gmail.com"
+                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-white/10 text-white font-bold text-sm hover:bg-white/20 transition-all border border-white/20"
+                >
+                  <Mail className="w-4 h-4" /> Send Your CV
+                </a>
+              </div>
+            </motion.div>
+
+            {/* Right — Stats */}
+            <motion.div
+              initial={{ opacity: 0, x: 24 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.7, delay: 0.15 }}
+              className="grid grid-cols-2 gap-4 w-full lg:w-[360px] shrink-0"
+            >
+              {[
+                { value: "11", label: "Open Departments", icon: <Users className="w-5 h-5" /> },
+                { value: "2000+", label: "Team Members", icon: <TrendingUp className="w-5 h-5" /> },
+                { value: "Pan India", label: "Locations", icon: <MapPin className="w-5 h-5" /> },
+                { value: "75+", label: "Awards Won", icon: <CheckCircle className="w-5 h-5" /> },
+              ].map((s) => (
+                <div key={s.label} className="bg-white/10 border border-white/20 rounded-2xl p-5 hover:bg-white/15 transition-colors">
+                  <div className="text-[#6FD898] mb-2">{s.icon}</div>
+                  <div className="text-2xl font-bold text-white mb-1">{s.value}</div>
+                  <div className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/55">{s.label}</div>
+                </div>
+              ))}
+            </motion.div>
+
+          </div>
         </div>
-        <h1 className="font-display text-5xl md:text-[84px] font-black text-foreground mb-8 tracking-tight italic leading-tight">
-          Join our Mission to <br /> <span className="text-primary">Empower 1 Million Farmers</span>
-        </h1>
-        <p className="text-xl md:text-2xl text-muted-foreground font-medium leading-relaxed font-body max-w-4xl mx-auto">
-          We are looking for passionate innovators, engineers, and agricultural experts to help us build the future of farming in India.
-        </p>
-      </div>
-    </section>
 
-    <section className="py-32 bg-[#fafafa]">
-      <div className="container mx-auto px-4">
-        <div className="grid lg:grid-cols-3 gap-12">
-          {[
-            { 
-              title: "Engineering", 
-              positions: ["Polyhouse Engineer", "Irrigation Specialist", "Site Supervisor"],
-              icon: <Briefcase className="w-8 h-8" />
-            },
-            { 
-              title: "Consulting", 
-              positions: ["Agri Consultant", "Project Manager", "Business Analyst"],
-              icon: <Users className="w-8 h-8" />
-            },
-            { 
-              title: "Field Operations", 
-              positions: ["Farm Supervisor", "Maintenance Technician", "Horticulturist"],
-              icon: <MapPin className="w-8 h-8" />
-            }
-          ].map((dept, i) => (
-            <div key={i} className="bg-white p-12 rounded-[40px] border border-border shadow-sm hover:shadow-xl transition-all">
-              <div className="w-16 h-16 rounded-2xl bg-primary/5 text-primary flex items-center justify-center mb-8">
-                {dept.icon}
-              </div>
-              <h3 className="font-display text-3xl font-black mb-8 italic">{dept.title}</h3>
-              <div className="space-y-4 mb-10">
-                {dept.positions.map((pos) => (
-                  <div key={pos} className="flex items-center justify-between p-4 rounded-2xl bg-[#fafafa] border border-border group hover:border-primary/30 transition-all">
-                    <span className="font-bold text-foreground/80">{pos}</span>
-                    <ArrowRight className="w-4 h-4 text-primary opacity-0 group-hover:opacity-100 transition-all" />
-                  </div>
-                ))}
-              </div>
-              <button className="w-full py-4 rounded-full bg-primary/5 text-primary font-black uppercase tracking-widest text-xs hover:bg-primary hover:text-white transition-all">
-                Apply for Dept
-              </button>
+        {/* Bottom wave divider */}
+        <div className="h-10 bg-white" style={{ clipPath: "ellipse(55% 100% at 50% 100%)" }} />
+      </section>
+
+      {/* ── WHY JOIN ── */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-6">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-12">
+            <div>
+              <div className="text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-2">Why IGO</div>
+              <h2 className="text-2xl md:text-3xl font-bold tracking-tight">Build a Career That Matters</h2>
             </div>
-          ))}
-        </div>
-      </div>
-    </section>
+          </div>
+          <div className="grid sm:grid-cols-3 gap-6">
+            {benefits.map((b, i) => (
+              <motion.div
+                key={b.title}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                className="relative bg-[#FDFDFB] rounded-2xl p-7 border border-border hover:border-primary/30 hover:shadow-lg transition-all group overflow-hidden"
+              >
+                {/* Accent corner */}
+                <div className="absolute top-0 right-0 w-24 h-24 bg-primary/5 rounded-full -translate-y-1/2 translate-x-1/2 group-hover:bg-primary/10 transition-colors" />
 
-    {/* Application Info */}
-    <section className="py-32 bg-white">
-      <div className="container mx-auto px-4">
-        <div className="max-w-5xl mx-auto rounded-[60px] bg-foreground p-16 md:p-24 text-center relative overflow-hidden text-background">
-          <div className="absolute top-0 right-0 w-[40%] h-[40%] bg-primary/20 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2" />
-          
-          <Mail className="w-16 h-16 text-primary mx-auto mb-10" />
-          <h2 className="font-display text-4xl md:text-6xl font-black mb-8 tracking-tight relative z-10 italic">How to Apply</h2>
-          <p className="text-background/70 text-xl md:text-2xl font-medium mb-12 max-w-2xl mx-auto relative z-10 leading-relaxed">
-            Interested candidates can send their updated resume and portfolio directly to our careers team.
-          </p>
-          <div className="inline-block px-12 py-6 rounded-full bg-primary text-primary-foreground font-black text-xl hover:opacity-90 transition-all shadow-2xl shadow-primary/40 relative z-10">
-            {companyInfo.email}
-          </div>
-          <div className="mt-12 text-background/40 font-bold uppercase tracking-[0.3em] text-xs relative z-10">
-            Reference: IGO-CAREERS-2024
+                <div className="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-5">
+                  {b.icon}
+                </div>
+                <h4 className="text-lg font-bold mb-2">{b.title}</h4>
+                <p className="text-sm text-muted-foreground leading-relaxed mb-5">{b.desc}</p>
+                <div className="pt-4 border-t border-border flex items-baseline gap-2">
+                  <span className="text-xl font-bold text-primary">{b.stat}</span>
+                  <span className="text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground">{b.statLabel}</span>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
-      </div>
-    </section>
-  </div>
-);
+      </section>
+
+      {/* ── OPEN POSITIONS ── */}
+      <section id="openings" className="py-16 bg-[#F9F9F7]">
+        <div className="container mx-auto px-6">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-12">
+            <div>
+              <div className="text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-2">We Are Hiring</div>
+              <h2 className="text-2xl md:text-3xl font-bold tracking-tight">Current Openings</h2>
+            </div>
+            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-bold border border-primary/20">
+              {departments.length} Departments · All Full Time
+            </span>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-4">
+            {departments.map((dept, i) => (
+              <motion.div
+                key={dept.name}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: i * 0.04 }}
+                className="bg-white rounded-2xl border border-border overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+              >
+                {/* Card Header */}
+                <button
+                  className="w-full flex items-center justify-between px-6 py-5 text-left group"
+                  onClick={() => setOpen(open === i ? null : i)}
+                >
+                  <div className="flex items-center gap-4">
+                    <div className={`w-11 h-11 rounded-xl flex items-center justify-center text-xl ${dept.iconBg} border ${dept.color.split(" ").slice(1,2).join(" ")}`}>
+                      {dept.emoji}
+                    </div>
+                    <div>
+                      <div className="font-bold text-[15px] leading-tight">{dept.name}</div>
+                      <div className="text-xs text-muted-foreground mt-0.5">
+                        {dept.roles.length} roles available
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3 shrink-0 ml-3">
+                    <span className={`hidden sm:inline-flex px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-[0.15em] border ${dept.color}`}>
+                      {dept.qualification.split("/")[0].split("–")[0].trim()}
+                    </span>
+                    <div className={`w-8 h-8 rounded-full flex items-center justify-center border transition-all ${open === i ? "bg-primary border-primary text-white" : "border-border text-muted-foreground group-hover:border-primary/40"}`}>
+                      <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${open === i ? "rotate-180" : ""}`} />
+                    </div>
+                  </div>
+                </button>
+
+                {/* Expanded Content */}
+                <AnimatePresence initial={false}>
+                  {open === i && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.25, ease: "easeInOut" }}
+                      className="overflow-hidden"
+                    >
+                      <div className="px-6 pb-5 border-t border-border/60">
+                        <div className="pt-4 mb-4">
+                          <p className="text-[10px] font-black uppercase tracking-[0.3em] text-muted-foreground mb-3">Roles</p>
+                          <div className="flex flex-wrap gap-2">
+                            {dept.roles.map((role) => (
+                              <span
+                                key={role}
+                                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#F9F9F7] border border-border text-sm font-medium"
+                              >
+                                <CheckCircle className="w-3 h-3 text-primary" />
+                                {role}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-3 border-t border-border/60">
+                          <div>
+                            <p className="text-[10px] font-black uppercase tracking-[0.25em] text-muted-foreground mb-1">Qualification</p>
+                            <p className="text-xs font-semibold text-foreground">{dept.qualification}</p>
+                          </div>
+                          <a
+                            href={`mailto:bankingbackend.indiagreen@gmail.com?subject=Application – ${dept.name}`}
+                            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-primary text-white text-xs font-black uppercase tracking-[0.2em] hover:bg-primary/90 transition-colors whitespace-nowrap shrink-0"
+                          >
+                            Apply Now <ArrowRight className="w-3.5 h-3.5" />
+                          </a>
+                        </div>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── HOW TO APPLY ── */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-6">
+          <div className="mb-12">
+            <div className="text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-2">Simple Process</div>
+            <h2 className="text-2xl md:text-3xl font-bold tracking-tight">How to Apply</h2>
+          </div>
+          <div className="grid sm:grid-cols-3 gap-0 relative">
+            {/* Connecting line */}
+            <div className="hidden sm:block absolute top-8 left-[16.67%] right-[16.67%] h-px border-t-2 border-dashed border-primary/20 z-0" />
+            {[
+              {
+                step: "01",
+                title: "Send Your CV",
+                desc: "Email your updated resume to our careers team with the department name in the subject line.",
+                icon: <Mail className="w-5 h-5" />,
+              },
+              {
+                step: "02",
+                title: "Interview Round",
+                desc: "Shortlisted candidates are contacted for a telephonic or in-person interview with our department heads.",
+                icon: <Users className="w-5 h-5" />,
+              },
+              {
+                step: "03",
+                title: "Join the IGO Family",
+                desc: "Selected candidates receive an offer letter and onboarding kit to kickstart their IGO journey.",
+                icon: <CheckCircle className="w-5 h-5" />,
+              },
+            ].map((s, i) => (
+              <motion.div
+                key={s.step}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.12 }}
+                className="flex flex-col items-center text-center px-8 relative z-10"
+              >
+                <div className="w-16 h-16 rounded-full bg-primary text-white flex items-center justify-center mb-5 shadow-lg shadow-primary/25 ring-4 ring-white">
+                  {s.icon}
+                </div>
+                <div className="text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-2">Step {s.step}</div>
+                <h4 className="text-lg font-bold mb-3">{s.title}</h4>
+                <p className="text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── APPLY CTA ── */}
+      <section className="py-16 bg-[#0C1A14] relative overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-primary/10 blur-[100px]" />
+        </div>
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="max-w-3xl mx-auto">
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-10">
+              {/* Left text */}
+              <div>
+                <div className="text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-3">Apply Today</div>
+                <h2 className="text-2xl md:text-3xl font-bold text-white mb-3 leading-snug">
+                  Ready to Join<br />IGO Agritech Farms?
+                </h2>
+                <p className="text-white/50 text-sm leading-relaxed">
+                  Send your resume directly — we reply within 48 hours.
+                </p>
+              </div>
+              {/* Right buttons */}
+              <div className="flex flex-col gap-3 shrink-0">
+                <a
+                  href="mailto:bankingbackend.indiagreen@gmail.com"
+                  className="inline-flex items-center gap-3 px-6 py-3.5 rounded-xl bg-primary text-white font-semibold text-sm hover:bg-primary/90 transition-colors"
+                >
+                  <Mail className="w-4 h-4 shrink-0" />
+                  <span className="truncate">bankingbackend.indiagreen@gmail.com</span>
+                </a>
+                <a
+                  href="mailto:bd2@igogroups.com"
+                  className="inline-flex items-center gap-3 px-6 py-3.5 rounded-xl bg-white/8 text-white font-semibold text-sm hover:bg-white/15 transition-colors border border-white/15"
+                >
+                  <Mail className="w-4 h-4 shrink-0" />
+                  <span>bd2@igogroups.com</span>
+                </a>
+                <p className="text-white/25 text-[10px] font-black uppercase tracking-[0.3em] text-center">
+                  Ref: IGO-CAREERS-2024
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  );
+};
 
 export default Careers;

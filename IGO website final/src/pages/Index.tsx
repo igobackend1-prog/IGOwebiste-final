@@ -1,75 +1,184 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, Wheat, Fish, Tractor, Droplets, Leaf, Shield, Hammer } from "lucide-react";
 import { stats, projects, services, navLinks } from "@/data/siteData";
-import { motion, Variants } from "framer-motion";
+import { motion, AnimatePresence, Variants } from "framer-motion";
+import OffersBanner from "@/components/OffersBanner";
+import { getActiveOffers, initDefaultOffers } from "@/data/offersData";
 
-const HERO_IMAGE = "/assets/tesla_agri_hero_1773740814701.png";
+const HERO_SLIDES = [
+  { src: "/assets/demo poster/Copy of Website cover page.jpg.jpeg",                                   label: "Ramadan Sale",        alt: "Ramadan Sale Offer",       isPoster: true },
+  { src: "/assets/demo poster/Copy of Website cover page (1).jpg.jpeg",                               label: "Special Offer",       alt: "Special Ramzan Offer",     isPoster: true },
+  { src: "/assets/home page image .png",                                                              label: "Smart Farms",         alt: "Smart Farm" },
+  { src: "/assets/projects/project subcategories/subcategories/Vertical  farming .jpg",               label: "Vertical Farming",    alt: "Vertical Farming" },
+  { src: "/assets/projects/project subcategories/subcategories/hydroponic farming .jpg",              label: "Hydroponics",         alt: "Hydroponics" },
+  { src: "/assets/core bussiness picture/aquatic_plants.jpg",                                         label: "Aquaculture",         alt: "Aquaculture" },
+  { src: "/assets/projects/project subcategories/subcategories/dairy farming .jpg",                   label: "Dairy Farming",       alt: "Dairy Farming" },
+  { src: "/assets/core bussiness picture/farm_engineering.jpg",                                       label: "Farm Engineering",    alt: "Farm Engineering" },
+  { src: "/assets/projects/project subcategories/subcategories/solar agriculture project .jpg",       label: "Solar Agriculture",   alt: "Solar Agriculture" },
+  { src: "/assets/projects/project subcategories/subcategories/mushroom farming .jpg",                label: "Mushroom Farming",    alt: "Mushroom Farming" },
+  { src: "/assets/core bussiness picture/livestock.jpg",                                              label: "Livestock",           alt: "Livestock" },
+  { src: "/assets/projects/project subcategories/subcategories/biofloc farming .jpg",                 label: "Biofloc Farming",     alt: "Biofloc Farming" },
+];
 
 const fader: Variants = {
   hidden: { opacity: 0, y: 30 },
-  show: { 
-    opacity: 1, 
-    y: 0, 
-    transition: { duration: 1, ease: [0.16, 1, 0.3, 1] } 
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 1, ease: [0.16, 1, 0.3, 1] }
   }
 };
 
-const HeroSection = () => (
-  <section className="relative h-[95vh] flex items-center justify-center overflow-hidden bg-black text-white">
-    <motion.div 
-      initial={{ scale: 1.1, opacity: 0 }}
-      animate={{ scale: 1, opacity: 0.7 }}
-      transition={{ duration: 2, ease: "easeOut" }}
-      className="absolute inset-0"
-    >
-      <img 
-        src={HERO_IMAGE} 
-        alt="Future of Farming" 
-        className="w-full h-full object-cover"
-      />
-    </motion.div>
+const HeroSection = () => {
+  const [current, setCurrent] = useState(0);
+  const slide = HERO_SLIDES[current];
+  const isPoster = !!slide.isPoster;
 
-    <div className="container mx-auto px-6 relative z-10 text-center">
-      <motion.div
-        initial="hidden"
-        animate="show"
-        variants={{
-          show: { transition: { staggerChildren: 0.2 } }
-        }}
-        className="max-w-4xl mx-auto"
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % HERO_SLIDES.length);
+    }, 4500);
+    return () => clearInterval(timer);
+  }, []);
+
+  // Navbar is fixed at 88px tall (h-14 logo + py-4 padding).
+  // Section is 100vh total. Poster starts at 88px (below navbar),
+  // so the poster fills exactly calc(100vh - 88px) = 992px on a 1080p screen.
+  // Poster ratio is 2:1 — at 1920×992 container, object-cover crops only 32px
+  // per side (1.67%) so the full design remains readable.
+  const NAVBAR_H = 88;
+
+  return (
+    <section
+      className="relative flex items-center justify-center overflow-hidden bg-black text-white transition-all duration-700"
+      style={isPoster
+        ? { height: "100vh", paddingTop: NAVBAR_H }
+        : { height: "95vh" }
+      }
+    >
+      {/* ── POSTER SLIDES: 1920×1080-target, starts below navbar, fills screen ── */}
+      {isPoster && (
+        <AnimatePresence mode="sync">
+          <motion.div
+            key={current}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1.2, ease: "easeInOut" }}
+            className="w-full"
+            style={{ height: `calc(100vh - ${NAVBAR_H}px)` }}
+          >
+            <img
+              src={slide.src}
+              alt={slide.alt}
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                objectPosition: "center center",
+                display: "block",
+              }}
+            />
+          </motion.div>
+        </AnimatePresence>
+      )}
+
+      {/* ── FARM SLIDES: full-viewport, cover, with text overlay ── */}
+      {!isPoster && (
+        <>
+          <AnimatePresence mode="sync">
+            <motion.div
+              key={current}
+              initial={{ opacity: 0, scale: 1.08 }}
+              animate={{ opacity: 0.72, scale: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 1.4, ease: "easeInOut" }}
+              className="absolute inset-0"
+            >
+              <img
+                src={slide.src}
+                alt={slide.alt}
+                className="w-full h-full object-cover"
+              />
+            </motion.div>
+          </AnimatePresence>
+
+          {/* Dark gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/50 pointer-events-none z-[1]" />
+
+          {/* Hero text */}
+          <div className="container mx-auto px-6 relative z-10 text-center">
+            <motion.div
+              initial="hidden"
+              animate="show"
+              variants={{ show: { transition: { staggerChildren: 0.2 } } }}
+              className="max-w-4xl mx-auto"
+            >
+              <motion.p
+                variants={fader}
+                className="inline-block px-5 py-1.5 mb-8 text-[11px] font-black uppercase tracking-[0.25em] text-primary-foreground bg-primary rounded-full shadow-lg"
+              >
+                India's Leading Agri Engineering & Agri Consulting Brand
+              </motion.p>
+              <motion.h1 variants={fader} className="text-white mb-10 tracking-tight leading-[0.95] text-5xl md:text-7xl font-black">
+                Building Profitable Smart Farms <br /> Across India.
+              </motion.h1>
+              <motion.div variants={fader} className="flex flex-wrap justify-center gap-6">
+                <Link to="/projects" className="px-12 py-4 bg-white text-black text-xs font-semibold rounded-full hover:bg-white/90 transition-all uppercase tracking-widest">
+                  View Projects
+                </Link>
+                <Link to="/contact" className="px-12 py-4 bg-transparent border border-white/30 text-white text-xs font-semibold rounded-full hover:bg-white hover:text-black transition-all uppercase tracking-widest">
+                  Contact
+                </Link>
+              </motion.div>
+            </motion.div>
+          </div>
+        </>
+      )}
+
+      {/* Left / Right arrows
+          For poster slides the section has paddingTop=NAVBAR_H, so top-1/2 of the section
+          overshoots the center of the image. We shift the arrows down by NAVBAR_H/2 to
+          re-centre them on the visible image. */}
+      <button
+        onClick={() => setCurrent((current - 1 + HERO_SLIDES.length) % HERO_SLIDES.length)}
+        className="absolute left-5 z-20 w-11 h-11 rounded-full bg-white/15 backdrop-blur-sm border border-white/25 flex items-center justify-center hover:bg-white/30 transition-all -translate-y-1/2"
+        style={{ top: isPoster ? `calc(50% + ${NAVBAR_H / 2}px)` : "50%" }}
       >
-        <motion.p 
-          variants={fader} 
-          className="inline-block px-5 py-1.5 mb-8 text-[11px] font-black uppercase tracking-[0.25em] text-primary-foreground bg-primary rounded-full shadow-lg"
-        >
-          India's Leading Agri Engineering & Agri Consulting Brand
-        </motion.p>
-        <motion.h1 variants={fader} className="text-white mb-10 tracking-tight leading-[0.95] text-5xl md:text-7xl font-black">
-          Building Profitable <br /> Smart Farms.
-        </motion.h1>
-        <motion.div variants={fader} className="flex flex-wrap justify-center gap-6">
-          <Link to="/projects" className="px-12 py-4 bg-white text-black text-xs font-semibold rounded-full hover:bg-white/90 transition-all uppercase tracking-widest">
-            View Projects
-          </Link>
-          <Link to="/contact" className="px-12 py-4 bg-transparent border border-white/30 text-white text-xs font-semibold rounded-full hover:bg-white hover:text-black transition-all uppercase tracking-widest">
-            Contact
-          </Link>
-        </motion.div>
-      </motion.div>
-    </div>
+        <ArrowRight className="w-4 h-4 text-white rotate-180" />
+      </button>
+      <button
+        onClick={() => setCurrent((current + 1) % HERO_SLIDES.length)}
+        className="absolute right-5 z-20 w-11 h-11 rounded-full bg-white/15 backdrop-blur-sm border border-white/25 flex items-center justify-center hover:bg-white/30 transition-all -translate-y-1/2"
+        style={{ top: isPoster ? `calc(50% + ${NAVBAR_H / 2}px)` : "50%" }}
+      >
+        <ArrowRight className="w-4 h-4 text-white" />
+      </button>
 
-    <motion.div 
-      animate={{ y: [0, 10, 0] }}
-      transition={{ duration: 2, repeat: Infinity }}
-      className="absolute bottom-12 left-1/2 -translate-x-1/2"
-    >
-      <div className="w-px h-16 bg-white/20 relative">
-        <div className="absolute top-0 left-0 w-full h-1/2 bg-white" />
+      {/* Slide label + dots bottom bar */}
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2">
+        <span className="text-white/70 text-[10px] font-bold uppercase tracking-[0.3em] drop-shadow">
+          {slide.label}
+        </span>
+        <div className="flex gap-2">
+          {HERO_SLIDES.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setCurrent(i)}
+              className={`rounded-full transition-all duration-500 ${
+                i === current ? "w-8 h-2 bg-white" : "w-2 h-2 bg-white/35 hover:bg-white/60"
+              }`}
+            />
+          ))}
+        </div>
+        <span className="text-white/40 text-[9px] font-bold tracking-widest drop-shadow">
+          {current + 1} / {HERO_SLIDES.length}
+        </span>
       </div>
-    </motion.div>
-  </section>
-);
+    </section>
+  );
+};
 
 const useCounter = (target: number, duration = 2000, startCounting: boolean = false) => {
   const [count, setCount] = React.useState(0);
@@ -194,22 +303,48 @@ const WhyChooseSection = () => (
   </section>
 );
 
-const BusinessSectorsSection = () => (
-  <section className="py-24 bg-white overflow-hidden">
-    <div className="container mx-auto px-6 text-center">
+// ── Vision Section ───────────────────────────────────────────────────────────
+const visionPillars = [
+  {
+    icon: Tractor,
+    title: "Precision Farming",
+    desc: "High-tech engineering that maximises yield from every square metre of land — fertile or non-fertile, outdoor, indoor, or rooftop.",
+  },
+  {
+    icon: Leaf,
+    title: "Sustainable Growth",
+    desc: "Eco-first solutions that protect the earth while generating real, measurable returns on investment for every customer.",
+  },
+  {
+    icon: Shield,
+    title: "Lifetime Loyalty",
+    desc: "We measure success by the loyalty of our customers — our mission is to earn their trust once and keep it forever.",
+  },
+  {
+    icon: Hammer,
+    title: "Pan-India Presence",
+    desc: "From Tamil Nadu to the Himalayas, IGO's engineering and consulting footprint spans every agro-climatic zone in India.",
+  },
+];
+
+const VisionSection = () => (
+  <section className="py-24 bg-[#F4F8F4] overflow-hidden">
+    <div className="container mx-auto px-6">
+
+      {/* ── Section Header ── */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="flex flex-col items-center gap-4 mb-20"
+        className="flex flex-col items-center gap-4 mb-20 text-center"
       >
         <div className="flex items-center gap-4 text-[#C5A03F] font-bold text-xs uppercase tracking-[0.3em]">
           <div className="w-10 h-[1px] bg-[#C5A03F]" />
-          Core Business Sectors
+          Our Vision &amp; Mission
           <div className="w-10 h-[1px] bg-[#C5A03F]" />
         </div>
         <h2 className="text-4xl md:text-5xl font-black text-[#1A1A1A] tracking-tight">
-          Core Business Sectors
+          What Drives IGO Agritech Farms
         </h2>
         <div className="flex gap-1.5 mt-2">
           <div className="w-12 h-1.5 bg-[#1F4529] rounded-full" />
@@ -217,62 +352,96 @@ const BusinessSectorsSection = () => (
         </div>
       </motion.div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {[
-          { 
-            title: "Agri Farming Projects", 
-            icon: <img src="/assets/projects/agri_farming.jpg" alt="Agri Farming Projects" className="w-full h-full object-cover" />, 
-            desc: "From polyhouses to open-field plantations, we design and execute..",
-            link: "/projects/agri-farming"
-          },
-          { 
-            title: "Aquaculture Farming Projects", 
-            icon: <img src="/assets/core bussiness picture/aquatic_plants.jpg" alt="Aquaculture Farming Projects" className="w-full h-full object-cover" />, 
-            desc: "Comprehensive aquaculture farm setups from biofloc systems to...", 
-            link: "/projects/aquaculture"
-          },
-          { 
-            title: "Livestock Farming Projects", 
-            icon: <img src="/assets/core bussiness picture/livestock.jpg" alt="Livestock Farming Projects" className="w-full h-full object-cover" />, 
-            desc: "Turn-key livestock farm projects including goat farms, dairy setups,...",
-            link: "/projects/livestock"
-          },
-          { 
-            title: "Farm Engineering Projects", 
-            icon: <img src="/assets/core bussiness picture/farm_engineering.jpg" alt="Farm Engineering Projects" className="w-full h-full object-cover" />, 
-            desc: "Infrastructure, water management, solar technology, and land..",
-            link: "/projects/farm-engineering"
-          }
-        ].map((sector, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: i * 0.1 }}
-            className="group relative overflow-hidden p-10 rounded-[2rem] text-left transition-all duration-500 hover:-translate-y-2 border-2 
-              bg-[#F8FAF8] border-[#F1F3F1] hover:bg-[#1F4529] hover:border-[#1F4529] hover:shadow-2xl hover:shadow-[#1F4529]/20"
-          >
-            <div className="relative z-10 w-20 h-20 rounded-2xl flex items-center justify-center mb-10 transition-all duration-500 
-              bg-white shadow-lg shadow-black/5 group-hover:bg-[#C5A03F] group-hover:scale-110 overflow-hidden">
-              {sector.icon}
-            </div>
-            <h3 className="relative z-10 text-xl font-black mb-4 leading-tight text-[#1A1A1A] group-hover:text-white transition-colors duration-500">
-              {sector.title}
-            </h3>
-            <p className="relative z-10 text-sm leading-relaxed mb-8 text-black/50 group-hover:text-white/70 transition-colors duration-500">
-              {sector.desc}
+      {/* ── Vision / Mission Split ── */}
+      <div className="grid lg:grid-cols-2 gap-6 mb-10">
+
+        {/* Vision Card — dark green */}
+        <motion.div
+          initial={{ opacity: 0, x: -30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="relative bg-[#1F4529] rounded-[2rem] p-10 md:p-14 flex flex-col justify-between overflow-hidden min-h-[340px]"
+        >
+          {/* decorative circles */}
+          <div className="absolute -top-16 -right-16 w-64 h-64 rounded-full bg-white/5 pointer-events-none" />
+          <div className="absolute -bottom-10 -left-10 w-48 h-48 rounded-full bg-[#C5A03F]/10 pointer-events-none" />
+
+          <div className="relative z-10">
+            <span className="inline-block text-[10px] font-black uppercase tracking-[0.3em] text-[#C5A03F] bg-[#C5A03F]/10 border border-[#C5A03F]/30 px-4 py-1.5 rounded-full mb-8">
+              Our Vision
+            </span>
+            {/* large quote mark */}
+            <div className="text-[#C5A03F]/20 text-[9rem] font-serif leading-none select-none -mb-8 -mt-4">&ldquo;</div>
+            <p className="text-white text-2xl md:text-3xl font-black leading-snug tracking-tight">
+              To be the leading pan-India brand in precision agriculture and Agri Engineering space.
             </p>
-            <Link 
-              to={sector.link}
-              className="relative z-10 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider group/link
-                text-primary hover:text-black group-hover:text-[#C5A03F] group-hover:hover:text-white transition-colors duration-500"
-            >
-              Learn More <ArrowRight className="w-4 h-4 transition-transform group-hover/link:translate-x-1" />
-            </Link>
-          </motion.div>
-        ))}
+          </div>
+
+          <div className="relative z-10 mt-10 flex items-center gap-3">
+            <div className="w-8 h-[2px] bg-[#C5A03F]" />
+            <span className="text-white/40 text-xs font-bold uppercase tracking-widest">IGO Agritech Farms</span>
+          </div>
+        </motion.div>
+
+        {/* Mission Card — light */}
+        <motion.div
+          initial={{ opacity: 0, x: 30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="bg-white rounded-[2rem] p-10 md:p-14 flex flex-col justify-between border border-[#e0ede0] min-h-[340px]"
+        >
+          <div>
+            <span className="inline-block text-[10px] font-black uppercase tracking-[0.3em] text-[#1F4529] bg-[#1F4529]/10 border border-[#1F4529]/20 px-4 py-1.5 rounded-full mb-8">
+              Our Mission
+            </span>
+            <p className="text-[#1A1A1A] text-lg md:text-xl font-semibold leading-relaxed mb-6">
+              To win lifetime loyal customers across pan-India by farming every square metre of fertile and non-fertile open land, indoor space, and rooftop space of buildings.
+            </p>
+            <p className="text-black/50 text-sm leading-relaxed">
+              Our mission is to generate sustainable profits and passive income for our customers through various precision farming techniques — combining high-tech engineering, professional consulting, and smart livestock ecosystems.
+            </p>
+          </div>
+
+          <Link
+            to="/about"
+            className="mt-10 inline-flex items-center gap-2 w-fit text-xs font-bold uppercase tracking-wider text-[#1F4529] border-b-2 border-[#C5A03F] pb-0.5 hover:text-[#C5A03F] transition-colors"
+          >
+            Discover Our Story <ArrowRight className="w-4 h-4" />
+          </Link>
+        </motion.div>
       </div>
+
+      {/* ── 4 Core Value Pillars ── */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        {visionPillars.map((pillar, i) => {
+          const Icon = pillar.icon;
+          return (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1, duration: 0.6 }}
+              className="group bg-white border border-[#e0ede0] rounded-[1.75rem] p-8 flex flex-col gap-5
+                hover:bg-[#1F4529] hover:border-[#1F4529] hover:shadow-2xl hover:shadow-[#1F4529]/15
+                transition-all duration-500 hover:-translate-y-1"
+            >
+              <div className="w-14 h-14 rounded-2xl bg-[#F4F8F4] group-hover:bg-[#C5A03F] flex items-center justify-center transition-colors duration-500">
+                <Icon className="w-6 h-6 text-[#1F4529] group-hover:text-white transition-colors duration-500" />
+              </div>
+              <h3 className="text-lg font-black text-[#1A1A1A] group-hover:text-white transition-colors duration-500 leading-tight">
+                {pillar.title}
+              </h3>
+              <p className="text-sm text-black/50 group-hover:text-white/70 leading-relaxed transition-colors duration-500">
+                {pillar.desc}
+              </p>
+            </motion.div>
+          );
+        })}
+      </div>
+
     </div>
   </section>
 );
@@ -285,7 +454,7 @@ const ProjectGallerySection = () => {
       title: "Agri farming projects",
       bg: "bg-[#F5F5F7]",
       hoverBg: "hover:bg-[#E8F5E9]",
-      image: "/assets/projects/agri_farming.jpg",
+      image: "/assets/projects/main page/agri farming project .jpg",
       href: "/projects/agri"
     },
     {
@@ -293,7 +462,7 @@ const ProjectGallerySection = () => {
       title: "Aquaculture project",
       bg: "bg-[#F5F5F7]",
       hoverBg: "hover:bg-[#E8F5E9]",
-      image: "/assets/projects/aquaculture.jpg",
+      image: "/assets/projects/main page/aquaculture farming .jpg",
       href: "/projects/aquaculture"
     },
     {
@@ -301,7 +470,7 @@ const ProjectGallerySection = () => {
       title: "Livestocks project",
       bg: "bg-[#F5F5F7]",
       hoverBg: "hover:bg-[#E8F5E9]",
-      image: "/assets/projects/livestock.jpg",
+      image: "/assets/projects/main page/livestock farming.jpg",
       href: "/projects/livestock"
     },
     {
@@ -309,7 +478,7 @@ const ProjectGallerySection = () => {
       title: "Farm engineering projects",
       bg: "bg-[#F5F5F7]",
       hoverBg: "hover:bg-[#E8F5E9]",
-      image: "/assets/projects/farm_engineering.jpg",
+      image: "/assets/projects/main page/farm engineering .jpg",
       href: "/projects/engineering"
     }
   ];
@@ -499,7 +668,7 @@ const ProductEcosystem = () => {
             >
               <Link to={cat.href} className="absolute inset-0 z-20" />
               <img 
-                src={cat.icon && typeof cat.icon === 'string' ? cat.icon : "/assets/projects/agri_farming.jpg"}
+                src={(cat as any).cardImage || (cat.icon && typeof cat.icon === 'string' ? cat.icon : "/assets/projects/agri_farming.jpg")}
                 alt={cat.label}
                 className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
               />
@@ -522,25 +691,132 @@ const ProductEcosystem = () => {
   );
 };
 
-const CTASection = () => (
-  <section className="py-64 bg-white text-center">
+// ─── IGO Group Brands Section ─────────────────────────────────────────────────
+const brands = [
+  {
+    name: "Farmers Factory",
+    logo: "https://www.igoagritechfarms.com/images/foot1.png",
+    desc: "End-to-end agricultural product processing, packaging, and manufacturing for high-tech farm outputs.",
+    tag: "Processing & Manufacturing",
+    color: "from-emerald-50 to-white",
+    accent: "bg-emerald-100",
+  },
+  {
+    name: "Valluvam",
+    logo: "https://www.igoagritechfarms.com/images/foot2.png",
+    desc: "Award-winning agri consultancy celebrating Tamil farming heritage with modern precision agriculture.",
+    tag: "Agri Consultancy",
+    color: "from-amber-50 to-white",
+    accent: "bg-amber-100",
+  },
+  {
+    name: "IGO Nursery",
+    logo: "https://www.igoagritechfarms.com/images/foot3.png",
+    desc: "Premium plant propagation and seedling production centre supplying quality transplants pan-India.",
+    tag: "Plant Propagation",
+    color: "from-lime-50 to-white",
+    accent: "bg-lime-100",
+  },
+  {
+    name: "Protein Cuts",
+    logo: "https://www.igoagritechfarms.com/images/foot4.png",
+    desc: "Farm-to-table premium protein products — fresh meat, poultry, and seafood from IGO's own livestock farms.",
+    tag: "Farm-to-Table",
+    color: "from-rose-50 to-white",
+    accent: "bg-rose-100",
+  },
+  {
+    name: "Financial Services",
+    logo: "https://www.igoagritechfarms.com/images/foot5.png",
+    desc: "Agri-financing, loan assistance, subsidy processing, and investment advisory for farmers and investors.",
+    tag: "Agri Finance",
+    color: "from-blue-50 to-white",
+    accent: "bg-blue-100",
+  },
+];
+
+const BrandsSection = () => (
+  <section className="py-28 bg-[#F4F8F4] border-t border-[#1A4231]/8">
     <div className="container mx-auto px-6">
+      {/* Header */}
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
+        initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="max-w-3xl mx-auto"
+        className="text-center mb-16"
       >
-        <h2 className="text-7xl mb-12 font-black tracking-tight">Your vision, <br /> our engineering.</h2>
-        <div className="flex flex-wrap justify-center gap-8">
-          <Link to="/contact" className="px-16 py-5 bg-black text-white text-xs font-semibold rounded-full hover:opacity-90 transition-opacity uppercase tracking-widest">
-            Request Consultation
-          </Link>
+        <div className="flex items-center justify-center gap-4 mb-5">
+          <div className="h-px w-12 bg-[#C5A03F]/60" />
+          <span className="text-[#C5A03F] font-bold text-[10px] uppercase tracking-[0.35em]">IGO Group of Companies</span>
+          <div className="h-px w-12 bg-[#C5A03F]/60" />
         </div>
+        <h2 className="text-4xl md:text-6xl font-serif text-[#1A1A1A] mb-5">
+          Our Associated <span className="italic text-[#1A4231]">Brands</span>
+        </h2>
+        <p className="text-black/45 text-lg font-light max-w-xl mx-auto leading-relaxed">
+          A diversified group working together to transform Indian agriculture — from farm to table.
+        </p>
+      </motion.div>
+
+      {/* Brand Cards */}
+      <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-5">
+        {brands.map((b, i) => (
+          <motion.div
+            key={b.name}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: i * 0.09 }}
+            className="group bg-white border border-black/8 hover:border-[#1A4231]/30 rounded-[1.75rem] p-7 flex flex-col items-center text-center transition-all duration-500 hover:-translate-y-2 hover:shadow-xl hover:shadow-[#1A4231]/10"
+          >
+            {/* Logo — large & prominent */}
+            <div className="w-full h-36 rounded-2xl bg-[#F7FAF7] border border-[#1A4231]/8 group-hover:border-[#1A4231]/20 flex items-center justify-center mb-6 p-5 transition-all duration-500 group-hover:bg-[#EDF5EE] group-hover:scale-[1.03]">
+              <img
+                src={b.logo}
+                alt={b.name}
+                className="max-w-full max-h-full w-auto h-auto object-contain"
+                onError={(e) => {
+                  (e.target as HTMLImageElement).style.display = "none";
+                }}
+              />
+            </div>
+
+            {/* Tag */}
+            <div className="text-[9px] font-bold uppercase tracking-[0.25em] text-[#C5A03F] mb-2">
+              {b.tag}
+            </div>
+
+            {/* Name */}
+            <h3 className="text-base font-bold text-[#1A1A1A] mb-3 leading-snug">{b.name}</h3>
+
+            {/* Description */}
+            <p className="text-xs text-black/45 group-hover:text-black/65 leading-relaxed transition-colors duration-300">{b.desc}</p>
+          </motion.div>
+        ))}
+      </div>
+
+      {/* Bottom strip */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.5 }}
+        className="mt-14 flex flex-col sm:flex-row items-center justify-between gap-4 pt-10 border-t border-black/8"
+      >
+        <p className="text-black/35 text-sm font-medium">
+          5 brands &nbsp;·&nbsp; 1 mission — transforming Indian agriculture
+        </p>
+        <Link
+          to="/about"
+          className="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.3em] text-[#1A4231] hover:gap-4 transition-all"
+        >
+          Learn About IGO Group <ArrowRight className="w-3.5 h-3.5" />
+        </Link>
       </motion.div>
     </div>
   </section>
 );
+
 
 const BarleyBannerSection = () => (
   <section className="overflow-hidden bg-white pb-0">
@@ -562,17 +838,30 @@ const BarleyBannerSection = () => (
   </section>
 );
 
-const Index = () => (
-  <div className="bg-white min-h-screen selection:bg-[#E8F5E9] selection:text-[#1A4231] overflow-x-hidden">
-    <HeroSection />
-    <WhyChooseSection />
-    <BusinessSectorsSection />
-    <ProjectGallerySection />
-    <BarleyBannerSection />
-    <FeatureSection />
-    <ProductEcosystem />
-    <CTASection />
-  </div>
-);
+const Index = () => {
+  // Show offer posters as the full-screen hero when active posters exist,
+  // otherwise fall back to the original HeroSection.
+  const hasOffers = React.useMemo(() => {
+    try {
+      initDefaultOffers();
+      return getActiveOffers().length > 0;
+    } catch {
+      return false;
+    }
+  }, []);
+
+  return (
+    <div className="bg-white min-h-screen selection:bg-[#E8F5E9] selection:text-[#1A4231] overflow-x-hidden">
+      {hasOffers ? <OffersBanner heroMode /> : <HeroSection />}
+      <WhyChooseSection />
+      <VisionSection />
+      <ProjectGallerySection />
+      <BarleyBannerSection />
+      <FeatureSection />
+      <ProductEcosystem />
+      <BrandsSection />
+    </div>
+  );
+};
 
 export default Index;

@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:www.igoagritechfarms.com)",
+      "Bash(npm run build)",
+      "Bash(npx tsc:*)",
+      "Bash(node -e \"const fs=require\\(''fs''\\); const buf=fs.readFileSync\\(''public/assets/about page image .png''\\); const w=buf.readUInt32BE\\(16\\); const h=buf.readUInt32BE\\(20\\); console.log\\(''Width:'',w,''Height:'',h,''Ratio:'',w+''/''+h\\);\")",
+      "WebFetch(domain:69b251b543c8a1b92e2c7191--thriving-lolly-8518d6.netlify.app)",
+      "WebFetch(domain:thriving-lolly-8518d6.netlify.app)"
+    ]
+  }
+}

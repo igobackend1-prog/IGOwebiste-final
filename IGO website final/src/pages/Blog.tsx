@@ -1,35 +1,58 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, Calendar, User, Search, BookOpen } from "lucide-react";
+import { ArrowRight, User, Search, BookOpen } from "lucide-react";
 import { blogPosts } from "@/data/siteData";
-import agriPattern from "@/assets/agri-pattern.png";
 
 const Blog = () => (
   <div className="pt-20">
-    {/* Refined Journal Hero */}
-    <section className="py-32 bg-[#FDFDFB] relative overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(26,66,49,0.03),transparent_50%)]" />
-      <div className="container mx-auto px-4 text-center max-w-4xl relative z-10">
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-[10px] font-black uppercase tracking-[0.3em] mb-8 border border-primary/20">
-          The Journal
-        </div>
-        <h1 className="text-6xl md:text-8xl mb-8 leading-[1.05] tracking-tight">
-          Agri <span className="text-primary italic font-serif">Insights</span> & News
-        </h1>
-        <p className="text-xl md:text-2xl text-muted-foreground font-medium leading-[1.6] max-w-3xl mx-auto mb-16">
-          Strategic perspectives on modern farming technology, sustainable livestock ecosystems, and institutional agricultural breakthroughs.
-        </p>
-        <div className="max-w-2xl mx-auto relative group">
-          <Search className="absolute left-8 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground group-focus-within:text-primary transition-colors" />
-          <input 
-            type="text" 
-            placeholder="Search our research..." 
-            className="w-full pl-16 pr-8 py-6 rounded-[32px] bg-white border border-border/60 focus:ring-4 focus:ring-primary/5 focus:border-primary/40 outline-none transition-all font-medium text-lg shadow-sm group-hover:shadow-xl duration-500"
-          />
+    {/* Blog Hero — Horizontal Layout */}
+    <section className="py-16 md:py-20 bg-[#FDFDFB] border-b border-black/[0.05] relative overflow-hidden">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(26,66,49,0.04),transparent_55%)]" />
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-10">
+          {/* Left — Title block */}
+          <div className="max-w-xl">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-[10px] font-black uppercase tracking-[0.3em] mb-5 border border-primary/20">
+              IGO Journal
+            </div>
+            <h1 className="text-3xl md:text-4xl font-bold leading-tight tracking-tight mb-4">
+              Agri <span className="text-primary italic font-serif">Insights</span> & News
+            </h1>
+            <p className="text-base text-muted-foreground font-medium leading-relaxed">
+              Perspectives on modern farming technology, sustainable agriculture, company milestones, and agritech breakthroughs.
+            </p>
+          </div>
+          {/* Right — Search + stats */}
+          <div className="flex flex-col gap-5 w-full md:w-[420px]">
+            <div className="relative group">
+              <Search className="absolute left-5 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground group-focus-within:text-primary transition-colors" />
+              <input
+                type="text"
+                placeholder="Search articles..."
+                className="w-full pl-12 pr-5 py-4 rounded-2xl bg-white border border-border/60 focus:ring-2 focus:ring-primary/10 focus:border-primary/40 outline-none transition-all font-medium text-sm shadow-sm"
+              />
+            </div>
+            <div className="flex items-center gap-6 px-1">
+              <div className="text-center">
+                <div className="text-2xl font-bold text-primary">{blogPosts.length}</div>
+                <div className="text-[10px] font-black uppercase tracking-[0.25em] text-muted-foreground">Articles</div>
+              </div>
+              <div className="w-px h-8 bg-border" />
+              <div className="text-center">
+                <div className="text-2xl font-bold text-primary">3</div>
+                <div className="text-[10px] font-black uppercase tracking-[0.25em] text-muted-foreground">Categories</div>
+              </div>
+              <div className="w-px h-8 bg-border" />
+              <div className="text-center">
+                <div className="text-2xl font-bold text-primary">10+</div>
+                <div className="text-[10px] font-black uppercase tracking-[0.25em] text-muted-foreground">Years</div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <section className="py-40 bg-white">
+    <section className="py-16 bg-white">
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
           {blogPosts.map((post) => (
@@ -43,6 +66,13 @@ const Blog = () => (
                 </div>
               </Link>
               <div className="p-12">
+                <div className="flex items-center gap-4 mb-6 flex-wrap">
+                  {post.category && (
+                    <span className="px-4 py-1.5 rounded-full bg-primary/10 text-primary text-[10px] font-black uppercase tracking-[0.25em] border border-primary/20">
+                      {post.category}
+                    </span>
+                  )}
+                </div>
                 <div className="flex items-center gap-4 text-[10px] font-black text-muted-foreground uppercase tracking-[0.3em] mb-8">
                   <User className="w-4 h-4 text-primary" /> {post.author}
                 </div>
@@ -65,16 +95,16 @@ const Blog = () => (
       </div>
     </section>
 
-    {/* Refined Institutional Newsletter */}
-    <section className="py-24 bg-white">
+    {/* Newsletter */}
+    <section className="py-16 bg-white">
       <div className="container mx-auto px-4">
-        <div className="bg-[#0C1A14] rounded-[80px] p-20 md:p-32 text-center relative overflow-hidden text-white shadow-[0_60px_120px_-20px_rgba(26,66,49,0.3)]">
-          <BookOpen className="w-20 h-20 text-primary mx-auto mb-12 opacity-50" />
-          <h2 className="text-5xl md:text-8xl mb-12 leading-[1.05]">
-            Subscribe to <span className="text-secondary italic">Agri-Weekly</span>
+        <div className="bg-[#0C1A14] rounded-[40px] p-12 md:p-16 text-center relative overflow-hidden text-white shadow-[0_40px_80px_-20px_rgba(26,66,49,0.3)]">
+          <BookOpen className="w-12 h-12 text-primary mx-auto mb-6 opacity-50" />
+          <h2 className="text-3xl md:text-4xl font-bold mb-5 leading-snug">
+            Subscribe to <span className="text-secondary italic font-serif">Agri-Weekly</span>
           </h2>
-          <p className="text-white/60 text-xl md:text-2xl font-medium mb-16 max-w-2xl mx-auto leading-relaxed">
-            Strategic farming insights and global market trends delivered to your corporate inbox every Monday.
+          <p className="text-white/60 text-base font-medium mb-10 max-w-xl mx-auto leading-relaxed">
+            Farming insights and agritech trends delivered to your inbox every week.
           </p>
           <form className="flex flex-col md:flex-row gap-6 max-w-2xl mx-auto relative z-10">
             <input 

@@ -52,9 +52,9 @@ const Services = () => {
               className="group block bg-white rounded-3xl overflow-hidden shadow-xl shadow-black/5 hover:shadow-2xl hover:shadow-black/10 transition-all duration-500 border border-black/5 flex flex-col"
             >
               <div className="relative h-[280px] sm:h-[350px] w-full overflow-hidden">
-                <img 
-                  src={typeof s.icon === 'string' && s.icon.startsWith('/') ? s.icon : "/assets/projects/agri_farming.jpg"} 
-                  alt={s.label} 
+                <img
+                  src={(s as any).cardImage || "/assets/service/main page service image/agrifarming projects .jpg"}
+                  alt={s.label}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#1A4231]/90 via-[#1A4231]/30 to-transparent" />

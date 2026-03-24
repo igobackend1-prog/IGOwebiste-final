@@ -24,8 +24,8 @@ export const productDetailData: ProductDetail[] = [
   // AGRI FARMING PRODUCTS (18)
   {
     id: "vegetable-seeds",
-    category: "agri-farming",
-    categoryName: "Agri Farming Products",
+    category: "agri-essentials",
+    categoryName: "Agri Essentials",
     name: "Premium Vegetable Seeds",
     description: "High-yield, disease-resistant hybrid vegetable seeds optimized for Indian climatic conditions.",
     features: [
@@ -54,8 +54,8 @@ export const productDetailData: ProductDetail[] = [
   },
   {
     id: "fruit-plants",
-    category: "agri-farming",
-    categoryName: "Agri Farming Products",
+    category: "agri-essentials",
+    categoryName: "Agri Essentials",
     name: "Elite Grafted Fruit Plants",
     description: "Superior quality grafted and tissue-cultured fruit saplings for high-density plantation.",
     features: [
@@ -84,8 +84,8 @@ export const productDetailData: ProductDetail[] = [
   },
   {
     id: "flower-seeds",
-    category: "agri-farming",
-    categoryName: "Agri Farming Products",
+    category: "agri-essentials",
+    categoryName: "Agri Essentials",
     name: "High-Vigour Flower Seeds",
     description: "Professional grade seeds for floriculture including Marigold, Jasmine, and Rose varieties.",
     features: [
@@ -114,8 +114,8 @@ export const productDetailData: ProductDetail[] = [
   },
   {
     id: "medicinal-plants",
-    category: "agri-farming",
-    categoryName: "Agri Farming Products",
+    category: "agri-essentials",
+    categoryName: "Agri Essentials",
     name: "Contract-Grade Medicinal Plants",
     description: "Highly potent medicinal plant saplings including Aloe Vera, Moringa, and Ginger.",
     features: [
@@ -144,8 +144,8 @@ export const productDetailData: ProductDetail[] = [
   },
   {
     id: "npk-fertilizers",
-    category: "agri-farming",
-    categoryName: "Agri Farming Products",
+    category: "crop-solutions",
+    categoryName: "Crop Solutions",
     name: "Water Soluble NPK (19:19:19)",
     description: "Premium grade 100% water-soluble fertilizer for balanced crop nutrition.",
     features: [
@@ -174,8 +174,8 @@ export const productDetailData: ProductDetail[] = [
   },
   {
     id: "organic-fertilizers",
-    category: "agri-farming",
-    categoryName: "Agri Farming Products",
+    category: "crop-solutions",
+    categoryName: "Crop Solutions",
     name: "Concentrated Organic Vermipost",
     description: "Enriched organic manure formulated with neem-cake and beneficial microbes.",
     features: [
@@ -204,8 +204,8 @@ export const productDetailData: ProductDetail[] = [
   },
   {
     id: "liquid-fertilizers",
-    category: "agri-farming",
-    categoryName: "Agri Farming Products",
+    category: "crop-solutions",
+    categoryName: "Crop Solutions",
     name: "Nano Liquid Fertilizer",
     description: "Advanced liquid nutrition for instant foliar response and rapid energy boost.",
     features: [
@@ -234,8 +234,8 @@ export const productDetailData: ProductDetail[] = [
   },
   {
     id: "micronutrients",
-    category: "agri-farming",
-    categoryName: "Agri Farming Products",
+    category: "crop-solutions",
+    categoryName: "Crop Solutions",
     name: "Chelated Multi-Micronutrient Mix",
     description: "Balanced mixture of Zinc, Iron, Boron, Manganese, and Molybdenum for comprehensive health.",
     features: [
@@ -264,8 +264,8 @@ export const productDetailData: ProductDetail[] = [
   },
   {
     id: "azospirillum",
-    category: "agri-farming",
-    categoryName: "Agri Farming Products",
+    category: "crop-solutions",
+    categoryName: "Crop Solutions",
     name: "IGO-BioAzo (Azospirillum)",
     description: "Biological nitrogen-fixing bacteria that reduces chemical urea requirement by 25%.",
     features: [
@@ -294,8 +294,8 @@ export const productDetailData: ProductDetail[] = [
   },
   {
     id: "phosphate-solubilizing-bacteria",
-    category: "agri-farming",
-    categoryName: "Agri Farming Products",
+    category: "crop-solutions",
+    categoryName: "Crop Solutions",
     name: "IGO-PSB (Phosphate Solubilizer)",
     description: "Bio-agent that makes insoluble phosphorus available to plants, improving root strength.",
     features: [
@@ -324,8 +324,8 @@ export const productDetailData: ProductDetail[] = [
   },
   {
     id: "mycorrhiza",
-    category: "agri-farming",
-    categoryName: "Agri Farming Products",
+    category: "crop-solutions",
+    categoryName: "Crop Solutions",
     name: "VAM Root Accelerator (Mycorrhiza)",
     description: "Symbiotic fungus that extends root systems 100x for massive nutrient uptake.",
     features: [
@@ -354,8 +354,8 @@ export const productDetailData: ProductDetail[] = [
   },
   {
     id: "humic-acid",
-    category: "agri-farming",
-    categoryName: "Agri Farming Products",
+    category: "crop-solutions",
+    categoryName: "Crop Solutions",
     name: "Premium Humic-Gold (85%)",
     description: "Potassium Humate granules for soil softening and instant nutrient mobilization.",
     features: [
@@ -384,8 +384,8 @@ export const productDetailData: ProductDetail[] = [
   },
   {
     id: "fulvic-acid",
-    category: "agri-farming",
-    categoryName: "Agri Farming Products",
+    category: "crop-solutions",
+    categoryName: "Crop Solutions",
     name: "IGO Fulvic-Micro (Foliar Grade)",
     description: "Highly reactive organic molecule for rapid leaf absorption and fruit sizing.",
     features: [
@@ -414,8 +414,8 @@ export const productDetailData: ProductDetail[] = [
   },
   {
     id: "amino-acid-nutrients",
-    category: "agri-farming",
-    categoryName: "Agri Farming Products",
+    category: "crop-solutions",
+    categoryName: "Crop Solutions",
     name: "Multi-Amino Plant Bio-stimulant",
     description: "Essential amino acids derived from vegetable protein for ultimate stress recovery.",
     features: [
@@ -444,8 +444,8 @@ export const productDetailData: ProductDetail[] = [
   },
   {
     id: "insecticides",
-    category: "agri-farming",
-    categoryName: "Agri Farming Products",
+    category: "crop-solutions",
+    categoryName: "Crop Solutions",
     name: "Broad Spectrum Eco-Insecticide",
     description: "Highly effective control for aphids, thrips, and sucking pests with low toxicity.",
     features: [
@@ -474,8 +474,8 @@ export const productDetailData: ProductDetail[] = [
   },
   {
     id: "fungicides",
-    category: "agri-farming",
-    categoryName: "Agri Farming Products",
+    category: "crop-solutions",
+    categoryName: "Crop Solutions",
     name: "IGO-Pro Guard Fungicide",
     description: "Advanced systemic fungicide for control of Powdery Mildew, Blight, and Rot.",
     features: [
@@ -504,8 +504,8 @@ export const productDetailData: ProductDetail[] = [
   },
   {
     id: "herbicides",
-    category: "agri-farming",
-    categoryName: "Agri Farming Products",
+    category: "crop-solutions",
+    categoryName: "Crop Solutions",
     name: "Selective Crop Herbicide",
     description: "Targeted weed control that eliminates competing grasses without harming the crop.",
     features: [
@@ -534,8 +534,8 @@ export const productDetailData: ProductDetail[] = [
   },
   {
     id: "bio-pesticides",
-    category: "agri-farming",
-    categoryName: "Agri Farming Products",
+    category: "crop-solutions",
+    categoryName: "Crop Solutions",
     name: "Neem-Turbo Bio-Pesticide",
     description: "Pure Azadirachtin based solution for 100% organic pest and fungus management.",
     features: [
@@ -566,8 +566,8 @@ export const productDetailData: ProductDetail[] = [
   // AQUACULTURE PRODUCTS (6)
   {
     id: "fish-feed",
-    category: "aquaculture",
-    categoryName: "Aquaculture Products",
+    category: "animal-solutions",
+    categoryName: "Animal Solutions",
     name: "Grow-Fast High-Protein Fish Feed",
     description: "Extruded floating pellets with 32% protein content for rapid biomass growth.",
     features: [
@@ -596,8 +596,8 @@ export const productDetailData: ProductDetail[] = [
   },
   {
     id: "aerators",
-    category: "aquaculture",
-    categoryName: "Aquaculture Products",
+    category: "animal-solutions",
+    categoryName: "Animal Solutions",
     name: "Industrial Paddle Wheel Aerator",
     description: "High-efficiency 2HP aerator for maintaining optimal dissolved oxygen in intensive farming.",
     features: [
@@ -626,8 +626,8 @@ export const productDetailData: ProductDetail[] = [
   },
   {
     id: "biofloc-tanks",
-    category: "aquaculture",
-    categoryName: "Aquaculture Products",
+    category: "animal-solutions",
+    categoryName: "Animal Solutions",
     name: "Standard Biofloc Canvas Tanks",
     description: "Multi-layered PVC coated fabric tanks with heavy-duty GI frame support.",
     features: [
@@ -656,8 +656,8 @@ export const productDetailData: ProductDetail[] = [
   },
   {
     id: "pond-liners",
-    category: "aquaculture",
-    categoryName: "Aquaculture Products",
+    category: "animal-solutions",
+    categoryName: "Animal Solutions",
     name: "HDPE Waterproof Pond Liner",
     description: "Premium black HDPE liners for seepage-proof reservoirs and aquaculture ponds.",
     features: [
@@ -686,8 +686,8 @@ export const productDetailData: ProductDetail[] = [
   },
   {
     id: "water-testing-kits",
-    category: "aquaculture",
-    categoryName: "Aquaculture Products",
+    category: "animal-solutions",
+    categoryName: "Animal Solutions",
     name: "Professional Multiparameter Water Kit",
     description: "Comprehensive testing kit for Ammonia, pH, Nitrite, Nitrate, and Alkalinity.",
     features: [
@@ -716,8 +716,8 @@ export const productDetailData: ProductDetail[] = [
   },
   {
     id: "fish-medicines",
-    category: "aquaculture",
-    categoryName: "Aquaculture Products",
+    category: "animal-solutions",
+    categoryName: "Animal Solutions",
     name: "Aquatic Health Support Pack",
     description: "Essential collection of probiotics, sanitizers, and growth promoters for fish health.",
     features: [
@@ -748,8 +748,8 @@ export const productDetailData: ProductDetail[] = [
   // LIVESTOCK PRODUCTS (5)
   {
     id: "goat-feed",
-    category: "livestock",
-    categoryName: "Livestock Products",
+    category: "animal-solutions",
+    categoryName: "Animal Solutions",
     name: "Standard Goat Grow Pellets",
     description: "High-fiber, protein-rich concentrated feed for weight gain in stall-fed goats.",
     features: [
@@ -778,8 +778,8 @@ export const productDetailData: ProductDetail[] = [
   },
   {
     id: "cattle-feed",
-    category: "livestock",
-    categoryName: "Livestock Products",
+    category: "animal-solutions",
+    categoryName: "Animal Solutions",
     name: "High-Fat Dairy Cattle Feed",
     description: "Balanced cattle feed pellets designed to increase milk yield and fat content (SNF).",
     features: [
@@ -808,8 +808,8 @@ export const productDetailData: ProductDetail[] = [
   },
   {
     id: "mineral-mixtures",
-    category: "livestock",
-    categoryName: "Livestock Products",
+    category: "animal-solutions",
+    categoryName: "Animal Solutions",
     name: "Chelated Livestock Mineral Mix",
     description: "Fortified supplement with Vitamins A, D3, E and essential trace minerals.",
     features: [
@@ -838,8 +838,8 @@ export const productDetailData: ProductDetail[] = [
   },
   {
     id: "livestock-medicines",
-    category: "livestock",
-    categoryName: "Livestock Products",
+    category: "animal-solutions",
+    categoryName: "Animal Solutions",
     name: "Essential Vet Care Kit",
     description: "A selection of dewormers, liver tonics, and topical ointments for farm first-aid.",
     features: [
@@ -868,8 +868,8 @@ export const productDetailData: ProductDetail[] = [
   },
   {
     id: "livestock-equipment",
-    category: "livestock",
-    categoryName: "Livestock Products",
+    category: "animal-solutions",
+    categoryName: "Animal Solutions",
     name: "Modern Farm Utility Equipment",
     description: "High-durability feeders, automatic waterers, and animal marking tools.",
     features: [
@@ -900,8 +900,8 @@ export const productDetailData: ProductDetail[] = [
   // FARM ENGINEERING PRODUCTS (15)
   {
     id: "polyhouse-sheets",
-    category: "farm-engineering",
-    categoryName: "Farm Engineering Products",
+    category: "farm-equipment",
+    categoryName: "Farm Equipment",
     name: "Premium UV-Stabilized Polyhouse Sheets",
     description: "Multi-layered, thermal-diffused 200-micron polyethylene sheets for protected cultivation.",
     features: [
@@ -930,8 +930,8 @@ export const productDetailData: ProductDetail[] = [
   },
   {
     id: "shade-nets",
-    category: "farm-engineering",
-    categoryName: "Farm Engineering Products",
+    category: "farm-equipment",
+    categoryName: "Farm Equipment",
     name: "High-Density Mono-Tape Shade Nets",
     description: "UV-stabilized agro-nets for light intensity control and temperature reduction.",
     features: [
@@ -960,8 +960,8 @@ export const productDetailData: ProductDetail[] = [
   },
   {
     id: "insect-nets",
-    category: "farm-engineering",
-    categoryName: "Farm Engineering Products",
+    category: "farm-equipment",
+    categoryName: "Farm Equipment",
     name: "Anti-Virus 40/50 Mesh Insect Nets",
     description: "Precision-woven nets to prevent entry of thrips, aphids, and whiteflies into polyhouses.",
     features: [
@@ -990,8 +990,8 @@ export const productDetailData: ProductDetail[] = [
   },
   {
     id: "gi-pipes",
-    category: "farm-engineering",
-    categoryName: "Farm Engineering Products",
+    category: "farm-equipment",
+    categoryName: "Farm Equipment",
     name: "Hot-Dip Galvanized Structural Pipes",
     description: "High-grade B-Class GI pipes for long-lasting polyhouse and shed construction.",
     features: [
@@ -1020,8 +1020,8 @@ export const productDetailData: ProductDetail[] = [
   },
   {
     id: "nft-channels",
-    category: "farm-engineering",
-    categoryName: "Farm Engineering Products",
+    category: "farm-equipment",
+    categoryName: "Farm Equipment",
     name: "Food-Safe Hydroponic NFT Channels",
     description: "Specially designed white PVC channels for Nutrient Film Technique (NFT) systems.",
     features: [
@@ -1050,8 +1050,8 @@ export const productDetailData: ProductDetail[] = [
   },
   {
     id: "net-pots",
-    category: "farm-engineering",
-    categoryName: "Farm Engineering Products",
+    category: "farm-equipment",
+    categoryName: "Farm Equipment",
     name: "Heavy-Duty Recyclable Net Pots",
     description: "High-quality plastic mesh pots for NFT and DWC hydroponic systems.",
     features: [
@@ -1080,8 +1080,8 @@ export const productDetailData: ProductDetail[] = [
   },
   {
     id: "hydroponic-nutrients",
-    category: "farm-engineering",
-    categoryName: "Farm Engineering Products",
+    category: "farm-equipment",
+    categoryName: "Farm Equipment",
     name: "IGO Hydro-Mix A & B (Commercial)",
     description: "Two-part specialized nutrient set for soil-less farming of leafy greens and berries.",
     features: [
@@ -1110,8 +1110,8 @@ export const productDetailData: ProductDetail[] = [
   },
   {
     id: "grow-lights",
-    category: "farm-engineering",
-    categoryName: "Farm Engineering Products",
+    category: "farm-equipment",
+    categoryName: "Farm Equipment",
     name: "Full Spectrum LED Grow Bars",
     description: "High-PPFD LED bars for indoor vertical farming and supplemental lighting.",
     features: [
@@ -1140,8 +1140,8 @@ export const productDetailData: ProductDetail[] = [
   },
   {
     id: "water-pumps",
-    category: "farm-engineering",
-    categoryName: "Farm Engineering Products",
+    category: "farm-equipment",
+    categoryName: "Farm Equipment",
     name: "High-Pressure Fertigation Pumps",
     description: "Self-priming centrifugal pumps designed for drip and hydroponic irrigation.",
     features: [
@@ -1170,8 +1170,8 @@ export const productDetailData: ProductDetail[] = [
   },
   {
     id: "drip-irrigation-systems",
-    category: "farm-engineering",
-    categoryName: "Farm Engineering Products",
+    category: "farm-equipment",
+    categoryName: "Farm Equipment",
     name: "Precision Inline Drip Kits",
     description: "Anti-clogging drip lateral systems for orchards and vegetable rows.",
     features: [
@@ -1200,8 +1200,8 @@ export const productDetailData: ProductDetail[] = [
   },
   {
     id: "sprinklers",
-    category: "farm-engineering",
-    categoryName: "Farm Engineering Products",
+    category: "farm-equipment",
+    categoryName: "Farm Equipment",
     name: "Rotary Impact Sprinklers (Heavy Duty)",
     description: "Brass and polymer impact sprinklers for large-scale open cultivation.",
     features: [
@@ -1230,8 +1230,8 @@ export const productDetailData: ProductDetail[] = [
   },
   {
     id: "irrigation-pipes",
-    category: "farm-engineering",
-    categoryName: "Farm Engineering Products",
+    category: "farm-equipment",
+    categoryName: "Farm Equipment",
     name: "Heavy-Duty HDPE Mainline Pipes",
     description: "IS-4984 certified high-density polyethylene pipes for pressurized water transport.",
     features: [
@@ -1260,8 +1260,8 @@ export const productDetailData: ProductDetail[] = [
   },
   {
     id: "solar-dryers",
-    category: "farm-engineering",
-    categoryName: "Farm Engineering Products",
+    category: "farm-equipment",
+    categoryName: "Farm Equipment",
     name: "Industrial Solar Tunnel Dryer",
     description: "Hygienic drying solution for vegetables, fruits, and spices using solar thermal energy.",
     features: [
@@ -1290,8 +1290,8 @@ export const productDetailData: ProductDetail[] = [
   },
   {
     id: "solar-pumps",
-    category: "farm-engineering",
-    categoryName: "Farm Engineering Products",
+    category: "farm-equipment",
+    categoryName: "Farm Equipment",
     name: "High-Volume Solar Surface Pump",
     description: "DC brushless surface pump with high-efficiency PV panels for off-grid irrigation.",
     features: [
@@ -1320,8 +1320,8 @@ export const productDetailData: ProductDetail[] = [
   },
   {
     id: "solar-fencing-systems",
-    category: "farm-engineering",
-    categoryName: "Farm Engineering Products",
+    category: "farm-equipment",
+    categoryName: "Farm Equipment",
     name: "Smart Solar Agri-Energizer (Fencing)",
     description: "Electronic perimeter protection for farms against wild boars and elephants.",
     features: [
