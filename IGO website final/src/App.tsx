@@ -158,7 +158,7 @@ const App = () => {
     if (!isInitialLoad) return;
     const fallbackTimer = setTimeout(() => {
       setIsInitialLoad(false);
-    }, 4000);
+    }, 2000);
     return () => clearTimeout(fallbackTimer);
   }, []);
 

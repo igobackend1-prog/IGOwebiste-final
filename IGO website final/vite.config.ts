@@ -19,12 +19,24 @@ export default defineConfig(({ mode }) => ({
     },
   },
   build: {
+    chunkSizeWarningLimit: 600,
     rollupOptions: {
       output: {
-        manualChunks: {
-          vendor: ["react", "react-dom", "react-router-dom"],
-          ui: ["framer-motion", "@radix-ui/react-dialog", "@radix-ui/react-dropdown-menu"],
-          three: ["three", "@react-three/fiber", "@react-three/drei"],
+        manualChunks(id) {
+          if (id.includes("node_modules")) {
+            if (id.includes("three") || id.includes("@react-three")) return "three";
+            if (id.includes("framer-motion")) return "framer-motion";
+            if (id.includes("@radix-ui")) return "radix-ui";
+            if (id.includes("react-dom")) return "react-dom";
+            if (id.includes("react-router-dom") || id.includes("react-router")) return "react-router";
+            if (id.includes("react")) return "react";
+            if (id.includes("@supabase") || id.includes("supabase")) return "supabase";
+            if (id.includes("@tanstack")) return "tanstack";
+            if (id.includes("lucide-react")) return "lucide";
+            if (id.includes("zod") || id.includes("react-hook-form")) return "forms";
+            return "vendor";
+          }
+          if (id.includes("src/data/")) return "site-data";
         },
       },
     },
