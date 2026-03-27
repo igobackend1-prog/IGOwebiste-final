@@ -17,6 +17,7 @@ export default defineConfig(({ mode }) => ({
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
+    dedupe: ["react", "react-dom"],
   },
   build: {
     chunkSizeWarningLimit: 600,
@@ -27,9 +28,10 @@ export default defineConfig(({ mode }) => ({
             if (id.includes("three") || id.includes("@react-three")) return "three";
             if (id.includes("framer-motion")) return "framer-motion";
             if (id.includes("@radix-ui")) return "radix-ui";
-            if (id.includes("react-dom")) return "react-dom";
+            // react-router-dom must come before react-dom check (substring match order)
             if (id.includes("react-router-dom") || id.includes("react-router")) return "react-router";
-            if (id.includes("react")) return "react";
+            // keep react + react-dom in ONE chunk to prevent load-order crash
+            if (id.includes("react-dom") || id.includes("react")) return "react-vendor";
             if (id.includes("@supabase") || id.includes("supabase")) return "supabase";
             if (id.includes("@tanstack")) return "tanstack";
             if (id.includes("lucide-react")) return "lucide";
