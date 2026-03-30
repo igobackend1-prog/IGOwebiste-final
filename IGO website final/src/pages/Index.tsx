@@ -207,9 +207,9 @@ const useCounter = (target: number, duration = 2000, startCounting: boolean = fa
 };
 
 const tickerItems = [
-  "15+ Years of Excellence", "10,000+ Successful Projects", "2000+ Team Members",
+  "15+ Years of Excellence", "15,000+ Successful Projects", "2000+ Team Members",
   "75+ Winning Awards", "Pan-India Presence", "Precision Farming Experts",
-  "ISO Certified Organisation", "Trusted by 6000+ Farmers"
+  "ISO Certified Organisation", "Trusted by 15,000+ Farmers"
 ];
 
 const TickerBanner = () => (
@@ -278,9 +278,9 @@ const WhyChooseSection = () => (
 
           <div className="grid grid-cols-2 gap-4">
             <MiniStatCard value="15+"   label="Years of Experience" />
-            <MiniStatCard value="10,000+" label="Successful Projects" />
+            <MiniStatCard value="15,000+" label="Successful Projects" />
+            <MiniStatCard value="15,000+" label="Happy Clients" />
             <MiniStatCard value="2,000+" label="Team Members" />
-            <MiniStatCard value="75+"   label="Winning Awards" />
           </div>
 
           <Link

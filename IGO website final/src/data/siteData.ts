@@ -41,9 +41,9 @@ export const companyInfo = {
 
 export const stats = [
   { label: "Years of Experience", value: "15+" },
-  { label: "Successful Projects", value: "10,000+" },
-  { label: "Team Members", value: "6,000+" },
-  { label: "Winning Awards", value: "75+" },
+  { label: "Successful Projects", value: "15,000+" },
+  { label: "Happy Clients", value: "15,000+" },
+  { label: "Team Members", value: "2,000+" },
 ];
 
 export const projects = [
@@ -1048,12 +1048,12 @@ export const igoBrands = [
 
 export const indiaPresence = {
   stats: [
-    { label: "Happy Clients", value: "15,000+", sublabel: "Verified Metric" },
-    { label: "Projects Done", value: "15,000+", sublabel: "Verified Metric" },
-    { label: "Experience", value: "15+ Years", sublabel: "Verified Metric" },
-    { label: "Employees", value: "2,000+", sublabel: "Verified Metric" },
-    { label: "Awards Won", value: "75+", sublabel: "Verified Metric" },
-    { label: "States Covered", value: "28+", sublabel: "Verified Metric" },
+    { label: "Happy Clients", value: "15,000+", sublabel: "VERIFIED" },
+    { label: "Projects Done", value: "15,000+", sublabel: "VERIFIED" },
+    { label: "Experience", value: "15+ Years", sublabel: "VERIFIED" },
+    { label: "Employees", value: "2,000+", sublabel: "VERIFIED" },
+    { label: "Awards Won", value: "75+", sublabel: "VERIFIED" },
+    { label: "States Covered", value: "28+", sublabel: "VERIFIED" },
   ],
   states: [
     { name: "Andhra Pradesh", isHub: true },
