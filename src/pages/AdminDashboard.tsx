@@ -8,17 +8,19 @@ import {
   LayoutDashboard, BookOpen, FolderKanban, Package, Inbox,
   Settings, HelpCircle, LogOut, Plus, Pencil, Trash2, X,
   ChevronRight, Eye, EyeOff, CheckCircle, Clock, AlertCircle,
-  Menu, Search, RefreshCw, Save, Upload
+  Menu, Search, RefreshCw, Save, Upload, Rocket, GraduationCap
 } from "lucide-react";
 
 // ─── Types ───────────────────────────────────────────────────────────────────
-type Section = "overview" | "blog" | "projects" | "products" | "enquiries" | "services" | "faq";
+type Section = "overview" | "blog" | "projects" | "products" | "enquiries" | "services" | "faq" | "agristartup" | "academy";
 
 interface BlogPost { id: string; title: string; slug: string; excerpt: string; cover_url: string; status: string; published_at: string; created_at: string; }
 interface Project { id: string; title: string; domain: string; slug: string; description: string; cover_url: string; status: string; location: string; year: string; }
 interface Product { id: string; name: string; category: string; slug: string; description: string; cover_url: string; price_label: string; status: string; is_featured: boolean; }
 interface Service { id: string; title: string; domain: string; description: string; cover_url: string; status: string; }
 interface FAQ { id: string; question: string; answer: string; category: string; sort_order: number; status: string; }
+interface AgriStartup { id: string; title: string; tagline: string; description: string; cover_url: string; image_position: string; content_position: string; icon: string; color: string; status: string; sort_order: number; }
+interface AcademyCourse { id: string; title: string; slug: string; description: string; cover_url: string; image_position: string; content_position: string; duration: string; price_label: string; category: string; status: string; sort_order: number; }
 interface Contact { id: string; name: string; email: string; phone: string; subject: string; message: string; created_at: string; }
 interface Enquiry { id: string; name: string; email: string; phone: string; course: string; message: string; status: string; created_at: string; }
 
@@ -29,8 +31,10 @@ const navItems: { id: Section; label: string; icon: React.ElementType; color: st
   { id: "projects",  label: "Projects",  icon: FolderKanban,    color: "#C4956A" },
   { id: "products",  label: "Products",  icon: Package,         color: "#D4A843" },
   { id: "enquiries", label: "Enquiries", icon: Inbox,           color: "#5B9BD5" },
-  { id: "services",  label: "Services",  icon: Settings,        color: "#A78BFA" },
-  { id: "faq",       label: "FAQ",       icon: HelpCircle,      color: "#F472B6" },
+  { id: "services",    label: "Services",    icon: Settings,        color: "#A78BFA" },
+  { id: "faq",         label: "FAQ",         icon: HelpCircle,      color: "#F472B6" },
+  { id: "agristartup", label: "Agri Startup",icon: Rocket,          color: "#34D399" },
+  { id: "academy",     label: "IGO Academy", icon: GraduationCap,   color: "#FB923C" },
 ];
 
 // ─── Reusable Components ──────────────────────────────────────────────────────
@@ -106,22 +110,24 @@ const Toast = ({ msg, type, onClose }: { msg: string; type: "success" | "error";
 
 // ─── Overview Section ─────────────────────────────────────────────────────────
 const OverviewSection = () => {
-  const [stats, setStats] = useState({ blogs: 0, projects: 0, products: 0, contacts: 0, enquiries: 0, services: 0 });
+  const [stats, setStats] = useState({ blogs: 0, projects: 0, products: 0, contacts: 0, enquiries: 0, services: 0, agristartup: 0, academy: 0 });
   const [recentContacts, setRecentContacts] = useState<Contact[]>([]);
   const [recentEnquiries, setRecentEnquiries] = useState<Enquiry[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetch = async () => {
-      const [b, pr, pd, c, e, s] = await Promise.all([
+      const [b, pr, pd, c, e, s, ag, ac] = await Promise.all([
         supabase.from("blog_posts").select("id", { count: "exact", head: true }),
         supabase.from("projects").select("id", { count: "exact", head: true }),
         supabase.from("products").select("id", { count: "exact", head: true }),
         supabase.from("contacts").select("id", { count: "exact", head: true }),
         supabase.from("course_enquiries").select("id", { count: "exact", head: true }),
         supabase.from("services").select("id", { count: "exact", head: true }),
+        supabase.from("agri_startup_programs").select("id", { count: "exact", head: true }),
+        supabase.from("academy_courses").select("id", { count: "exact", head: true }),
       ]);
-      setStats({ blogs: b.count||0, projects: pr.count||0, products: pd.count||0, contacts: c.count||0, enquiries: e.count||0, services: s.count||0 });
+      setStats({ blogs: b.count||0, projects: pr.count||0, products: pd.count||0, contacts: c.count||0, enquiries: e.count||0, services: s.count||0, agristartup: ag.count||0, academy: ac.count||0 });
       const [rc, re] = await Promise.all([
         supabase.from("contacts").select("*").order("created_at", { ascending: false }).limit(5),
         supabase.from("course_enquiries").select("*").order("created_at", { ascending: false }).limit(5),
@@ -134,12 +140,14 @@ const OverviewSection = () => {
   }, []);
 
   const cards = [
-    { label: "Blog Posts",      value: stats.blogs,     color: "bg-[#6B9E4F]",  icon: BookOpen },
-    { label: "Projects",        value: stats.projects,  color: "bg-[#C4956A]",  icon: FolderKanban },
-    { label: "Products",        value: stats.products,  color: "bg-[#D4A843]",  icon: Package },
-    { label: "Contacts",        value: stats.contacts,  color: "bg-[#5B9BD5]",  icon: Inbox },
-    { label: "Course Enquiries",value: stats.enquiries, color: "bg-[#A78BFA]",  icon: Clock },
-    { label: "Services",        value: stats.services,  color: "bg-[#1A3A22]",  icon: Settings },
+    { label: "Blog Posts",      value: stats.blogs,       color: "bg-[#6B9E4F]",  icon: BookOpen },
+    { label: "Projects",        value: stats.projects,    color: "bg-[#C4956A]",  icon: FolderKanban },
+    { label: "Products",        value: stats.products,    color: "bg-[#D4A843]",  icon: Package },
+    { label: "Contacts",        value: stats.contacts,    color: "bg-[#5B9BD5]",  icon: Inbox },
+    { label: "Course Enquiries",value: stats.enquiries,   color: "bg-[#A78BFA]",  icon: Clock },
+    { label: "Services",        value: stats.services,    color: "bg-[#1A3A22]",  icon: Settings },
+    { label: "Agri Programs",   value: stats.agristartup, color: "bg-[#34D399]",  icon: Rocket },
+    { label: "Academy Courses", value: stats.academy,     color: "bg-[#FB923C]",  icon: GraduationCap },
   ];
 
   if (loading) return <div className="flex items-center justify-center h-64"><div className="animate-spin w-8 h-8 border-4 border-[#1A3A22] border-t-transparent rounded-full" /></div>;
@@ -210,7 +218,7 @@ const BlogManager = () => {
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
   const [modal, setModal] = useState<null | "create" | BlogPost>(null);
-  const [form, setForm] = useState({ title: "", slug: "", excerpt: "", cover_url: "", status: "draft", content: "" });
+  const [form, setForm] = useState({ title: "", slug: "", excerpt: "", cover_url: "", image_position: "top", content_position: "left", status: "draft", content: "" });
   const [saving, setSaving] = useState(false);
   const [toast, setToast] = useState<{ msg: string; type: "success" | "error" } | null>(null);
 
@@ -234,7 +242,7 @@ const BlogManager = () => {
   };
 
   const openEdit = (p: BlogPost) => {
-    setForm({ title: p.title, slug: p.slug, excerpt: p.excerpt || "", cover_url: p.cover_url || "", status: p.status, content: "" });
+    setForm({ title: p.title, slug: p.slug, excerpt: p.excerpt || "", cover_url: p.cover_url || "", image_position: (p as any).image_position || "top", content_position: (p as any).content_position || "left", status: p.status, content: (p as any).content || "" });
     setModal(p);
   };
 
@@ -318,6 +326,25 @@ const BlogManager = () => {
               <FormField label="Cover Image URL">
                 <input className={inputCls} value={form.cover_url} onChange={e => setForm(f => ({ ...f, cover_url: e.target.value }))} placeholder="https://..." />
               </FormField>
+              <div className="grid grid-cols-2 gap-4">
+                <FormField label="Image Position">
+                  <select className={inputCls} value={form.image_position} onChange={e => setForm(f => ({ ...f, image_position: e.target.value }))}>
+                    <option value="top">Top</option>
+                    <option value="left">Left</option>
+                    <option value="right">Right</option>
+                    <option value="background">Background</option>
+                    <option value="none">None</option>
+                  </select>
+                </FormField>
+                <FormField label="Content Position">
+                  <select className={inputCls} value={form.content_position} onChange={e => setForm(f => ({ ...f, content_position: e.target.value }))}>
+                    <option value="left">Left</option>
+                    <option value="center">Center</option>
+                    <option value="right">Right</option>
+                    <option value="overlay">Overlay</option>
+                  </select>
+                </FormField>
+              </div>
               <FormField label="Excerpt">
                 <textarea className={textareaCls} rows={2} value={form.excerpt} onChange={e => setForm(f => ({ ...f, excerpt: e.target.value }))} placeholder="Short description..." />
               </FormField>
@@ -349,7 +376,7 @@ const ProjectsManager = () => {
   const [items, setItems] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
   const [modal, setModal] = useState<null | "create" | Project>(null);
-  const [form, setForm] = useState({ title: "", slug: "", domain: "", description: "", cover_url: "", location: "", year: "", status: "published" });
+  const [form, setForm] = useState({ title: "", slug: "", domain: "", description: "", cover_url: "", image_position: "top", content_position: "left", location: "", year: "", status: "published" });
   const [saving, setSaving] = useState(false);
   const [toast, setToast] = useState<{ msg: string; type: "success" | "error" } | null>(null);
 
@@ -366,12 +393,12 @@ const ProjectsManager = () => {
   useEffect(() => { load(); }, [load]);
 
   const openCreate = () => {
-    setForm({ title: "", slug: "", domain: "", description: "", cover_url: "", location: "", year: new Date().getFullYear().toString(), status: "published" });
+    setForm({ title: "", slug: "", domain: "", description: "", cover_url: "", image_position: "top", content_position: "left", location: "", year: new Date().getFullYear().toString(), status: "published" });
     setModal("create");
   };
 
   const openEdit = (p: Project) => {
-    setForm({ title: p.title, slug: p.slug, domain: p.domain, description: p.description || "", cover_url: p.cover_url || "", location: p.location || "", year: p.year || "", status: p.status });
+    setForm({ title: p.title, slug: p.slug, domain: p.domain, description: p.description || "", cover_url: p.cover_url || "", image_position: (p as any).image_position || "top", content_position: (p as any).content_position || "left", location: p.location || "", year: p.year || "", status: p.status });
     setModal(p);
   };
 
@@ -445,6 +472,25 @@ const ProjectsManager = () => {
               </div>
               <FormField label="Slug"><input className={inputCls} value={form.slug} onChange={e => setForm(f => ({ ...f, slug: e.target.value }))} /></FormField>
               <FormField label="Cover Image URL"><input className={inputCls} value={form.cover_url} onChange={e => setForm(f => ({ ...f, cover_url: e.target.value }))} placeholder="https://..." /></FormField>
+              <div className="grid grid-cols-2 gap-4">
+                <FormField label="Image Position">
+                  <select className={inputCls} value={form.image_position} onChange={e => setForm(f => ({ ...f, image_position: e.target.value }))}>
+                    <option value="top">Top</option>
+                    <option value="left">Left</option>
+                    <option value="right">Right</option>
+                    <option value="background">Background</option>
+                    <option value="none">None</option>
+                  </select>
+                </FormField>
+                <FormField label="Content Position">
+                  <select className={inputCls} value={form.content_position} onChange={e => setForm(f => ({ ...f, content_position: e.target.value }))}>
+                    <option value="left">Left</option>
+                    <option value="center">Center</option>
+                    <option value="right">Right</option>
+                    <option value="overlay">Overlay</option>
+                  </select>
+                </FormField>
+              </div>
               <FormField label="Description"><textarea className={textareaCls} rows={3} value={form.description} onChange={e => setForm(f => ({ ...f, description: e.target.value }))} /></FormField>
               <div className="grid grid-cols-2 gap-4">
                 <FormField label="Location"><input className={inputCls} value={form.location} onChange={e => setForm(f => ({ ...f, location: e.target.value }))} placeholder="Chennai, TN" /></FormField>
@@ -475,7 +521,7 @@ const ProductsManager = () => {
   const [items, setItems] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [modal, setModal] = useState<null | "create" | Product>(null);
-  const [form, setForm] = useState({ name: "", slug: "", category: "", description: "", cover_url: "", price_label: "", status: "published", is_featured: false });
+  const [form, setForm] = useState({ name: "", slug: "", category: "", description: "", cover_url: "", image_position: "top", content_position: "left", price_label: "", status: "published", is_featured: false });
   const [saving, setSaving] = useState(false);
   const [toast, setToast] = useState<{ msg: string; type: "success" | "error" } | null>(null);
 
@@ -491,8 +537,8 @@ const ProductsManager = () => {
 
   useEffect(() => { load(); }, [load]);
 
-  const openCreate = () => { setForm({ name: "", slug: "", category: "", description: "", cover_url: "", price_label: "", status: "published", is_featured: false }); setModal("create"); };
-  const openEdit = (p: Product) => { setForm({ name: p.name, slug: p.slug, category: p.category, description: p.description || "", cover_url: p.cover_url || "", price_label: p.price_label || "", status: p.status, is_featured: p.is_featured }); setModal(p); };
+  const openCreate = () => { setForm({ name: "", slug: "", category: "", description: "", cover_url: "", image_position: "top", content_position: "left", price_label: "", status: "published", is_featured: false }); setModal("create"); };
+  const openEdit = (p: Product) => { setForm({ name: p.name, slug: p.slug, category: p.category, description: p.description || "", cover_url: p.cover_url || "", image_position: (p as any).image_position || "top", content_position: (p as any).content_position || "left", price_label: p.price_label || "", status: p.status, is_featured: p.is_featured }); setModal(p); };
 
   const save = async () => {
     if (!form.name || !form.category) return;
@@ -567,6 +613,25 @@ const ProductsManager = () => {
               </div>
               <FormField label="Slug"><input className={inputCls} value={form.slug} onChange={e => setForm(f => ({ ...f, slug: e.target.value }))} /></FormField>
               <FormField label="Cover Image URL"><input className={inputCls} value={form.cover_url} onChange={e => setForm(f => ({ ...f, cover_url: e.target.value }))} placeholder="https://..." /></FormField>
+              <div className="grid grid-cols-2 gap-4">
+                <FormField label="Image Position">
+                  <select className={inputCls} value={form.image_position} onChange={e => setForm(f => ({ ...f, image_position: e.target.value }))}>
+                    <option value="top">Top</option>
+                    <option value="left">Left</option>
+                    <option value="right">Right</option>
+                    <option value="background">Background</option>
+                    <option value="none">None</option>
+                  </select>
+                </FormField>
+                <FormField label="Content Position">
+                  <select className={inputCls} value={form.content_position} onChange={e => setForm(f => ({ ...f, content_position: e.target.value }))}>
+                    <option value="left">Left</option>
+                    <option value="center">Center</option>
+                    <option value="right">Right</option>
+                    <option value="overlay">Overlay</option>
+                  </select>
+                </FormField>
+              </div>
               <FormField label="Description"><textarea className={textareaCls} rows={3} value={form.description} onChange={e => setForm(f => ({ ...f, description: e.target.value }))} /></FormField>
               <div className="grid grid-cols-2 gap-4">
                 <FormField label="Price Label"><input className={inputCls} value={form.price_label} onChange={e => setForm(f => ({ ...f, price_label: e.target.value }))} placeholder="₹999 / bag" /></FormField>
@@ -713,7 +778,7 @@ const ServicesManager = () => {
   const [items, setItems] = useState<Service[]>([]);
   const [loading, setLoading] = useState(true);
   const [modal, setModal] = useState<null | "create" | Service>(null);
-  const [form, setForm] = useState({ title: "", domain: "", description: "", cover_url: "", status: "published" });
+  const [form, setForm] = useState({ title: "", domain: "", description: "", cover_url: "", image_position: "top", content_position: "left", status: "published" });
   const [saving, setSaving] = useState(false);
   const [toast, setToast] = useState<{ msg: string; type: "success" | "error" } | null>(null);
 
@@ -728,8 +793,8 @@ const ServicesManager = () => {
 
   useEffect(() => { load(); }, [load]);
 
-  const openCreate = () => { setForm({ title: "", domain: "", description: "", cover_url: "", status: "published" }); setModal("create"); };
-  const openEdit = (s: Service) => { setForm({ title: s.title, domain: s.domain, description: s.description || "", cover_url: s.cover_url || "", status: s.status }); setModal(s); };
+  const openCreate = () => { setForm({ title: "", domain: "", description: "", cover_url: "", image_position: "top", content_position: "left", status: "published" }); setModal("create"); };
+  const openEdit = (s: Service) => { setForm({ title: s.title, domain: s.domain, description: s.description || "", cover_url: s.cover_url || "", image_position: (s as any).image_position || "top", content_position: (s as any).content_position || "left", status: s.status }); setModal(s); };
 
   const save = async () => {
     if (!form.title) return;
@@ -789,6 +854,25 @@ const ServicesManager = () => {
                 <FormField label="Domain"><input className={inputCls} value={form.domain} onChange={e => setForm(f => ({ ...f, domain: e.target.value }))} placeholder="e.g. Agri Engineering" /></FormField>
               </div>
               <FormField label="Cover Image URL"><input className={inputCls} value={form.cover_url} onChange={e => setForm(f => ({ ...f, cover_url: e.target.value }))} placeholder="https://..." /></FormField>
+              <div className="grid grid-cols-2 gap-4">
+                <FormField label="Image Position">
+                  <select className={inputCls} value={form.image_position} onChange={e => setForm(f => ({ ...f, image_position: e.target.value }))}>
+                    <option value="top">Top</option>
+                    <option value="left">Left</option>
+                    <option value="right">Right</option>
+                    <option value="background">Background</option>
+                    <option value="none">None</option>
+                  </select>
+                </FormField>
+                <FormField label="Content Position">
+                  <select className={inputCls} value={form.content_position} onChange={e => setForm(f => ({ ...f, content_position: e.target.value }))}>
+                    <option value="left">Left</option>
+                    <option value="center">Center</option>
+                    <option value="right">Right</option>
+                    <option value="overlay">Overlay</option>
+                  </select>
+                </FormField>
+              </div>
               <FormField label="Description"><textarea className={textareaCls} rows={4} value={form.description} onChange={e => setForm(f => ({ ...f, description: e.target.value }))} /></FormField>
               <FormField label="Status">
                 <select className={inputCls} value={form.status} onChange={e => setForm(f => ({ ...f, status: e.target.value }))}>
@@ -911,6 +995,287 @@ const FAQManager = () => {
   );
 };
 
+// ─── Agri Startup Manager ─────────────────────────────────────────────────────
+const AgriStartupManager = () => {
+  const [items, setItems] = useState<AgriStartup[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [modal, setModal] = useState<null | "create" | AgriStartup>(null);
+  const [form, setForm] = useState({ title: "", tagline: "", description: "", cover_url: "", image_position: "top", content_position: "left", icon: "", color: "#1A4231", status: "published", sort_order: 0 });
+  const [saving, setSaving] = useState(false);
+  const [toast, setToast] = useState<{ msg: string; type: "success" | "error" } | null>(null);
+
+  const showToast = (msg: string, type: "success" | "error" = "success") => { setToast({ msg, type }); setTimeout(() => setToast(null), 3000); };
+
+  const load = useCallback(async () => {
+    setLoading(true);
+    const { data } = await supabase.from("agri_startup_programs").select("*").order("sort_order", { ascending: true });
+    setItems(data || []);
+    setLoading(false);
+  }, []);
+
+  useEffect(() => { load(); }, [load]);
+
+  const openCreate = () => { setForm({ title: "", tagline: "", description: "", cover_url: "", image_position: "top", content_position: "left", icon: "", color: "#1A4231", status: "published", sort_order: items.length }); setModal("create"); };
+  const openEdit = (s: AgriStartup) => { setForm({ title: s.title, tagline: s.tagline || "", description: s.description || "", cover_url: s.cover_url || "", image_position: s.image_position || "top", content_position: s.content_position || "left", icon: s.icon || "", color: s.color || "#1A4231", status: s.status, sort_order: s.sort_order }); setModal(s); };
+
+  const save = async () => {
+    if (!form.title) return;
+    setSaving(true);
+    const payload = { ...form, updated_at: new Date().toISOString() };
+    let err;
+    if (modal === "create") ({ error: err } = await supabase.from("agri_startup_programs").insert([payload]));
+    else ({ error: err } = await supabase.from("agri_startup_programs").update(payload).eq("id", (modal as AgriStartup).id));
+    setSaving(false);
+    if (err) { showToast(err.message, "error"); return; }
+    showToast(modal === "create" ? "Program created!" : "Program updated!");
+    setModal(null);
+    load();
+  };
+
+  const del = async (id: string) => {
+    if (!confirm("Delete this program?")) return;
+    await supabase.from("agri_startup_programs").delete().eq("id", id);
+    showToast("Program deleted");
+    load();
+  };
+
+  return (
+    <div>
+      <AnimatePresence>{toast && <Toast msg={toast.msg} type={toast.type} onClose={() => setToast(null)} />}</AnimatePresence>
+      <SectionHeader title="Agri Startup Manager" count={items.length} onAdd={openCreate} addLabel="New Program" />
+      {loading ? <div className="flex justify-center py-16"><div className="animate-spin w-8 h-8 border-4 border-[#1A3A22] border-t-transparent rounded-full" /></div> : (
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {items.length === 0 && <div className="col-span-3 text-center py-12 text-gray-400 bg-white rounded-2xl border border-gray-100">No programs yet.</div>}
+          {items.map(s => (
+            <div key={s.id} className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden hover:shadow-md transition-shadow">
+              {s.cover_url && <div className="relative h-32 bg-gray-100"><img src={s.cover_url} className="w-full h-full object-cover" alt="" onError={e => (e.currentTarget.style.display = "none")} /><span className="absolute top-2 right-2 text-[9px] bg-black/40 text-white px-2 py-0.5 rounded font-bold uppercase">{s.image_position}</span></div>}
+              <div className="p-4">
+                <div className="flex items-start justify-between gap-2 mb-1">
+                  <div><p className="font-bold text-gray-800 text-sm">{s.title}</p><p className="text-xs text-gray-400 italic">{s.tagline}</p></div>
+                  <StatusBadge status={s.status} />
+                </div>
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="text-[9px] bg-blue-50 text-blue-600 font-bold uppercase tracking-wide px-2 py-0.5 rounded">content: {s.content_position}</span>
+                </div>
+                <p className="text-xs text-gray-500 line-clamp-2 mb-3">{s.description}</p>
+                <div className="flex gap-2">
+                  <button onClick={() => openEdit(s)} className="flex-1 py-1.5 text-xs font-bold text-gray-600 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors flex items-center justify-center gap-1"><Pencil className="w-3 h-3" />Edit</button>
+                  <button onClick={() => del(s.id)} className="p-1.5 text-gray-400 hover:text-red-500 hover:bg-red-50 rounded-lg transition-colors"><Trash2 className="w-4 h-4" /></button>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+      <AnimatePresence>
+        {modal && (
+          <Modal title={modal === "create" ? "Add Program" : "Edit Program"} onClose={() => setModal(null)}>
+            <div className="space-y-4">
+              <div className="grid grid-cols-2 gap-4">
+                <FormField label="Title" required><input className={inputCls} value={form.title} onChange={e => setForm(f => ({ ...f, title: e.target.value }))} placeholder="e.g. Startup Incubation" /></FormField>
+                <FormField label="Tagline"><input className={inputCls} value={form.tagline} onChange={e => setForm(f => ({ ...f, tagline: e.target.value }))} placeholder="Short tagline..." /></FormField>
+              </div>
+              <FormField label="Cover Image URL"><input className={inputCls} value={form.cover_url} onChange={e => setForm(f => ({ ...f, cover_url: e.target.value }))} placeholder="https://..." /></FormField>
+              <div className="grid grid-cols-2 gap-4">
+                <FormField label="Image Position">
+                  <select className={inputCls} value={form.image_position} onChange={e => setForm(f => ({ ...f, image_position: e.target.value }))}>
+                    <option value="top">Top</option>
+                    <option value="left">Left</option>
+                    <option value="right">Right</option>
+                    <option value="background">Background</option>
+                    <option value="none">None</option>
+                  </select>
+                </FormField>
+                <FormField label="Content Position">
+                  <select className={inputCls} value={form.content_position} onChange={e => setForm(f => ({ ...f, content_position: e.target.value }))}>
+                    <option value="left">Left</option>
+                    <option value="center">Center</option>
+                    <option value="right">Right</option>
+                    <option value="overlay">Overlay</option>
+                  </select>
+                </FormField>
+              </div>
+              <FormField label="Description"><textarea className={textareaCls} rows={4} value={form.description} onChange={e => setForm(f => ({ ...f, description: e.target.value }))} placeholder="Full program description..." /></FormField>
+              <div className="grid grid-cols-2 gap-4">
+                <FormField label="Icon (Lucide name)"><input className={inputCls} value={form.icon} onChange={e => setForm(f => ({ ...f, icon: e.target.value }))} placeholder="e.g. Rocket" /></FormField>
+                <FormField label="Accent Color"><input type="color" className={`${inputCls} h-[42px] cursor-pointer`} value={form.color} onChange={e => setForm(f => ({ ...f, color: e.target.value }))} /></FormField>
+              </div>
+              <div className="grid grid-cols-2 gap-4">
+                <FormField label="Sort Order"><input type="number" className={inputCls} value={form.sort_order} onChange={e => setForm(f => ({ ...f, sort_order: parseInt(e.target.value) || 0 }))} /></FormField>
+                <FormField label="Status">
+                  <select className={inputCls} value={form.status} onChange={e => setForm(f => ({ ...f, status: e.target.value }))}>
+                    <option value="published">Published</option>
+                    <option value="draft">Draft</option>
+                  </select>
+                </FormField>
+              </div>
+              <div className="flex justify-end gap-3 pt-2">
+                <button onClick={() => setModal(null)} className="px-4 py-2 text-sm text-gray-500 hover:bg-gray-100 rounded-xl transition-colors">Cancel</button>
+                <button onClick={save} disabled={saving} className="flex items-center gap-2 px-5 py-2 bg-[#1A3A22] text-white text-sm font-bold rounded-xl hover:bg-[#2D5A35] transition-colors disabled:opacity-60">
+                  <Save className="w-4 h-4" />{saving ? "Saving..." : "Save Program"}
+                </button>
+              </div>
+            </div>
+          </Modal>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};
+
+// ─── IGO Academy Manager ──────────────────────────────────────────────────────
+const AcademyManager = () => {
+  const [items, setItems] = useState<AcademyCourse[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [modal, setModal] = useState<null | "create" | AcademyCourse>(null);
+  const [form, setForm] = useState({ title: "", slug: "", description: "", cover_url: "", image_position: "top", content_position: "left", duration: "", price_label: "", category: "professional", status: "published", sort_order: 0 });
+  const [saving, setSaving] = useState(false);
+  const [toast, setToast] = useState<{ msg: string; type: "success" | "error" } | null>(null);
+
+  const showToast = (msg: string, type: "success" | "error" = "success") => { setToast({ msg, type }); setTimeout(() => setToast(null), 3000); };
+  const slugify = (t: string) => t.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+
+  const load = useCallback(async () => {
+    setLoading(true);
+    const { data } = await supabase.from("academy_courses").select("*").order("sort_order", { ascending: true });
+    setItems(data || []);
+    setLoading(false);
+  }, []);
+
+  useEffect(() => { load(); }, [load]);
+
+  const openCreate = () => { setForm({ title: "", slug: "", description: "", cover_url: "", image_position: "top", content_position: "left", duration: "", price_label: "", category: "professional", status: "published", sort_order: items.length }); setModal("create"); };
+  const openEdit = (c: AcademyCourse) => { setForm({ title: c.title, slug: c.slug, description: c.description || "", cover_url: c.cover_url || "", image_position: c.image_position || "top", content_position: c.content_position || "left", duration: c.duration || "", price_label: c.price_label || "", category: c.category || "professional", status: c.status, sort_order: c.sort_order }); setModal(c); };
+
+  const save = async () => {
+    if (!form.title) return;
+    setSaving(true);
+    const payload = { ...form, slug: form.slug || slugify(form.title), updated_at: new Date().toISOString() };
+    let err;
+    if (modal === "create") ({ error: err } = await supabase.from("academy_courses").insert([payload]));
+    else ({ error: err } = await supabase.from("academy_courses").update(payload).eq("id", (modal as AcademyCourse).id));
+    setSaving(false);
+    if (err) { showToast(err.message, "error"); return; }
+    showToast(modal === "create" ? "Course created!" : "Course updated!");
+    setModal(null);
+    load();
+  };
+
+  const del = async (id: string) => {
+    if (!confirm("Delete this course?")) return;
+    await supabase.from("academy_courses").delete().eq("id", id);
+    showToast("Course deleted");
+    load();
+  };
+
+  return (
+    <div>
+      <AnimatePresence>{toast && <Toast msg={toast.msg} type={toast.type} onClose={() => setToast(null)} />}</AnimatePresence>
+      <SectionHeader title="IGO Academy Manager" count={items.length} onAdd={openCreate} addLabel="New Course" />
+      {loading ? <div className="flex justify-center py-16"><div className="animate-spin w-8 h-8 border-4 border-[#1A3A22] border-t-transparent rounded-full" /></div> : (
+        <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+          <table className="w-full text-sm">
+            <thead><tr className="border-b border-gray-100 bg-gray-50">
+              <th className="text-left px-6 py-3 text-xs font-bold text-gray-400 uppercase tracking-wider">Course</th>
+              <th className="text-left px-6 py-3 text-xs font-bold text-gray-400 uppercase tracking-wider hidden md:table-cell">Category</th>
+              <th className="text-left px-6 py-3 text-xs font-bold text-gray-400 uppercase tracking-wider hidden lg:table-cell">Image Pos</th>
+              <th className="text-left px-6 py-3 text-xs font-bold text-gray-400 uppercase tracking-wider hidden lg:table-cell">Content Pos</th>
+              <th className="text-left px-6 py-3 text-xs font-bold text-gray-400 uppercase tracking-wider hidden md:table-cell">Status</th>
+              <th className="text-right px-6 py-3 text-xs font-bold text-gray-400 uppercase tracking-wider">Actions</th>
+            </tr></thead>
+            <tbody className="divide-y divide-gray-50">
+              {items.length === 0 && <tr><td colSpan={6} className="text-center py-12 text-gray-400">No courses yet.</td></tr>}
+              {items.map(c => (
+                <tr key={c.id} className="hover:bg-gray-50/50 transition-colors">
+                  <td className="px-6 py-4">
+                    <div className="flex items-center gap-3">
+                      {c.cover_url && <img src={c.cover_url} className="w-10 h-10 rounded-lg object-cover shrink-0 bg-gray-100" alt="" onError={e => (e.currentTarget.style.display = "none")} />}
+                      <div>
+                        <p className="font-semibold text-gray-800">{c.title}</p>
+                        <p className="text-xs text-gray-400">{c.duration} {c.price_label && `· ${c.price_label}`}</p>
+                      </div>
+                    </div>
+                  </td>
+                  <td className="px-6 py-4 text-gray-500 hidden md:table-cell capitalize">{c.category}</td>
+                  <td className="px-6 py-4 hidden lg:table-cell"><span className="text-[10px] bg-purple-50 text-purple-600 font-bold uppercase px-2 py-0.5 rounded">{c.image_position}</span></td>
+                  <td className="px-6 py-4 hidden lg:table-cell"><span className="text-[10px] bg-blue-50 text-blue-600 font-bold uppercase px-2 py-0.5 rounded">{c.content_position}</span></td>
+                  <td className="px-6 py-4 hidden md:table-cell"><StatusBadge status={c.status} /></td>
+                  <td className="px-6 py-4">
+                    <div className="flex items-center justify-end gap-2">
+                      <button onClick={() => openEdit(c)} className="p-1.5 hover:bg-gray-100 rounded-lg text-gray-500 hover:text-gray-800 transition-colors"><Pencil className="w-4 h-4" /></button>
+                      <button onClick={() => del(c.id)} className="p-1.5 hover:bg-red-50 rounded-lg text-gray-400 hover:text-red-500 transition-colors"><Trash2 className="w-4 h-4" /></button>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
+      <AnimatePresence>
+        {modal && (
+          <Modal title={modal === "create" ? "Add Course" : "Edit Course"} onClose={() => setModal(null)}>
+            <div className="space-y-4">
+              <div className="grid grid-cols-2 gap-4">
+                <FormField label="Title" required><input className={inputCls} value={form.title} onChange={e => setForm(f => ({ ...f, title: e.target.value, slug: slugify(e.target.value) }))} placeholder="Course title" /></FormField>
+                <FormField label="Category">
+                  <select className={inputCls} value={form.category} onChange={e => setForm(f => ({ ...f, category: e.target.value }))}>
+                    <option value="professional">Professional Training</option>
+                    <option value="internship">Student Internship</option>
+                    <option value="specialized">Specialized Course</option>
+                    <option value="online">Online Program</option>
+                  </select>
+                </FormField>
+              </div>
+              <FormField label="Slug"><input className={inputCls} value={form.slug} onChange={e => setForm(f => ({ ...f, slug: e.target.value }))} /></FormField>
+              <FormField label="Cover Image URL"><input className={inputCls} value={form.cover_url} onChange={e => setForm(f => ({ ...f, cover_url: e.target.value }))} placeholder="https://..." /></FormField>
+              <div className="grid grid-cols-2 gap-4">
+                <FormField label="Image Position">
+                  <select className={inputCls} value={form.image_position} onChange={e => setForm(f => ({ ...f, image_position: e.target.value }))}>
+                    <option value="top">Top</option>
+                    <option value="left">Left</option>
+                    <option value="right">Right</option>
+                    <option value="background">Background</option>
+                    <option value="none">None</option>
+                  </select>
+                </FormField>
+                <FormField label="Content Position">
+                  <select className={inputCls} value={form.content_position} onChange={e => setForm(f => ({ ...f, content_position: e.target.value }))}>
+                    <option value="left">Left</option>
+                    <option value="center">Center</option>
+                    <option value="right">Right</option>
+                    <option value="overlay">Overlay</option>
+                  </select>
+                </FormField>
+              </div>
+              <FormField label="Description"><textarea className={textareaCls} rows={4} value={form.description} onChange={e => setForm(f => ({ ...f, description: e.target.value }))} placeholder="Course description..." /></FormField>
+              <div className="grid grid-cols-2 gap-4">
+                <FormField label="Duration"><input className={inputCls} value={form.duration} onChange={e => setForm(f => ({ ...f, duration: e.target.value }))} placeholder="e.g. 3 Days" /></FormField>
+                <FormField label="Price Label"><input className={inputCls} value={form.price_label} onChange={e => setForm(f => ({ ...f, price_label: e.target.value }))} placeholder="e.g. ₹15,000" /></FormField>
+              </div>
+              <div className="grid grid-cols-2 gap-4">
+                <FormField label="Sort Order"><input type="number" className={inputCls} value={form.sort_order} onChange={e => setForm(f => ({ ...f, sort_order: parseInt(e.target.value) || 0 }))} /></FormField>
+                <FormField label="Status">
+                  <select className={inputCls} value={form.status} onChange={e => setForm(f => ({ ...f, status: e.target.value }))}>
+                    <option value="published">Published</option>
+                    <option value="draft">Draft</option>
+                  </select>
+                </FormField>
+              </div>
+              <div className="flex justify-end gap-3 pt-2">
+                <button onClick={() => setModal(null)} className="px-4 py-2 text-sm text-gray-500 hover:bg-gray-100 rounded-xl transition-colors">Cancel</button>
+                <button onClick={save} disabled={saving} className="flex items-center gap-2 px-5 py-2 bg-[#1A3A22] text-white text-sm font-bold rounded-xl hover:bg-[#2D5A35] transition-colors disabled:opacity-60">
+                  <Save className="w-4 h-4" />{saving ? "Saving..." : "Save Course"}
+                </button>
+              </div>
+            </div>
+          </Modal>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};
+
 // ─── Main Dashboard ───────────────────────────────────────────────────────────
 const AdminDashboard = () => {
   const { user, isAdmin, loading, signOut } = useAuth();
@@ -935,13 +1300,15 @@ const AdminDashboard = () => {
   );
 
   const sectionComponents: Record<Section, React.ReactNode> = {
-    overview:  <OverviewSection />,
-    blog:      <BlogManager />,
-    projects:  <ProjectsManager />,
-    products:  <ProductsManager />,
-    enquiries: <EnquiriesSection />,
-    services:  <ServicesManager />,
-    faq:       <FAQManager />,
+    overview:    <OverviewSection />,
+    blog:        <BlogManager />,
+    projects:    <ProjectsManager />,
+    products:    <ProductsManager />,
+    enquiries:   <EnquiriesSection />,
+    services:    <ServicesManager />,
+    faq:         <FAQManager />,
+    agristartup: <AgriStartupManager />,
+    academy:     <AcademyManager />,
   };
 
   const activeNav = navItems.find(n => n.id === activeSection);
