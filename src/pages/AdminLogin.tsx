@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
-import { motion } from "framer-motion";
-import { Eye, EyeOff } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Eye, EyeOff, CheckCircle2 } from "lucide-react";
 import SEO from "@/components/SEO";
 
 // Module tiles shown below the login bar
@@ -90,6 +90,8 @@ const AdminLogin = () => {
   const [showPw, setShowPw] = useState(false);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+  
   const { signIn } = useAuth();
   const navigate = useNavigate();
 
@@ -99,163 +101,237 @@ const AdminLogin = () => {
     setLoading(true);
     const { error } = await signIn(email, password);
     setLoading(false);
+    
     if (error) {
       setError(error.message);
     } else {
-      navigate("/admin/dashboard");
+      setIsSuccess(true);
+      setTimeout(() => {
+        navigate("/admin/dashboard");
+      }, 1500); 
     }
   };
 
   return (
-    <div className="min-h-screen overflow-hidden relative" style={{ backgroundColor: "#0F2414" }}>
+    <div className="min-h-screen overflow-hidden relative bg-[#0F2414] font-sans flex flex-col items-center justify-center">
       <SEO title="Admin Login" description="IGO Agritech Farms admin login." noIndex />
 
-      {/* ── Top nature photo zone ── */}
-      <div className="relative h-[45vh] overflow-hidden">
-        <img
-          src="/assets/background page for agri starup and about .webp"
-          alt="Nature background"
-          className="w-full h-full object-cover object-center scale-110"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-[#1A3A22]/80" />
-      </div>
-
-      {/* ── Bottom green textured zone ── */}
-      <div
-        className="relative min-h-[55vh]"
-        style={{
-          backgroundColor: "#1A3A22",
-          backgroundImage: `url('/assets/background page for agri starup and about .webp')`,
-          backgroundSize: "cover",
-          backgroundPosition: "center bottom",
-          backgroundBlendMode: "multiply",
-        }}
-      >
-        {/* Subtle leaf pattern overlay */}
-        <div className="absolute inset-0 opacity-10"
-          style={{
-            backgroundImage: "radial-gradient(ellipse at 20% 50%, #4A7C5920 0%, transparent 60%), radial-gradient(ellipse at 80% 20%, #2D5A2720 0%, transparent 60%)"
-          }}
-        />
-      </div>
-
-      {/* ── Floating login bar — straddles both zones ── */}
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, ease: "easeOut" }}
-        className="absolute left-1/2 -translate-x-1/2 w-full max-w-2xl px-4"
-        style={{ top: "calc(45vh - 40px)" }}
-      >
-        <form
-          onSubmit={handleSubmit}
-          className="flex items-center gap-3 bg-[#1F4A2A]/90 backdrop-blur-xl rounded-2xl px-5 py-4 shadow-[0_20px_60px_rgba(0,0,0,0.4)] border border-white/10"
-        >
-          {/* Logo icon */}
-          <div className="shrink-0 w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center border border-white/15">
-            <svg viewBox="0 0 32 32" fill="none" className="w-7 h-7">
-              <circle cx="16" cy="12" r="3" fill="#6FC87A"/>
-              <path d="M16 15 L16 26" stroke="#6FC87A" strokeWidth="2" strokeLinecap="round"/>
-              <path d="M8 8 C8 4 12 2 16 4 C20 2 24 4 24 8" stroke="#C8D87A" strokeWidth="1.5" fill="none" strokeLinecap="round"/>
-              <path d="M5 14 C3 10 6 6 10 7" stroke="#6FC87A" strokeWidth="1.5" fill="none" strokeLinecap="round"/>
-              <path d="M27 14 C29 10 26 6 22 7" stroke="#6FC87A" strokeWidth="1.5" fill="none" strokeLinecap="round"/>
-            </svg>
-          </div>
-
-          {/* User ID */}
-          <input
-            type="email"
-            placeholder="User ID"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-            className="flex-1 bg-white/10 border border-white/15 rounded-xl px-4 py-2.5 text-white text-sm placeholder:text-white/40 focus:outline-none focus:border-[#6FC87A]/60 focus:bg-white/15 transition"
-          />
-
-          {/* Password */}
-          <div className="relative flex-1">
-            <input
-              type={showPw ? "text" : "password"}
-              placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              className="w-full bg-white/10 border border-white/15 rounded-xl px-4 py-2.5 pr-10 text-white text-sm placeholder:text-white/40 focus:outline-none focus:border-[#6FC87A]/60 focus:bg-white/15 transition"
-            />
-            <button
-              type="button"
-              onClick={() => setShowPw(!showPw)}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-white/40 hover:text-white/70 transition"
-            >
-              {showPw ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
-            </button>
-          </div>
-
-          {/* Login button */}
-          <button
-            type="submit"
-            disabled={loading}
-            className="shrink-0 flex items-center gap-2 px-5 py-2.5 bg-[#3D7A45] hover:bg-[#4A8F53] disabled:opacity-60 text-white text-sm font-bold rounded-xl transition-all shadow-lg shadow-green-900/30"
+      {/* Hero Background Image with open animation */}
+      <AnimatePresence>
+        {!isSuccess && (
+          <motion.div
+            initial={{ scale: 1.15, opacity: 0, filter: "blur(10px)" }}
+            animate={{ scale: 1, opacity: 1, filter: "blur(0px)" }}
+            exit={{ scale: 1.1, opacity: 0, filter: "blur(10px)" }}
+            transition={{ duration: 1.5, ease: "easeOut" }}
+            className="absolute inset-0 z-0"
           >
-            <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 opacity-80">
-              <path d="M10 2C8 2 6 3.5 5.5 5.5C4 5.8 3 7 3 8.5C3 10.2 4.3 11.5 6 11.5H14C15.7 11.5 17 10.2 17 8.5C17 7 16 5.8 14.5 5.5C14 3.5 12 2 10 2Z"/>
-              <path d="M7 14 L10 17 L13 14" strokeWidth="1.5" stroke="white" fill="none" strokeLinecap="round"/>
-              <path d="M10 11.5 L10 17" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
-            </svg>
-            {loading ? "..." : "LOGIN"}
-          </button>
-        </form>
+            <img
+              src="/assets/background page for agri starup and about .webp"
+              alt="Admin Login Background"
+              className="w-full h-full object-cover object-center"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0F2414] via-[#0F2414]/80 to-[#1A3A22]/40" />
+            <div className="absolute inset-0 bg-black/40" />
+          </motion.div>
+        )}
+      </AnimatePresence>
 
-        {/* Error */}
-        {error && (
-          <motion.p
+      {/* Success Ripple Effect */}
+      <AnimatePresence>
+        {isSuccess && (
+          <motion.div
+            initial={{ scale: 0, opacity: 0 }}
+            animate={{ scale: 50, opacity: 1 }}
+            transition={{ duration: 1, ease: "easeInOut" }}
+            className="absolute z-50 w-32 h-32 bg-[#3D7A45] rounded-full flex items-center justify-center"
+            style={{ top: "calc(50% - 64px)", left: "calc(50% - 64px)" }}
+          />
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {isSuccess && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="absolute z-50 flex flex-col items-center justify-center text-white w-full h-full pointer-events-none"
+          >
+            <CheckCircle2 className="w-24 h-24 mb-4 text-white" strokeWidth={1.5} />
+            <h2 className="text-3xl font-extrabold tracking-[0.2em] drop-shadow-lg">ACCESS GRANTED</h2>
+            <p className="text-white/80 mt-2 font-medium tracking-widest uppercase text-sm">Entering Secure Portal...</p>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <div className="relative z-10 w-full max-w-5xl px-4 flex flex-col items-center">
+        {/* Main Login Display */}
+        <AnimatePresence>
+          {!isSuccess && (
+             <motion.div
+             initial={{ opacity: 0, y: -40 }}
+             animate={{ opacity: 1, y: 0 }}
+             exit={{ opacity: 0, y: -40, scale: 0.9 }}
+             transition={{ duration: 0.8, delay: 0.3, type: "spring", bounce: 0.4 }}
+             className="w-full flex-col items-center flex mt-10 md:mt-0"
+           >
+             <div className="mb-8 flex flex-col items-center">
+               <motion.div 
+                 initial={{ rotate: -180, scale: 0 }}
+                 animate={{ rotate: 0, scale: 1 }}
+                 transition={{ duration: 1, delay: 0.5, type: "spring" }}
+                 className="w-16 h-16 rounded-2xl bg-white/10 flex items-center justify-center border border-white/20 backdrop-blur-md mb-4 shadow-[0_0_40px_rgba(111,200,122,0.4)]"
+               >
+                   <svg viewBox="0 0 32 32" fill="none" className="w-10 h-10">
+                   <circle cx="16" cy="12" r="3" fill="#ffffff"/>
+                   <path d="M16 15 L16 26" stroke="#ffffff" strokeWidth="2" strokeLinecap="round"/>
+                   <path d="M8 8 C8 4 12 2 16 4 C20 2 24 4 24 8" stroke="#A2CFA8" strokeWidth="1.5" fill="none" strokeLinecap="round"/>
+                   <path d="M5 14 C3 10 6 6 10 7" stroke="#ffffff" strokeWidth="1.5" fill="none" strokeLinecap="round"/>
+                   <path d="M27 14 C29 10 26 6 22 7" stroke="#ffffff" strokeWidth="1.5" fill="none" strokeLinecap="round"/>
+                   </svg>
+               </motion.div>
+               <h1 className="text-4xl md:text-5xl font-black text-white tracking-[0.15em] drop-shadow-2xl">IGO ADMIN</h1>
+               <p className="text-[#A2CFA8] mt-2 font-semibold tracking-[0.2em] text-sm uppercase drop-shadow">Secure Systems Portal</p>
+             </div>
+
+             <form
+               onSubmit={handleSubmit}
+               className="w-full max-w-md bg-[#0b1c0e]/60 backdrop-blur-2xl rounded-3xl p-8 shadow-[0_30px_80px_rgba(0,0,0,0.8)] border border-white/10 relative overflow-hidden"
+             >
+               <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-32 bg-[#6FC87A] opacity-10 blur-[80px] pointer-events-none" />
+
+               <div className="space-y-5 relative z-10">
+                 <div className="space-y-1.5">
+                   <label className="text-xs text-white/50 font-bold uppercase tracking-widest pl-1">User ID</label>
+                   <input
+                     type="email"
+                     placeholder="admin@igogroups.com"
+                     value={email}
+                     onChange={(e) => setEmail(e.target.value)}
+                     required
+                     className="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-white text-base placeholder:text-white/20 focus:outline-none focus:border-[#6FC87A]/80 focus:bg-white/10 focus:shadow-[0_0_20px_rgba(111,200,122,0.15)] transition-all"
+                   />
+                 </div>
+
+                 <div className="space-y-1.5">
+                   <label className="text-xs text-white/50 font-bold uppercase tracking-widest pl-1">Password</label>
+                   <div className="relative">
+                     <input
+                       type={showPw ? "text" : "password"}
+                       placeholder="••••••••••••"
+                       value={password}
+                       onChange={(e) => setPassword(e.target.value)}
+                       required
+                       className="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 pr-12 text-white text-base placeholder:text-white/20 focus:outline-none focus:border-[#6FC87A]/80 focus:bg-white/10 focus:shadow-[0_0_20px_rgba(111,200,122,0.15)] transition-all"
+                     />
+                     <button
+                       type="button"
+                       onClick={() => setShowPw(!showPw)}
+                       className="absolute right-4 top-1/2 -translate-y-1/2 text-white/30 hover:text-white/80 transition-colors p-2"
+                     >
+                       {showPw ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                     </button>
+                   </div>
+                 </div>
+
+                 <button
+                   type="submit"
+                   disabled={loading}
+                   className="w-full mt-6 relative group overflow-hidden bg-gradient-to-r from-[#2F5E36] to-[#4A8F53] disabled:opacity-70 text-white font-extrabold tracking-[0.15em] uppercase rounded-2xl py-4 transition-all hover:shadow-[0_0_35px_rgba(74,143,83,0.6)] hover:-translate-y-0.5"
+                 >
+                   <span className="relative z-10 flex items-center justify-center gap-3">
+                     {loading ? (
+                       <span className="animate-pulse">AUTHENTICATING...</span>
+                     ) : (
+                       <>
+                         SECURE LOGIN
+                         <svg viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5 opacity-90 group-hover:translate-x-1.5 transition-transform duration-300">
+                           <path d="M10 2C8 2 6 3.5 5.5 5.5C4 5.8 3 7 3 8.5C3 10.2 4.3 11.5 6 11.5H14C15.7 11.5 17 10.2 17 8.5C17 7 16 5.8 14.5 5.5C14 3.5 12 2 10 2Z"/>
+                           <path d="M7 14 L10 17 L13 14" strokeWidth="1.5" stroke="white" fill="none" strokeLinecap="round"/>
+                           <path d="M10 11.5 L10 17" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+                         </svg>
+                       </>
+                     )}
+                   </span>
+                   <div className="absolute inset-0 h-full w-full scale-0 rounded-2xl transition-all duration-300 group-hover:scale-100 group-hover:bg-white/10" />
+                 </button>
+               </div>
+
+               {error && (
+                 <motion.div
+                   initial={{ opacity: 0, height: 0, y: -10 }}
+                   animate={{ opacity: 1, height: "auto", y: 0 }}
+                   className="mt-6"
+                 >
+                   <p className="text-red-300 text-sm font-medium tracking-wide text-center bg-red-500/10 rounded-xl py-3 px-4 border border-red-500/30">
+                     {error}
+                   </p>
+                 </motion.div>
+               )}
+             </form>
+           </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* Modules Grid */}
+        <AnimatePresence>
+          {!isSuccess && (
+            <motion.div
+              initial={{ opacity: 0, y: 60 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 60, scale: 0.95 }}
+              transition={{ duration: 0.8, delay: 0.5, type: "spring", bounce: 0.3 }}
+              className="mt-10 md:mt-16 w-full max-w-4xl pb-10"
+            >
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+                {modules.map((mod, i) => (
+                  <motion.button
+                    key={mod.label}
+                    initial={{ opacity: 0, scale: 0.5 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.8 }}
+                    whileHover={{ scale: 1.05, y: -8 }}
+                    whileTap={{ scale: 0.95 }}
+                    transition={{ duration: 0.5, delay: 0.6 + (i * 0.08), type: "spring", bounce: 0.4 }}
+                    onClick={() => navigate(`/admin/dashboard?section=${mod.section}`)}
+                    className={`relative ${mod.bg} rounded-3xl aspect-[1.1] md:aspect-square flex flex-col items-center justify-center gap-3 overflow-hidden shadow-2xl border border-white/15 group cursor-pointer`}
+                  >
+                    {mod.bgImage && (
+                      <img src={mod.bgImage} alt="" className="absolute inset-0 w-full h-full object-cover opacity-50 mix-blend-overlay group-hover:opacity-80 group-hover:scale-110 transition-all duration-500" />
+                    )}
+                    <div className="relative z-10 flex flex-col items-center gap-3">
+                      <div className="opacity-90 group-hover:scale-110 group-hover:opacity-100 transition-all duration-300 drop-shadow-[0_5px_10px_rgba(0,0,0,0.5)]">
+                        {mod.icon}
+                      </div>
+                      <span className="text-white text-[11px] font-extrabold uppercase tracking-widest drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] text-center px-1">
+                        {mod.label}
+                      </span>
+                    </div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                  </motion.button>
+                ))}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+
+      <AnimatePresence>
+        {!isSuccess && (
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="text-red-400 text-xs text-center mt-3 bg-red-900/20 rounded-xl py-2 px-4 border border-red-500/20"
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1, delay: 1.2 }}
+            className="absolute bottom-6 flex items-center justify-center gap-3 z-10"
           >
-            {error}
-          </motion.p>
+            <div className="w-1.5 h-1.5 rounded-full bg-[#6FC87A]/50 shadow-[0_0_10px_rgba(111,200,122,0.8)]" />
+            <span className="text-white/40 text-[10px] uppercase tracking-[0.5em] font-bold">IGO Agritech Farms &copy; {new Date().getFullYear()}</span>
+            <div className="w-1.5 h-1.5 rounded-full bg-[#6FC87A]/50 shadow-[0_0_10px_rgba(111,200,122,0.8)]" />
+          </motion.div>
         )}
-      </motion.div>
-
-      {/* ── Module tiles grid ── */}
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, delay: 0.3, ease: "easeOut" }}
-        className="absolute left-1/2 -translate-x-1/2 w-full max-w-2xl px-4"
-        style={{ top: "calc(45vh + 72px)" }}
-      >
-        <div className="grid grid-cols-3 gap-3 mt-4">
-          {modules.map((mod, i) => (
-            <motion.button
-              key={mod.label}
-              initial={{ opacity: 0, scale: 0.85 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.4, delay: 0.4 + i * 0.07 }}
-              onClick={() => navigate(`/admin/dashboard?section=${mod.section}`)}
-              className={`relative ${mod.bg} rounded-2xl aspect-square flex flex-col items-center justify-center gap-2 overflow-hidden shadow-lg hover:scale-105 hover:shadow-xl transition-all duration-300 border border-white/10`}
-            >
-              {mod.bgImage && (
-                <img src={mod.bgImage} alt="" className="absolute inset-0 w-full h-full object-cover opacity-60" />
-              )}
-              <div className="relative z-10 flex flex-col items-center gap-1.5">
-                {mod.icon}
-                <span className="text-white text-[10px] font-bold uppercase tracking-wider drop-shadow">
-                  {mod.label}
-                </span>
-              </div>
-            </motion.button>
-          ))}
-        </div>
-
-        {/* Brand footer */}
-        <div className="flex items-center justify-center gap-2 mt-6 mb-4">
-          <div className="w-1 h-1 rounded-full bg-white/20" />
-          <span className="text-white/30 text-[10px] uppercase tracking-[0.3em] font-medium">IGO Agritech Farms — Admin</span>
-          <div className="w-1 h-1 rounded-full bg-white/20" />
-        </div>
-      </motion.div>
+      </AnimatePresence>
     </div>
   );
 };
