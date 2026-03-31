@@ -290,14 +290,14 @@ const Navbar = () => {
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${navClasses}`}>
-      <div className="container mx-auto px-4 lg:px-6 flex items-center justify-between h-[88px]">
-        <Link to="/" className="flex items-center gap-3 group z-50 shrink-0">
-          <img src={companyInfo.logo} alt="IGO Logo" loading="eager" className={`h-[72px] w-auto group-hover:scale-105 transition-transform mix-blend-multiply contrast-125 brightness-105 ${logoInvertClass}`} />
-          <span className={`text-3xl font-black tracking-tight uppercase font-display whitespace-nowrap ${textColorClass}`}>IGO <span className="text-primary">Agritech</span></span>
+      <div className="container mx-auto px-4 lg:px-5 xl:px-6 flex items-center justify-between h-[72px] lg:h-[80px] xl:h-[88px]">
+        <Link to="/" className="flex items-center gap-2 lg:gap-3 group z-50 shrink-0">
+          <img src={companyInfo.logo} alt="IGO Logo" loading="eager" className={`h-[56px] lg:h-[64px] xl:h-[72px] w-auto group-hover:scale-105 transition-transform mix-blend-multiply contrast-125 brightness-105 ${logoInvertClass}`} />
+          <span className={`text-lg lg:text-2xl xl:text-3xl font-black tracking-tight uppercase font-display whitespace-nowrap ${textColorClass}`}>IGO <span className="text-primary">Agritech</span></span>
         </Link>
 
         {/* Desktop Navigation */}
-        <div className="hidden lg:flex items-center gap-5 xl:gap-8 ml-8 xl:ml-14">
+        <div className="hidden lg:flex items-center gap-3 xl:gap-6 ml-4 xl:ml-10">
           <LayoutGroup>
             {navLinks.map((link) => {
               const isMega = link.label === "Projects" || link.label === "Services" || link.label === "Products";
@@ -311,7 +311,7 @@ const Navbar = () => {
                 >
                   <Link
                     to={link.href}
-                    className={`text-sm font-semibold whitespace-nowrap ${linkColorClass} hover:text-primary transition-all py-2 flex items-center gap-1 group`}
+                    className={`text-[12px] xl:text-sm font-semibold whitespace-nowrap ${linkColorClass} hover:text-primary transition-all py-2 flex items-center gap-0.5 xl:gap-1 group`}
                   >
                     {link.label}
                     {link.children && <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-300 ${openDropdown === link.label ? "rotate-180 text-primary" : "opacity-30 group-hover:opacity-100"}`} />}
@@ -351,7 +351,7 @@ const Navbar = () => {
 
           <Link
             to="/agri-startup-platform"
-            className="px-5 py-2.5 text-xs font-bold rounded-full transition-all uppercase tracking-widest bg-black text-white shadow-lg shadow-black/10 whitespace-nowrap shrink-0"
+            className="px-3 py-2 lg:px-4 xl:px-5 xl:py-2.5 text-[10px] xl:text-xs font-bold rounded-full transition-all uppercase tracking-widest bg-black text-white shadow-lg shadow-black/10 whitespace-nowrap shrink-0"
           >
             AgriStartup Gateway
           </Link>

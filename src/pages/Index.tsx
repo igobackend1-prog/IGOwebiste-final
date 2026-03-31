@@ -52,9 +52,8 @@ const HeroSection = () => {
     return () => clearTimeout(timer);
   }, [current]);
 
-  // Navbar is fixed at 88px tall (h-[88px]).
-  // Section is 100vh total. Poster starts at 88px (below navbar),
-  // so the poster fills exactly calc(100vh - 88px) = 992px on a 1080p screen.
+  // Navbar scales: h-[72px] mobile → h-[80px] lg → h-[88px] xl.
+  // Use 88 so poster always clears the bar on all screen sizes.
   const NAVBAR_H = 88;
 
   return (
