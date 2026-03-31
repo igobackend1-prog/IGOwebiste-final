@@ -333,7 +333,7 @@ const CategoryView: React.FC<{ category: string }> = ({ category }) => {
         jsonLd={catBreadcrumb}
       />
       {/* Hero */}
-      <section className="relative pt-40 pb-40 overflow-hidden bg-black">
+      <section className="relative pt-24 sm:pt-32 md:pt-40 pb-16 sm:pb-28 md:pb-40 overflow-hidden bg-black">
         <motion.div
           initial={{ scale: 1.06, opacity: 0 }}
           animate={{ scale: 1, opacity: 0.5 }}
@@ -478,7 +478,7 @@ const SubcategoryView: React.FC<{ category: string; subcategory: string }> = ({ 
         jsonLd={subBreadcrumb}
       />
       {/* Hero */}
-      <section className="relative pt-40 pb-40 overflow-hidden bg-black">
+      <section className="relative pt-24 sm:pt-32 md:pt-40 pb-16 sm:pb-28 md:pb-40 overflow-hidden bg-black">
         <motion.div
           initial={{ scale: 1.06, opacity: 0 }}
           animate={{ scale: 1, opacity: 0.5 }}

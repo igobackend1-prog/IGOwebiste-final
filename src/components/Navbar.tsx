@@ -282,7 +282,7 @@ const Navbar = () => {
 
   if (isAdmin) return null;
 
-  const navClasses = "bg-white py-0";
+  const navClasses = "bg-white shadow-sm";
 
   const textColorClass = "text-black";
   const linkColorClass = "text-black/70";
@@ -290,16 +290,16 @@ const Navbar = () => {
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${navClasses}`}>
-      <div className="container mx-auto px-6 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-4 group z-50">
-          <img src={companyInfo.logo} alt="IGO Logo" loading="eager" className={`h-24 w-auto group-hover:scale-105 transition-transform mix-blend-multiply contrast-125 brightness-105 ${logoInvertClass}`} />
-          <span className={`text-2xl font-black tracking-tight uppercase font-display whitespace-nowrap ${textColorClass}`}>IGO <span className="text-primary">Agritech</span></span>
+      <div className="container mx-auto px-4 lg:px-6 flex items-center justify-between h-16">
+        <Link to="/" className="flex items-center gap-2.5 group z-50 shrink-0">
+          <img src={companyInfo.logo} alt="IGO Logo" loading="eager" className={`h-12 w-auto group-hover:scale-105 transition-transform mix-blend-multiply contrast-125 brightness-105 ${logoInvertClass}`} />
+          <span className={`text-base font-black tracking-tight uppercase font-display whitespace-nowrap ${textColorClass}`}>IGO <span className="text-primary">Agritech</span></span>
         </Link>
 
         {/* Desktop Navigation */}
-        <div className="hidden lg:flex items-center gap-8 ml-16">
+        <div className="hidden lg:flex items-center gap-4 xl:gap-6 ml-6 xl:ml-10">
           <LayoutGroup>
-            {navLinks.map((link) => {
+            {navLinks.filter(l => l.label !== "Home").map((link) => {
               const isMega = link.label === "Projects" || link.label === "Services" || link.label === "Products";
 
               return (
@@ -311,7 +311,7 @@ const Navbar = () => {
                 >
                   <Link
                     to={link.href}
-                    className={`text-sm font-semibold whitespace-nowrap ${linkColorClass} hover:text-primary transition-all py-2 flex items-center gap-1 group`}
+                    className={`text-[13px] font-semibold whitespace-nowrap ${linkColorClass} hover:text-primary transition-all py-2 flex items-center gap-1 group`}
                   >
                     {link.label}
                     {link.children && <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-300 ${openDropdown === link.label ? "rotate-180 text-primary" : "opacity-30 group-hover:opacity-100"}`} />}
@@ -351,7 +351,7 @@ const Navbar = () => {
 
           <Link
             to="/agri-startup-platform"
-            className="px-5 py-2.5 text-xs font-semibold rounded-full transition-all uppercase tracking-widest bg-black text-white shadow-lg shadow-black/10 whitespace-nowrap"
+            className="px-3.5 py-2 text-[10px] font-bold rounded-full transition-all uppercase tracking-widest bg-black text-white shadow-md shadow-black/10 whitespace-nowrap shrink-0"
           >
             AgriStartup Gateway
           </Link>

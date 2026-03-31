@@ -147,7 +147,7 @@ const Contact = () => {
       {/* ═══════════════════════════════════════════════════
           SECTION 1 — Cinematic Hero
       ═══════════════════════════════════════════════════ */}
-      <section className="relative pt-40 pb-44 overflow-hidden bg-black">
+      <section className="relative pt-24 sm:pt-32 md:pt-40 pb-24 sm:pb-32 md:pb-44 overflow-hidden bg-black">
         <motion.div
           initial={{ scale: 1.08, opacity: 0 }}
           animate={{ scale: 1, opacity: 0.45 }}
@@ -177,12 +177,12 @@ const Contact = () => {
               <div className="h-px w-12 bg-agri-gold-500/60" />
             </motion.div>
 
-            <motion.h1 variants={fader} className="text-6xl md:text-8xl font-serif text-white mb-8 tracking-tight leading-[0.92]">
+            <motion.h1 variants={fader} className="text-4xl sm:text-6xl md:text-8xl font-serif text-white mb-8 tracking-tight leading-[0.92]">
               Start Your Project. <br />
               <span className="italic text-agri-gold-500">Talk to IGO.</span>
             </motion.h1>
 
-            <motion.p variants={fader} className="text-white/60 text-xl font-light leading-relaxed mb-14 max-w-2xl mx-auto">
+            <motion.p variants={fader} className="text-white/60 text-base sm:text-xl font-light leading-relaxed mb-14 max-w-2xl mx-auto">
               Our engineering and consulting team is ready to assess your site, plan your project, and guide you to the right solution — from first enquiry to final handover.
             </motion.p>
 

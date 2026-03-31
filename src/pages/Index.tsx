@@ -52,12 +52,12 @@ const HeroSection = () => {
     return () => clearTimeout(timer);
   }, [current]);
 
-  // Navbar is fixed at 88px tall (h-14 logo + py-4 padding).
-  // Section is 100vh total. Poster starts at 88px (below navbar),
-  // so the poster fills exactly calc(100vh - 88px) = 992px on a 1080p screen.
-  // Poster ratio is 2:1 — at 1920×992 container, object-cover crops only 32px
-  // per side (1.67%) so the full design remains readable.
-  const NAVBAR_H = 88;
+  // Navbar is fixed at 64px tall (h-16).
+  // Section is 100vh total. Poster starts at 64px (below navbar),
+  // so the poster fills exactly calc(100vh - 64px) = 1016px on a 1080p screen.
+  // Poster ratio is 2:1 — at 1920×1016 container, object-cover crops only ~8px
+  // per side so the full design remains readable.
+  const NAVBAR_H = 64;
 
   return (
     <section
@@ -133,14 +133,14 @@ const HeroSection = () => {
               >
                 India's Leading Agri Engineering & Agri Consulting Brand
               </motion.p>
-              <motion.h1 variants={fader} className="text-white mb-10 tracking-tight leading-[0.95] text-5xl md:text-7xl font-black">
-                Building Profitable Smart Farms <br /> Across India.
+              <motion.h1 variants={fader} className="text-white mb-10 tracking-tight leading-[0.95] text-3xl sm:text-5xl md:text-7xl font-black">
+                Building Profitable Smart Farms <br className="hidden sm:block" /> Across India.
               </motion.h1>
-              <motion.div variants={fader} className="flex flex-wrap justify-center gap-6">
-                <Link to="/projects" className="px-12 py-4 bg-white text-black text-xs font-semibold rounded-full hover:bg-white/90 transition-all uppercase tracking-widest">
+              <motion.div variants={fader} className="flex flex-wrap justify-center gap-4">
+                <Link to="/projects" className="px-8 sm:px-12 py-3 sm:py-4 bg-white text-black text-xs font-semibold rounded-full hover:bg-white/90 transition-all uppercase tracking-widest">
                   View Projects
                 </Link>
-                <Link to="/contact" className="px-12 py-4 bg-transparent border border-white/30 text-white text-xs font-semibold rounded-full hover:bg-white hover:text-black transition-all uppercase tracking-widest">
+                <Link to="/contact" className="px-8 sm:px-12 py-3 sm:py-4 bg-transparent border border-white/30 text-white text-xs font-semibold rounded-full hover:bg-white hover:text-black transition-all uppercase tracking-widest">
                   Contact
                 </Link>
               </motion.div>
@@ -658,7 +658,7 @@ const ProductEcosystem = () => {
               <div className="w-12 h-[1px] bg-primary/30" />
               PRODUCT INFRASTRUCTURE
             </div>
-            <h2 className="text-4xl md:text-7xl font-serif text-agri-earth-900 leading-[1.05]">
+            <h2 className="text-2xl sm:text-4xl md:text-7xl font-serif text-agri-earth-900 leading-[1.05]">
               High-Performance <br /> <span className="italic text-primary">Agri Inputs.</span>
             </h2>
           </div>
@@ -727,7 +727,7 @@ const EngineeringDNA = () => {
             THE IGO ADVANTAGE
             <div className="w-12 h-px bg-agri-gold-500/30" />
           </div>
-          <h2 className="text-5xl md:text-8xl font-serif leading-[1] mb-10 tracking-tight text-agri-earth-900">
+          <h2 className="text-3xl sm:text-5xl md:text-8xl font-serif leading-[1] mb-10 tracking-tight text-agri-earth-900">
             Our <span className="text-agri-green-800 italic">Engineering</span> DNA.
           </h2>
           <p className="text-xl text-black/50 font-light max-w-2xl mx-auto leading-relaxed">
@@ -885,7 +885,7 @@ const BrandsSection = () => {
             <span className="text-agri-gold-500 font-bold text-[10px] uppercase tracking-[0.4em]">The Sovereign Ecosystem</span>
             <div className="h-px w-12 bg-agri-gold-500/40" />
           </div>
-          <h2 className="text-4xl md:text-7xl font-serif text-agri-earth-900 mb-8 leading-[1.1]">
+          <h2 className="text-3xl sm:text-4xl md:text-7xl font-serif text-agri-earth-900 mb-8 leading-[1.1]">
             The <span className="italic text-agri-gold-500">26 Verticals</span> of IGO.
           </h2>
           <p className="text-black/50 text-lg font-light leading-relaxed max-w-xl mx-auto">

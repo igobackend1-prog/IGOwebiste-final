@@ -26,7 +26,7 @@ const Services = () => {
         url="/services"
       />
       {/* Hero Section */}
-      <section className="relative pt-40 pb-32 overflow-hidden bg-agri-green-800 text-white">
+      <section className="relative pt-24 sm:pt-32 md:pt-40 pb-16 sm:pb-24 md:pb-32 overflow-hidden bg-agri-green-800 text-white">
         <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "url('/assets/polyhouse_wireframe.png')", backgroundSize: 'cover', backgroundPosition: 'center' }} />
         
         <div className="container mx-auto px-6 relative z-10">
@@ -36,10 +36,10 @@ const Services = () => {
             variants={{ show: { transition: { staggerChildren: 0.1 } } }}
             className="max-w-4xl mx-auto text-center"
           >
-            <motion.h1 variants={fader} className="text-5xl md:text-7xl font-serif tracking-tight mb-8">
+            <motion.h1 variants={fader} className="text-3xl sm:text-5xl md:text-7xl font-serif tracking-tight mb-8">
               Farm Services & Consulting
             </motion.h1>
-            <motion.p variants={fader} className="text-white/80 text-xl md:text-2xl leading-relaxed font-light max-w-3xl mx-auto">
+            <motion.p variants={fader} className="text-white/80 text-base sm:text-xl md:text-2xl leading-relaxed font-light max-w-3xl mx-auto">
               Expert agricultural consulting, infrastructure setup, and engineering services to optimize your farm operations.
             </motion.p>
           </motion.div>

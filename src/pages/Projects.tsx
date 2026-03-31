@@ -29,7 +29,7 @@ const Projects = () => {
       />
 
       {/* ── Hero ── */}
-      <section className="relative pt-40 pb-40 overflow-hidden bg-black">
+      <section className="relative pt-24 sm:pt-32 md:pt-40 pb-16 sm:pb-28 md:pb-40 overflow-hidden bg-black">
         <motion.div
           initial={{ scale: 1.08, opacity: 0 }}
           animate={{ scale: 1, opacity: 0.5 }}
@@ -57,10 +57,10 @@ const Projects = () => {
               <span className="text-agri-gold-500 font-bold text-[10px] uppercase tracking-[0.35em]">Portfolio of Excellence</span>
               <div className="h-px w-12 bg-agri-gold-500/70" />
             </motion.div>
-            <motion.h1 variants={fader} className="text-6xl md:text-9xl font-serif text-white mb-8 tracking-tight leading-[0.9]">
+            <motion.h1 variants={fader} className="text-4xl sm:text-6xl md:text-9xl font-serif text-white mb-8 tracking-tight leading-[0.9]">
               The Gallery of <br /><span className="italic text-agri-gold-500">Sustenance.</span>
             </motion.h1>
-            <motion.p variants={fader} className="text-white/60 text-xl md:text-2xl font-light leading-relaxed mb-14 max-w-3xl mx-auto">
+            <motion.p variants={fader} className="text-white/60 text-base sm:text-xl md:text-2xl font-light leading-relaxed mb-14 max-w-3xl mx-auto">
               1,000+ institutional implementations executed across India — from precision polyhouses to integrated aquaculture ecosystems.
             </motion.p>
             <motion.div variants={fader}>

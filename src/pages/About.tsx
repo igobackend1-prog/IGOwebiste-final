@@ -44,7 +44,7 @@ const About = () => (
     />
 
     {/* ── Cinematic Hero ── */}
-    <section className="relative pt-40 pb-44 overflow-hidden bg-black">
+    <section className="relative pt-24 sm:pt-32 md:pt-40 pb-24 sm:pb-32 md:pb-44 overflow-hidden bg-black">
       <motion.div
         initial={{ scale: 1.08, opacity: 0 }}
         animate={{ scale: 1, opacity: 0.5 }}
@@ -73,12 +73,12 @@ const About = () => (
             <div className="h-px w-12 bg-agri-gold-500/70" />
           </motion.div>
 
-          <motion.h1 variants={fader} className="text-6xl md:text-9xl font-serif text-white mb-8 tracking-tight leading-[0.9]">
+          <motion.h1 variants={fader} className="text-4xl sm:text-6xl md:text-9xl font-serif text-white mb-8 tracking-tight leading-[0.9]">
             Built on Land.<br />
             <span className="italic text-agri-gold-500">Driven by Purpose.</span>
           </motion.h1>
 
-          <motion.p variants={fader} className="text-white/60 text-xl md:text-2xl font-light leading-relaxed mb-14 max-w-3xl mx-auto">
+          <motion.p variants={fader} className="text-white/60 text-base sm:text-xl md:text-2xl font-light leading-relaxed mb-14 max-w-3xl mx-auto">
             India's leading agri engineering and consulting brand — 15,000+ successful projects, 28+ states, 15+ years of transforming the way India farms.
           </motion.p>
 

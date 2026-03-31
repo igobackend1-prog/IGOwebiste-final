@@ -38,7 +38,7 @@ const FAQ = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-7xl md:text-9xl tracking-tighter mb-12"
+            className="text-4xl sm:text-7xl md:text-9xl tracking-tighter mb-12"
           >
             How can we <span className="text-primary italic font-serif">help?</span>
           </motion.h1>
@@ -157,7 +157,7 @@ const FAQ = () => {
       <section className="py-40 bg-black text-white rounded-t-[5rem]">
         <div className="container mx-auto px-6 max-w-7xl text-center">
           <div className="max-w-3xl mx-auto">
-            <h2 className="text-6xl md:text-8xl tracking-tighter mb-12">
+            <h2 className="text-3xl sm:text-6xl md:text-8xl tracking-tighter mb-12">
               Ready to grow with <span className="text-primary italic font-serif">precision?</span>
             </h2>
             <div className="flex flex-wrap justify-center gap-6">

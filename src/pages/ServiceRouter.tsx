@@ -50,7 +50,7 @@ const CategoryView: React.FC<{ categorySlug: string }> = ({ categorySlug }) => {
         jsonLd={breadcrumb}
       />
       {/* Hero */}
-      <section className="relative pt-40 pb-32 overflow-hidden bg-black">
+      <section className="relative pt-24 sm:pt-32 md:pt-40 pb-16 sm:pb-24 md:pb-32 overflow-hidden bg-black">
         <motion.div
           initial={{ scale: 1.05, opacity: 0 }}
           animate={{ scale: 1, opacity: 0.45 }}

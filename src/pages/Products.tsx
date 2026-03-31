@@ -27,7 +27,7 @@ const Products = () => {
         url="/products"
       />
       {/* Hero Section */}
-      <section className="relative pt-40 pb-32 overflow-hidden bg-black">
+      <section className="relative pt-24 sm:pt-32 md:pt-40 pb-16 sm:pb-24 md:pb-32 overflow-hidden bg-black">
         <motion.div
           initial={{ scale: 1.05, opacity: 0 }}
           animate={{ scale: 1, opacity: 0.5 }}
@@ -52,10 +52,10 @@ const Products = () => {
               <span className="text-agri-gold-500 font-bold text-xs uppercase tracking-[0.3em]">Premium Agri Inputs</span>
               <div className="h-px w-8 bg-agri-gold-500/60" />
             </motion.div>
-            <motion.h1 variants={fader} className="text-6xl md:text-8xl font-serif text-white mb-10 tracking-tight leading-[0.95]">
+            <motion.h1 variants={fader} className="text-4xl sm:text-6xl md:text-8xl font-serif text-white mb-10 tracking-tight leading-[0.95]">
               Professional <br /> <span className="italic text-agri-gold-500">Agricultural</span> Supplies.
             </motion.h1>
-            <motion.p variants={fader} className="text-white/60 text-xl font-light leading-relaxed mb-12 max-w-2xl mx-auto">
+            <motion.p variants={fader} className="text-white/60 text-base sm:text-xl font-light leading-relaxed mb-12 max-w-2xl mx-auto">
               From high-yield seeds to advanced engineering components, IGO provides the essential inputs for modern, high-tech farming systems across India.
             </motion.p>
           </motion.div>
@@ -120,8 +120,8 @@ const Products = () => {
         <div className="container mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-20 items-center">
             <div>
-               <h2 className="text-5xl md:text-7xl font-serif mb-12 leading-[1.1]">The Gold Standard <br /> in Agri Inputs.</h2>
-               <p className="text-white/50 text-xl font-light leading-relaxed mb-12 max-w-xl">
+               <h2 className="text-3xl sm:text-5xl md:text-7xl font-serif mb-12 leading-[1.1]">The Gold Standard <br /> in Agri Inputs.</h2>
+               <p className="text-white/50 text-base sm:text-xl font-light leading-relaxed mb-12 max-w-xl">
                  Every product in our catalog undergoes rigorous quality testing to ensure it meets the highest standards for performance, durability, and safety in professional farming environments.
                </p>
                <div className="grid grid-cols-2 gap-8">
@@ -151,10 +151,10 @@ const Products = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-40 container mx-auto px-6 text-center">
+      <section className="py-20 sm:py-32 md:py-40 container mx-auto px-6 text-center">
         <div className="max-w-3xl mx-auto">
-          <h2 className="text-4xl md:text-6xl font-serif text-agri-earth-900 mb-10">Ready to Grow Pro?</h2>
-          <p className="text-black/50 text-xl leading-relaxed mb-12 font-light">
+          <h2 className="text-3xl sm:text-4xl md:text-6xl font-serif text-agri-earth-900 mb-10">Ready to Grow Pro?</h2>
+          <p className="text-black/50 text-base sm:text-xl leading-relaxed mb-12 font-light">
             Contact our sales engineering team for bulk pricing, distribution enquiries, or technical specifications for your specific farm project.
           </p>
           <div className="flex flex-wrap justify-center gap-6">

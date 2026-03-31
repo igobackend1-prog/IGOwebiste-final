@@ -138,13 +138,13 @@ const AgriStartupPlatform = () => (
           </motion.div>
 
           {/* Headline */}
-          <motion.h1 variants={fader} className="text-5xl md:text-7xl lg:text-8xl font-serif text-white leading-[0.95] tracking-tight mb-7">
+          <motion.h1 variants={fader} className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-serif text-white leading-[0.95] tracking-tight mb-7">
             Grow Your Agri Startup<br />
             <span className="italic text-agri-gold-500">with India's Best.</span>
           </motion.h1>
 
           {/* Sub */}
-          <motion.p variants={fader} className="text-white/65 text-xl md:text-2xl font-light leading-relaxed mb-12 max-w-2xl mx-auto">
+          <motion.p variants={fader} className="text-white/65 text-base sm:text-xl md:text-2xl font-light leading-relaxed mb-12 max-w-2xl mx-auto">
             IGO Agritech Farms is your growth partner — from your first farm idea to a profitable, pan-India agri business. We provide the technology, expertise, and market access you need to succeed.
           </motion.p>
 
@@ -510,7 +510,7 @@ const AgriStartupPlatform = () => (
             <div className="h-px w-12 bg-agri-gold-500/50" />
           </div>
 
-          <h2 className="text-5xl md:text-7xl font-serif text-white mb-6 leading-[1.05] tracking-tight">
+          <h2 className="text-3xl sm:text-5xl md:text-7xl font-serif text-white mb-6 leading-[1.05] tracking-tight">
             Join the Agri<br />
             <span className="italic text-agri-gold-500">Startup Platform.</span>
           </h2>
