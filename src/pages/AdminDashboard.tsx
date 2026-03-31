@@ -1,14 +1,16 @@
 import { useState, useEffect, useCallback } from "react";
 import { useAuth } from "@/hooks/useAuth";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import { supabase } from "@/integrations/supabase/client";
+import { supabase as _supabase } from "@/integrations/supabase/client";
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const supabase = _supabase as any;
 import { motion, AnimatePresence } from "framer-motion";
 import SEO from "@/components/SEO";
 import {
   LayoutDashboard, BookOpen, FolderKanban, Package, Inbox,
   Settings, HelpCircle, LogOut, Plus, Pencil, Trash2, X,
   ChevronRight, Eye, EyeOff, CheckCircle, Clock, AlertCircle,
-  Menu, Search, RefreshCw, Save, Upload, Rocket, GraduationCap
+  Menu, Search, RefreshCw, Save, Upload, Rocket, GraduationCap, Leaf
 } from "lucide-react";
 
 // ─── Types ───────────────────────────────────────────────────────────────────
@@ -237,7 +239,7 @@ const BlogManager = () => {
   useEffect(() => { load(); }, [load]);
 
   const openCreate = () => {
-    setForm({ title: "", slug: "", excerpt: "", cover_url: "", status: "draft", content: "" });
+    setForm({ title: "", slug: "", excerpt: "", cover_url: "", image_position: "top", content_position: "left", status: "draft", content: "" });
     setModal("create");
   };
 
@@ -1276,6 +1278,85 @@ const AcademyManager = () => {
   );
 };
 
+// ─── Leaf Entrance Animation ───────────────────────────────────────────────────
+const LeafEntranceTransition = () => {
+  const [visible, setVisible] = useState(true);
+
+  useEffect(() => {
+    // Unmount the animation overlay after 4.5 seconds for slow motion effect
+    const timer = setTimeout(() => {
+      setVisible(false);
+    }, 4500);
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Generate 15 leaves with random falling physics
+  const leaves = Array.from({ length: 15 }).map((_, i) => ({
+    id: i,
+    xStart: Math.random() * 100 - 20, // -20vw to 80vw initial position
+    yStart: -20 - Math.random() * 20, // Start slightly above the screen
+    // SLOW MOTION: 3.5s to 6.5s fall duration
+    duration: 3.5 + Math.random() * 3, 
+    delay: Math.random() * 1.5, // staggered drop spread out more
+    size: 20 + Math.random() * 30, // 20px to 50px leaf size
+    rotation: Math.random() * 360, // random Initial rotation
+  }));
+
+  return (
+    <AnimatePresence>
+      {visible && (
+        <motion.div
+          initial={{ opacity: 1 }}
+          exit={{ opacity: 0, backdropFilter: "blur(0px)" }}
+          transition={{ duration: 2, ease: "easeInOut" }}
+          className="fixed inset-0 z-[9999] pointer-events-none flex items-center justify-center overflow-hidden"
+          style={{ background: "linear-gradient(135deg, rgba(15,36,20,0.9) 0%, rgba(26,58,34,0.95) 100%)", backdropFilter: "blur(10px)" }}
+        >
+          {/* Central Logo Sequence */}
+          <motion.div
+            initial={{ scale: 0.9, opacity: 0 }}
+            animate={{ scale: 1.1, opacity: 1 }}
+            exit={{ scale: 1.3, opacity: 0 }}
+            transition={{ duration: 3.5, ease: "easeOut" }}
+            className="absolute flex flex-col items-center justify-center"
+          >
+             <h1 className="text-4xl md:text-6xl font-black text-white tracking-[0.2em] drop-shadow-2xl">IGO ADMIN</h1>
+             <p className="text-[#6FC87A] mt-3 font-semibold tracking-[0.3em] text-sm uppercase">Welcome Back</p>
+          </motion.div>
+
+          {/* Falling Leaves */}
+          {leaves.map((leaf) => (
+            <motion.div
+              key={leaf.id}
+              initial={{ 
+                x: `${leaf.xStart}vw`, 
+                y: `${leaf.yStart}vh`, 
+                rotate: leaf.rotation,
+                opacity: 0 
+              }}
+              animate={{ 
+                x: `${leaf.xStart + 30 + Math.random() * 40}vw`, // blow to the right
+                y: `110vh`, // fall all the way down off screen
+                rotate: leaf.rotation + 360 + Math.random() * 720,
+                opacity: [0, 1, 1, 0] // fade in and then fade out at the very end
+              }}
+              transition={{ 
+                duration: leaf.duration, 
+                delay: leaf.delay, 
+                ease: [0.25, 0.1, 0.25, 1] // airy easing curve simulating wind
+              }}
+              className="absolute text-[#6FC87A]/80 drop-shadow-lg"
+              style={{ width: leaf.size, height: leaf.size }}
+            >
+              <Leaf className="w-full h-full drop-shadow-md" fill="currentColor" strokeWidth={1} />
+            </motion.div>
+          ))}
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+};
+
 // ─── Main Dashboard ───────────────────────────────────────────────────────────
 const AdminDashboard = () => {
   const { user, isAdmin, loading, signOut } = useAuth();
@@ -1316,6 +1397,7 @@ const AdminDashboard = () => {
   return (
     <div className="min-h-screen flex bg-gray-50">
       <SEO title="Admin Dashboard" description="IGO Agritech Farms admin dashboard." noIndex />
+      <LeafEntranceTransition />
 
       {/* ── Sidebar ── */}
       <>
