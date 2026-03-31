@@ -52,10 +52,10 @@ const HeroSection = () => {
     return () => clearTimeout(timer);
   }, [current]);
 
-  // Navbar is fixed at 80px tall (h-20).
-  // Section is 100vh total. Poster starts at 80px (below navbar),
-  // so the poster fills exactly calc(100vh - 80px) = 1000px on a 1080p screen.
-  const NAVBAR_H = 80;
+  // Navbar is fixed at 88px tall (h-[88px]).
+  // Section is 100vh total. Poster starts at 88px (below navbar),
+  // so the poster fills exactly calc(100vh - 88px) = 992px on a 1080p screen.
+  const NAVBAR_H = 88;
 
   return (
     <section

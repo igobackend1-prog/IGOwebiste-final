@@ -290,14 +290,14 @@ const Navbar = () => {
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${navClasses}`}>
-      <div className="container mx-auto px-4 lg:px-6 flex items-center justify-between h-20">
+      <div className="container mx-auto px-4 lg:px-6 flex items-center justify-between h-[88px]">
         <Link to="/" className="flex items-center gap-3 group z-50 shrink-0">
-          <img src={companyInfo.logo} alt="IGO Logo" loading="eager" className={`h-16 w-auto group-hover:scale-105 transition-transform mix-blend-multiply contrast-125 brightness-105 ${logoInvertClass}`} />
-          <span className={`text-2xl font-black tracking-tight uppercase font-display whitespace-nowrap ${textColorClass}`}>IGO <span className="text-primary">Agritech</span></span>
+          <img src={companyInfo.logo} alt="IGO Logo" loading="eager" className={`h-[72px] w-auto group-hover:scale-105 transition-transform mix-blend-multiply contrast-125 brightness-105 ${logoInvertClass}`} />
+          <span className={`text-3xl font-black tracking-tight uppercase font-display whitespace-nowrap ${textColorClass}`}>IGO <span className="text-primary">Agritech</span></span>
         </Link>
 
         {/* Desktop Navigation */}
-        <div className="hidden lg:flex items-center gap-5 xl:gap-7 ml-8 xl:ml-12">
+        <div className="hidden lg:flex items-center gap-5 xl:gap-8 ml-8 xl:ml-14">
           <LayoutGroup>
             {navLinks.map((link) => {
               const isMega = link.label === "Projects" || link.label === "Services" || link.label === "Products";
