@@ -52,12 +52,10 @@ const HeroSection = () => {
     return () => clearTimeout(timer);
   }, [current]);
 
-  // Navbar is fixed at 64px tall (h-16).
-  // Section is 100vh total. Poster starts at 64px (below navbar),
-  // so the poster fills exactly calc(100vh - 64px) = 1016px on a 1080p screen.
-  // Poster ratio is 2:1 — at 1920×1016 container, object-cover crops only ~8px
-  // per side so the full design remains readable.
-  const NAVBAR_H = 64;
+  // Navbar is fixed at 80px tall (h-20).
+  // Section is 100vh total. Poster starts at 80px (below navbar),
+  // so the poster fills exactly calc(100vh - 80px) = 1000px on a 1080p screen.
+  const NAVBAR_H = 80;
 
   return (
     <section
