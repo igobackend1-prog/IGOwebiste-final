@@ -576,7 +576,7 @@ const Careers = () => {
                       name="name" type="text" required
                       value={applyForm.name} onChange={handleApplyChange}
                       placeholder="Your full name"
-                      className="w-full bg-white/8 border border-white/15 rounded-xl px-4 py-3 text-white text-sm placeholder:text-white/25 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition"
+                      className="w-full bg-white border border-white/20 rounded-xl px-4 py-3 text-black text-sm placeholder:text-black/40 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition"
                     />
                   </div>
                   <div>
@@ -585,7 +585,7 @@ const Careers = () => {
                       name="email" type="email" required
                       value={applyForm.email} onChange={handleApplyChange}
                       placeholder="your@email.com"
-                      className="w-full bg-white/8 border border-white/15 rounded-xl px-4 py-3 text-white text-sm placeholder:text-white/25 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition"
+                      className="w-full bg-white border border-white/20 rounded-xl px-4 py-3 text-black text-sm placeholder:text-black/40 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition"
                     />
                   </div>
                 </div>
@@ -598,7 +598,7 @@ const Careers = () => {
                       name="phone" type="tel"
                       value={applyForm.phone} onChange={handleApplyChange}
                       placeholder="+91 XXXXX XXXXX"
-                      className="w-full bg-white/8 border border-white/15 rounded-xl px-4 py-3 text-white text-sm placeholder:text-white/25 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition"
+                      className="w-full bg-white border border-white/20 rounded-xl px-4 py-3 text-black text-sm placeholder:text-black/40 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition"
                     />
                   </div>
                   <div>
@@ -606,11 +606,11 @@ const Careers = () => {
                     <select
                       name="department" required
                       value={applyForm.department} onChange={handleApplyChange}
-                      className="w-full bg-white/8 border border-white/15 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition"
+                      className="w-full bg-white border border-white/20 rounded-xl px-4 py-3 text-black text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition"
                     >
-                      <option value="" className="bg-agri-green-950">Select department</option>
+                      <option value="" className="bg-white text-black">Select department</option>
                       {departments.map(d => (
-                        <option key={d.name} value={d.name} className="bg-agri-green-950">{d.name}</option>
+                        <option key={d.name} value={d.name} className="bg-white text-black">{d.name}</option>
                       ))}
                     </select>
                   </div>
@@ -623,7 +623,7 @@ const Careers = () => {
                     name="position" type="text" required
                     value={applyForm.position} onChange={handleApplyChange}
                     placeholder="e.g. Agri Project Engineer"
-                    className="w-full bg-white/8 border border-white/15 rounded-xl px-4 py-3 text-white text-sm placeholder:text-white/25 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition"
+                    className="w-full bg-white border border-white/20 rounded-xl px-4 py-3 text-black text-sm placeholder:text-black/40 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition"
                   />
                 </div>
 
@@ -634,7 +634,7 @@ const Careers = () => {
                     name="message" rows={4}
                     value={applyForm.message} onChange={handleApplyChange}
                     placeholder="Brief introduction, years of experience, key skills..."
-                    className="w-full bg-white/8 border border-white/15 rounded-xl px-4 py-3 text-white text-sm placeholder:text-white/25 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition resize-none"
+                    className="w-full bg-white border border-white/20 rounded-xl px-4 py-3 text-black text-sm placeholder:text-black/40 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition resize-none"
                   />
                 </div>
 
