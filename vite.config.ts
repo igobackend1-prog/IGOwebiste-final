@@ -27,15 +27,10 @@ export default defineConfig(({ mode }) => ({
           if (id.includes("node_modules")) {
             if (id.includes("three") || id.includes("@react-three")) return "three";
             if (id.includes("framer-motion")) return "framer-motion";
-            if (id.includes("@radix-ui")) return "radix-ui";
-            // react-router-dom must come before react-dom check (substring match order)
-            if (id.includes("react-router-dom") || id.includes("react-router")) return "react-router";
-            // keep react + react-dom in ONE chunk to prevent load-order crash
-            if (id.includes("react-dom") || id.includes("react")) return "react-vendor";
             if (id.includes("@supabase") || id.includes("supabase")) return "supabase";
             if (id.includes("@tanstack")) return "tanstack";
-            if (id.includes("lucide-react")) return "lucide";
-            if (id.includes("zod") || id.includes("react-hook-form")) return "forms";
+            // Everything else (React, radix, router, lucide, forms, etc.)
+            // stays in one vendor chunk to avoid React load-order crashes
             return "vendor";
           }
           if (id.includes("src/data/")) return "site-data";
