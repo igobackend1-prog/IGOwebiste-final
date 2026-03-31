@@ -80,12 +80,23 @@ const ScrollToTop = () => {
   return null;
 };
 
+// ─── Layout wrapper — hides Navbar/Footer/Chatbot on admin routes ─────────────
+const SiteLayout = ({ children }: { children: React.ReactNode }) => {
+  const { pathname } = useLocation();
+  const isAdmin = pathname.startsWith("/admin") || pathname.startsWith("/ads");
+  return (
+    <>
+      {!isAdmin && <Navbar />}
+      <ErrorBoundary>
+        <main className="min-h-screen relative z-10">{children}</main>
+      </ErrorBoundary>
+      {!isAdmin && <Footer />}
+      {!isAdmin && <Chatbot />}
+    </>
+  );
+};
+
 // ─── AppRoutes ────────────────────────────────────────────────────────────────
-// AnimatePresence wraps a motion.div (not Routes itself).
-// The motion.div carries the key so Framer Motion animates it in/out.
-// Routes stays stable — no blank-page unmount gap.
-// initial={false} on AnimatePresence prevents the entrance animation
-// on first render (page reload), so there is no blank flash on reload.
 const AppRoutes = () => {
   const location = useLocation();
   return (
@@ -146,14 +157,9 @@ const App = () => (
           <Sonner />
           <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
             <ScrollToTop />
-            <Navbar />
-            <ErrorBoundary>
-              <main className="min-h-screen relative z-10">
-                <AppRoutes />
-              </main>
-            </ErrorBoundary>
-            <Footer />
-            <Chatbot />
+            <SiteLayout>
+              <AppRoutes />
+            </SiteLayout>
           </BrowserRouter>
         </AuthProvider>
       </TooltipProvider>
