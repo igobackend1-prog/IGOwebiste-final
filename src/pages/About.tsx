@@ -248,18 +248,39 @@ const About = () => (
           <h2 className="text-4xl md:text-5xl font-serif text-agri-earth-900">What Drives Us</h2>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-6">
-          {/* Mission */}
+        <div className="grid md:grid-cols-[3fr_2fr] gap-6 items-stretch">
+          {/* Vision — primary / wider card */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="relative bg-agri-green-900 rounded-[2rem] p-10 overflow-hidden"
+            className="relative bg-white rounded-[2rem] p-12 border border-agri-green-800/10 overflow-hidden shadow-sm h-full flex flex-col"
+          >
+            <div className="absolute top-0 right-0 w-64 h-64 bg-agri-green-800/3 rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+            <div className="relative z-10 flex flex-col flex-1">
+              <div className="inline-flex items-center gap-2 mb-8">
+                <div className="w-9 h-9 rounded-full bg-agri-green-800/10 border border-agri-green-800/20 flex items-center justify-center">
+                  <span className="text-agri-green-800 text-[11px] font-black">V</span>
+                </div>
+                <span className="text-agri-green-800 font-bold text-[10px] uppercase tracking-[0.3em]">Vision</span>
+              </div>
+              <h3 className="text-3xl md:text-4xl font-serif text-agri-earth-900 mb-6 leading-snug">Our Vision</h3>
+              <p className="text-black/65 text-xl md:text-2xl leading-relaxed font-light flex-1">{companyInfo.vision}</p>
+            </div>
+          </motion.div>
+
+          {/* Mission — fills remaining height on the right */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+            className="relative bg-agri-green-900 rounded-[2rem] p-10 overflow-hidden h-full flex flex-col"
           >
             <div className="absolute top-0 right-0 w-48 h-48 bg-agri-gold-500/5 rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none" />
             <div className="absolute bottom-0 left-0 w-32 h-32 bg-agri-green-800 rounded-full translate-y-1/2 -translate-x-1/2 pointer-events-none" />
-            <div className="relative z-10">
+            <div className="relative z-10 flex flex-col flex-1">
               <div className="inline-flex items-center gap-2 mb-6">
                 <div className="w-8 h-8 rounded-full bg-agri-gold-500/20 border border-agri-gold-500/30 flex items-center justify-center">
                   <span className="text-agri-gold-500 text-[10px] font-black">M</span>
@@ -267,28 +288,7 @@ const About = () => (
                 <span className="text-agri-gold-500 font-bold text-[10px] uppercase tracking-[0.3em]">Mission</span>
               </div>
               <h3 className="text-2xl font-serif text-white mb-5 leading-snug">Our Mission</h3>
-              <p className="text-white/60 text-base leading-relaxed font-light">{companyInfo.mission}</p>
-            </div>
-          </motion.div>
-
-          {/* Vision */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.1 }}
-            className="relative bg-white rounded-[2rem] p-10 border border-agri-green-800/10 overflow-hidden shadow-sm"
-          >
-            <div className="absolute top-0 right-0 w-48 h-48 bg-agri-green-800/3 rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none" />
-            <div className="relative z-10">
-              <div className="inline-flex items-center gap-2 mb-6">
-                <div className="w-8 h-8 rounded-full bg-agri-green-800/10 border border-agri-green-800/20 flex items-center justify-center">
-                  <span className="text-agri-green-800 text-[10px] font-black">V</span>
-                </div>
-                <span className="text-agri-green-800 font-bold text-[10px] uppercase tracking-[0.3em]">Vision</span>
-              </div>
-              <h3 className="text-2xl font-serif text-agri-earth-900 mb-5 leading-snug">Our Vision</h3>
-              <p className="text-black/55 text-base leading-relaxed font-light">{companyInfo.vision}</p>
+              <p className="text-white/70 text-base leading-relaxed font-light flex-1">{companyInfo.mission}</p>
             </div>
           </motion.div>
         </div>

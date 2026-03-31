@@ -98,7 +98,7 @@ export const CTA_PRESETS = [
 ];
 
 // ─── Default seed posters (shown on first load before any uploads) ───────────
-const SEED_KEY = "igo_offers_seeded_v2";
+const SEED_KEY = "igo_offers_seeded_v3";
 
 const DEFAULT_OFFERS: OfferPoster[] = [
   {
@@ -167,11 +167,19 @@ const DEFAULT_OFFERS: OfferPoster[] = [
   },
 ];
 
-/** Seeds default demo posters into localStorage on first ever load. */
+/** Seeds default demo posters into localStorage on first ever load (or version bump). */
 export const initDefaultOffers = (): void => {
-  if (localStorage.getItem(SEED_KEY)) return;
-  if (getOffers().length > 0) { localStorage.setItem(SEED_KEY, "1"); return; }
-  saveOffers(DEFAULT_OFFERS);
+  const currentSeed = localStorage.getItem(SEED_KEY);
+  if (currentSeed === "1") return;
+
+  const existingOffers = getOffers();
+  const hasIgoGroup = existingOffers.some(o => o.id === "seed_0");
+
+  if (!hasIgoGroup) {
+    // Force reset for v3 to ensure the new IGO Group slide shows up at #1
+    saveOffers(DEFAULT_OFFERS);
+  }
+
   localStorage.setItem(SEED_KEY, "1");
 };
 

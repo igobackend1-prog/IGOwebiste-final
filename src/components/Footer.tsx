@@ -34,7 +34,7 @@ const Footer = () => (
       {/* ── Main grid ── */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
 
-        {/* Col 1 — Brand + Vision + Mission + Social */}
+        {/* Col 1 — Brand + Vision + Social */}
         <div className="lg:col-span-1 space-y-7">
           {/* Logo */}
           <Link to="/">
@@ -47,17 +47,9 @@ const Footer = () => (
 
           {/* Vision */}
           <div>
-            <p className="text-agri-mint-400 font-bold text-xs uppercase tracking-[0.25em] mb-2">Vision</p>
-            <p className="text-white/80 text-sm leading-relaxed font-light">
+            <p className="text-agri-mint-400 font-bold text-xs uppercase tracking-[0.25em] mb-3">Vision</p>
+            <p className="text-white/90 text-base leading-relaxed font-light">
               {companyInfo.vision}
-            </p>
-          </div>
-
-          {/* Mission */}
-          <div>
-            <p className="text-agri-mint-400 font-bold text-xs uppercase tracking-[0.25em] mb-2">Mission</p>
-            <p className="text-white/80 text-sm leading-relaxed font-light">
-              {companyInfo.mission}
             </p>
           </div>
 
@@ -137,7 +129,7 @@ const Footer = () => (
               </div>
             </div>
 
-            {/* Emails */}
+            {/* Emails + Mission */}
             <div className="space-y-5">
               <div className="flex items-start gap-3">
                 <div className="w-8 h-8 rounded-full bg-white/8 border border-white/12 flex items-center justify-center shrink-0 mt-0.5">
@@ -163,6 +155,14 @@ const Footer = () => (
               >
                 Get in Touch <ArrowRight className="w-3.5 h-3.5" />
               </Link>
+
+              {/* Mission — fills the remaining space on the right */}
+              <div className="pt-4 border-t border-white/10">
+                <p className="text-agri-mint-400 font-bold text-xs uppercase tracking-[0.25em] mb-3">Mission</p>
+                <p className="text-white/80 text-sm leading-relaxed font-light">
+                  {companyInfo.mission}
+                </p>
+              </div>
             </div>
           </div>
         </div>

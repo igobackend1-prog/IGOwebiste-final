@@ -872,7 +872,6 @@ const BrandsSection = () => {
 
   return (
     <section className="py-40 bg-slate-100 overflow-hidden border-t border-black/5 content-defer relative">
-      <div className="absolute inset-0 opacity-[0.015] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
 
       <div className="container mx-auto px-6 text-center mb-16 relative z-10">
         <motion.div
