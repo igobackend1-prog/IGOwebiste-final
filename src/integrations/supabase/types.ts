@@ -122,6 +122,105 @@ export type Database = {
         }
         Relationships: []
       }
+      agri_startup_programs: {
+        Row: {
+          id: string
+          title: string
+          tagline: string | null
+          description: string | null
+          cover_url: string | null
+          image_position: string
+          content_position: string
+          icon: string | null
+          color: string
+          status: string
+          sort_order: number
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          title: string
+          tagline?: string | null
+          description?: string | null
+          cover_url?: string | null
+          image_position?: string
+          content_position?: string
+          icon?: string | null
+          color?: string
+          status?: string
+          sort_order?: number
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          title?: string
+          tagline?: string | null
+          description?: string | null
+          cover_url?: string | null
+          image_position?: string
+          content_position?: string
+          icon?: string | null
+          color?: string
+          status?: string
+          sort_order?: number
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      academy_courses: {
+        Row: {
+          id: string
+          title: string
+          slug: string
+          description: string | null
+          full_content: string | null
+          cover_url: string | null
+          image_position: string
+          content_position: string
+          duration: string | null
+          price_label: string | null
+          category: string
+          status: string
+          sort_order: number
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          title: string
+          slug: string
+          description?: string | null
+          full_content?: string | null
+          cover_url?: string | null
+          image_position?: string
+          content_position?: string
+          duration?: string | null
+          price_label?: string | null
+          category?: string
+          status?: string
+          sort_order?: number
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          title?: string
+          slug?: string
+          description?: string | null
+          full_content?: string | null
+          cover_url?: string | null
+          image_position?: string
+          content_position?: string
+          duration?: string | null
+          price_label?: string | null
+          category?: string
+          status?: string
+          sort_order?: number
+          created_at?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

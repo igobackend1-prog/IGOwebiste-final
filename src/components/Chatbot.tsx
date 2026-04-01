@@ -318,7 +318,7 @@ const Chatbot = () => {
       {/* ── Floating Toggle Button ── */}
       <motion.button
         onClick={() => setOpen((v) => !v)}
-        className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-agri-green-800 shadow-2xl shadow-agri-green-800/40 flex items-center justify-center text-white"
+        className="fixed bottom-6 right-4 sm:right-6 z-50 w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-agri-green-800 shadow-2xl shadow-agri-green-800/40 flex items-center justify-center text-white"
         whileHover={{ scale: 1.08 }}
         whileTap={{ scale: 0.93 }}
         aria-label="Toggle chat"
@@ -365,8 +365,8 @@ const Chatbot = () => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 24, scale: 0.96 }}
             transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed bottom-24 right-6 z-50 w-[370px] flex flex-col rounded-[1.75rem] overflow-hidden shadow-2xl border border-black/8"
-            style={{ maxHeight: "calc(100vh - 140px)" }}
+            className="fixed bottom-24 right-3 sm:right-6 z-50 w-[calc(100%-1.5rem)] sm:w-[370px] max-w-[calc(100%-1.5rem)] flex flex-col rounded-[1.75rem] overflow-hidden shadow-2xl border border-black/8"
+            style={{ maxHeight: "calc(100dvh - 140px)" }}
           >
             {/* ── Header ── */}
             <div className="bg-agri-green-800 px-5 py-4 flex items-center gap-3 shrink-0">

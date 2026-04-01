@@ -137,7 +137,7 @@ const IndiaPresence = () => {
       <div className="absolute top-0 right-0 w-[50rem] h-[50rem] bg-agri-green-900/[0.03] rounded-full blur-[12rem] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
 
       <div className="container mx-auto px-4 md:px-8 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-20 lg:gap-32 items-start">
+        <div className="grid lg:grid-cols-2 gap-12 md:gap-20 lg:gap-32 items-start">
 
           {/* ──────── LEFT: Map Visualization ──────── */}
           <motion.div
@@ -202,7 +202,7 @@ const IndiaPresence = () => {
               whileInView={{ opacity: 1, x: 0, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.6, type: "spring", stiffness: 90 }}
-              className="absolute -bottom-12 -right-6 md:-bottom-20 md:-right-16 bg-agri-earth-900/98 backdrop-blur-3xl p-12 rounded-[4rem] shadow-[0_60px_120px_-25px_rgba(0,0,0,0.8)] border border-white/15 max-w-[360px] z-[70] group/badge transition-all duration-700 hover:-translate-y-4 hover:rotate-1"
+              className="relative mt-6 md:absolute md:-bottom-20 md:-right-16 bg-agri-earth-900/98 backdrop-blur-3xl p-6 sm:p-8 md:p-12 rounded-[2rem] md:rounded-[4rem] shadow-[0_60px_120px_-25px_rgba(0,0,0,0.8)] border border-white/15 max-w-full md:max-w-[360px] z-[70] group/badge transition-all duration-700 hover:-translate-y-4 hover:rotate-1"
             >
               <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-transparent via-agri-gold-500/80 to-transparent" />
               
@@ -223,7 +223,7 @@ const IndiaPresence = () => {
           </motion.div>
 
           {/* ──────── RIGHT: Content & Stats ──────── */}
-          <div className="pl-0 xl:pl-16">
+          <div className="pl-0 lg:pl-8 xl:pl-16">
             <motion.div
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -235,11 +235,11 @@ const IndiaPresence = () => {
                 <div className="w-20 h-px bg-agri-gold-500/50" />
                 GLOBAL FOOTPRINT
               </div>
-              <h2 className="text-7xl md:text-9xl font-serif text-agri-earth-900 leading-[0.9] mb-12 tracking-tighter">
+              <h2 className="text-4xl sm:text-5xl md:text-7xl lg:text-9xl font-serif text-agri-earth-900 leading-[0.9] mb-8 md:mb-12 tracking-tighter">
                 Cultivating <br />
                 <span className="italic text-agri-green-800 font-light drop-shadow-sm">Bharat's Vision.</span>
               </h2>
-              <p className="text-2xl text-agri-earth-900/65 font-medium max-w-2xl leading-[1.6]">
+              <p className="text-lg sm:text-xl md:text-2xl text-agri-earth-900/65 font-medium max-w-2xl leading-[1.6]">
                 From climate-controlled engineering in the North to precision aquaculture in the South,
                 IGO is driving India's agricultural sovereignty with <span className="text-agri-green-800 underline decoration-agri-gold-500/40 underline-offset-[12px] font-black">industrial-grade engineering</span>.
               </p>
@@ -268,7 +268,7 @@ const IndiaPresence = () => {
                     <div className="text-[10px] font-black uppercase tracking-[0.25em] text-agri-gold-600 mb-2">
                        {stat.sublabel}
                     </div>
-                    <div className="text-5xl md:text-6xl font-black text-agri-earth-900 mb-2 group-hover:text-agri-green-800 transition-all duration-500 tracking-tighter leading-none">
+                    <div className="text-3xl sm:text-5xl md:text-6xl font-black text-agri-earth-900 mb-2 group-hover:text-agri-green-800 transition-all duration-500 tracking-tighter leading-none">
                       {stat.value}
                     </div>
                     <div className="text-[11px] md:text-sm font-black uppercase tracking-[0.2em] text-agri-earth-900/35 group-hover:text-agri-earth-900/80 transition-colors">
@@ -285,7 +285,7 @@ const IndiaPresence = () => {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 1.4 }}
-              className="mt-20 flex flex-col md:flex-row items-center gap-12 p-12 bg-agri-earth-900/5 backdrop-blur-3xl rounded-[4rem] border border-black/[0.04] shadow-inner"
+              className="mt-12 md:mt-20 flex flex-col md:flex-row items-center gap-8 md:gap-12 p-6 sm:p-8 md:p-12 bg-agri-earth-900/5 backdrop-blur-3xl rounded-[2rem] md:rounded-[4rem] border border-black/[0.04] shadow-inner"
             >
               <div className="flex -space-x-7">
                 {[52, 53, 54, 55, 56].map((i) => (

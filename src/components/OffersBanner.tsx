@@ -145,7 +145,7 @@ const Slide = ({
         <div className="absolute inset-0 flex items-end pointer-events-none z-20">
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
 
-          <div className={`relative z-10 pointer-events-auto pb-16 ${heroMode ? "px-10 md:px-20" : "px-8 md:px-14"}`}>
+          <div className={`relative z-10 pointer-events-auto pb-12 sm:pb-16 ${heroMode ? "px-4 sm:px-10 md:px-20" : "px-4 sm:px-8 md:px-14"}`}>
             <div className="space-y-2.5 max-w-xl">
 
               {poster.badge && (
@@ -165,7 +165,7 @@ const Slide = ({
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.35, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
                   className="text-white font-black leading-tight drop-shadow-xl"
-                  style={{ fontSize: heroMode ? "clamp(1.8rem, 3.5vw, 3.2rem)" : "clamp(1.2rem, 2.5vw, 2rem)" }}
+                  style={{ fontSize: heroMode ? "clamp(1.4rem, 3.5vw, 3.2rem)" : "clamp(1rem, 2.5vw, 2rem)" }}
                 >
                   {poster.title}
                 </motion.h2>
@@ -220,7 +220,7 @@ const Slide = ({
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5 }}
-            className={`absolute z-20 pointer-events-auto ${heroMode ? "bottom-16 left-10 md:left-20" : "bottom-12 left-8 md:left-12"}`}
+            className={`absolute z-20 pointer-events-auto ${heroMode ? "bottom-12 sm:bottom-16 left-4 sm:left-10 md:left-20" : "bottom-8 sm:bottom-12 left-4 sm:left-8 md:left-12"}`}
           >
             <Link
               to={poster.ctaLink || "/contact"}
@@ -332,7 +332,7 @@ const OffersBanner = ({ heroMode = false }: OffersBannerProps) => {
       )}
 
       {/* ── Dot indicators + counter + view-all ── */}
-      <div className={`absolute left-0 right-0 z-30 flex items-center justify-between ${heroMode ? "bottom-6 px-8 md:px-14" : "bottom-3 px-5 md:px-12"}`}>
+      <div className={`absolute left-0 right-0 z-30 flex items-center justify-between ${heroMode ? "bottom-4 sm:bottom-6 px-4 sm:px-8 md:px-14" : "bottom-3 px-3 sm:px-5 md:px-12"}`}>
         <div className="flex items-center gap-2">
           {posters.map((_, i) => (
             <motion.button

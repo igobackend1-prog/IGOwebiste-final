@@ -1423,18 +1423,57 @@ const AdminDashboard = () => {
           </div>
 
           {/* Nav */}
-          <nav className="flex-1 px-3 py-4 space-y-1 overflow-y-auto">
+          <nav className="flex-1 px-3 py-4 space-y-2 overflow-y-auto overflow-x-hidden pb-10">
             {navItems.map(item => {
               const active = activeSection === item.id;
               return (
                 <button key={item.id} onClick={() => { setActiveSection(item.id); setSidebarOpen(false); }}
-                  className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-left transition-all ${active ? "bg-white/15 text-white shadow-sm" : "text-white/50 hover:text-white/80 hover:bg-white/5"}`}>
-                  <div className={`w-8 h-8 rounded-lg flex items-center justify-center transition-all ${active ? "shadow-lg" : "opacity-60"}`}
-                    style={{ backgroundColor: active ? item.color + "30" : "transparent" }}>
-                    <item.icon className="w-4 h-4" style={{ color: active ? item.color : "currentColor" }} />
+                  className={`group relative w-full flex items-center gap-3 px-4 py-3 rounded-xl text-left transition-colors duration-300 ${active ? "text-white" : "text-white/50 hover:text-white/90 hover:bg-white/5"}`}>
+
+                  {/* Liquid Sliding Active Background */}
+                  {active && (
+                    <motion.div
+                      layoutId="activeSidebarTabBackground"
+                      className="absolute inset-0 rounded-xl"
+                      initial={false}
+                      transition={{ type: "spring", stiffness: 350, damping: 30 }}
+                      style={{ 
+                        backgroundColor: `${item.color}20`, 
+                        border: `1px solid ${item.color}40`,
+                        boxShadow: `0 0 15px ${item.color}15`
+                      }}
+                    />
+                  )}
+
+                  <div className={`relative z-10 w-9 h-9 rounded-lg flex items-center justify-center transition-all duration-300 ${active ? "shadow-lg scale-110" : "opacity-60 group-hover:scale-110 group-hover:opacity-100"}`}
+                    style={{ backgroundColor: active ? item.color + "40" : "transparent" }}>
+                    
+                    {/* Animated Icon */}
+                    <motion.div
+                      animate={active ? {
+                        rotate: [0, -12, 12, -12, 12, 0],
+                        scale: [1, 1.25, 1]
+                      } : {
+                        rotate: 0, scale: 1
+                      }}
+                      transition={{ duration: 0.5, ease: "easeInOut" }}
+                    >
+                      <item.icon className="w-5 h-5" style={{ color: active ? item.color : "currentColor" }} strokeWidth={active ? 2.5 : 2} />
+                    </motion.div>
                   </div>
-                  <span className={`text-sm font-semibold ${active ? "text-white" : ""}`}>{item.label}</span>
-                  {active && <ChevronRight className="w-3.5 h-3.5 ml-auto text-white/40" />}
+                  
+                  <span className={`relative z-10 text-sm tracking-wide transition-all duration-300 ${active ? "font-bold text-white translate-x-1" : "font-medium"}`}>{item.label}</span>
+                  
+                  {active && (
+                    <motion.div 
+                      className="relative z-10 ml-auto"
+                      initial={{ opacity: 0, x: -10 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <ChevronRight className="w-4 h-4 text-white/60" />
+                    </motion.div>
+                  )}
                 </button>
               );
             })}
@@ -1478,9 +1517,15 @@ const AdminDashboard = () => {
         </header>
 
         {/* Content */}
-        <main className="flex-1 p-6">
+        <main className="flex-1 p-6 overflow-hidden">
           <AnimatePresence mode="wait">
-            <motion.div key={activeSection} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.2 }}>
+            <motion.div 
+              key={activeSection} 
+              initial={{ opacity: 0, x: -30, scale: 0.98 }} 
+              animate={{ opacity: 1, x: 0, scale: 1 }} 
+              exit={{ opacity: 0, x: 20, scale: 0.98 }} 
+              transition={{ type: "spring", stiffness: 260, damping: 20 }}
+            >
               {sectionComponents[activeSection]}
             </motion.div>
           </AnimatePresence>

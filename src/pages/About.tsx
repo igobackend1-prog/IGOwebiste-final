@@ -85,13 +85,13 @@ const About = () => (
           <motion.div variants={fader} className="flex flex-wrap justify-center gap-4">
             <Link
               to="/contact"
-              className="inline-flex items-center gap-3 px-10 py-4 bg-agri-gold-500 text-white text-[10px] font-bold rounded-full uppercase tracking-widest hover:bg-white hover:text-agri-green-800 transition-all shadow-2xl shadow-agri-gold-500/30"
+              className="inline-flex items-center gap-3 px-6 sm:px-10 py-3 sm:py-4 bg-agri-gold-500 text-white text-[10px] font-bold rounded-full uppercase tracking-widest hover:bg-white hover:text-agri-green-800 transition-all shadow-2xl shadow-agri-gold-500/30"
             >
               Start Your Project <ArrowRight className="w-4 h-4" />
             </Link>
             <Link
               to="/projects"
-              className="inline-flex items-center gap-3 px-10 py-4 bg-white/10 backdrop-blur-sm border border-white/20 text-white text-[10px] font-bold rounded-full uppercase tracking-widest hover:bg-white/20 transition-all"
+              className="inline-flex items-center gap-3 px-6 sm:px-10 py-3 sm:py-4 bg-white/10 backdrop-blur-sm border border-white/20 text-white text-[10px] font-bold rounded-full uppercase tracking-widest hover:bg-white/20 transition-all"
             >
               View Our Work
             </Link>
@@ -552,7 +552,7 @@ const About = () => (
           <div className="shrink-0">
             <Link
               to="/igo-groups"
-              className="inline-flex items-center gap-3 px-10 py-4 bg-agri-green-800 text-white text-[10px] font-bold rounded-full uppercase tracking-widest hover:bg-black transition-all shadow-xl shadow-agri-green-800/20 group whitespace-nowrap"
+              className="inline-flex items-center gap-3 px-6 sm:px-10 py-3 sm:py-4 bg-agri-green-800 text-white text-[10px] font-bold rounded-full uppercase tracking-widest hover:bg-black transition-all shadow-xl shadow-agri-green-800/20 group whitespace-nowrap"
             >
               Explore Our Brands <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>

@@ -21,16 +21,16 @@ const StartupPlatform = () => (
         className="max-w-4xl"
       >
         <motion.p variants={fader} className="text-luxury mb-8 text-primary">Venture Architecture</motion.p>
-        <motion.h1 variants={fader} className="text-8xl leading-[0.95] tracking-tight mb-12">
+        <motion.h1 variants={fader} className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl leading-[0.95] tracking-tight mb-8 md:mb-12">
           Agri Startup <br /> Platform.
         </motion.h1>
-        <motion.p variants={fader} className="text-black/50 text-2xl leading-relaxed max-w-2xl font-light">
+        <motion.p variants={fader} className="text-black/50 text-lg sm:text-xl md:text-2xl leading-relaxed max-w-2xl font-light">
           We empower the next generation of agri-entrepreneurs with modular technology, institutional capital, and strategic domain expertise.
         </motion.p>
       </motion.div>
     </section>
 
-    <section className="py-40 bg-agri-earth-100">
+    <section className="py-20 md:py-40 bg-agri-earth-100">
       <div className="container mx-auto px-6">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
           {[
@@ -49,10 +49,10 @@ const StartupPlatform = () => (
       </div>
     </section>
 
-    <section className="py-64 bg-white text-center">
+    <section className="py-24 md:py-40 lg:py-64 bg-white text-center">
       <div className="container mx-auto px-6">
-        <h2 className="text-7xl mb-12 tracking-tight">Begin your <br /> legacy today.</h2>
-        <Link to="/contact" className="px-16 py-5 bg-black text-white text-xs font-semibold rounded-full hover:opacity-90 transition-opacity uppercase tracking-widest">
+        <h2 className="text-3xl sm:text-5xl md:text-7xl mb-8 md:mb-12 tracking-tight">Begin your <br className="hidden sm:block" /> legacy today.</h2>
+        <Link to="/contact" className="px-8 sm:px-12 md:px-16 py-3 sm:py-4 md:py-5 bg-black text-white text-xs font-semibold rounded-full hover:opacity-90 transition-opacity uppercase tracking-widest">
           Join the Platform
         </Link>
       </div>

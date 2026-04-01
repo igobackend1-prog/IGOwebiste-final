@@ -4,18 +4,29 @@
  * Shared email utility for all IGO Agritech website forms.
  * Uses Formsubmit.co — free, unlimited, zero API key required.
  *
- * FIRST-TIME SETUP (one time only):
+ * FIRST-TIME SETUP (one time per email address):
  *   1. Submit any form on the website once.
- *   2. Check bankingbackend.indiagreen@gmail.com for a verification email from Formsubmit.
+ *   2. Check the target inbox for a verification email from Formsubmit.
  *   3. Click "Activate Form" in that email.
- *   4. Done — all future submissions arrive automatically.
+ *   4. Done — all future submissions to that address arrive automatically.
+ *
+ * Email routing:
+ *   Contact / Project Enquiry  → bd2@igogroups.com           (BD Team)
+ *   Career Application         → hr.admin@igogroups.com      (HR Team)
+ *   IGO Academy Enrollment     → igotnskills@gmail.com       (Academy Team)
+ *   Agri Startup Enquiry       → bankingbackend.indiagreen@gmail.com (Startup Cell)
  *
  * Formsubmit AJAX docs: https://formsubmit.co/ajax-documentation
  * ─────────────────────────────────────────────────────────────────────────────
  */
 
-const RECIPIENT_EMAIL = "bankingbackend.indiagreen@gmail.com";
-const FORMSUBMIT_ENDPOINT = `https://formsubmit.co/ajax/${RECIPIENT_EMAIL}`;
+// Per-form recipient routing
+const FORM_RECIPIENTS: Record<string, string> = {
+  "Contact Enquiry":       "bd2@igogroups.com",
+  "Career Application":    "hr.admin@igogroups.com",
+  "IGO Academy Enrollment":"igotnskills@gmail.com",
+  "Agri Startup Enquiry":  "bankingbackend.indiagreen@gmail.com",
+};
 
 export type FormType =
   | "Contact Enquiry"
@@ -47,7 +58,10 @@ export async function sendFormEmail(payload: EmailPayload): Promise<{ success: b
     const subject = buildSubject(payload);
     const messageBody = buildMessageBody(payload);
 
-    const response = await fetch(FORMSUBMIT_ENDPOINT, {
+    const recipientEmail = FORM_RECIPIENTS[payload.formType] ?? "bankingbackend.indiagreen@gmail.com";
+    const endpoint = `https://formsubmit.co/ajax/${recipientEmail}`;
+
+    const response = await fetch(endpoint, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

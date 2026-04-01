@@ -29,7 +29,7 @@ const Footer = () => (
     {/* Subtle glow */}
     <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[200px] bg-primary/8 blur-[120px] rounded-full pointer-events-none" />
 
-    <div className="container mx-auto px-6 relative z-10">
+    <div className="container mx-auto px-4 sm:px-6 relative z-10">
 
       {/* ── Main grid ── */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
@@ -174,7 +174,7 @@ const Footer = () => (
         <p className="text-white/40 text-[10px] font-bold uppercase tracking-widest">
           © {new Date().getFullYear()} {companyInfo.name}. All Rights Reserved.
         </p>
-        <div className="flex gap-8 text-[10px] font-bold uppercase tracking-[0.2em] text-white/40">
+        <div className="flex flex-wrap justify-center sm:justify-end gap-4 sm:gap-8 text-[10px] font-bold uppercase tracking-[0.2em] text-white/40">
           <Link to="/privacy" className="hover:text-white/70 transition-colors">Privacy Policy</Link>
           <Link to="/terms" className="hover:text-white/70 transition-colors">Terms of Use</Link>
           <Link to="/ads/login" className="hover:text-white/50 transition-colors">Advertising Portal</Link>

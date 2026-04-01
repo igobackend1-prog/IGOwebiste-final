@@ -53,8 +53,18 @@ const HeroSection = () => {
   }, [current]);
 
   // Navbar scales: h-[72px] mobile → h-[80px] lg → h-[88px] xl.
-  // Use 88 so poster always clears the bar on all screen sizes.
-  const NAVBAR_H = 88;
+  // Detect current navbar height based on screen width for responsive layout.
+  const [navH, setNavH] = useState(72);
+  useEffect(() => {
+    const update = () => {
+      const w = window.innerWidth;
+      setNavH(w >= 1280 ? 88 : w >= 1024 ? 80 : 72);
+    };
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
+  const NAVBAR_H = navH;
 
   return (
     <section
@@ -117,7 +127,7 @@ const HeroSection = () => {
           <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/50 pointer-events-none z-[1]" />
 
           {/* Hero text */}
-          <div className="container mx-auto px-6 relative z-10 text-center">
+          <div className="container mx-auto px-4 sm:px-6 relative z-10 text-center">
             <motion.div
               initial="hidden"
               animate="show"
@@ -130,14 +140,14 @@ const HeroSection = () => {
               >
                 India's Leading Agri Engineering & Agri Consulting Brand
               </motion.p>
-              <motion.h1 variants={fader} className="text-white mb-10 tracking-tight leading-[0.95] text-3xl sm:text-5xl md:text-7xl font-black">
+              <motion.h1 variants={fader} className="text-white mb-6 sm:mb-10 tracking-tight leading-[0.95] text-2xl sm:text-4xl md:text-5xl lg:text-7xl font-black">
                 Building Profitable Smart Farms <br className="hidden sm:block" /> Across India.
               </motion.h1>
               <motion.div variants={fader} className="flex flex-wrap justify-center gap-4">
-                <Link to="/projects" className="px-8 sm:px-12 py-3 sm:py-4 bg-white text-black text-xs font-semibold rounded-full hover:bg-white/90 transition-all uppercase tracking-widest">
+                <Link to="/projects" className="px-6 sm:px-8 md:px-12 py-2.5 sm:py-3 md:py-4 bg-white text-black text-[10px] sm:text-xs font-semibold rounded-full hover:bg-white/90 transition-all uppercase tracking-wider sm:tracking-widest">
                   View Projects
                 </Link>
-                <Link to="/contact" className="px-8 sm:px-12 py-3 sm:py-4 bg-transparent border border-white/30 text-white text-xs font-semibold rounded-full hover:bg-white hover:text-black transition-all uppercase tracking-widest">
+                <Link to="/contact" className="px-6 sm:px-8 md:px-12 py-2.5 sm:py-3 md:py-4 bg-transparent border border-white/30 text-white text-[10px] sm:text-xs font-semibold rounded-full hover:bg-white hover:text-black transition-all uppercase tracking-wider sm:tracking-widest">
                   Contact
                 </Link>
               </motion.div>
@@ -249,8 +259,8 @@ const MiniStatCard = ({ value, label }: { value: string; label: string }) => {
 const WhyChooseSection = () => (
   <section className="py-24 bg-white">
     <TickerBanner />
-    <div className="container mx-auto px-6 mt-24">
-      <div className="grid lg:grid-cols-2 gap-16 items-center">
+    <div className="container mx-auto px-4 sm:px-6 mt-16 md:mt-24">
+      <div className="grid md:grid-cols-2 gap-10 md:gap-12 lg:gap-16 items-center">
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -359,7 +369,7 @@ const VisionSection = () => (
       </motion.div>
 
       {/* ── Vision / Mission Split ── */}
-      <div className="grid lg:grid-cols-2 gap-6 mb-10">
+      <div className="grid md:grid-cols-2 gap-6 mb-10">
 
         {/* Vision Card — dark green */}
         <motion.div
@@ -491,8 +501,8 @@ const ProjectGallerySection = () => {
   ];
 
   return (
-    <section className="py-24 bg-agri-earth-25 overflow-hidden relative content-defer">
-      <div className="container mx-auto px-6 relative z-10">
+    <section className="py-16 md:py-24 bg-agri-earth-25 overflow-hidden relative content-defer">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -522,7 +532,7 @@ const ProjectGallerySection = () => {
               viewport={{ once: true }}
               whileHover={{ y: -5 }}
               onClick={() => navigate(p.href)}
-              className={`group relative ${p.bg} ${p.hoverBg} rounded-[2rem] p-8 min-h-[480px] flex flex-col border border-black/5 hover:border-primary/20 transition-all hover:shadow-[0_20px_40px_rgba(0,0,0,0.05)] cursor-pointer overflow-hidden`}
+              className={`group relative ${p.bg} ${p.hoverBg} rounded-[2rem] p-6 sm:p-8 min-h-[360px] sm:min-h-[420px] md:min-h-[480px] flex flex-col border border-black/5 hover:border-primary/20 transition-all hover:shadow-[0_20px_40px_rgba(0,0,0,0.05)] cursor-pointer overflow-hidden`}
             >
               <div className="text-xl font-bold text-black/20 mb-6 tracking-widest">{p.id}</div>
               <div className="max-w-[80%] relative z-10">
@@ -563,8 +573,8 @@ const FeatureSection = () => {
   const serviceLinks = navLinks.find(l => l.label === "Services")?.children || [];
 
   return (
-    <section className="py-32 bg-agri-earth-100 overflow-hidden selection:bg-agri-green-50 selection:text-agri-green-800 content-defer">
-      <div className="container mx-auto px-6">
+    <section className="py-20 md:py-32 bg-agri-earth-100 overflow-hidden selection:bg-agri-green-50 selection:text-agri-green-800 content-defer">
+      <div className="container mx-auto px-4 sm:px-6">
         <div className="flex flex-col items-center text-center mb-24">
           <div className="flex items-center gap-4 text-agri-gold-500 font-bold text-[10px] sm:text-xs uppercase tracking-[0.3em] mb-6">
             <div className="w-8 sm:w-12 h-[1px] bg-agri-gold-500" />
@@ -589,7 +599,7 @@ const FeatureSection = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 whileHover={{ y: -5 }}
-                className="group relative bg-white rounded-[2rem] p-8 md:p-10 min-h-[460px] md:min-h-[550px] flex flex-col border border-black/5 hover:border-agri-gold-500/20 transition-all hover:shadow-[0_40px_80px_rgba(0,0,0,0.06)] cursor-pointer overflow-hidden"
+                className="group relative bg-white rounded-[2rem] p-6 sm:p-8 md:p-10 min-h-[380px] sm:min-h-[460px] md:min-h-[550px] flex flex-col border border-black/5 hover:border-agri-gold-500/20 transition-all hover:shadow-[0_40px_80px_rgba(0,0,0,0.06)] cursor-pointer overflow-hidden"
               >
                 <Link to={s.href} className="absolute inset-0 z-20" />
 
@@ -647,8 +657,8 @@ const ProductEcosystem = () => {
   const productLinks = navLinks.find(l => l.label === "Products")?.children || [];
 
   return (
-    <section className="py-40 bg-white overflow-hidden border-t border-black/5 content-defer">
-      <div className="container mx-auto px-6">
+    <section className="py-20 md:py-40 bg-white overflow-hidden border-t border-black/5 content-defer">
+      <div className="container mx-auto px-4 sm:px-6">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-24 gap-8">
           <div className="max-w-2xl">
             <div className="flex items-center gap-4 text-primary font-bold text-[10px] uppercase tracking-[0.3em] mb-6">
@@ -675,7 +685,7 @@ const ProductEcosystem = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="group relative h-[400px] md:h-[500px] rounded-[3rem] overflow-hidden bg-slate-100 border border-black/5 shadow-sm hover:shadow-2xl transition-all duration-700"
+              className="group relative h-[320px] sm:h-[400px] md:h-[500px] rounded-[2rem] sm:rounded-[3rem] overflow-hidden bg-slate-100 border border-black/5 shadow-sm hover:shadow-2xl transition-all duration-700"
             >
               <Link to={cat.href} className="absolute inset-0 z-20" />
               <img
@@ -724,7 +734,7 @@ const EngineeringDNA = () => {
             THE IGO ADVANTAGE
             <div className="w-12 h-px bg-agri-gold-500/30" />
           </div>
-          <h2 className="text-3xl sm:text-5xl md:text-8xl font-serif leading-[1] mb-10 tracking-tight text-agri-earth-900">
+          <h2 className="text-3xl sm:text-5xl md:text-6xl lg:text-8xl font-serif leading-[1] mb-10 tracking-tight text-agri-earth-900">
             Our <span className="text-agri-green-800 italic">Engineering</span> DNA.
           </h2>
           <p className="text-xl text-black/50 font-light max-w-2xl mx-auto leading-relaxed">
@@ -868,7 +878,7 @@ const BrandsSection = () => {
   }, []);
 
   return (
-    <section className="py-40 bg-slate-100 overflow-hidden border-t border-black/5 content-defer relative">
+    <section className="py-20 md:py-40 bg-slate-100 overflow-hidden border-t border-black/5 content-defer relative">
 
       <div className="container mx-auto px-6 text-center mb-16 relative z-10">
         <motion.div

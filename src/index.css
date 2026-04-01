@@ -32,26 +32,37 @@
     --input: 0 0% 89.8%;
     --ring: 0 0% 3.9%;
     
-    --radius: 0.5rem;
+    --radius: 1rem;
     
-    --font-display: 'Inter', sans-serif;
+    --font-display: 'Outfit', sans-serif;
     --font-body: 'Inter', sans-serif;
 
-    /* ── Theme System Colors (also injected via JS, CSS fallbacks) ── */
-    --color-green-800: #1A4231;
-    --color-green-700: #1F4529;
-    --color-green-900: #0D1F15;
-    --color-green-950: #0A1510;
-    --color-green-50:  #E8F5E9;
-    --color-green-25:  #F0FDF4;
+    /* ── Precise IGO Brand Palette 2026 ── */
+    --color-black:      #000000;
+    --color-white:      #FFFFFF;
+    --color-green-800:  #003D2E; /* Deep Premium IGO Green */
+    --color-green-700:  #00523D;
+    --color-green-900:  #00241B;
+    --color-green-950:  #00140F;
+    --color-green-50:   #E6F0EE;
+    --color-green-25:   #F2F7F6;
 
-    --color-gold-500: #C5A03F;
-    --color-mint-400: #6FD898;
+    --color-gold-500:   #C5A059; /* Refined Premium Gold */
+    --color-gold-600:   #A98748;
+    --color-gold-400:   #D4B77C;
+    
+    --color-mint-400:   #6FD898;
 
-    --color-earth-50:  #F4F8F4;
-    --color-earth-100: #F5F5F7;
-    --color-earth-200: #e0ede0;
-    --color-earth-900: #1A1A1A;
+    --color-earth-50:   #F9FAF9;
+    --color-earth-100:  #F5F5F7;
+    --color-earth-200:  #E8EAE8;
+    --color-earth-900:  #0a0a0a;
+
+    --primary:          162 100% 12%; /* Based on green-800 */
+    --primary-foreground: 0 0% 100%;
+    
+    --accent:           40 48% 56%;  /* Based on gold-500 */
+    --accent-foreground: 0 0% 100%;
   }
 }
 
@@ -97,7 +108,7 @@
   }
 
   .text-luxury {
-    @apply tracking-widest uppercase text-[10px] font-semibold text-muted-foreground opacity-60;
+    @apply tracking-widest uppercase text-xs font-semibold text-muted-foreground opacity-60;
   }
 
   /* ── Theme-aware utility classes ── */
@@ -107,21 +118,21 @@
   }
 
   .theme-btn-primary {
-    @apply inline-flex items-center justify-center gap-3 px-10 py-4 
-           bg-agri-green-800 text-white text-[10px] font-bold rounded-full 
-           hover:bg-black transition-all uppercase tracking-[0.2em] 
+    @apply inline-flex items-center justify-center gap-3 px-6 sm:px-10 py-3 sm:py-4
+           bg-agri-green-800 text-white text-xs font-bold rounded-full
+           hover:bg-black transition-all uppercase tracking-[0.2em]
            shadow-lg shadow-agri-green-800/20;
   }
 
   .theme-btn-gold {
-    @apply inline-flex items-center justify-center gap-3 px-10 py-4 
-           bg-agri-gold-500 text-white text-[10px] font-bold rounded-full 
-           hover:bg-white hover:text-agri-green-800 transition-all uppercase tracking-widest 
+    @apply inline-flex items-center justify-center gap-3 px-6 sm:px-10 py-3 sm:py-4
+           bg-agri-gold-500 text-white text-xs font-bold rounded-full
+           hover:bg-white hover:text-agri-green-800 transition-all uppercase tracking-widest
            shadow-xl shadow-agri-gold-500/30;
   }
 
   .theme-section-label {
-    @apply text-agri-gold-500 font-bold text-[10px] sm:text-xs uppercase tracking-[0.3em];
+    @apply text-agri-gold-500 font-bold text-xs uppercase tracking-[0.2em] sm:tracking-[0.3em];
   }
 
   .theme-heading {
@@ -145,16 +156,41 @@
   border-radius: 10px;
 }
 
-/* Scrollbar */
-::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-track { background: hsl(var(--muted)); }
-::-webkit-scrollbar-thumb { background: hsl(var(--primary)); border-radius: 4px; }
+/* Scrollbar Branding */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--color-black); }
+::-webkit-scrollbar-thumb { 
+  background: var(--color-gold-500); 
+  border-radius: 100px;
+  border: 2px solid var(--color-black);
+}
+::-webkit-scrollbar-thumb:hover { background: var(--color-gold-400); }
 
 /* Smooth scroll */
 html { scroll-behavior: smooth; }
 
 /* Prevent horizontal overflow on all pages */
-html, body { overflow-x: hidden; max-width: 100vw; }
+html, body {
+  overflow-x: clip;
+  max-width: 100%;
+}
+
+/* Responsive images globally */
+img, video, svg { max-width: 100%; height: auto; }
+
+/* Safe area support for notched devices */
+@supports(padding: env(safe-area-inset-bottom)) {
+  body {
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+
+/* Ensure all fixed elements respect container width */
+.container {
+  width: 100%;
+}
 
 /* Ticker banner */
 @keyframes ticker {

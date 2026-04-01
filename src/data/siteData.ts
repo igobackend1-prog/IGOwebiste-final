@@ -52,16 +52,16 @@ export const projects = [
   { id: "horticulture", title: "IGO Horticulture Projects", category: "Specialized", image: "/assets/projects/horticulture_enterprise_1773750728597.png", description: "Industrial orchard management and fruit production systems." },
   { id: "microgreens", title: "IGO Microgreens Projects", category: "High-Tech", image: "/assets/projects/microgreens_lab_style_1773750748522.png", description: "Scientific indoor cultivation of nutrient-dense microgreens." },
   { id: "vertical-farming", title: "IGO Vertical Farming Projects", category: "High-Tech", image: "/assets/projects/vertical_farming_futuristic_1773750768705.png", description: "Futuristic multi-layer growing systems maximizing yield per square meter." },
-  { id: "mushroom", title: "IGO Mushroom Farming Projects", category: "Specialized", image: "/assets/projects/mushroom_industrial_premium_1773750798076.png", description: "Climate-controlled mushroom production with medical-grade precision." },
-  { id: "polyhouse", title: "IGO Polyhouse Farming Projects", category: "Engineering", image: "/assets/projects/polyhouse_premium_wide_1773750820281.png", description: "State-of-the-art protected cultivation structures for optimal growth." },
-  { id: "hydroponic", title: "IGO Hydroponic Farming Projects", category: "Engineering", image: "/assets/projects/hydroponic_nft_enterprise_1773750839362.png", description: "Advanced soil-less cultivation systems using NFT and DWC technologies." },
+  { id: "mushroom", title: "IGO Mushroom Farming Projects", category: "Specialized", image: "/assets/projects/igo_mushroom_farming_1774957443125.png", description: "Climate-controlled mushroom production with medical-grade precision." },
+  { id: "polyhouse", title: "IGO Polyhouse Farming Projects", category: "Engineering", image: "/assets/projects/igo_polyhouse_farming_1774957390686.png", description: "State-of-the-art protected cultivation structures for optimal growth." },
+  { id: "hydroponic", title: "IGO Hydroponic Farming Projects", category: "Engineering", image: "/assets/projects/igo_hydroponic_farming_1774957407427.png", description: "Advanced soil-less cultivation systems using NFT and DWC technologies." },
   { id: "rooftop", title: "IGO Rooftop Projects", category: "Urban", image: "/assets/projects/rooftop_farming_corporate_1773750857107.png", description: "Transforming urban spaces into productive, sustainable green ecosystems." },
   { id: "pond-liner", title: "IGO Pond Liner Projects", category: "Engineering", image: "/assets/projects/pond_liner_engineering_1773750874112.png", description: "High-precision reservoir engineering and water management solutions." },
   { id: "multi-tier", title: "IGO Multi-tier Farming Projects", category: "High-Tech", image: "/assets/projects/multi_tier_farming_sleek_1773750910232.png", description: "Innovative multi-layer soil-based and soil-less farming systems." },
   { id: "solar", title: "IGO Solar Powered Projects", category: "Energy", image: "/assets/projects/solar_agri_premium_1773750927133.png", description: "Renewable energy integration for self-sustaining agricultural ecosystems." },
   { id: "nursery", title: "IGO Nursery Projects", category: "Specialized", image: "/assets/projects/nursery_modern_minimalist_1773750946194.png", description: "Industrial-scale plant propagation and tissue culture facilities." },
   { id: "net-house", title: "IGO Net-house Projects", category: "Infrastructure", image: "/assets/projects/net_house_premium_1773750966052.png", description: "Cost-effective insect-protected cultivation for a variety of crops." },
-  { id: "open-cultivation", title: "IGO Open Cultivation Projects", category: "Precision", image: "/assets/projects/open_cultivation_precision_1773750986052.png", description: "Large-scale field cultivation optimized with precision irrigation." },
+  { id: "open-cultivation", title: "IGO Open Cultivation Projects", category: "Precision", image: "/assets/projects/igo_open_field_farming_1774957423553.png", description: "Large-scale field cultivation optimized with precision irrigation." },
 ];
 
 export const services = [
@@ -69,7 +69,7 @@ export const services = [
     title: "Polyhouse Projects",
     description: "Controlled environment farming with precision climate management.",
     icon: Tent,
-    image: "/assets/projects/polyhouse_premium_wide_1773750820281.png",
+    image: "/assets/projects/igo_polyhouse_farming_1774957390686.png",
     path: "/projects/agri/polyhouse"
   },
   {
@@ -90,14 +90,14 @@ export const services = [
     title: "Hydroponics Projects",
     description: "NFT and DWC systems designed for maximum rapid growth.",
     icon: Droplets,
-    image: "/assets/projects/hydroponic_nft_enterprise_1773750839362.png",
+    image: "/assets/projects/igo_hydroponic_farming_1774957407427.png",
     path: "/projects/agri/hydroponic"
   },
   {
     title: "Open Cultivation Projects",
     description: "Tailored outdoors projects for high-value fruit and medicinal crops.",
     icon: Tractor,
-    image: "/assets/projects/open_cultivation_precision_1773750986052.png",
+    image: "/assets/projects/igo_open_field_farming_1774957423553.png",
     path: "/projects/agri-farming"
   },
   {
