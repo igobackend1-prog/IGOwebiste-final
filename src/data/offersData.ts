@@ -108,7 +108,7 @@ const DEFAULT_OFFERS: OfferPoster[] = [
     badge: "IGO GROUP",
     ctaLabel: "Discover More",
     ctaLink: "/about",
-    image: "/assets/demo poster/main-page-image.png",
+    image: "/assets/main-page-image.png",
     bgColor: "#1a5c1a",
     isActive: true,
     displayOrder: 0,
