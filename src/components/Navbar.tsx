@@ -353,7 +353,7 @@ const Navbar = () => {
             to="/agri-startup-platform"
             className="px-3 py-1.5 lg:px-3 lg:py-2 xl:px-5 xl:py-2.5 text-[9px] lg:text-[10px] xl:text-xs font-bold rounded-full transition-all uppercase tracking-wider xl:tracking-widest bg-black text-white shadow-lg shadow-black/10 whitespace-nowrap shrink-0 max-w-[160px] xl:max-w-none truncate"
           >
-            AgriStartup Gateway
+            Agri Startup Platform
           </Link>
         </div>
 
@@ -385,7 +385,7 @@ const Navbar = () => {
                   to="/agri-startup-platform"
                   className="flex items-center justify-between p-6 bg-black text-white rounded-2xl font-bold text-lg"
                 >
-                  <span>Agri Startup Hub</span>
+                  <span>Agri Startup Platform</span>
                   <ArrowRight className="w-5 h-5 text-primary" />
                 </Link>
               </div>

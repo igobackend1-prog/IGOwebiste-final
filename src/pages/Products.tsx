@@ -35,7 +35,7 @@ const Products = () => {
           className="absolute inset-0"
         >
           <img
-            src="/assets/product/main page image/farm equipment .jpg"
+            src="/assets/product/main-page image/farm equipment .jpg"
             alt="IGO Products"
             className="w-full h-full object-cover"
           />
@@ -139,7 +139,7 @@ const Products = () => {
                </div>
             </div>
             <div className="relative rounded-[3rem] overflow-hidden aspect-square border border-white/10">
-               <img src="/assets/product/main page image/Agri Essentials.jpg" alt="Product Quality" loading="lazy" className="w-full h-full object-cover" />
+               <img src="/assets/product/main-page image/Agri Essentials.jpg" alt="Product Quality" loading="lazy" className="w-full h-full object-cover" />
                <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60" />
                <div className="absolute inset-0 flex items-center justify-center p-20 text-center">
                   <ShieldCheck className="w-32 h-32 text-primary opacity-20 absolute" />
@@ -172,3 +172,4 @@ const Products = () => {
 };
 
 export default Products;
+

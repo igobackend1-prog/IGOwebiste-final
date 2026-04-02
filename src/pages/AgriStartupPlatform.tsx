@@ -4,7 +4,7 @@ import SEO from "@/components/SEO";
 import {
   ArrowRight, Lightbulb, Users, Handshake, Leaf, TrendingUp,
   CheckCircle, Star, Globe, BarChart3, Briefcase, Rocket,
-  Phone, ChevronRight, MapPin, Award,
+  Phone, ChevronRight, MapPin, Award, Layers, Building,
 } from "lucide-react";
 import OptimizedImage from "@/components/ui/OptimizedImage";
 
@@ -26,40 +26,31 @@ const OFFERS = [
     color: "#1A4231",
   },
   {
-    icon: <BarChart3 className="w-6 h-6" />,
-    title: "Business Planning & Strategy",
-    tagline: "Build a plan that actually works.",
-    desc: "Our experts help you create detailed business plans, financial models, and ROI projections — all backed by real data from live IGO farms across India.",
-    value: "Present investor-ready plans and make confident decisions from day one.",
-    points: ["Financial modelling & ROI", "Market research & positioning", "Pitch deck preparation"],
+    icon: <Handshake className="w-6 h-6" />,
+    title: "Investor Network",
+    tagline: "Connect with dedicated agri-investors.",
+    desc: "IGO bridges the gap between innovative agritech startups and a network of investors looking for high-impact, sustainable agricultural opportunities.",
+    value: "Access the capital you need to scale your vision with the right partners.",
+    points: ["Venture capital connections", "Angel investor network", "Investment readiness audits"],
     color: "#C5A03F",
   },
   {
-    icon: <Handshake className="w-6 h-6" />,
-    title: "Partnership & Collaboration",
-    tagline: "Grow faster together.",
-    desc: "Partner with IGO through joint ventures, co-farming models, or strategic alliances. Bring your land, capital, or local network — we bring the technology and expertise.",
-    value: "Shared risk, shared growth — a formal partnership with a trusted brand behind you.",
-    points: ["Joint venture agreements", "Profit-sharing models", "End-to-end farm management"],
+    icon: <Layers className="w-6 h-6" />,
+    title: "Joint Venture Farming",
+    tagline: "Shared risk, shared growth.",
+    desc: "Partner with IGO in large-scale farming projects. You bring the resource/capital, we bring the 15,000+ project expertise and end-to-end management.",
+    value: "Profit-sharing models designed for professional, large-scale output.",
+    points: ["Land-capital partnerships", "Full technical management", "Assured global standards"],
     color: "#3B82F6",
   },
   {
-    icon: <Leaf className="w-6 h-6" />,
-    title: "Farm & Technology Support",
-    tagline: "Modern technology for your farm.",
-    desc: "Access IGO's full technical stack — polyhouses, hydroponics, IoT irrigation, solar systems, and precision agriculture tools — all set up and maintained by our experts.",
-    value: "No need to figure out the technology. We build it, train you, and keep it running.",
-    points: ["Turnkey farm setup", "Staff training & handover", "Ongoing AMC & support"],
+    icon: <Building className="w-6 h-6" />,
+    title: "Franchise Farming",
+    tagline: "Scale with the IGO brand.",
+    desc: "Own and operate a verified IGO-branded farm branch. Use our proven business models, supply chain, and brand reputation to dominate your local market.",
+    value: "A turn-key business model with the power of India's best agri brand.",
+    points: ["Branded farm operations", "Verified supply chain", "Local market leadership"],
     color: "#8B5CF6",
-  },
-  {
-    icon: <TrendingUp className="w-6 h-6" />,
-    title: "Market Access & Scaling",
-    tagline: "Find buyers. Scale revenue.",
-    desc: "Tap into IGO's established buyer network — retail chains, exporters, FPOs, and restaurants across India. We help you sell your produce at the best prices.",
-    value: "Stop worrying about where to sell. Focus on growing; we handle the market.",
-    points: ["Direct buyer connections", "Export & retail linkages", "Buyback programme access"],
-    color: "#EF4444",
   },
 ];
 
@@ -72,7 +63,7 @@ const STEPS = [
 ];
 
 const WHY = [
-  { icon: <Star className="w-5 h-5" />,       title: "10+ Years of Real Experience",      desc: "Not just consultants — we have built and run 1,000+ profitable agri projects across India." },
+  { icon: <Star className="w-5 h-5" />,       title: "15+ Years of Real Experience",      desc: "Not just consultants — we have built and run 15,000+ profitable agri projects across India." },
   { icon: <Globe className="w-5 h-5" />,       title: "Pan-India Network",                 desc: "Active presence in 28 states with an established supply chain, buyer network and logistics." },
   { icon: <Award className="w-5 h-5" />,       title: "75+ Industry Awards",               desc: "MSME, National Excellence, and State-level awards that validate our quality and trust." },
   { icon: <BarChart3 className="w-5 h-5" />,   title: "Real ROI — Not Projections",        desc: "Every financial model is backed by live farm data — transparent, audited, and achievable." },
@@ -81,10 +72,10 @@ const WHY = [
 ];
 
 const IMPACT = [
-  { value: "1,000+", label: "Projects Delivered",  sub: "Across all agriculture disciplines" },
+  { value: "15,000+", label: "Projects Delivered",  sub: "Across all agriculture disciplines" },
   { value: "28",     label: "States Covered",       sub: "True pan-India operational reach" },
-  { value: "₹100Cr+",label: "Projects Funded",      sub: "Value of partnerships executed" },
-  { value: "10+",    label: "Years of Excellence",  sub: "Since 2013, trusted by thousands" },
+  { value: "₹500Cr+",label: "Value Executed",      sub: "Total value of projects delivered" },
+  { value: "15+",    label: "Years of Excellence",  sub: "Since 2009, trusted by thousands" },
 ];
 
 const STORIES = [
@@ -114,7 +105,7 @@ const AgriStartupPlatform = () => (
         className="absolute inset-0"
       >
         <OptimizedImage
-          src="/assets/background page for agri starup and about .png"
+          src="/assets/background-page-for-agri-starup-and-about-.png"
           alt="Agri Startup Platform"
           loading="eager"
           decoding="async"
@@ -210,7 +201,7 @@ const AgriStartupPlatform = () => (
               {[
                 "Open to agri founders, farmers & young entrepreneurs",
                 "End-to-end support — from idea to scale",
-                "Backed by 10+ years of real farming experience",
+                "Backed by 15+ years of real farming experience",
                 "No complex jargon — just clear, honest guidance",
               ].map((pt) => (
                 <div key={pt} className="flex items-start gap-3">

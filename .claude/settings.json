@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node create_admin.js)",
+      "Bash(npm install:*)",
+      "Bash(sed -n '727,732p' src/pages/Index.tsx)",
+      "Bash(sed -n '885,892p' src/pages/Index.tsx)",
+      "Bash(grep -n \"className.*[ph]-[0-9]\\\\+.*md:\\\\|md:.*[ph]-[0-9]\\\\+\" d:/igo-website/src/pages/*.tsx)",
+      "Bash(ls *.png *.jpg *.jpeg *.webp)",
+      "Bash(ls \"home page\"*)",
+      "Bash(ls \"d:/igo-website/public/assets/\"*polyhouse*)",
+      "Bash(cp src/data/siteData.ts src/data/siteData.ts.bak)",
+      "Bash(sed -i -e 's|/assets/projects/joint-venture_premium_1773750685382.png|/assets/projects/joint-venture-premium-1773750685382.png|g' -e 's|/assets/projects/floriculture-high_tech_1773750708446.png|/assets/projects/floriculture-high-tech-1773750708446.png|g' -e 's|/assets/projects/horticulture-enterprise_1773750728597.png|/assets/projects/horticulture-enterprise-1773750728597.png|g' -e 's|/assets/projects/microgreens-lab_style_1773750748522.png|/assets/projects/microgreens-lab-style-1773750748522.png|g' -e 's|/assets/projects/vertical-farming-futuristic_1773750768705.png|/assets/projects/vertical-farming-futuristic-1773750768705.png|g' -e 's|/assets/projects/igo_mushroom_farming_1774957443125.png|/assets/projects/igo-mushroom-farming-1774957443125.png|g' -e 's|/assets/projects/igo_polyhouse_farming_1774957390686.png|/assets/projects/igo-polyhouse-farming-1774957390686.png|g' -e 's|/assets/projects/igo_hydroponic-farming_1774957407427.png|/assets/projects/igo-hydroponic-farming-1774957407427.png|g' -e 's|/assets/projects/rooftop_farming_corporate_1773750857107.png|/assets/projects/rooftop-farming-corporate-1773750857107.png|g' -e 's|/assets/projects/pond-liner-engineering_1773750874112.png|/assets/projects/pond-liner-engineering-1773750874112.png|g' -e 's|/assets/projects/multi-tier-farming_sleek_1773750910232.png|/assets/projects/multi-tier-farming-sleek-1773750910232.png|g' -e 's|/assets/projects/solar-agri-premium_1773750927133.png|/assets/projects/solar-agri-premium-1773750927133.png|g' -e 's|/assets/projects/nursery-modern_minimalist_1773750946194.png|/assets/projects/nursery-modern-minimalist-1773750946194.png|g' -e 's|/assets/projects/net-house-premium_1773750966052.png|/assets/projects/net-house-premium-1773750966052.png|g' -e 's|/assets/projects/igo_open_field_farming_1774957423553.png|/assets/projects/igo-open-field-farming-1774957423553.png|g' src/data/siteData.ts)",
+      "Bash(ls *.png)",
+      "Bash(ls -d \"d:/igo-website/public/assets/demo\"*)"
+    ]
+  }
+}

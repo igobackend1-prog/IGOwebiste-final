@@ -60,7 +60,7 @@ const Services = () => {
             >
               <div className="relative h-[280px] sm:h-[350px] w-full overflow-hidden">
                 <img
-                  src={(s as any).cardImage || "/assets/service/main page service image/agrifarming projects .jpg"}
+                  src={(s as any).cardImage || "/assets/service/main-page service image/agrifarming projects .jpg"}
                   alt={s.label}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 />
@@ -114,3 +114,4 @@ const Services = () => {
 };
 
 export default Services;
+

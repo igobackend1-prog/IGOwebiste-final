@@ -92,11 +92,11 @@ const OfferCard = ({ poster, delay }: { poster: OfferPoster; delay: number }) =>
 const TRUST = [
   { icon: Award,    label: "75+ Winning Awards" },
   { icon: Users,    label: "2,000+ Team Members" },
-  { icon: Briefcase, label: "1,000+ Projects Done" },
+  { icon: Briefcase, label: "15,000+ Projects Done" },
   { icon: Star,     label: "15+ Years Excellence" },
 ];
 
-/* ─── Main page ─────────────────────────────────────────────── */
+/* ─── main-page ─────────────────────────────────────────────── */
 const OffersPage = () => {
   const [posters, setPosters] = useState<OfferPoster[]>([]);
 
@@ -233,3 +233,4 @@ const OffersPage = () => {
 };
 
 export default OffersPage;
+

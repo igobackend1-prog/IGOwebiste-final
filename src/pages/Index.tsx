@@ -8,22 +8,27 @@ import { motion, AnimatePresence, Variants } from "framer-motion";
 import OffersBanner from "@/components/OffersBanner";
 import { getActiveOffers, initDefaultOffers } from "@/data/offersData";
 
-const HERO_SLIDES = [
-  { src: "/assets/main-page-image.png", label: "IGO Group", alt: "IGO Group Advertisement", isPoster: true },
-  { src: "/assets/front 1st image .png", label: "IGO Agritech", alt: "IGO Agritech Farms", isPoster: true },
-  { src: "/assets/demo poster/Copy of Website cover page.jpg.jpeg", label: "Ramadan Sale", alt: "Ramadan Sale Offer", isPoster: true },
-  { src: "/assets/demo poster/Copy of Website cover page (1).jpg.jpeg", label: "Special Offer", alt: "Special Ramzan Offer", isPoster: true },
-  { src: "/assets/home page image .png", label: "Smart Farms", alt: "Smart Farm" },
-  { src: "/assets/projects/project subcategories/subcategories/Vertical  farming .jpg", label: "Vertical Farming", alt: "Vertical Farming" },
-  { src: "/assets/projects/project subcategories/subcategories/hydroponic farming .jpg", label: "Hydroponics", alt: "Hydroponics" },
-  { src: "/assets/core bussiness picture/aquatic_plants.jpg", label: "Aquaculture", alt: "Aquaculture" },
-  { src: "/assets/projects/project subcategories/subcategories/dairy farming .jpg", label: "Dairy Farming", alt: "Dairy Farming" },
-  { src: "/assets/core bussiness picture/farm_engineering.jpg", label: "Farm Engineering", alt: "Farm Engineering" },
-  { src: "/assets/projects/project subcategories/subcategories/solar agriculture project .jpg", label: "Solar Agriculture", alt: "Solar Agriculture" },
-  { src: "/assets/projects/project subcategories/subcategories/mushroom farming .jpg", label: "Mushroom Farming", alt: "Mushroom Farming" },
-  { src: "/assets/core bussiness picture/livestock.jpg", label: "Livestock", alt: "Livestock" },
-  { src: "/assets/projects/project subcategories/subcategories/biofloc farming .jpg", label: "Biofloc Farming", alt: "Biofloc Farming" },
+// PERMANENT first slide — do NOT remove or reorder this entry
+const PERMANENT_SLIDE = { src: "/assets/demo-poster/main-page-image.png", label: "IGO Group", alt: "IGO Group Advertisement", isPoster: true };
+
+// Changeable slides — add, remove, or reorder freely
+const CHANGEABLE_SLIDES = [
+  { src: "/assets/demo-poster/NEW POSTER 2JPG.jpeg", label: "Easter Sale", alt: "Celebrate Easter — Save up to 5 Lakhs", isPoster: true },
+  { src: "/assets/demo-poster/NEW POSTER 3.JPG.jpeg", label: "Happy Easter", alt: "Happy Easter — New beginnings with IGO", isPoster: true },
+  { src: "/assets/demo-poster/NEW POSTER IMAGE 1 .jpeg", label: "Easter Offer", alt: "Easter Exclusive — Free Holiday Stay", isPoster: true },
+  { src: "/assets/home-page-image-.png", label: "Smart Farms", alt: "Smart Farm" },
+  { src: "/assets/projects/project-subcategories/subcategories/vertical-farming.jpg", label: "Vertical Farming", alt: "Vertical Farming" },
+  { src: "/assets/projects/project-subcategories/subcategories/hydroponic-farming.jpg", label: "Hydroponics", alt: "Hydroponics" },
+  { src: "/assets/core-bussiness-picture/aquatic-plants.jpg", label: "Aquaculture", alt: "Aquaculture" },
+  { src: "/assets/projects/project-subcategories/subcategories/dairy-farming.jpg", label: "Dairy Farming", alt: "Dairy Farming" },
+  { src: "/assets/core-bussiness-picture/farm-engineering.jpg", label: "Farm Engineering", alt: "Farm Engineering" },
+  { src: "/assets/projects/project-subcategories/subcategories/solar-agriculture-project.jpg", label: "Solar Agriculture", alt: "Solar Agriculture" },
+  { src: "/assets/projects/project-subcategories/subcategories/mushroom-farming.jpg", label: "Mushroom Farming", alt: "Mushroom Farming" },
+  { src: "/assets/core-bussiness-picture/livestock.jpg", label: "Livestock", alt: "Livestock" },
+  { src: "/assets/projects/project-subcategories/subcategories/biofloc-farming.jpg", label: "Biofloc Farming", alt: "Biofloc Farming" },
 ];
+
+const HERO_SLIDES = [PERMANENT_SLIDE, ...CHANGEABLE_SLIDES];
 
 const fader: Variants = {
   hidden: { opacity: 0, y: 30 },
@@ -44,7 +49,7 @@ const HeroSection = () => {
   useImagePreloader(heroImageUrls, current, 2);
 
   useEffect(() => {
-    // Slide 0 (main page ad) stays 5s; all others 4.5s
+    // Slide 0 (main-page ad) stays 5s; all others 4.5s
     const delay = current === 0 ? 5000 : 4500;
     const timer = setTimeout(() => {
       setCurrent((prev) => (prev + 1) % HERO_SLIDES.length);
@@ -138,7 +143,7 @@ const HeroSection = () => {
                 variants={fader}
                 className="inline-block px-5 py-1.5 mb-8 text-[11px] font-black uppercase tracking-[0.25em] text-primary-foreground bg-primary rounded-full shadow-lg"
               >
-                India's Leading Agri Engineering & Agri Consulting Brand
+                India's Best Agri Engineering & Consulting Group
               </motion.p>
               <motion.h1 variants={fader} className="text-white mb-6 sm:mb-10 tracking-tight leading-[0.95] text-2xl sm:text-4xl md:text-5xl lg:text-7xl font-black">
                 Building Profitable Smart Farms <br className="hidden sm:block" /> Across India.
@@ -307,7 +312,7 @@ const WhyChooseSection = () => (
           className="rounded-3xl overflow-hidden aspect-[4/3] shadow-2xl"
         >
           <img
-            src="/assets/award_ceremony_ceo.png"
+            src="/assets/award-ceremony-ceo.png"
             alt="Agriculture Innovation Award"
             loading="lazy"
             decoding="async"
@@ -471,7 +476,7 @@ const ProjectGallerySection = () => {
       title: "Agri farming projects",
       bg: "bg-agri-earth-100",
       hoverBg: "hover:bg-agri-green-50",
-      image: "/assets/projects/main page/agri farming project .jpg",
+      image: "/assets/projects/main-page/agri-farming-project.jpg",
       href: "/projects/agri"
     },
     {
@@ -479,7 +484,7 @@ const ProjectGallerySection = () => {
       title: "Aquaculture Farming project",
       bg: "bg-agri-earth-100",
       hoverBg: "hover:bg-agri-green-50",
-      image: "/assets/projects/main page/aquaculture farming .jpg",
+      image: "/assets/projects/main-page/aquaculture-farming.jpg",
       href: "/projects/aquaculture"
     },
     {
@@ -487,7 +492,7 @@ const ProjectGallerySection = () => {
       title: "Livestock Farming project",
       bg: "bg-agri-earth-100",
       hoverBg: "hover:bg-agri-green-50",
-      image: "/assets/projects/main page/livestock farming.jpg",
+      image: "/assets/projects/main-page/livestock-farming.jpg",
       href: "/projects/livestock"
     },
     {
@@ -495,7 +500,7 @@ const ProjectGallerySection = () => {
       title: "Farm engineering projects",
       bg: "bg-agri-earth-100",
       hoverBg: "hover:bg-agri-green-50",
-      image: "/assets/projects/main page/farm engineering .jpg",
+      image: "/assets/projects/main-page/farm-engineering.jpg",
       href: "/projects/engineering"
     }
   ];
@@ -1022,7 +1027,7 @@ const Index = () => {
     <div className="bg-white min-h-screen selection:bg-agri-green-50 selection:text-agri-green-800 overflow-x-hidden">
       <SEO
         title="IGO Agritech Farms | India's Leading Agri Engineering & Consulting"
-        description="IGO Agritech Farms — India's leading Agri Engineering & Agri Consulting brand. 10+ years, 1000+ projects in precision farming, polyhouse, hydroponics, vertical farming & agri infrastructure across India."
+        description="IGO Agritech Farms — India's leading Agri Engineering & Agri Consulting brand. 15+ years, 15,000+ projects in precision farming, polyhouse, hydroponics, vertical farming & agri infrastructure across India."
         keywords="agri engineering, agri consulting, precision farming, polyhouse farming, hydroponics, vertical farming, mushroom farming, biofloc, agri startup India, IGO Agritech, farm infrastructure Chennai"
         url="/"
       />
@@ -1041,3 +1046,4 @@ const Index = () => {
 };
 
 export default Index;
+

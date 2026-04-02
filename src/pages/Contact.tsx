@@ -155,7 +155,7 @@ const Contact = () => {
           className="absolute inset-0"
         >
           <OptimizedImage
-            src="/assets/projects/main page/agri farming project .jpg"
+            src="/assets/projects/main-page/agri-farming-project.jpg"
             alt="IGO Contact"
             loading="eager"
             decoding="async"
@@ -453,7 +453,7 @@ const Contact = () => {
                       {[
                         "Replies within 24 hrs",
                         "MSME Certified",
-                        "1,000+ Projects Delivered",
+                        "15,000+ Projects Delivered",
                       ].map((t) => (
                         <div key={t} className="flex items-center gap-2 text-[10px] text-black/40 font-bold uppercase tracking-widest">
                           <CheckCircle2 className="w-3.5 h-3.5 text-agri-green-800" /> {t}
@@ -698,3 +698,4 @@ const Contact = () => {
 };
 
 export default Contact;
+

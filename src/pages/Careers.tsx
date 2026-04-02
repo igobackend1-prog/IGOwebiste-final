@@ -186,8 +186,8 @@ const benefits = [
   {
     icon: <TrendingUp className="w-6 h-6" />,
     title: "Real Career Growth",
-    desc: "Work on 1000+ live projects across India with direct career advancement and structured skill development at every level.",
-    stat: "1000+",
+    desc: "Work on 15,000+ live projects across India with direct career advancement and structured skill development at every level.",
+    stat: "15,000+",
     statLabel: "Live Projects",
   },
   {

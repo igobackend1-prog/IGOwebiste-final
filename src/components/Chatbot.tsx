@@ -15,7 +15,7 @@ const KNOWLEDGE: KB[] = [
   // About company
   {
     keywords: ["about", "who are you", "what is igo", "company", "overview", "tell me about"],
-    answer: `**IGO Agritech Farms** is India's Leading Agri Engineering & Consulting Brand 🌿\n\n• **1,000+** projects completed across India\n• **10+ years** of experience (since 2013)\n• **28 states** & UTs covered\n• **2,000+** expert team members\n• **75+** awards & recognitions\n\nFounded by Dr. John Yesudhas, we specialize in Agri Farming, Aquaculture, Livestock, and Farm Engineering.`,
+    answer: `**IGO Agritech Farms** is India's Leading Agri Engineering & Consulting Brand 🌿\n\n• **15,000+** projects completed across India\n• **15+ years** of experience (since 2009)\n• **28 states** & UTs covered\n• **2,000+** expert team members\n• **75+** awards & recognitions\n\nFounded by Dr. John Yesudhas, we specialize in Agri Farming, Aquaculture, Livestock, and Farm Engineering.`,
   },
   // Founder
   {
@@ -125,7 +125,7 @@ const KNOWLEDGE: KB[] = [
   // Projects stats / experience
   {
     keywords: ["experience", "how many", "completed", "years", "track record", "projects done", "states"],
-    answer: `📊 **IGO Track Record:**\n\n• **1,000+** projects completed\n• **10+ years** of experience (since 2013)\n• **28 states** & UTs covered\n• **2,000+** expert team members\n• **75+ awards** & recognitions\n• **4 core disciplines** — Agri, Aqua, Livestock, Engineering`,
+    answer: `📊 **IGO Track Record:**\n\n• **15,000+** projects completed\n• **15+ years** of experience (since 2009)\n• **28 states** & UTs covered\n• **2,000+** expert team members\n• **75+ awards** & recognitions\n• **4 core disciplines** — Agri, Aqua, Livestock, Engineering`,
   },
   // Products overview
   {
@@ -180,7 +180,7 @@ const KNOWLEDGE: KB[] = [
   // Investor / Funding
   {
     keywords: ["invest", "investor", "fund", "capital", "roi", "return", "profit", "money", "earn"],
-    answer: `💰 **Invest with IGO Agritech:**\n\n**High-ROI Agri Investment Models:**\n\n• **Joint Venture Farming** — Shared investment, shared profits with IGO managing everything\n• **Agri Project Investment** — Fund specific projects (polyhouse, aquaculture, livestock)\n• **Franchise Model** — Own a farm under the IGO brand\n\nAll models backed by:\n✅ Real data from 1,000+ live farms\n✅ Transparent financial projections\n✅ Formal legal agreement\n\n📞 Call **+91 73977 89803** to discuss investment opportunities!`,
+    answer: `💰 **Invest with IGO Agritech:**\n\n**High-ROI Agri Investment Models:**\n\n• **Joint Venture Farming** — Shared investment, shared profits with IGO managing everything\n• **Agri Project Investment** — Fund specific projects (polyhouse, aquaculture, livestock)\n• **Franchise Model** — Own a farm under the IGO brand\n\nAll models backed by:\n✅ Real data from 15,000+ live farms\n✅ Transparent financial projections\n✅ Formal legal agreement\n\n📞 Call **+91 73977 89803** to discuss investment opportunities!`,
   },
   // Training detail
   {
@@ -195,12 +195,12 @@ const KNOWLEDGE: KB[] = [
   // Projects overview
   {
     keywords: ["project", "what project", "project type", "project category", "all project"],
-    answer: `🏗️ **IGO Projects — 4 Core Categories:**\n\n🌾 **Agri Farming Projects**\nPolyhouse, hydroponics, vertical farming, open-field, floriculture, mushroom, nursery & urban farming\n\n🐟 **Aquaculture Farming Projects**\nFish, biofloc, shrimp, crab, prawn farming & aquaponics\n\n🐐 **Livestock Farming Projects**\nGoat, sheep, dairy, poultry & integrated livestock systems\n\n⚙️ **Farm Engineering Projects**\nCold storage, packhouses, irrigation, solar agriculture & land development\n\n**1,000+ projects delivered across 28 states!**\nTap WhatsApp below to discuss your project.`,
+    answer: `🏗️ **IGO Projects — 4 Core Categories:**\n\n🌾 **Agri Farming Projects**\nPolyhouse, hydroponics, vertical farming, open-field, floriculture, mushroom, nursery & urban farming\n\n🐟 **Aquaculture Farming Projects**\nFish, biofloc, shrimp, crab, prawn farming & aquaponics\n\n🐐 **Livestock Farming Projects**\nGoat, sheep, dairy, poultry & integrated livestock systems\n\n⚙️ **Farm Engineering Projects**\nCold storage, packhouses, irrigation, solar agriculture & land development\n\n**15,000+ projects delivered across 28 states!**\nTap WhatsApp below to discuss your project.`,
   },
   // FAQ - Is IGO registered
   {
     keywords: ["registered", "legal", "msme", "certified", "license", "verified", "authentic", "genuine", "trust"],
-    answer: `✅ **IGO Agritech Farms — Verified & Certified:**\n\n• **MSME Registered** — Certified by the Government of India\n• **MSME Awards 2024** winner — Best Agri-Consulting Brand\n• **75+ national awards** from government & industry bodies\n• Operating since **2013** — 10+ years of verified track record\n• Formal legal agreements for all JV, franchise & project contracts\n\nYou can trust IGO — we've built 1,000+ farms across India with full transparency.`,
+    answer: `✅ **IGO Agritech Farms — Verified & Certified:**\n\n• **MSME Registered** — Certified by the Government of India\n• **MSME Awards 2024** winner — Best Agri-Consulting Brand\n• **75+ national awards** from government & industry bodies\n• Operating since **2009** — 15+ years of verified track record\n• Formal legal agreements for all JV, franchise & project contracts\n\nYou can trust IGO — we've built 15,000+ farms across India with full transparency.`,
   },
   // FAQ - Which states
   {

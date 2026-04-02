@@ -26,22 +26,22 @@ import { navLinks } from '@/data/siteData';
 const CATEGORY_META: Record<string, { label: string; cardImage: string; desc: string }> = {
   'agri-essentials': {
     label: 'Agri Essentials',
-    cardImage: '/assets/product/main page image/Agri Essentials.jpg',
+    cardImage: '/assets/product/main-page image/Agri Essentials.jpg',
     desc: 'High-yield seeds, grafted plants, and specialty saplings for professional cultivation.'
   },
   'crop-solutions': {
     label: 'Crop Solutions',
-    cardImage: '/assets/product/main page image/Crop Solutions.jpg',
+    cardImage: '/assets/product/main-page image/Crop Solutions.jpg',
     desc: 'Fertilizers, bio-stimulants, and crop-protection products for maximum farm yield.'
   },
   'animal-solutions': {
     label: 'Animal Solutions',
-    cardImage: '/assets/product/main page image/Animal Solutions.jpg',
+    cardImage: '/assets/product/main-page image/Animal Solutions.jpg',
     desc: 'Complete nutrition, health, and equipment range for aquaculture and livestock farms.'
   },
   'farm-equipment': {
     label: 'Farm Equipment',
-    cardImage: '/assets/product/main page image/farm equipment .jpg',
+    cardImage: '/assets/product/main-page image/farm equipment .jpg',
     desc: 'Polyhouse structures, hydroponic systems, irrigation, and solar farming equipment.'
   }
 };
@@ -661,3 +661,4 @@ const ProductRouter: React.FC = () => {
 };
 
 export default ProductRouter;
+

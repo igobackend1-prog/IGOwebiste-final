@@ -23,7 +23,7 @@ const Projects = () => {
     <div className="bg-white min-h-screen selection:bg-agri-green-50 selection:text-agri-green-800">
       <SEO
         title="Our Projects | Agri Engineering Projects — IGO Agritech Farms"
-        description="Explore 1000+ completed agri engineering projects by IGO Agritech Farms — polyhouse, hydroponics, vertical farming, biofloc, rooftop farming, solar agriculture, and more across India."
+        description="Explore 15,000+ completed agri engineering projects by IGO Agritech Farms — polyhouse, hydroponics, vertical farming, biofloc, rooftop farming, solar agriculture, and more across India."
         keywords="agri engineering projects India, polyhouse project, hydroponic project, vertical farming project, mushroom farming project, biofloc project, solar agriculture, rooftop farming"
         url="/projects"
       />
@@ -37,7 +37,7 @@ const Projects = () => {
           className="absolute inset-0"
         >
           <img
-            src="/assets/projects/main page/agri farming project .jpg"
+            src="/assets/projects/main-page/agri farming project .jpg"
             alt="IGO Projects"
             className="w-full h-full object-cover"
           />
@@ -61,7 +61,7 @@ const Projects = () => {
               The Gallery of <br /><span className="italic text-agri-gold-500">Sustenance.</span>
             </motion.h1>
             <motion.p variants={fader} className="text-white/60 text-base sm:text-xl md:text-2xl font-light leading-relaxed mb-14 max-w-3xl mx-auto">
-              1,000+ institutional implementations executed across India — from precision polyhouses to integrated aquaculture ecosystems.
+              15,000+ institutional implementations executed across India — from precision polyhouses to integrated aquaculture ecosystems.
             </motion.p>
             <motion.div variants={fader}>
               <Link
@@ -119,7 +119,7 @@ const Projects = () => {
                   className="group relative block aspect-[4/3] rounded-[2.5rem] overflow-hidden shadow-2xl hover:shadow-[0_40px_80px_rgba(0,0,0,0.25)] transition-all duration-700"
                 >
                   <img
-                    src={category.cardImage || "/assets/projects/main page/agri farming project .jpg"}
+                    src={category.cardImage || "/assets/projects/main-page/agri farming project .jpg"}
                     alt={category.label}
                     className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-[1.2s]"
                   />
@@ -164,10 +164,10 @@ const Projects = () => {
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-0 divide-x divide-white/10">
             {[
-              { value: "1,000+", label: "Projects Completed", sub: "Across all disciplines" },
+              { value: "15,000+", label: "Projects Completed", sub: "Across all disciplines" },
               { value: "4",      label: "Core Disciplines",   sub: "Agri, Aqua, Livestock, Engg" },
               { value: "Pan-India", label: "Delivery Reach",  sub: "28 states & UTs covered" },
-              { value: "10+",    label: "Years Excellence",   sub: "Since 2013" },
+              { value: "15+",    label: "Years Excellence",   sub: "Since 2009" },
             ].map((stat, i) => (
               <motion.div
                 key={stat.label}
@@ -251,3 +251,4 @@ const Projects = () => {
 };
 
 export default Projects;
+

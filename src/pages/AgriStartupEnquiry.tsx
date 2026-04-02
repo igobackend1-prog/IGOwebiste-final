@@ -51,7 +51,7 @@ const SUPPORT_OPTIONS = [
 ];
 
 const TRUST = [
-  { value: "1,000+", label: "Projects Delivered" },
+  { value: "15,000+", label: "Projects Delivered" },
   { value: "28",     label: "States Covered" },
   { value: "₹100Cr+",label: "Partnerships Funded" },
   { value: "75+",    label: "Industry Awards" },
@@ -59,7 +59,7 @@ const TRUST = [
 
 const fader = {
   hidden: { opacity: 0, y: 24 },
-  show:   { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } },
+  show:   { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] } },
 };
 
 // ─── Page ─────────────────────────────────────────────────────────────────────
@@ -171,12 +171,12 @@ const AgriStartupEnquiry = () => {
     </div>
   );
 
-  // ── Main page ───────────────────────────────────────────────────────────────
+  // ── main-page ───────────────────────────────────────────────────────────────
   return (
     <div className="bg-white min-h-screen selection:bg-agri-green-50 selection:text-agri-green-800">
       <SEO
         title="Agri Startup Enquiry"
-        description="Register your agri startup with IGO Agritech Farms. Get incubation support, funding guidance, land access, and market connections to grow your agricultural business."
+        description="IGO Agritech Farms — India's leading Agri Engineering & Agri Consulting brand. 15+ years, 15,000+ projects in precision farming, polyhouse, hydroponics, vertical farming & agri infrastructure across India."
         keywords="agri startup enquiry, agriculture startup registration India, IGO incubation programme, farming startup support"
         url="/startup-enquiry"
       />
@@ -480,7 +480,7 @@ const AgriStartupEnquiry = () => {
                 <div className="space-y-3">
                   {[
                     "10+ years of real farm execution",
-                    "1,000+ successful agri projects",
+                    "15,000+ successful agri projects",
                     "Pan-India presence across 28 states",
                     "₹100Cr+ worth partnerships delivered",
                     "75+ national & industry awards",
@@ -560,3 +560,4 @@ const AgriStartupEnquiry = () => {
 };
 
 export default AgriStartupEnquiry;
+

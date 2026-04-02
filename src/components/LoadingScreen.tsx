@@ -120,7 +120,7 @@ const LoadingScreen = ({ onComplete }: Props) => {
               >
                 {/* Logo — static, no rotation */}
                 <img
-                  src="/assets/logo igo.jpg"
+                  src="/assets/logo-igo.jpg"
                   alt="IGO Agritech Farms"
                   style={{
                     width: 148,
@@ -244,3 +244,4 @@ const LoadingScreen = ({ onComplete }: Props) => {
 };
 
 export default LoadingScreen;
+
