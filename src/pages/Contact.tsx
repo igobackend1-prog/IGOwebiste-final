@@ -155,7 +155,7 @@ const Contact = () => {
           className="absolute inset-0"
         >
           <OptimizedImage
-            src="/assets/projects/main-page/agri-farming-project.jpg"
+            src="/assets/compressed/projects/main-page/agri-farming-project.webp"
             alt="IGO Contact"
             loading="eager"
             decoding="async"

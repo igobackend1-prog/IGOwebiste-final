@@ -26,22 +26,22 @@ import { navLinks } from '@/data/siteData';
 const CATEGORY_META: Record<string, { label: string; cardImage: string; desc: string }> = {
   'agri-essentials': {
     label: 'Agri Essentials',
-    cardImage: '/assets/product/main-page image/Agri Essentials.jpg',
+    cardImage: '/assets/compressed/product/main-page-image/agri-essentials.jpg',
     desc: 'High-yield seeds, grafted plants, and specialty saplings for professional cultivation.'
   },
   'crop-solutions': {
     label: 'Crop Solutions',
-    cardImage: '/assets/product/main-page image/Crop Solutions.jpg',
+    cardImage: '/assets/compressed/product/main-page-image/crop-solutions.jpg',
     desc: 'Fertilizers, bio-stimulants, and crop-protection products for maximum farm yield.'
   },
   'animal-solutions': {
     label: 'Animal Solutions',
-    cardImage: '/assets/product/main-page image/Animal Solutions.jpg',
+    cardImage: '/assets/compressed/product/main-page-image/animal-solutions.jpg',
     desc: 'Complete nutrition, health, and equipment range for aquaculture and livestock farms.'
   },
   'farm-equipment': {
     label: 'Farm Equipment',
-    cardImage: '/assets/product/main-page image/farm equipment .jpg',
+    cardImage: '/assets/compressed/product/main-page-image/farm-equipment-.jpg',
     desc: 'Polyhouse structures, hydroponic systems, irrigation, and solar farming equipment.'
   }
 };
@@ -49,56 +49,56 @@ const CATEGORY_META: Record<string, { label: string; cardImage: string; desc: st
 // ── Individual product images (mapped to product ID) ─────────────────────────
 const PRODUCT_IMAGES: Record<string, string> = {
   // Agri Essentials
-  'vegetable-seeds':               '/assets/product/types/vegetable seed .jpg',
-  'fruit-plants':                  '/assets/product/types/fruit plants .jpg',
-  'flower-seeds':                  '/assets/product/types/flower seeds .jpg',
-  'medicinal-plants':              '/assets/product/types/medicinal plants .jpg',
+  'vegetable-seeds':               '/assets/compressed/product/types/vegetable-seed-.webp',
+  'fruit-plants':                  '/assets/compressed/product/types/fruit-plants-.webp',
+  'flower-seeds':                  '/assets/compressed/product/types/flower-seeds-.webp',
+  'medicinal-plants':              '/assets/compressed/product/types/medicinal-plants-.webp',
   // Crop Solutions
-  'npk-fertilizers':               '/assets/product/types/NPK fertilizers .jpg',
-  'organic-fertilizers':           '/assets/product/types/organic fertilizer .jpg',
-  'liquid-fertilizers':            '/assets/product/types/luquide fertilizers .jpg',
-  'micronutrients':                '/assets/product/types/micronutrines .jpg',
-  'azospirillum':                  '/assets/product/types/Azospirillum .png',
-  'phosphate-solubilizing-bacteria':'/assets/product/types/phosphate solubilizing bacteria.jpg',
-  'mycorrhiza':                    '/assets/product/types/mycoeehiza.jpg',
-  'humic-acid':                    '/assets/product/types/humic acid .jpg',
-  'fulvic-acid':                   '/assets/product/types/fulvic acid .jpg',
-  'amino-acid-nutrients':          '/assets/product/types/amino acid .jpg',
-  'insecticides':                  '/assets/product/types/insecticide .jpg',
-  'fungicides':                    '/assets/product/types/fungicides .jpg',
-  'herbicides':                    '/assets/product/types/herbisides .jpg',
-  'bio-pesticides':                '/assets/product/types/bio bestiscide .jpg',
+  'npk-fertilizers':               '/assets/compressed/product/types/npk-fertilizers-.webp',
+  'organic-fertilizers':           '/assets/compressed/product/types/organic-fertilizer-.webp',
+  'liquid-fertilizers':            '/assets/compressed/product/types/luquide-fertilizers-.webp',
+  'micronutrients':                '/assets/compressed/product/types/micronutrines-.webp',
+  'azospirillum':                  '/assets/compressed/product/types/azospirillum-.webp',
+  'phosphate-solubilizing-bacteria':'/assets/compressed/product/types/phosphate-solubilizing-bacteria.webp',
+  'mycorrhiza':                    '/assets/compressed/product/types/mycoeehiza.webp',
+  'humic-acid':                    '/assets/compressed/product/types/humic-acid-.webp',
+  'fulvic-acid':                   '/assets/compressed/product/types/fulvic-acid-.webp',
+  'amino-acid-nutrients':          '/assets/compressed/product/types/amino-acid-.webp',
+  'insecticides':                  '/assets/compressed/product/types/insecticide-.webp',
+  'fungicides':                    '/assets/compressed/product/types/fungicides-.webp',
+  'herbicides':                    '/assets/compressed/product/types/herbisides-.webp',
+  'bio-pesticides':                '/assets/compressed/product/types/bio-bestiscide-.webp',
   // Animal Solutions
-  'fish-feed':                     '/assets/product/types/fish feed .jpg',
-  'aerators':                      '/assets/product/types/aerators .jpg',
-  'biofloc-tanks':                 '/assets/product/types/biofloc tank .jpg',
-  'pond-liners':                   '/assets/product/types/pond liner .jpg',
-  'water-testing-kits':            '/assets/product/types/wter testing kits .jpg',
-  'fish-medicines':                '/assets/product/types/fish medicins .jpg',
-  'goat-feed':                     '/assets/product/types/goat feed s.jpg',
-  'cattle-feed':                   '/assets/product/types/cattle feeds .jpg',
-  'mineral-mixtures':              '/assets/product/types/mineral mixtures .jpg',
-  'livestock-medicines':           '/assets/product/types/live stock medicines .jpg',
-  'livestock-equipment':           '/assets/product/types/live stock equipmemts .jpg',
+  'fish-feed':                     '/assets/compressed/product/types/fish-feed-.webp',
+  'aerators':                      '/assets/compressed/product/types/aerators-.webp',
+  'biofloc-tanks':                 '/assets/compressed/product/types/biofloc-tank-.webp',
+  'pond-liners':                   '/assets/compressed/product/types/pond-liner-.webp',
+  'water-testing-kits':            '/assets/compressed/product/types/wter-testing-kits-.webp',
+  'fish-medicines':                '/assets/compressed/product/types/fish-medicins-.webp',
+  'goat-feed':                     '/assets/compressed/product/types/goat-feed-s.webp',
+  'cattle-feed':                   '/assets/compressed/product/types/cattle-feeds-.webp',
+  'mineral-mixtures':              '/assets/compressed/product/types/mineral-mixtures-.webp',
+  'livestock-medicines':           '/assets/compressed/product/types/live-stock-medicines-.webp',
+  'livestock-equipment':           '/assets/compressed/product/types/live-stock-equipmemts-.webp',
   // Farm Equipment
-  'polyhouse-sheets':              '/assets/product/types/polyhouse sheets.jpg',
-  'shade-nets':                    '/assets/product/types/shade nets .jpg',
-  'insect-nets':                   '/assets/product/types/insect net .jpg',
-  'gi-pipes':                      '/assets/product/types/GI pipes .jpg',
-  'nft-channels':                  '/assets/product/types/NFT channels .jpg',
-  'net-pots':                      '/assets/product/types/net pots .jpg',
-  'hydroponic-nutrients':          '/assets/product/types/hydroponic nutrients .jpg',
-  'grow-lights':                   '/assets/product/types/grow lights.jpg',
-  'water-pumps':                   '/assets/product/types/waterpumpn.jpg',
-  'drip-irrigation-systems':       '/assets/product/types/drip irrigation system .jpg',
-  'sprinklers':                    '/assets/product/types/sprinklers .jpg',
-  'irrigation-pipes':              '/assets/product/types/irrigation pipes .jpg',
-  'solar-dryers':                  '/assets/product/types/solar dryers .jpg',
-  'solar-pumps':                   '/assets/product/types/solar pumps .jpg',
-  'solar-fencing-systems':         '/assets/product/types/solar fencing system .jpg',
+  'polyhouse-sheets':              '/assets/compressed/product/types/polyhouse-sheets.webp',
+  'shade-nets':                    '/assets/compressed/product/types/shade-nets-.webp',
+  'insect-nets':                   '/assets/compressed/product/types/insect-net-.webp',
+  'gi-pipes':                      '/assets/compressed/product/types/gi-pipes-.webp',
+  'nft-channels':                  '/assets/compressed/product/types/nft-channels-.webp',
+  'net-pots':                      '/assets/compressed/product/types/net-pots-.webp',
+  'hydroponic-nutrients':          '/assets/compressed/product/types/hydroponic-nutrients-.webp',
+  'grow-lights':                   '/assets/compressed/product/types/grow-lights.webp',
+  'water-pumps':                   '/assets/compressed/product/types/waterpumpn.webp',
+  'drip-irrigation-systems':       '/assets/compressed/product/types/drip-irrigation-system-.webp',
+  'sprinklers':                    '/assets/compressed/product/types/sprinklers-.webp',
+  'irrigation-pipes':              '/assets/compressed/product/types/irrigation-pipes-.webp',
+  'solar-dryers':                  '/assets/compressed/product/types/solar-dryers-.webp',
+  'solar-pumps':                   '/assets/compressed/product/types/solar-pumps-.webp',
+  'solar-fencing-systems':         '/assets/compressed/product/types/solar-fencing-system-.webp',
 };
 
-const LOCAL_FALLBACK = '/assets/home page image .png';
+const LOCAL_FALLBACK = '/assets/compressed/home page image .png';
 
 // ── Category Listing View ─────────────────────────────────────────────────────
 

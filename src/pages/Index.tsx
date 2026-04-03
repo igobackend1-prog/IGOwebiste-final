@@ -9,23 +9,13 @@ import OffersBanner from "@/components/OffersBanner";
 import { getActiveOffers, initDefaultOffers } from "@/data/offersData";
 
 // PERMANENT first slide — do NOT remove or reorder this entry
-const PERMANENT_SLIDE = { src: "/assets/demo-poster/main-page-image.png", label: "IGO Group", alt: "IGO Group Advertisement", isPoster: true };
+const PERMANENT_SLIDE = { src: "/assets/compressed/main-page-image.webp", label: "IGO Group", alt: "IGO Group Main Banner", isPoster: true };
 
 // Changeable slides — add, remove, or reorder freely
 const CHANGEABLE_SLIDES = [
-  { src: "/assets/demo-poster/NEW POSTER 2JPG.jpeg", label: "Easter Sale", alt: "Celebrate Easter — Save up to 5 Lakhs", isPoster: true },
-  { src: "/assets/demo-poster/NEW POSTER 3.JPG.jpeg", label: "Happy Easter", alt: "Happy Easter — New beginnings with IGO", isPoster: true },
-  { src: "/assets/demo-poster/NEW POSTER IMAGE 1 .jpeg", label: "Easter Offer", alt: "Easter Exclusive — Free Holiday Stay", isPoster: true },
-  { src: "/assets/home-page-image-.png", label: "Smart Farms", alt: "Smart Farm" },
-  { src: "/assets/projects/project-subcategories/subcategories/vertical-farming.jpg", label: "Vertical Farming", alt: "Vertical Farming" },
-  { src: "/assets/projects/project-subcategories/subcategories/hydroponic-farming.jpg", label: "Hydroponics", alt: "Hydroponics" },
-  { src: "/assets/core-bussiness-picture/aquatic-plants.jpg", label: "Aquaculture", alt: "Aquaculture" },
-  { src: "/assets/projects/project-subcategories/subcategories/dairy-farming.jpg", label: "Dairy Farming", alt: "Dairy Farming" },
-  { src: "/assets/core-bussiness-picture/farm-engineering.jpg", label: "Farm Engineering", alt: "Farm Engineering" },
-  { src: "/assets/projects/project-subcategories/subcategories/solar-agriculture-project.jpg", label: "Solar Agriculture", alt: "Solar Agriculture" },
-  { src: "/assets/projects/project-subcategories/subcategories/mushroom-farming.jpg", label: "Mushroom Farming", alt: "Mushroom Farming" },
-  { src: "/assets/core-bussiness-picture/livestock.jpg", label: "Livestock", alt: "Livestock" },
-  { src: "/assets/projects/project-subcategories/subcategories/biofloc-farming.jpg", label: "Biofloc Farming", alt: "Biofloc Farming" },
+  { src: "/assets/compressed/demo-poster/NEW POSTER 2JPG.webp", label: "Easter Sale", alt: "Celebrate Easter — Save up to 5 Lakhs", isPoster: true },
+  { src: "/assets/compressed/demo-poster/NEW POSTER IMAGE 1 .webp", label: "Easter Offer", alt: "Easter Exclusive — Free Holiday Stay", isPoster: true },
+  { src: "/assets/compressed/2nd-page-photo.webp", label: "Legacy of Trust", alt: "15+ Years of Agri Excellence", isPoster: true },
 ];
 
 const HERO_SLIDES = [PERMANENT_SLIDE, ...CHANGEABLE_SLIDES];
@@ -312,7 +302,7 @@ const WhyChooseSection = () => (
           className="rounded-3xl overflow-hidden aspect-[4/3] shadow-2xl"
         >
           <img
-            src="/assets/award-ceremony-ceo.png"
+            src="/assets/compressed/award-ceremony-ceo.webp"
             alt="Agriculture Innovation Award"
             loading="lazy"
             decoding="async"
@@ -476,7 +466,7 @@ const ProjectGallerySection = () => {
       title: "Agri farming projects",
       bg: "bg-agri-earth-100",
       hoverBg: "hover:bg-agri-green-50",
-      image: "/assets/projects/main-page/agri-farming-project.jpg",
+      image: "/assets/compressed/projects/main-page/agri-farming-project.webp",
       href: "/projects/agri"
     },
     {
@@ -484,7 +474,7 @@ const ProjectGallerySection = () => {
       title: "Aquaculture Farming project",
       bg: "bg-agri-earth-100",
       hoverBg: "hover:bg-agri-green-50",
-      image: "/assets/projects/main-page/aquaculture-farming.jpg",
+      image: "/assets/compressed/projects/main-page/aquaculture-farming.webp",
       href: "/projects/aquaculture"
     },
     {
@@ -492,7 +482,7 @@ const ProjectGallerySection = () => {
       title: "Livestock Farming project",
       bg: "bg-agri-earth-100",
       hoverBg: "hover:bg-agri-green-50",
-      image: "/assets/projects/main-page/livestock-farming.jpg",
+      image: "/assets/compressed/projects/main-page/livestock-farming.webp",
       href: "/projects/livestock"
     },
     {
@@ -500,7 +490,7 @@ const ProjectGallerySection = () => {
       title: "Farm engineering projects",
       bg: "bg-agri-earth-100",
       hoverBg: "hover:bg-agri-green-50",
-      image: "/assets/projects/main-page/farm-engineering.jpg",
+      image: "/assets/compressed/projects/main-page/farm-engineering.webp",
       href: "/projects/engineering"
     }
   ];
@@ -641,7 +631,7 @@ const FeatureSection = () => {
                 {/* Overlapping Bottom Image - CLEAR, NO MIST */}
                 <div className="absolute bottom-0 left-0 right-0 h-[35%] pointer-events-none rounded-t-[2rem] overflow-hidden border-t border-black/5 shadow-[0_-10px_30px_rgba(0,0,0,0.03)]">
                   <motion.img
-                    src={s.icon && typeof s.icon === 'string' ? s.icon : "/assets/projects/agri_farming.jpg"}
+                    src={s.icon && typeof s.icon === 'string' ? s.icon : "/assets/compressed/projects/agri_farming.jpg"}
                     alt={s.label}
                     loading="lazy"
                     decoding="async"
@@ -694,7 +684,7 @@ const ProductEcosystem = () => {
             >
               <Link to={cat.href} className="absolute inset-0 z-20" />
               <img
-                src={(cat as any).cardImage || (cat.icon && typeof cat.icon === 'string' ? cat.icon : "/assets/projects/agri_farming.jpg")}
+                src={(cat as any).cardImage || (cat.icon && typeof cat.icon === 'string' ? cat.icon : "/assets/compressed/projects/agri_farming.jpg")}
                 alt={cat.label}
                 loading="lazy"
                 className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
@@ -1000,7 +990,7 @@ const BarleyBannerSection = () => (
       className="relative w-full overflow-hidden"
     >
       <img
-        src="/assets/barley_hero_clean.png"
+        src="/assets/compressed/barley_hero_clean.png"
         alt="IGO Agritech Farms — Innovating the Future of Farming"
         loading="lazy"
         decoding="async"

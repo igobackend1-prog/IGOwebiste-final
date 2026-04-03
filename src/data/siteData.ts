@@ -12,7 +12,7 @@ import {
 export const companyInfo = {
   name: "IGO Agritech Farms",
   tagline: "India's Best Agri Engineering & Consulting Group",
-  logo: "/assets/logo-igo.jpg",
+  logo: "/assets/compressed/logo-igo.webp",
   msmeAward: "MSME 2024 Award - Best Agri-Consulting Brand",
   vision: "To be the leading pan-India brand in precision agriculture, empowering farmers with innovative, sustainable engineering that maximizes ROI while nurturing the earth.",
   mission: "To win lifetime loyal customers across pan-India by farming every square meter of land/space using high-tech engineering, professional consulting, and smart livestock ecosystems.",
@@ -47,21 +47,21 @@ export const stats = [
 ];
 
 export const projects = [
-  { id: "joint-venture", title: "IGO Joint Venture Projects", category: "Infrastructure", image: "/assets/projects/joint-venture-premium-1773750685382.png", description: "Strategic partnerships for large-scale agricultural infrastructure development." },
-  { id: "floriculture", title: "IGO Floriculture Projects", category: "Specialized", image: "/assets/projects/floriculture-high-tech-1773750708446.png", description: "High-tech commercial flower cultivation systems with automated climate control." },
-  { id: "horticulture", title: "IGO Horticulture Projects", category: "Specialized", image: "/assets/projects/horticulture-enterprise-1773750728597.png", description: "Industrial orchard management and fruit production systems." },
-  { id: "microgreens", title: "IGO Microgreens Projects", category: "High-Tech", image: "/assets/projects/microgreens-lab-style-1773750748522.png", description: "Scientific indoor cultivation of nutrient-dense microgreens." },
-  { id: "vertical-farming", title: "IGO Vertical Farming Projects", category: "High-Tech", image: "/assets/projects/vertical-farming-futuristic-1773750768705.png", description: "Futuristic multi-layer growing systems maximizing yield per square meter." },
-  { id: "mushroom", title: "IGO Mushroom Farming Projects", category: "Specialized", image: "/assets/projects/igo-mushroom-farming-1774957443125.png", description: "Climate-controlled mushroom production with medical-grade precision." },
-  { id: "polyhouse", title: "IGO Polyhouse Farming Projects", category: "Engineering", image: "/assets/projects/igo-polyhouse-farming-1774957390686.png", description: "State-of-the-art protected cultivation structures for optimal growth." },
-  { id: "hydroponic", title: "IGO Hydroponic Farming Projects", category: "Engineering", image: "/assets/projects/igo-hydroponic-farming-1774957407427.png", description: "Advanced soil-less cultivation systems using NFT and DWC technologies." },
-  { id: "rooftop", title: "IGO Rooftop Projects", category: "Urban", image: "/assets/projects/rooftop-farming-corporate-1773750857107.png", description: "Transforming urban spaces into productive, sustainable green ecosystems." },
-  { id: "pond-liner", title: "IGO Pond Liner Projects", category: "Engineering", image: "/assets/projects/pond-liner-engineering-1773750874112.png", description: "High-precision reservoir engineering and water management solutions." },
-  { id: "multi-tier", title: "IGO Multi-tier Farming Projects", category: "High-Tech", image: "/assets/projects/multi-tier-farming-sleek-1773750910232.png", description: "Innovative multi-layer soil-based and soil-less farming systems." },
-  { id: "solar", title: "IGO Solar Powered Projects", category: "Energy", image: "/assets/projects/solar-agri-premium-1773750927133.png", description: "Renewable energy integration for self-sustaining agricultural ecosystems." },
-  { id: "nursery", title: "IGO Nursery Projects", category: "Specialized", image: "/assets/projects/nursery-modern-minimalist-1773750946194.png", description: "Industrial-scale plant propagation and tissue culture facilities." },
-  { id: "net-house", title: "IGO Net-house Projects", category: "Infrastructure", image: "/assets/projects/net-house-premium-1773750966052.png", description: "Cost-effective insect-protected cultivation for a variety of crops." },
-  { id: "open-cultivation", title: "IGO Open Cultivation Projects", category: "Precision", image: "/assets/projects/igo-open-field-farming-1774957423553.png", description: "Large-scale field cultivation optimized with precision irrigation." },
+  { id: "joint-venture", title: "IGO Joint Venture Projects", category: "Infrastructure", image: "/assets/compressed/projects/joint-venture-premium-1773750685382.webp", description: "Strategic partnerships for large-scale agricultural infrastructure development." },
+  { id: "floriculture", title: "IGO Floriculture Projects", category: "Specialized", image: "/assets/compressed/projects/floriculture-high-tech-1773750708446.webp", description: "High-tech commercial flower cultivation systems with automated climate control." },
+  { id: "horticulture", title: "IGO Horticulture Projects", category: "Specialized", image: "/assets/compressed/projects/horticulture-enterprise-1773750728597.webp", description: "Industrial orchard management and fruit production systems." },
+  { id: "microgreens", title: "IGO Microgreens Projects", category: "High-Tech", image: "/assets/compressed/projects/microgreens-lab-style-1773750748522.webp", description: "Scientific indoor cultivation of nutrient-dense microgreens." },
+  { id: "vertical-farming", title: "IGO Vertical Farming Projects", category: "High-Tech", image: "/assets/compressed/projects/vertical-farming-futuristic-1773750768705.webp", description: "Futuristic multi-layer growing systems maximizing yield per square meter." },
+  { id: "mushroom", title: "IGO Mushroom Farming Projects", category: "Specialized", image: "/assets/compressed/projects/igo-mushroom-farming-1774957443125.webp", description: "Climate-controlled mushroom production with medical-grade precision." },
+  { id: "polyhouse", title: "IGO Polyhouse Farming Projects", category: "Engineering", image: "/assets/compressed/projects/igo-polyhouse-farming-1774957390686.webp", description: "State-of-the-art protected cultivation structures for optimal growth." },
+  { id: "hydroponic", title: "IGO Hydroponic Farming Projects", category: "Engineering", image: "/assets/compressed/projects/igo-hydroponic-farming-1774957407427.webp", description: "Advanced soil-less cultivation systems using NFT and DWC technologies." },
+  { id: "rooftop", title: "IGO Rooftop Projects", category: "Urban", image: "/assets/compressed/projects/rooftop-farming-corporate-1773750857107.webp", description: "Transforming urban spaces into productive, sustainable green ecosystems." },
+  { id: "pond-liner", title: "IGO Pond Liner Projects", category: "Engineering", image: "/assets/compressed/projects/pond-liner-engineering-1773750874112.webp", description: "High-precision reservoir engineering and water management solutions." },
+  { id: "multi-tier", title: "IGO Multi-tier Farming Projects", category: "High-Tech", image: "/assets/compressed/projects/multi-tier-farming-sleek-1773750910232.webp", description: "Innovative multi-layer soil-based and soil-less farming systems." },
+  { id: "solar", title: "IGO Solar Powered Projects", category: "Energy", image: "/assets/compressed/projects/solar-agri-premium-1773750927133.webp", description: "Renewable energy integration for self-sustaining agricultural ecosystems." },
+  { id: "nursery", title: "IGO Nursery Projects", category: "Specialized", image: "/assets/compressed/projects/nursery-modern-minimalist-1773750946194.webp", description: "Industrial-scale plant propagation and tissue culture facilities." },
+  { id: "net-house", title: "IGO Net-house Projects", category: "Infrastructure", image: "/assets/compressed/projects/net-house-premium-1773750966052.png", description: "Cost-effective insect-protected cultivation for a variety of crops." },
+  { id: "open-cultivation", title: "IGO Open Cultivation Projects", category: "Precision", image: "/assets/compressed/projects/igo-open-field-farming-1774957423553.webp", description: "Large-scale field cultivation optimized with precision irrigation." },
 ];
 
 export const services = [
@@ -69,56 +69,56 @@ export const services = [
     title: "Polyhouse Projects",
     description: "Controlled environment farming with precision climate management.",
     icon: Tent,
-    image: "/assets/projects/igo-polyhouse-farming-1774957390686.png",
+    image: "/assets/compressed/projects/igo-polyhouse-farming-1774957390686.webp",
     path: "/projects/agri/polyhouse"
   },
   {
     title: "Training & Academy",
     description: "Expert-led workshops on high-tech farming and precision agri-ops.",
     icon: Microscope,
-    image: "/assets/services/academy.png",
+    image: "/assets/compressed/services/academy.png",
     path: "/courses"
   },
   {
     title: "IGO AgriMart",
     description: "Premium marketplace for high-quality seeds, fertilizers, and tools.",
     icon: Package,
-    image: "/assets/services/mart.png",
+    image: "/assets/compressed/services/mart.png",
     path: "/agrimart"
   },
   {
     title: "Hydroponics Projects",
     description: "NFT and DWC systems designed for maximum rapid growth.",
     icon: Droplets,
-    image: "/assets/projects/igo-hydroponic-farming-1774957407427.png",
+    image: "/assets/compressed/projects/igo-hydroponic-farming-1774957407427.webp",
     path: "/projects/agri/hydroponic"
   },
   {
     title: "Open Cultivation Projects",
     description: "Tailored outdoors projects for high-value fruit and medicinal crops.",
     icon: Tractor,
-    image: "/assets/projects/igo-open-field-farming-1774957423553.png",
+    image: "/assets/compressed/projects/igo-open-field-farming-1774957423553.webp",
     path: "/projects/agri-farming"
   },
   {
     title: "IGO AMC Service",
     description: "Dedicated partner in farm maintenance and reliable support.",
     icon: Settings,
-    image: "/assets/projects/pond-liner-engineering-1773750874112.png",
+    image: "/assets/compressed/projects/pond-liner-engineering-1773750874112.webp",
     path: "/services/engineering/maintenance"
   },
   {
     title: "IGO Buyback Service",
     description: "Beacon of trust for farmers in agricultural buyback programs.",
     icon: Heart,
-    image: "/assets/projects/joint-venture-premium-1773750685382.png",
+    image: "/assets/compressed/projects/joint-venture-premium-1773750685382.webp",
     path: "/contact"
   },
   {
     title: "IGO Gardening",
     description: "Rooftop Garden Services designed to inspire sustainable lifestyles.",
     icon: Sprout,
-    image: "/assets/projects/rooftop-farming-corporate-1773750857107.png",
+    image: "/assets/compressed/projects/rooftop-farming-corporate-1773750857107.webp",
     path: "/projects/urban/rooftop"
   },
 ];
@@ -462,22 +462,22 @@ export const blogPosts = [
 ];
 
 export const products = [
-  { id: "polyethylene-sheet", title: "Polyethylene Sheet", category: "Polyhouse Parts", description: "UV-stabilized professional-grade polyhouse covering.", price: "Price on Request", image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158" },
-  { id: "zig-zag-wire", title: "Zig Zag Wire", category: "Polyhouse Parts", description: "Specialized wires for securing polyethylene sheets safely.", price: "Price on Request", image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158" },
-  { id: "insect-net", title: "Insect Net", category: "Polyhouse Parts", description: "High-density UV protected nets for pest exclusion.", price: "Price on Request", image: "https://images.unsplash.com/photo-1505063364134-4f42786d123b" },
-  { id: "shade-net", title: "Shade Net", category: "Polyhouse Parts", description: "Multi-layered nets for light and heat management.", price: "Price on Request", image: "https://images.unsplash.com/photo-1518531933037-91b2f5f229cc" },
-  { id: "gutter", title: "Structural Gutter", category: "Polyhouse Parts", description: "Industrial-grade galvanized gutters for drainage.", price: "Price on Request", image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837" },
-  { id: "universal-joint", title: "Universal Joint", category: "Polyhouse Parts", description: "Heavy-duty joints for structural stability.", price: "Price on Request", image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158" },
-  { id: "aluminium-profile", title: "Aluminium Profile", category: "Polyhouse Parts", description: "High-strength C-profiles for sheet locking.", price: "Price on Request", image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158" },
-  { id: "screw-nuts-bolts", title: "Screw, Nuts & Bolts", category: "Polyhouse Parts", description: "Corrosion-resistant fasteners for polyhouse assembly.", price: "Price on Request", image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158" },
-  { id: "clamps", title: "Clamps", category: "Polyhouse Parts", description: "Various structural clamps for tube connections.", price: "Price on Request", image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158" },
-  { id: "teflon-tape", title: "Teflon Thread Tape", category: "Hydroponic Parts", description: "Professional grade sealing tape for plumbing.", price: "Price on Request", image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158" },
-  { id: "upvc-solvent", title: "UPVC Solvent", category: "Hydroponic Parts", description: "High-strength adhesive for hydroponic pipe networks.", price: "Price on Request", image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158" },
-  { id: "crop-net", title: "Crop Net", category: "Hydroponic Parts", description: "Support netting for climbing and heavy crops.", price: "Price on Request", image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158" },
-  { id: "twine-rope", title: "Twine Rope", category: "Hydroponic Parts", description: "Trellising rope for vertical growing systems.", price: "Price on Request", image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158" },
-  { id: "nft-channel-2", title: "NFT Channel (2 inch)", category: "Hydroponic Parts", description: "High-grade food-safe channels for NFT systems.", price: "Price on Request", image: "https://images.unsplash.com/photo-1523348837708-15d4a09cfac2" },
-  { id: "nft-channel-3", title: "NFT Channel (3 inch)", category: "Hydroponic Parts", description: "Wider NFT channels for larger root systems.", price: "Price on Request", image: "https://images.unsplash.com/photo-1523348837708-15d4a09cfac2" },
-  { id: "greenpro", title: "Greenpro Products", category: "Specialized", description: "Exclusive range of Greenpro agricultural inputs.", price: "Price on Request", image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158" },
+  { id: "polyethylene-sheet", title: "Polyethylene Sheet", category: "Polyhouse Parts", description: "UV-stabilized professional-grade polyhouse covering.", price: "Price on Request", image: "/assets/compressed/product/types/polyhouse-sheets.webp" },
+  { id: "zig-zag-wire", title: "Zig Zag Wire", category: "Polyhouse Parts", description: "Specialized wires for securing polyethylene sheets safely.", price: "Price on Request", image: "/assets/compressed/product/types/polyhouse-sheets.webp" },
+  { id: "insect-net", title: "Insect Net", category: "Polyhouse Parts", description: "High-density UV protected nets for pest exclusion.", price: "Price on Request", image: "/assets/compressed/product/types/insect-net-.webp" },
+  { id: "shade-net", title: "Shade Net", category: "Polyhouse Parts", description: "Multi-layered nets for light and heat management.", price: "Price on Request", image: "/assets/compressed/product/types/shade-nets-.webp" },
+  { id: "gutter", title: "Structural Gutter", category: "Polyhouse Parts", description: "Industrial-grade galvanized gutters for drainage.", price: "Price on Request", image: "/assets/compressed/product/types/gi-pipes-.webp" },
+  { id: "universal-joint", title: "Universal Joint", category: "Polyhouse Parts", description: "Heavy-duty joints for structural stability.", price: "Price on Request", image: "/assets/compressed/product/types/gi-pipes-.webp" },
+  { id: "aluminium-profile", title: "Aluminium Profile", category: "Polyhouse Parts", description: "High-strength C-profiles for sheet locking.", price: "Price on Request", image: "/assets/compressed/product/types/gi-pipes-.webp" },
+  { id: "screw-nuts-bolts", title: "Screw, Nuts & Bolts", category: "Polyhouse Parts", description: "Corrosion-resistant fasteners for polyhouse assembly.", price: "Price on Request", image: "/assets/compressed/product/types/gi-pipes-.webp" },
+  { id: "clamps", title: "Clamps", category: "Polyhouse Parts", description: "Various structural clamps for tube connections.", price: "Price on Request", image: "/assets/compressed/product/types/gi-pipes-.webp" },
+  { id: "teflon-tape", title: "Teflon Thread Tape", category: "Hydroponic Parts", description: "Professional grade sealing tape for plumbing.", price: "Price on Request", image: "/assets/compressed/product/types/hydroponic-nutrients-.webp" },
+  { id: "upvc-solvent", title: "UPVC Solvent", category: "Hydroponic Parts", description: "High-strength adhesive for hydroponic pipe networks.", price: "Price on Request", image: "/assets/compressed/product/types/hydroponic-nutrients-.webp" },
+  { id: "crop-net", title: "Crop Net", category: "Hydroponic Parts", description: "Support netting for climbing and heavy crops.", price: "Price on Request", image: "/assets/compressed/product/types/insect-net-.webp" },
+  { id: "twine-rope", title: "Twine Rope", category: "Hydroponic Parts", description: "Trellising rope for vertical growing systems.", price: "Price on Request", image: "/assets/compressed/product/types/insect-net-.webp" },
+  { id: "nft-channel-2", title: "NFT Channel (2 inch)", category: "Hydroponic Parts", description: "High-grade food-safe channels for NFT systems.", price: "Price on Request", image: "/assets/compressed/product/types/nft-channels-.webp" },
+  { id: "nft-channel-3", title: "NFT Channel (3 inch)", category: "Hydroponic Parts", description: "Wider NFT channels for larger root systems.", price: "Price on Request", image: "/assets/compressed/product/types/nft-channels-.webp" },
+  { id: "greenpro", title: "Greenpro Products", category: "Specialized", description: "Exclusive range of Greenpro agricultural inputs.", price: "Price on Request", image: "/assets/compressed/product/types/organic-fertilizer-.webp" },
 ];
 
 export const courses = [
@@ -583,8 +583,8 @@ export const navLinks = [
       {
         label: "Agri Farming Projects",
         href: "/projects/agri",
-        icon: "/assets/header/project-drop-down-icon/agri-farm-projects-.jpg",
-        cardImage: "/assets/projects/main-page/agri-farming-project.jpg",
+        icon: "/assets/compressed/header/project-drop-down-icon/agri-farm-projects-.webp",
+        cardImage: "/assets/compressed/projects/main-page/agri-farming-project.webp",
         children: [
           {
             label: "Protected Farming Projects",
@@ -705,8 +705,8 @@ export const navLinks = [
       {
         label: "Aquaculture Farming Projects",
         href: "/projects/aquaculture",
-        icon: "/assets/header/project-drop-down-icon/aquaculture-farming-projects-.jpg",
-        cardImage: "/assets/projects/main-page/aquaculture-farming.jpg",
+        icon: "/assets/compressed/header/project-drop-down-icon/aquaculture-farming-projects-.webp",
+        cardImage: "/assets/compressed/projects/main-page/aquaculture-farming.webp",
         children: [
           {
             label: "Fish Farming Projects",
@@ -758,8 +758,8 @@ export const navLinks = [
       {
         label: "Livestock Farming Projects",
         href: "/projects/livestock",
-        icon: "/assets/header/project-drop-down-icon/livestock-farming-projecs-.jpg",
-        cardImage: "/assets/projects/main-page/livestock-farming.jpg",
+        icon: "/assets/compressed/header/project-drop-down-icon/livestock-farming-projecs-.webp",
+        cardImage: "/assets/compressed/projects/main-page/livestock-farming.webp",
         children: [
           {
             label: "Goat Farming",
@@ -810,8 +810,8 @@ export const navLinks = [
       {
         label: "Farm Engineering Projects",
         href: "/projects/engineering",
-        icon: "/assets/header/project-drop-down-icon/farm-engineering-projects.jpg",
-        cardImage: "/assets/projects/main-page/farm-engineering.jpg",
+        icon: "/assets/compressed/header/project-drop-down-icon/farm-engineering-projects.webp",
+        cardImage: "/assets/compressed/projects/main-page/farm-engineering.webp",
         children: [
           {
             label: "Farm Infrastructure Projects",
@@ -868,62 +868,62 @@ export const navLinks = [
       {
         label: "Farm Planning & Consulting",
         href: "/services/farm-planning",
-        icon: "/assets/service/main-page-service-image/farm-planning-&-consulting.jpg",
-        cardImage: "/assets/service/main-page-service-image/farm-planning-&-consulting.jpg",
+        icon: "/assets/compressed/service/main-page-service-image/farm-planning-&-consulting.webp",
+        cardImage: "/assets/compressed/service/main-page-service-image/farm-planning-&-consulting.webp",
         children: [
-          { label: "Farm Business Planning", href: "/services/farm-planning/farm-business-planning", image: "/assets/service/types/farm-business-planning.png" },
-          { label: "Agri Investment Consulting", href: "/services/farm-planning/agri-investment-consulting", image: "/assets/service/types/agri-investment-consulting.png" },
-          { label: "Crop Selection Consulting", href: "/services/farm-planning/crop-selection-consulting", image: "/assets/service/types/crop-selection-consulting.png" },
-          { label: "Farm Layout Design", href: "/services/farm-planning/farm-layout-design", image: "/assets/service/types/farm-layout-design.png" },
-          { label: "Aquaculture Consulting", href: "/services/farm-planning/aquaculture-consulting", image: "/assets/service/types/aquaculture-pond-construction.png" },
-          { label: "Land Surveying", href: "/services/farm-planning/land-surveying", image: "/assets/service/types/land-leveling.png" },
+          { label: "Farm Business Planning", href: "/services/farm-planning/farm-business-planning", image: "/assets/compressed/service/types/farm-business-planning.webp" },
+          { label: "Agri Investment Consulting", href: "/services/farm-planning/agri-investment-consulting", image: "/assets/compressed/service/types/agri-investment-consulting.webp" },
+          { label: "Crop Selection Consulting", href: "/services/farm-planning/crop-selection-consulting", image: "/assets/compressed/service/types/crop-selection-consulting.webp" },
+          { label: "Farm Layout Design", href: "/services/farm-planning/farm-layout-design", image: "/assets/compressed/service/types/farm-layout-design.webp" },
+          { label: "Aquaculture Consulting", href: "/services/farm-planning/aquaculture-consulting", image: "/assets/compressed/service/types/aquaculture-pond-construction.webp" },
+          { label: "Land Surveying", href: "/services/farm-planning/land-surveying", image: "/assets/compressed/service/types/land-leveling.webp" },
         ]
       },
       {
         label: "Farming Project Setup",
         href: "/services/farming-project-setup",
-        icon: "/assets/service/main-page-service-image/farming-project-setup.jpg",
-        cardImage: "/assets/service/main-page-service-image/farming-project-setup.jpg",
+        icon: "/assets/compressed/service/main-page-service-image/farming-project-setup.webp",
+        cardImage: "/assets/compressed/service/main-page-service-image/farming-project-setup.webp",
         children: [
-          { label: "Polyhouse Installation", href: "/services/farming-project-setup/polyhouse-installation", image: "/assets/service/types/polyhouse-installation.png" },
-          { label: "Hydroponic Setup", href: "/services/farming-project-setup/hydroponic-setup", image: "/assets/service/types/hydroponic-setup.png" },
-          { label: "Vertical Farming Setup", href: "/services/farming-project-setup/vertical-farming-setup", image: "/assets/service/types/vertical-farming-setup.png" },
-          { label: "Fish Farming Setup", href: "/services/farming-project-setup/fish-farming-setup", image: "/assets/service/types/fish-farming-setup.png" },
-          { label: "Biofloc Installation", href: "/services/farming-project-setup/biofloc-installation", image: "/assets/service/types/biofloc-installation.png" },
-          { label: "Aquaculture Pond Construction", href: "/services/farming-project-setup/aquaculture-pond-construction", image: "/assets/service/types/aquaculture-pond-construction.png" },
-          { label: "Aquaponics Setup", href: "/services/farming-project-setup/aquaponics-setup", image: "/assets/service/types/aquaponics-setup-new.png" },
-          { label: "Goat Farm Setup", href: "/services/farming-project-setup/goat-farm-setup", image: "/assets/service/types/goat-farm-setup.png" },
-          { label: "Dairy Farm Setup", href: "/services/farming-project-setup/dairy-farm-setup", image: "/assets/service/types/dairy-farm-setup.png" },
-          { label: "Sheep Farm Setup", href: "/services/farming-project-setup/sheep-farm-setup", image: "/assets/service/types/sheep-farm-setup.png" },
-          { label: "Poultry Farm Setup", href: "/services/farming-project-setup/poultry-farm-setup", image: "/assets/service/types/poultry-farm-setup.png" },
-          { label: "GIS Mapping", href: "/services/farming-project-setup/gis-mapping", image: "/assets/service/types/gis-mapping.png" },
+          { label: "Polyhouse Installation", href: "/services/farming-project-setup/polyhouse-installation", image: "/assets/compressed/service/types/polyhouse-installation.jpg" },
+          { label: "Hydroponic Setup", href: "/services/farming-project-setup/hydroponic-setup", image: "/assets/compressed/service/types/hydroponic-setup.webp" },
+          { label: "Vertical Farming Setup", href: "/services/farming-project-setup/vertical-farming-setup", image: "/assets/compressed/service/types/vertical-farming-setup.webp" },
+          { label: "Fish Farming Setup", href: "/services/farming-project-setup/fish-farming-setup", image: "/assets/compressed/service/types/fish-farming-setup.jpg" },
+          { label: "Biofloc Installation", href: "/services/farming-project-setup/biofloc-installation", image: "/assets/compressed/service/types/biofloc-installation.webp" },
+          { label: "Aquaculture Pond Construction", href: "/services/farming-project-setup/aquaculture-pond-construction", image: "/assets/compressed/service/types/aquaculture-pond-construction.webp" },
+          { label: "Aquaponics Setup", href: "/services/farming-project-setup/aquaponics-setup", image: "/assets/compressed/service/types/aquaponics-setup-new.webp" },
+          { label: "Goat Farm Setup", href: "/services/farming-project-setup/goat-farm-setup", image: "/assets/compressed/service/types/goat-farm-setup.webp" },
+          { label: "Dairy Farm Setup", href: "/services/farming-project-setup/dairy-farm-setup", image: "/assets/compressed/service/types/dairy-farm-setup.webp" },
+          { label: "Sheep Farm Setup", href: "/services/farming-project-setup/sheep-farm-setup", image: "/assets/compressed/service/types/sheep-farm-setup.webp" },
+          { label: "Poultry Farm Setup", href: "/services/farming-project-setup/poultry-farm-setup", image: "/assets/compressed/service/types/poultry-farm-setup.jpg" },
+          { label: "GIS Mapping", href: "/services/farming-project-setup/gis-mapping", image: "/assets/compressed/service/types/gis-mapping.webp" },
         ]
       },
       {
         label: "Farm Infrastructure",
         href: "/services/farm-infrastructure",
-        icon: "/assets/service/main-page-service-image/farm-infrastructure-&-irrigation.jpg",
-        cardImage: "/assets/service/main-page-service-image/farm-infrastructure-&-irrigation.jpg",
+        icon: "/assets/compressed/service/main-page-service-image/farm-infrastructure-&-irrigation.webp",
+        cardImage: "/assets/compressed/service/main-page-service-image/farm-infrastructure-&-irrigation.webp",
         children: [
-          { label: "Cold Storage Construction", href: "/services/farm-infrastructure/cold-storage-construction", image: "/assets/service/types/cold-storage-construction.png" },
-          { label: "Packhouse Construction", href: "/services/farm-infrastructure/packhouse-construction", image: "/assets/service/types/packhouse-construction-new.png" },
-          { label: "Farm Building Design", href: "/services/farm-infrastructure/farm-building-design", image: "/assets/service/types/farm-building-design-new.png" },
-          { label: "Drip Irrigation Installation", href: "/services/farm-infrastructure/drip-irrigation-installation", image: "/assets/service/types/drip-irrigation-installation.png" },
-          { label: "Sprinkler Irrigation Systems", href: "/services/farm-infrastructure/sprinkler-irrigation-systems", image: "/assets/service/types/sprinkler-irrigation-systems.png" },
-          { label: "Water Pump Systems", href: "/services/farm-infrastructure/water-pump-systems", image: "/assets/service/types/water-pump-systems-new.png" },
-          { label: "Land Leveling", href: "/services/farm-infrastructure/land-leveling", image: "/assets/service/types/land-leveling.png" },
+          { label: "Cold Storage Construction", href: "/services/farm-infrastructure/cold-storage-construction", image: "/assets/compressed/service/types/cold-storage-construction.webp" },
+          { label: "Packhouse Construction", href: "/services/farm-infrastructure/packhouse-construction", image: "/assets/compressed/service/types/packhouse-construction-new.webp" },
+          { label: "Farm Building Design", href: "/services/farm-infrastructure/farm-building-design", image: "/assets/compressed/service/types/farm-building-design-new.webp" },
+          { label: "Drip Irrigation Installation", href: "/services/farm-infrastructure/drip-irrigation-installation", image: "/assets/compressed/service/types/drip-irrigation-installation.webp" },
+          { label: "Sprinkler Irrigation Systems", href: "/services/farm-infrastructure/sprinkler-irrigation-systems", image: "/assets/compressed/service/types/sprinkler-irrigation-systems.webp" },
+          { label: "Water Pump Systems", href: "/services/farm-infrastructure/water-pump-systems", image: "/assets/compressed/service/types/water-pump-systems-new.webp" },
+          { label: "Land Leveling", href: "/services/farm-infrastructure/land-leveling", image: "/assets/compressed/service/types/land-leveling.webp" },
         ]
       },
       {
         label: "Maintenance & Support",
         href: "/services/maintenance-support",
-        icon: "/assets/service/main-page-service-image/maintenance-&-support.jpg",
-        cardImage: "/assets/service/main-page-service-image/maintenance-&-support.jpg",
+        icon: "/assets/compressed/service/main-page-service-image/maintenance-&-support.webp",
+        cardImage: "/assets/compressed/service/main-page-service-image/maintenance-&-support.webp",
         children: [
-          { label: "Livestock Shed Construction", href: "/services/maintenance-support/livestock-shed-construction", image: "/assets/service/types/livestock-shed-construction-.jpg" },
-          { label: "Polyhouse AMC", href: "/services/maintenance-support/polyhouse-amc", image: "/assets/service/types/polyhouse-amc-.jpg" },
-          { label: "Hydroponic System AMC", href: "/services/maintenance-support/hydroponic-system-amc", image: "/assets/service/types/hydroponic-system-amc-.jpg" },
-          { label: "Farm Equipment Maintenance", href: "/services/maintenance-support/farm-equipment-maintenance", image: "/assets/service/types/farm-equipament-maintance-.jpg" },
+          { label: "Livestock Shed Construction", href: "/services/maintenance-support/livestock-shed-construction", image: "/assets/compressed/service/types/livestock-shed-construction-.webp" },
+          { label: "Polyhouse AMC", href: "/services/maintenance-support/polyhouse-amc", image: "/assets/compressed/service/types/polyhouse-amc-.webp" },
+          { label: "Hydroponic System AMC", href: "/services/maintenance-support/hydroponic-system-amc", image: "/assets/compressed/service/types/hydroponic-system-amc-.webp" },
+          { label: "Farm Equipment Maintenance", href: "/services/maintenance-support/farm-equipment-maintenance", image: "/assets/compressed/service/types/farm-equipament-maintance-.webp" },
         ]
       }
     ],
@@ -935,8 +935,8 @@ export const navLinks = [
       {
         label: "Agri Essentials",
         href: "/products/agri-essentials",
-        icon: "/assets/header/product-dropdown-icon/agri-products-icon.jpg",
-        cardImage: "/assets/product/main-page-image/agri-essentials.jpg",
+        icon: "/assets/compressed/header/product-dropdown-icon/agri-products-icon.webp",
+        cardImage: "/assets/compressed/product/main-page-image/agri-essentials.webp",
         children: [
           { label: "Vegetable Seeds", href: "/products/agri-essentials/vegetable-seeds" },
           { label: "Fruit Plants", href: "/products/agri-essentials/fruit-plants" },
@@ -947,8 +947,8 @@ export const navLinks = [
       {
         label: "Crop Solutions",
         href: "/products/crop-solutions",
-        icon: "/assets/header/product-dropdown-icon/aquaculture-prodcut-icon-.jpg",
-        cardImage: "/assets/product/main-page-image/crop-solutions.jpg",
+        icon: "/assets/compressed/header/product-dropdown-icon/aquaculture-prodcut-icon-.webp",
+        cardImage: "/assets/compressed/product/main-page-image/crop-solutions.webp",
         children: [
           { label: "NPK Fertilizers", href: "/products/crop-solutions/npk-fertilizers" },
           { label: "Organic Fertilizers", href: "/products/crop-solutions/organic-fertilizers" },
@@ -969,8 +969,8 @@ export const navLinks = [
       {
         label: "Animal Solutions",
         href: "/products/animal-solutions",
-        icon: "/assets/header/product-dropdown-icon/live-stock-product-.jpg",
-        cardImage: "/assets/product/main-page-image/animal-solutions.jpg",
+        icon: "/assets/compressed/header/product-dropdown-icon/live-stock-product-.webp",
+        cardImage: "/assets/compressed/product/main-page-image/animal-solutions.webp",
         children: [
           { label: "Fish Feed", href: "/products/animal-solutions/fish-feed" },
           { label: "Aerators", href: "/products/animal-solutions/aerators" },
@@ -988,8 +988,8 @@ export const navLinks = [
       {
         label: "Farm Equipment",
         href: "/products/farm-equipment",
-        icon: "/assets/header/product-dropdown-icon/farm-engineering-icon-.jpg",
-        cardImage: "/assets/product/main-page-image/farm-equipment-.jpg",
+        icon: "/assets/compressed/header/product-dropdown-icon/farm-engineering-icon-.webp",
+        cardImage: "/assets/compressed/product/main-page-image/farm-equipment-.webp",
         children: [
           { label: "Polyhouse Sheets", href: "/products/farm-equipment/polyhouse-sheets" },
           { label: "Shade Nets", href: "/products/farm-equipment/shade-nets" },
@@ -1018,15 +1018,15 @@ export const navLinks = [
 ];
 
 export const igoBrands = [
-  { id: "igo-agritech-farms", name: "IGO Agritech Farms", logo: "/assets/brands/brand-1-jpg.jpeg", tag: "Core Business", desc: "India's leading Agri Engineering & Consulting brand — polyhouse, hydroponics, vertical farming, precision farming and livestock projects. Pan-India. MSME Award 2024." },
-  { id: "farmers-factory", name: "Farmers Factory", logo: "/assets/brands/brand-2-jpg.jpeg", tag: "Processing & Mfg", desc: "Farm to shop distribution brand. Bringing fresh farm produce directly to retail stores and consumers across India." },
-  { id: "valluvam", name: "Valluvam", logo: "/assets/brands/brand-3-jpg.jpeg", tag: "Agri Consultancy", desc: "Branded grocery staples celebrating Tamil heritage. Quality everyday essentials — As Pure As Nature." },
-  { id: "protein-cuts", name: "Protein Cuts", logo: "/assets/brands/brand-4-jpg.jpeg", tag: "Farm-to-Table", desc: "Premium meat, fish, and eggs retail brand. Fresh protein products straight from IGO's own livestock farms." },
-  { id: "igo-agrimart", name: "IGO Agri Mart", logo: "/assets/brands/brand-5-jpg.jpeg", tag: "Distribution", desc: "Farm inputs and distribution network connecting quality agricultural inputs directly to farmers across India." },
-  { id: "igo-nursery", name: "IGO Nursery", logo: "/assets/brands/brand-6-jpg.jpeg", tag: "Plant Propagation", desc: "Premium nursery and landscaping solutions — supplying quality plants, seeds and horticultural products pan-India." },
-  { id: "palm-cafe", name: "Palm Cafe", logo: "/assets/brands/palm-cafe.jpeg", tag: "F&B", desc: "The Healthy Food Joint — farm-to-table F&B brand creating 5,000 jobs for youth using IGO's own farm produce." },
-  { id: "igo-exports-imports", name: "IGO Exports & Imports", logo: "/assets/brands/igo-exports.jpeg", tag: "Trade", desc: "International trade division connecting Indian agri products to global markets and bringing world-class inputs to India." },
-  { id: "igo-tech-farming-scientists", name: "IGO Tech Farming Scientist Foundation", logo: "/assets/brands/igo-foundation.jpeg", tag: "Foundation", desc: "Research and education foundation advancing agri-science and technology for the next generation of tech farming scientists." },
+  { id: "igo-agritech-farms", name: "IGO Agritech Farms", logo: "/assets/compressed/brands/brand-1-jpg.webp", tag: "Core Business", desc: "India's leading Agri Engineering & Consulting brand — polyhouse, hydroponics, vertical farming, precision farming and livestock projects. Pan-India. MSME Award 2024." },
+  { id: "farmers-factory", name: "Farmers Factory", logo: "/assets/compressed/brands/brand-2-jpg.webp", tag: "Processing & Mfg", desc: "Farm to shop distribution brand. Bringing fresh farm produce directly to retail stores and consumers across India." },
+  { id: "valluvam", name: "Valluvam", logo: "/assets/compressed/brands/brand-3-jpg.webp", tag: "Agri Consultancy", desc: "Branded grocery staples celebrating Tamil heritage. Quality everyday essentials — As Pure As Nature." },
+  { id: "protein-cuts", name: "Protein Cuts", logo: "/assets/compressed/brands/brand-4-jpg.webp", tag: "Farm-to-Table", desc: "Premium meat, fish, and eggs retail brand. Fresh protein products straight from IGO's own livestock farms." },
+  { id: "igo-agrimart", name: "IGO Agri Mart", logo: "/assets/compressed/brands/brand-5-jpg.webp", tag: "Distribution", desc: "Farm inputs and distribution network connecting quality agricultural inputs directly to farmers across India." },
+  { id: "igo-nursery", name: "IGO Nursery", logo: "/assets/compressed/brands/brand-6-jpg.webp", tag: "Plant Propagation", desc: "Premium nursery and landscaping solutions — supplying quality plants, seeds and horticultural products pan-India." },
+  { id: "palm-cafe", name: "Palm Cafe", logo: "/assets/compressed/brands/palm-cafe.webp", tag: "F&B", desc: "The Healthy Food Joint — farm-to-table F&B brand creating 5,000 jobs for youth using IGO's own farm produce." },
+  { id: "igo-exports-imports", name: "IGO Exports & Imports", logo: "/assets/compressed/brands/igo-exports.webp", tag: "Trade", desc: "International trade division connecting Indian agri products to global markets and bringing world-class inputs to India." },
+  { id: "igo-tech-farming-scientists", name: "IGO Tech Farming Scientist Foundation", logo: "/assets/compressed/brands/igo-foundation.webp", tag: "Foundation", desc: "Research and education foundation advancing agri-science and technology for the next generation of tech farming scientists." },
   { id: "igo-mart", name: "IGO Mart", logo: "", tag: "Retail", desc: "Supermarket chain offering quality products at accessible prices — part of IGO Group's consumer retail vision." },
   { id: "igo-fintech", name: "IGO Fintech", logo: "", tag: "Fintech", desc: "Micro finance unit providing financial access and support to farmers and agricultural entrepreneurs across India." },
   { id: "igo-farm-land-estates", name: "IGO Farm Land Estates", logo: "", tag: "Real Estate", desc: "Agricultural land and property development — creating investment opportunities in farmland across India." },

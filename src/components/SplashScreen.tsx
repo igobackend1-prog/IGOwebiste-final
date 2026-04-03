@@ -41,7 +41,7 @@ const SplashScreen = () => {
             className="relative w-[90vw] max-w-2xl rounded-2xl overflow-hidden shadow-2xl"
           >
             <img
-              src="/assets/main-page-image.png"
+              src="/assets/compressed/main-page-image.webp"
               alt="IGO Agritech Farms Advertisement"
               className="w-full h-auto block"
             />

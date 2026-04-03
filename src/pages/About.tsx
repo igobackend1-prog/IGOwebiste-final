@@ -11,20 +11,20 @@ const fader: Variants = {
 };
 
 const AWARDS = [
-  { year: 2026, name: "Most Trusted Agri Brand",        sub: "In India",                           img: "/assets/ceo-awrds-image/most-trustwd-agri-brand-in-india-2026.jpg" },
-  { year: 2025, name: "Best Farm Engineering Company",  sub: "In India",                           img: "/assets/ceo-awrds-image/best-farm-engineering-company-i-india-2025.jpeg" },
-  { year: 2024, name: "MSME Awards 2024",               sub: "Best Agri-Consulting Brand",         img: "/assets/ceo-awrds-image/award1-jpg.jpeg" },
-  { year: 2022, name: "Best Innovative Start-up",       sub: "Agri Tech Brand",                    img: "/assets/ceo-awrds-image/award-jpg.jpeg" },
-  { year: null, name: "SISI Award",                     sub: "Industrial Development",              img: "/assets/ceo-awrds-image/award2-jpg.jpeg" },
-  { year: null, name: "Trade Award",                    sub: "Export Excellence",                   img: "/assets/ceo-awrds-image/award3-jpg.jpeg" },
-  { year: null, name: "Valluvam Award",                 sub: "Agricultural Excellence",             img: "/assets/ceo-awrds-image/award4-jpg.jpeg" },
-  { year: null, name: "National Excellence Award",      sub: "National Recognition",               img: "/assets/ceo-awrds-image/about-copy.jpeg" },
+  { year: 2026, name: "Most Trusted Agri Brand",        sub: "In India",                           img: "/assets/compressed/ceo-awrds-image/most-trustwd-agri-brand-in-india-2026.webp" },
+  { year: 2025, name: "Best Farm Engineering Company",  sub: "In India",                           img: "/assets/compressed/ceo-awrds-image/best-farm-engineering-company-i-india-2025.webp" },
+  { year: 2024, name: "MSME Awards 2024",               sub: "Best Agri-Consulting Brand",         img: "/assets/compressed/ceo-awrds-image/award1-jpg.webp" },
+  { year: 2022, name: "Best Innovative Start-up",       sub: "Agri Tech Brand",                    img: "/assets/compressed/ceo-awrds-image/award-jpg.webp" },
+  { year: null, name: "SISI Award",                     sub: "Industrial Development",              img: "/assets/compressed/ceo-awrds-image/award2-jpg.webp" },
+  { year: null, name: "Trade Award",                    sub: "Export Excellence",                   img: "/assets/compressed/ceo-awrds-image/award3-jpg.webp" },
+  { year: null, name: "Valluvam Award",                 sub: "Agricultural Excellence",             img: "/assets/compressed/ceo-awrds-image/award4-jpg.webp" },
+  { year: null, name: "National Excellence Award",      sub: "National Recognition",               img: "/assets/compressed/ceo-awrds-image/about-copy.webp" },
 ];
 
 const AWARD_BANNER = [
-  "/assets/ceo-awrds-image/award1-jpg.jpeg",
-  "/assets/ceo-awrds-image/about-copy.jpeg",
-  "/assets/ceo-awrds-image/award2-jpg.jpeg",
+  "/assets/compressed/ceo-awrds-image/award1-jpg.webp",
+  "/assets/compressed/ceo-awrds-image/about-copy.webp",
+  "/assets/compressed/ceo-awrds-image/award2-jpg.webp",
 ];
 
 const VALUES = [
@@ -52,7 +52,7 @@ const About = () => (
         className="absolute inset-0"
       >
         <OptimizedImage
-          src="/assets/background-page-for-agri-starup-and-about-.png"
+          src="/assets/compressed/background-page-for-agri-starup-and-about-.webp"
           alt="IGO Agritech Farms"
           decoding="async"
           className="w-full h-full object-cover"
@@ -173,7 +173,7 @@ const About = () => (
           className="relative w-full aspect-video rounded-[2rem] overflow-hidden shadow-2xl mb-14"
         >
           <OptimizedImage
-            src="/assets/about-page-image-.png"
+            src="/assets/compressed/about-page-image-.webp"
             alt="Dr. John Yesudhas — IGO Agritech Farms"
             loading="lazy"
             decoding="async"
@@ -299,7 +299,7 @@ const About = () => (
     <section className="py-32 bg-agri-green-950 relative overflow-hidden">
       {/* Background texture */}
       <div className="absolute inset-0 opacity-50">
-        <OptimizedImage src="/assets/background-page-for-agri-starup-and-about-.png" alt="" loading="lazy" decoding="async" className="w-full h-full object-cover" />
+        <OptimizedImage src="/assets/compressed/background-page-for-agri-starup-and-about-.webp" alt="" loading="lazy" decoding="async" className="w-full h-full object-cover" />
       </div>
       <div className="absolute inset-0 bg-gradient-to-r from-agri-green-950 via-agri-green-950/95 to-agri-green-950/80" />
 

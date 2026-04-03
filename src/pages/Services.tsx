@@ -27,7 +27,7 @@ const Services = () => {
       />
       {/* Hero Section */}
       <section className="relative pt-24 sm:pt-32 md:pt-40 pb-16 sm:pb-24 md:pb-32 overflow-hidden bg-agri-green-800 text-white">
-        <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "url('/assets/polyhouse_wireframe.png')", backgroundSize: 'cover', backgroundPosition: 'center' }} />
+        <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "url('/assets/compressed/polyhouse_wireframe.png')", backgroundSize: 'cover', backgroundPosition: 'center' }} />
         
         <div className="container mx-auto px-6 relative z-10">
           <motion.div 
@@ -60,7 +60,7 @@ const Services = () => {
             >
               <div className="relative h-[280px] sm:h-[350px] w-full overflow-hidden">
                 <img
-                  src={(s as any).cardImage || "/assets/service/main-page-service-image/farming-project-setup.jpg"}
+                  src={(s as any).cardImage || "/assets/compressed/service/main-page-service-image/farming-project-setup.webp"}
                   alt={s.label}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 />

@@ -105,7 +105,7 @@ const AgriStartupPlatform = () => (
         className="absolute inset-0"
       >
         <OptimizedImage
-          src="/assets/background-page-for-agri-starup-and-about-.png"
+          src="/assets/compressed/background-page-for-agri-starup-and-about-.webp"
           alt="Agri Startup Platform"
           loading="eager"
           decoding="async"

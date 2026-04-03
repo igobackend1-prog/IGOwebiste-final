@@ -55,7 +55,7 @@ const AdminLogin = () => {
           className="absolute inset-0"
         >
           <img
-            src="/assets/admini-login-page-image-.png"
+            src="/assets/compressed/admini-login-page-image-.webp"
             alt="IGO Global Operations"
             className="w-full h-full object-cover grayscale-[0.2] group-hover:grayscale-0 transition-all duration-[3000ms] ease-out"
           />
@@ -71,7 +71,7 @@ const AdminLogin = () => {
                transition={{ duration: 1 }}
                className="flex items-center gap-4 bg-black/40 backdrop-blur-xl px-6 py-3 rounded-2xl border border-white/10"
              >
-                <img src="/assets/logo-igo.webp" alt="IGO Logo" className="w-8 h-8 object-contain" />
+                <img src="/assets/compressed/logo-igo.webp" alt="IGO Logo" className="w-8 h-8 object-contain" />
                 <div className="h-4 w-px bg-white/20" />
                 <span className="text-white font-black text-[10px] tracking-[0.4em] uppercase">Security Operations</span>
              </motion.div>

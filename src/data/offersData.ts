@@ -98,72 +98,72 @@ export const CTA_PRESETS = [
 ];
 
 // ─── Default seed posters (shown on first load before any uploads) ───────────
-const SEED_KEY = "igo_offers_seeded_v6";
+const SEED_KEY = "igo_offers_seeded_v9";
 
 const DEFAULT_OFFERS: OfferPoster[] = [
   {
-    id: "seed_0",
+    id: "seed_1",
     title: "",
     subtitle: "",
     badge: "IGO GROUP",
-    ctaLabel: "Discover More",
-    ctaLink: "/about",
-    image: "/assets/demo-poster/main-page-image.png",
+    ctaLabel: "View All Offers",
+    ctaLink: "/offers",
+    image: "/assets/compressed/main-page-image.webp",
     bgColor: "#1a5c1a",
     isActive: true,
     displayOrder: 0,
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
     expiryDate: null,
-    note: "Primary IGO Group Brand Slide — PERMANENT, do not remove",
+    note: "Main Banner Poster",
   },
   {
-    id: "seed_1",
+    id: "seed_2",
     title: "",
     subtitle: "",
     badge: "SPECIAL",
-    ctaLabel: "Save ₹75,000–5 Lakhs",
+    ctaLabel: "Save up to 5 Lakhs",
     ctaLink: "/contact",
-    image: "/assets/demo-poster/NEW POSTER 2JPG.jpeg",
+    image: "/assets/compressed/demo-poster/NEW POSTER 2JPG.webp",
     bgColor: "#1a5c1a",
     isActive: true,
     displayOrder: 1,
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
     expiryDate: null,
-    note: "Easter Sale — Save up to 5 Lakhs",
+    note: "Easter Sale Offer",
   },
   {
-    id: "seed_2",
+    id: "seed_3",
     title: "",
     subtitle: "",
     badge: "NEW",
     ctaLabel: "Partner With Us",
     ctaLink: "/contact",
-    image: "/assets/demo-poster/NEW POSTER 3.JPG.jpeg",
+    image: "/assets/compressed/demo-poster/NEW POSTER IMAGE 1 .webp",
     bgColor: "#1a5c1a",
     isActive: true,
     displayOrder: 2,
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
     expiryDate: null,
-    note: "Happy Easter — New beginnings with IGO",
+    note: "Easter Exclusive Offer",
   },
   {
-    id: "seed_3",
+    id: "seed_4",
     title: "",
     subtitle: "",
-    badge: "LIMITED",
-    ctaLabel: "Book Your Project",
-    ctaLink: "/contact",
-    image: "/assets/demo-poster/NEW POSTER IMAGE 1 .jpeg",
+    badge: "PROUD LEGACY",
+    ctaLabel: "Our Core Mission",
+    ctaLink: "/about",
+    image: "/assets/compressed/2nd-page-photo.webp",
     bgColor: "#1a5c1a",
     isActive: true,
     displayOrder: 3,
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
     expiryDate: null,
-    note: "Easter Exclusive — Free 2N/3D Holiday Stay",
+    note: "Legacy of Trust Brand Slide — Highlighting 15+ Years of Excellence",
   },
 ];
 
@@ -173,7 +173,7 @@ export const initDefaultOffers = (): void => {
   if (currentSeed === "1") return;
 
   // Clear ALL old seed keys so stale data is wiped
-  ["igo_offers_seeded_v3", "igo_offers_seeded_v4", "igo_offers_seeded_v5"].forEach(k => localStorage.removeItem(k));
+  ["igo_offers_seeded_v3", "igo_offers_seeded_v4", "igo_offers_seeded_v5", "igo_offers_seeded_v6", "igo_offers_seeded_v7", "igo_offers_seeded_v8"].forEach(k => localStorage.removeItem(k));
 
   // Force-write corrected default offers
   saveOffers(DEFAULT_OFFERS);

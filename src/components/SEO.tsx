@@ -14,7 +14,7 @@ interface SEOProps {
 }
 
 const BASE_URL = "https://www.igoagritechfarms.com";
-const DEFAULT_IMAGE = `${BASE_URL}/assets/home page image .png`;
+const DEFAULT_IMAGE = `${BASE_URL}/assets/compressed/home page image .png`;
 const SITE_NAME = "IGO Agritech Farms";
 
 export default function SEO({
