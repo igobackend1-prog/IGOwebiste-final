@@ -15,7 +15,7 @@ const PERMANENT_SLIDE = { src: "/assets/compressed/main-page-image.webp", label:
 const CHANGEABLE_SLIDES = [
   { src: "/assets/compressed/demo-poster/NEW POSTER 2JPG.webp", label: "Easter Sale", alt: "Celebrate Easter — Save up to 5 Lakhs", isPoster: true },
   { src: "/assets/compressed/demo-poster/NEW POSTER IMAGE 1 .webp", label: "Easter Offer", alt: "Easter Exclusive — Free Holiday Stay", isPoster: true },
-  { src: "/assets/compressed/2nd-page-photo.webp", label: "Legacy of Trust", alt: "15+ Years of Agri Excellence", isPoster: true },
+  { src: "/assets/compressed/demo-poster/NEW POSTER 3.JPG.webp", label: "Legacy of Trust", alt: "15+ Years of Agri Excellence", isPoster: true },
 ];
 
 const HERO_SLIDES = [PERMANENT_SLIDE, ...CHANGEABLE_SLIDES];

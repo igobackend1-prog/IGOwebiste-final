@@ -98,7 +98,7 @@ export const CTA_PRESETS = [
 ];
 
 // ─── Default seed posters (shown on first load before any uploads) ───────────
-const SEED_KEY = "igo_offers_seeded_v9";
+const SEED_KEY = "igo_offers_seeded_v10";
 
 const DEFAULT_OFFERS: OfferPoster[] = [
   {
@@ -156,7 +156,7 @@ const DEFAULT_OFFERS: OfferPoster[] = [
     badge: "PROUD LEGACY",
     ctaLabel: "Our Core Mission",
     ctaLink: "/about",
-    image: "/assets/compressed/2nd-page-photo.webp",
+    image: "/assets/compressed/demo-poster/NEW POSTER 3.JPG.webp",
     bgColor: "#1a5c1a",
     isActive: true,
     displayOrder: 3,
