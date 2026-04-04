@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import SEO from "@/components/SEO";
 import { ArrowRight, Wheat, Fish, Tractor, Droplets, Leaf, Shield, Hammer, Microscope, Cog, Database, Zap, Binary, PencilRuler, Box, ChevronLeft, ChevronRight } from "lucide-react";
 import { stats, projects, services, navLinks, igoBrands } from "@/data/siteData";
-import { motion, AnimatePresence, Variants } from "framer-motion";
+import { motion, AnimatePresence, Variants, useScroll, useTransform } from "framer-motion";
 import OffersBanner from "@/components/OffersBanner";
 import { getActiveOffers, initDefaultOffers } from "@/data/offersData";
 
@@ -770,10 +770,18 @@ const B_LERP_AUTO = 0.07;  // easing for auto-scroll (buttery)
 const B_LERP_DRAG = 0.45;  // easing during drag (nearly instant = glued to finger)
 
 const BrandsSection = () => {
+  const sectionRef = useRef<HTMLDivElement>(null);
   const stripRef = useRef<HTMLDivElement>(null);
   const rafRef = useRef<number>(0);
   const pos = useRef(0);   // rendered position
   const target = useRef(0);   // desired position — auto-scroll ALWAYS advances this
+  
+  // Parallax background logic
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"]
+  });
+  const backgroundY = useTransform(scrollYProgress, [0, 1], ["-15%", "15%"]);
   const isDragging = useRef(false);
   const prevDragX = useRef(0);   // last frame's drag X for incremental delta
   const velX = useRef(0);   // px/ms for momentum throw
@@ -874,8 +882,27 @@ const BrandsSection = () => {
 
   return (
     <section className="py-20 md:py-40 bg-slate-100 overflow-hidden border-t border-black/5 content-defer relative">
+      {/* ── HEADING AREA with Background Image ── */}
+      <div 
+        ref={sectionRef}
+        className="relative py-40 mb-10 overflow-hidden flex items-center justify-center min-h-[500px]" 
+      >
+        {/* Parallax Background Image */}
+        <motion.div 
+          style={{ 
+            y: backgroundY, 
+            backgroundImage: "url('/assets/brands/background image of brand .jpeg')",
+            backgroundSize: 'contain',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat'
+          }}
+          className="absolute inset-0 z-0 scale-150 pointer-events-none"
+        />
+        
+        {/* Readability Overlay */}
+        <div className="absolute inset-0 bg-white/80 z-[1]" />
 
-      <div className="container mx-auto px-6 text-center mb-16 relative z-10">
+        <div className="container mx-auto px-6 text-center relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -914,6 +941,7 @@ const BrandsSection = () => {
           </button>
         </div>
       </div>
+    </div>
 
       {/* Track — overflow:hidden so nothing is scrollable; transform moves the strip */}
       <div className="relative py-10 overflow-hidden">
