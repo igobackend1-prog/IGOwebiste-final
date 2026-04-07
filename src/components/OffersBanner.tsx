@@ -63,7 +63,7 @@ const Slide = ({
       initial={fadeIn}
       animate={visible}
       exit={fadeOut}
-      className="absolute inset-0 flex flex-col pt-[max(env(safe-area-inset-top),_0px)]"
+      className="absolute inset-0"
       style={{ willChange: "opacity", WebkitTransform: "translateZ(0)" }}
       onMouseEnter={onPause}
       onMouseLeave={onResume}
@@ -74,68 +74,18 @@ const Slide = ({
       }}
     >
 
-      {/* ══════════════════════════════════════════════════════════
-          LAYER 1 — Ambient blurred background
-          Scales up the same poster image, blurs it heavily so
-          only the colour tones remain. Works automatically for
-          every poster — current and future — with zero manual
-          configuration.
-      ══════════════════════════════════════════════════════════ */}
-      <div className="absolute inset-0 z-0 overflow-hidden">
-        {poster.image ? (
-          <img
-            src={poster.image}
-            alt=""
-            aria-hidden
-            draggable={false}
-            className="absolute inset-0 w-full h-full object-cover"
-            style={{
-              transform:  "scale(1.55) translateZ(0)",
-              filter:     "blur(90px)",
-              opacity:    0.72,
-              willChange: "opacity, transform, filter",
-            }}
-          />
-        ) : (
-          /* Fallback for colour-only posters (no image) */
-          <div
-            className="absolute inset-0"
-            style={{ background: poster.bgColor || "#0a3d0a" }}
-          />
-        )}
-
-        {/* Dark vignette — deepens edges, improves text contrast */}
-        <div className="absolute inset-0 bg-black/28" />
-        {/* Subtle gradient — top lighter, bottom darker */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/45" />
-        {/* Side vignettes — soften left/right edges */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-transparent to-black/30" />
-      </div>
-
-      {/* ══════════════════════════════════════════════════════════
-          LAYER 2 — Poster image (sharp, object-contain, centred)
-          Masked at edges so it dissolves into the ambient layer
-          for a seamless, premium blended look.
-      ══════════════════════════════════════════════════════════ */}
-      <div
-        className="flex-1 flex items-center justify-center w-full min-h-0 relative z-10"
-        style={{
-          WebkitMaskImage: "radial-gradient(ellipse 88% 82% at 50% 50%, black 52%, transparent 100%)",
-          maskImage:        "radial-gradient(ellipse 88% 82% at 50% 50%, black 52%, transparent 100%)",
-        }}
-      >
-        {poster.image ? (
-          <img
-            src={poster.image}
-            alt={poster.title || "IGO Offer"}
-            className="w-full h-full object-contain"
-            draggable={false}
-            style={{ display: "block" }}
-          />
-        ) : (
-          <div className="w-full h-full" style={{ background: poster.bgColor || "#0a3d0a" }} />
-        )}
-      </div>
+      {/* ── Poster image — full-width, edge-to-edge, object-cover ── */}
+      {poster.image ? (
+        <img
+          src={poster.image}
+          alt={poster.title || "IGO Offer"}
+          className="w-full h-full object-cover"
+          draggable={false}
+          style={{ display: "block" }}
+        />
+      ) : (
+        <div className="w-full h-full" style={{ background: poster.bgColor || "#0a3d0a" }} />
+      )}
 
       {/* ══════════════════════════════════════════════════════════
           LAYER 3 — Text overlay (title / badge / countdown / CTA)
@@ -291,8 +241,8 @@ const OffersBanner = ({ heroMode = false }: OffersBannerProps) => {
    */
   const sectionClass = "relative w-full select-none bg-black overflow-hidden";
 
-  const sectionStyle = heroMode
-    ? { marginTop: NAVBAR_H, height: `calc(100dvh - ${NAVBAR_H}px)`, minHeight: 500 - NAVBAR_H }
+  const sectionStyle: React.CSSProperties = heroMode
+    ? { marginTop: NAVBAR_H, aspectRatio: "16 / 9" }
     : {};
 
   return (

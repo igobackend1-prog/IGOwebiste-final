@@ -9,7 +9,7 @@ import OffersBanner from "@/components/OffersBanner";
 import { getActiveOffers, initDefaultOffers } from "@/data/offersData";
 
 // PERMANENT first slide — do NOT remove or reorder this entry
-const PERMANENT_SLIDE = { src: "/assets/compressed/main-page-image.webp", label: "IGO Group", alt: "IGO Group Main Banner", isPoster: true };
+const PERMANENT_SLIDE = { src: "/assets/demo-poster/main image v2.png", label: "IGO Group", alt: "IGO Group Main Banner", isPoster: true };
 
 // Changeable slides — add, remove, or reorder freely
 const CHANGEABLE_SLIDES = [
@@ -63,13 +63,13 @@ const HeroSection = () => {
 
   return (
     <section
-      className="relative flex items-center justify-center overflow-hidden bg-black text-white transition-all duration-700"
+      className="relative overflow-hidden bg-black text-white transition-all duration-700"
       style={isPoster
-        ? { height: "100vh", paddingTop: NAVBAR_H }
+        ? { marginTop: NAVBAR_H }
         : { height: "95vh" }
       }
     >
-      {/* ── POSTER SLIDES: 1920×1080-target, starts below navbar, fills screen ── */}
+      {/* ── POSTER SLIDES: full-width, height adapts to image ── */}
       {isPoster && (
         <AnimatePresence mode="sync">
           <motion.div
@@ -78,8 +78,6 @@ const HeroSection = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 1.2, ease: "easeInOut" }}
-            className="w-full"
-            style={{ height: `calc(100vh - ${NAVBAR_H}px)` }}
           >
             <img
               src={slide.src}
@@ -87,9 +85,7 @@ const HeroSection = () => {
               decoding="async"
               style={{
                 width: "100%",
-                height: "100%",
-                objectFit: "cover",
-                objectPosition: "center center",
+                height: "auto",
                 display: "block",
               }}
             />
@@ -594,7 +590,7 @@ const FeatureSection = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 whileHover={{ y: -5 }}
-                className="group relative bg-white rounded-[2rem] p-6 sm:p-8 md:p-10 min-h-[380px] sm:min-h-[460px] md:min-h-[550px] flex flex-col border border-black/5 hover:border-agri-gold-500/20 transition-all hover:shadow-[0_40px_80px_rgba(0,0,0,0.06)] cursor-pointer overflow-hidden"
+                className="group relative bg-white rounded-[2rem] p-6 sm:p-8 md:p-10 min-h-[480px] sm:min-h-[500px] md:min-h-[550px] flex flex-col border border-black/5 hover:border-agri-gold-500/20 transition-all hover:shadow-[0_40px_80px_rgba(0,0,0,0.06)] cursor-pointer overflow-hidden"
               >
                 <Link to={s.href} className="absolute inset-0 z-20" />
 
@@ -629,7 +625,7 @@ const FeatureSection = () => {
                 </div>
 
                 {/* Overlapping Bottom Image - CLEAR, NO MIST */}
-                <div className="absolute bottom-0 left-0 right-0 h-[35%] pointer-events-none rounded-t-[2rem] overflow-hidden border-t border-black/5 shadow-[0_-10px_30px_rgba(0,0,0,0.03)]">
+                <div className="absolute bottom-0 left-0 right-0 h-[28%] sm:h-[32%] md:h-[35%] pointer-events-none rounded-t-[2rem] overflow-hidden border-t border-black/5 shadow-[0_-10px_30px_rgba(0,0,0,0.03)]">
                   <motion.img
                     src={s.icon && typeof s.icon === 'string' ? s.icon : "/assets/compressed/projects/agri_farming.jpg"}
                     alt={s.label}
