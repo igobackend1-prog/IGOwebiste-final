@@ -37,7 +37,7 @@ const Projects = () => {
           className="absolute inset-0"
         >
           <img
-            src="/assets/compressed/projects/main-page/agri farming project .jpg"
+            src="/assets/compressed/projects/main-page/agri-farming-project.jpg"
             alt="IGO Projects"
             className="w-full h-full object-cover"
           />

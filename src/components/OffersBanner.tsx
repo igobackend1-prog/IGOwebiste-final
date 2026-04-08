@@ -74,15 +74,26 @@ const Slide = ({
       }}
     >
 
-      {/* ── Poster image — full-width, edge-to-edge, object-cover ── */}
+      {/* ── Poster image — dual layer for zero-crop visibility ── */}
       {poster.image ? (
-        <img
-          src={poster.image}
-          alt={poster.title || "IGO Offer"}
-          className="w-full h-full object-cover"
-          draggable={false}
-          style={{ display: "block" }}
-        />
+        <div className="relative w-full h-full overflow-hidden flex items-center justify-center bg-black/20">
+          {/* Layer 1: Blurred background fill (for different aspect ratios) */}
+          <img
+            src={poster.image}
+            alt=""
+            aria-hidden="true"
+            className="absolute inset-0 w-full h-full object-cover blur-3xl scale-125 opacity-40 select-none pointer-events-none"
+            draggable={false}
+          />
+          {/* Layer 2: Full poster image (object-contain ensures no clipping) */}
+          <img
+            src={poster.image}
+            alt={poster.title || "IGO Offer"}
+            className="relative w-full h-full object-contain z-10 select-none"
+            draggable={false}
+            style={{ display: "block" }}
+          />
+        </div>
       ) : (
         <div className="w-full h-full" style={{ background: poster.bgColor || "#0a3d0a" }} />
       )}
@@ -239,11 +250,13 @@ const OffersBanner = ({ heroMode = false }: OffersBannerProps) => {
    * bg-black is just a brief flash fallback during the first image load.
    * Once the blurred ambient layer renders, it covers this completely.
    */
-  const sectionClass = "relative w-full select-none bg-black overflow-hidden";
-
   const sectionStyle: React.CSSProperties = heroMode
-    ? { marginTop: NAVBAR_H, aspectRatio: "16 / 9" }
+    ? { marginTop: NAVBAR_H }
     : {};
+
+  // For heroMode, we use a taller aspect ratio on mobile (4:3) to ensure 
+  // the poster is prominent, while keeping 16:9 for larger screens.
+  const sectionClass = `relative w-full select-none bg-black overflow-hidden ${heroMode ? "aspect-[4/3] sm:aspect-video" : ""}`;
 
   return (
     <section className={sectionClass} style={sectionStyle}>

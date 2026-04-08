@@ -1,7 +1,7 @@
 // Site-wide data for IGO Agritech Farms
-import { 
-  Tent, Droplets, Layers, TreeDeciduous, Carrot, Pill, Flower, 
-  Leaf, Building, Sprout, Fish, Waves, RefreshCcw, Shield, 
+import {
+  Tent, Droplets, Layers, TreeDeciduous, Carrot, Pill, Flower,
+  Leaf, Building, Sprout, Fish, Waves, RefreshCcw, Shield,
   Scissors, Milk, Bird, Heart, Factory, Sun, Map,
   Briefcase, TrendingUp, CircleDollarSign, MapPin, Globe, Ruler,
   Settings, PenTool, Wrench, Hammer, MessageSquare, Box, Package,
@@ -47,21 +47,21 @@ export const stats = [
 ];
 
 export const projects = [
-  { id: "joint-venture", title: "IGO Joint Venture Projects", category: "Infrastructure", image: "/assets/compressed/projects/joint-venture-premium-1773750685382.webp", description: "Strategic partnerships for large-scale agricultural infrastructure development." },
-  { id: "floriculture", title: "IGO Floriculture Projects", category: "Specialized", image: "/assets/compressed/projects/floriculture-high-tech-1773750708446.webp", description: "High-tech commercial flower cultivation systems with automated climate control." },
-  { id: "horticulture", title: "IGO Horticulture Projects", category: "Specialized", image: "/assets/compressed/projects/horticulture-enterprise-1773750728597.webp", description: "Industrial orchard management and fruit production systems." },
-  { id: "microgreens", title: "IGO Microgreens Projects", category: "High-Tech", image: "/assets/compressed/projects/microgreens-lab-style-1773750748522.webp", description: "Scientific indoor cultivation of nutrient-dense microgreens." },
-  { id: "vertical-farming", title: "IGO Vertical Farming Projects", category: "High-Tech", image: "/assets/compressed/projects/vertical-farming-futuristic-1773750768705.webp", description: "Futuristic multi-layer growing systems maximizing yield per square meter." },
-  { id: "mushroom", title: "IGO Mushroom Farming Projects", category: "Specialized", image: "/assets/compressed/projects/igo-mushroom-farming-1774957443125.webp", description: "Climate-controlled mushroom production with medical-grade precision." },
-  { id: "polyhouse", title: "IGO Polyhouse Farming Projects", category: "Engineering", image: "/assets/compressed/projects/igo-polyhouse-farming-1774957390686.webp", description: "State-of-the-art protected cultivation structures for optimal growth." },
-  { id: "hydroponic", title: "IGO Hydroponic Farming Projects", category: "Engineering", image: "/assets/compressed/projects/igo-hydroponic-farming-1774957407427.webp", description: "Advanced soil-less cultivation systems using NFT and DWC technologies." },
-  { id: "rooftop", title: "IGO Rooftop Projects", category: "Urban", image: "/assets/compressed/projects/rooftop-farming-corporate-1773750857107.webp", description: "Transforming urban spaces into productive, sustainable green ecosystems." },
-  { id: "pond-liner", title: "IGO Pond Liner Projects", category: "Engineering", image: "/assets/compressed/projects/pond-liner-engineering-1773750874112.webp", description: "High-precision reservoir engineering and water management solutions." },
-  { id: "multi-tier", title: "IGO Multi-tier Farming Projects", category: "High-Tech", image: "/assets/compressed/projects/multi-tier-farming-sleek-1773750910232.webp", description: "Innovative multi-layer soil-based and soil-less farming systems." },
-  { id: "solar", title: "IGO Solar Powered Projects", category: "Energy", image: "/assets/compressed/projects/solar-agri-premium-1773750927133.webp", description: "Renewable energy integration for self-sustaining agricultural ecosystems." },
-  { id: "nursery", title: "IGO Nursery Projects", category: "Specialized", image: "/assets/compressed/projects/nursery-modern-minimalist-1773750946194.webp", description: "Industrial-scale plant propagation and tissue culture facilities." },
-  { id: "net-house", title: "IGO Net-house Projects", category: "Infrastructure", image: "/assets/compressed/projects/net-house-premium-1773750966052.png", description: "Cost-effective insect-protected cultivation for a variety of crops." },
-  { id: "open-cultivation", title: "IGO Open Cultivation Projects", category: "Precision", image: "/assets/compressed/projects/igo-open-field-farming-1774957423553.webp", description: "Large-scale field cultivation optimized with precision irrigation." },
+  { id: "joint-venture", title: "IGO Joint Venture Projects", category: "Infrastructure", image: "/assets/new project images/joint-venture-premium-1773750685382.webp", description: "Strategic partnerships for large-scale agricultural infrastructure development." },
+  { id: "floriculture", title: "IGO Floriculture Projects", category: "Specialized", image: "/assets/new project images/floriculture-high-tech-1773750708446.webp", description: "High-tech commercial flower cultivation systems with automated climate control." },
+  { id: "horticulture", title: "IGO Horticulture Projects", category: "Specialized", image: "/assets/new project images/horticulture-enterprise-1773750728597.webp", description: "Industrial orchard management and fruit production systems." },
+  { id: "microgreens", title: "IGO Microgreens Projects", category: "High-Tech", image: "/assets/new project images/microgreens-lab-style-1773750748522.webp", description: "Scientific indoor cultivation of nutrient-dense microgreens." },
+  { id: "vertical-farming", title: "IGO Vertical Farming Projects", category: "High-Tech", image: "/assets/new project images/vertical-farming-futuristic-1773750768705.webp", description: "Futuristic multi-layer growing systems maximizing yield per square meter." },
+  { id: "mushroom", title: "IGO Mushroom Farming Projects", category: "Specialized", image: "/assets/new project images/igo-mushroom-farming-1774957443125.webp", description: "Climate-controlled mushroom production with medical-grade precision." },
+  { id: "polyhouse", title: "IGO Polyhouse Farming Projects", category: "Engineering", image: "/assets/new project images/igo-polyhouse-farming-1774957390686.webp", description: "State-of-the-art protected cultivation structures for optimal growth." },
+  { id: "hydroponic", title: "IGO Hydroponic Farming Projects", category: "Engineering", image: "/assets/new project images/igo-hydroponic-farming-1774957407427.webp", description: "Advanced soil-less cultivation systems using NFT and DWC technologies." },
+  { id: "rooftop", title: "IGO Rooftop Projects", category: "Urban", image: "/assets/new project images/rooftop-farming-corporate-1773750857107.webp", description: "Transforming urban spaces into productive, sustainable green ecosystems." },
+  { id: "pond-liner", title: "IGO Pond Liner Projects", category: "Engineering", image: "/assets/new project images/pond-liner-engineering-1773750874112.webp", description: "High-precision reservoir engineering and water management solutions." },
+  { id: "multi-tier", title: "IGO Multi-tier Farming Projects", category: "High-Tech", image: "/assets/new project images/multi-tier-farming-sleek-1773750910232.webp", description: "Innovative multi-layer soil-based and soil-less farming systems." },
+  { id: "solar", title: "IGO Solar Powered Projects", category: "Energy", image: "/assets/new project images/solar-agri-premium-1773750927133.webp", description: "Renewable energy integration for self-sustaining agricultural ecosystems." },
+  { id: "nursery", title: "IGO Nursery Projects", category: "Specialized", image: "/assets/new project images/nursery-modern-minimalist-1773750946194.webp", description: "Industrial-scale plant propagation and tissue culture facilities." },
+  { id: "net-house", title: "IGO Net-house Projects", category: "Infrastructure", image: "/assets/new project images/net-house-premium-1773750966052.png", description: "Cost-effective insect-protected cultivation for a variety of crops." },
+  { id: "open-cultivation", title: "IGO Open Cultivation Projects", category: "Precision", image: "/assets/new project images/igo-open-field-farming-1774957423553.webp", description: "Large-scale field cultivation optimized with precision irrigation." },
 ];
 
 export const services = [
@@ -69,7 +69,7 @@ export const services = [
     title: "Polyhouse Projects",
     description: "Controlled environment farming with precision climate management.",
     icon: Tent,
-    image: "/assets/compressed/projects/igo-polyhouse-farming-1774957390686.webp",
+    image: "/assets/new project images/igo-polyhouse-farming-1774957390686.webp",
     path: "/projects/agri/polyhouse"
   },
   {
@@ -90,35 +90,35 @@ export const services = [
     title: "Hydroponics Projects",
     description: "NFT and DWC systems designed for maximum rapid growth.",
     icon: Droplets,
-    image: "/assets/compressed/projects/igo-hydroponic-farming-1774957407427.webp",
+    image: "/assets/new project images/igo-hydroponic-farming-1774957407427.webp",
     path: "/projects/agri/hydroponic"
   },
   {
     title: "Open Cultivation Projects",
     description: "Tailored outdoors projects for high-value fruit and medicinal crops.",
     icon: Tractor,
-    image: "/assets/compressed/projects/igo-open-field-farming-1774957423553.webp",
+    image: "/assets/new project images/igo-open-field-farming-1774957423553.webp",
     path: "/projects/agri-farming"
   },
   {
     title: "IGO AMC Service",
     description: "Dedicated partner in farm maintenance and reliable support.",
     icon: Settings,
-    image: "/assets/compressed/projects/pond-liner-engineering-1773750874112.webp",
+    image: "/assets/new project images/pond-liner-engineering-1773750874112.webp",
     path: "/services/engineering/maintenance"
   },
   {
     title: "IGO Buyback Service",
     description: "Beacon of trust for farmers in agricultural buyback programs.",
     icon: Heart,
-    image: "/assets/compressed/projects/joint-venture-premium-1773750685382.webp",
+    image: "/assets/new project images/joint-venture-premium-1773750685382.webp",
     path: "/contact"
   },
   {
     title: "IGO Gardening",
     description: "Rooftop Garden Services designed to inspire sustainable lifestyles.",
     icon: Sprout,
-    image: "/assets/compressed/projects/rooftop-farming-corporate-1773750857107.webp",
+    image: "/assets/new project images/rooftop-farming-corporate-1773750857107.webp",
     path: "/projects/urban/rooftop"
   },
 ];
@@ -583,121 +583,131 @@ export const navLinks = [
       {
         label: "Agri Farming Projects",
         href: "/projects/agri",
-        icon: "/assets/compressed/header/project-drop-down-icon/agri-farm-projects-.webp",
+        icon: "/assets/header/project-drop-down-icon/agri-farm-projects-.webp",
         cardImage: "/assets/compressed/projects/main-page/agri-farming-project.webp",
         children: [
           {
             label: "Protected Farming Projects",
             href: "/projects/agri/protected",
             icon: Tent,
+            cardImage: "/assets/new project images/project-subcategories/subcategories/protected-farming.webp",
             children: [
-              { label: "Naturally Ventilated Polyhouse", href: "/projects/agri/protected/naturally-ventilated" },
-              { label: "Climate Controlled Polyhouse", href: "/projects/agri/protected/climate-controlled" },
-              { label: "Polycarbonate Greenhouse", href: "/projects/agri/protected/polycarbonate" },
-              { label: "Shade Net House", href: "/projects/agri/protected/shade-net" },
-              { label: "Mist Chamber", href: "/projects/agri/protected/mist-chamber" },
+              { label: "Naturally Ventilated Polyhouse", href: "/projects/agri/protected/naturally-ventilated", image: "/assets/new project images/naturally ventilated polyuhouse .png" },
+              { label: "Climate Controlled Polyhouse", href: "/projects/agri/protected/climate-controlled", image: "/assets/new project images/climate controlled polyhouse .jpeg" },
+              { label: "Polycarbonate Greenhouse", href: "/projects/agri/protected/polycarbonate", image: "/assets/new project images/polycarboate green house .png" },
+              { label: "Shade Net House", href: "/projects/agri/protected/shade-net", image: "/assets/new project images/shade net new .png" },
+              { label: "Mist Chamber", href: "/projects/agri/protected/mist-chamber", image: "/assets/new project images/mist chamber .jpeg" },
             ]
           },
           {
             label: "Hydroponic Farming Projects",
             href: "/projects/agri/hydroponic",
             icon: Droplets,
+            cardImage: "/assets/new project images/project-subcategories/subcategories/hydroponic-farming.webp",
             children: [
-              { label: "NFT Hydroponic System", href: "/projects/agri/hydroponic/nft" },
-              { label: "Deep Water Culture System", href: "/projects/agri/hydroponic/dwc" },
-              { label: "Vertical Hydroponic Towers", href: "/projects/agri/hydroponic/towers" },
-              { label: "Commercial Hydroponic Farms", href: "/projects/agri/hydroponic/commercial" },
-              { label: "Indoor Hydroponic Units", href: "/projects/agri/hydroponic/indoor" },
+              { label: "NFT Hydroponic System", href: "/projects/agri/hydroponic/nft", image: "/assets/new project images/nft hydroponic system .png" },
+              { label: "Deep Water Culture System", href: "/projects/agri/hydroponic/dwc", image: "/assets/new project images/deep water culture system .jpeg" },
+              { label: "Vertical Hydroponic Towers", href: "/projects/agri/hydroponic/towers", image: "/assets/new project images/vertical hydroponic .png" },
+              { label: "Commercial Hydroponic Farms", href: "/projects/agri/hydroponic/commercial", image: "/assets/new project images/commercial  indoor hydroponic setup .png" },
+              { label: "Indoor Hydroponic Units", href: "/projects/agri/hydroponic/indoor", image: "/assets/new project images/indoor hydroponic .png" },
             ]
           },
           {
             label: "Vertical Farming Projects",
             href: "/projects/agri/vertical",
             icon: Layers,
+            cardImage: "/assets/new project images/project-subcategories/subcategories/vertical-farming.webp",
             children: [
-              { label: "Indoor Vertical Farms", href: "/projects/agri/vertical/indoor" },
-              { label: "Commercial Vertical Farming Units", href: "/projects/agri/vertical/commercial" },
-              { label: "Smart Grow Room Systems", href: "/projects/agri/vertical/smart-grow" },
+              { label: "Indoor Vertical Farms", href: "/projects/agri/vertical/indoor", image: "/assets/new project images/vertical hydroponic toers .png" },
+              { label: "Commercial Vertical Farming Units", href: "/projects/agri/vertical/commercial", image: "/assets/new project images/vertical hydroponic toers .png" },
+              { label: "Smart Grow Room Systems", href: "/projects/agri/vertical/smart-grow", image: "/assets/new project images/smart grow with sensor .png" },
             ]
           },
           {
             label: "Open Field Cultivation Projects",
             href: "/projects/agri/open-field",
             icon: TreeDeciduous,
+            cardImage: "/assets/new project images/project-subcategories/subcategories/open-field-cultivation.webp",
             children: [
-              { label: "Dragon Fruit Plantation", href: "/projects/agri/open-field/dragon-fruit" },
-              { label: "Guava Plantation", href: "/projects/agri/open-field/guava" },
-              { label: "Mango Plantation", href: "/projects/agri/open-field/mango" },
-              { label: "Papaya Plantation", href: "/projects/agri/open-field/papaya" },
-              { label: "Fig Plantation", href: "/projects/agri/open-field/fig" },
-              { label: "Blueberry Plantation", href: "/projects/agri/open-field/blueberry" },
+              { label: "Dragon Fruit Plantation", href: "/projects/agri/open-field/dragon-fruit", image: "/assets/new project images/dragon furit farming .png" },
+              { label: "Guava Plantation", href: "/projects/agri/open-field/guava", image: "/assets/new project images/gova fruit farming .png" },
+              { label: "Mango Plantation", href: "/projects/agri/open-field/mango", image: "/assets/new project images/mango cultivaion .png" },
+              { label: "Papaya Plantation", href: "/projects/agri/open-field/papaya", image: "/assets/new project images/papaya farming .png" },
+              { label: "Fig Plantation", href: "/projects/agri/open-field/fig", image: "/assets/new project images/fig plantation .png" },
+              { label: "Blueberry Plantation", href: "/projects/agri/open-field/blueberry", image: "/assets/new project images/blueberry plantation .png" },
             ]
           },
           {
             label: "Vegetable Cultivation Projects",
             href: "/projects/agri/vegetable",
             icon: Carrot,
+            cardImage: "/assets/new project images/project-subcategories/subcategories/vegetable-cultivations.webp",
             children: [
-              { label: "Cucumber Farming", href: "/projects/agri/vegetable/cucumber" },
-              { label: "Capsicum Farming", href: "/projects/agri/vegetable/capsicum" },
-              { label: "Tomato Farming", href: "/projects/agri/vegetable/tomato" },
-              { label: "Chilli Farming", href: "/projects/agri/vegetable/chilli" },
-              { label: "Muskmelon Farming", href: "/projects/agri/vegetable/muskmelon" },
-              { label: "Watermelon Farming", href: "/projects/agri/vegetable/watermelon" },
+              { label: "Cucumber Farming", href: "/projects/agri/vegetable/cucumber", image: "/assets/new project images/cucumber farming .png" },
+              { label: "Capsicum Farming", href: "/projects/agri/vegetable/capsicum", image: "/assets/new project images/capcium farming .png" },
+              { label: "Tomato Farming", href: "/projects/agri/vegetable/tomato", image: "/assets/new project images/tamato farming .png" },
+              { label: "Chilli Farming", href: "/projects/agri/vegetable/chilli", image: "/assets/new project images/chilli farming .png" },
+              { label: "Muskmelon Farming", href: "/projects/agri/vegetable/muskmelon", image: "/assets/new project images/muskmelon farming .png" },
+              { label: "Watermelon Farming", href: "/projects/agri/vegetable/watermelon", image: "/assets/new project images/water melon farming .png" },
             ]
           },
           {
             label: "Medicinal Crop Projects",
             href: "/projects/agri/medicinal",
             icon: Pill,
+            cardImage: "/assets/new project images/project-subcategories/subcategories/medicinal-farming.webp",
             children: [
-              { label: "Aloe Vera Farming", href: "/projects/agri/medicinal/aloe-vera" },
-              { label: "Moringa Plantation", href: "/projects/agri/medicinal/moringa" },
-              { label: "Ginger Farming", href: "/projects/agri/medicinal/ginger" },
-              { label: "Turmeric Farming", href: "/projects/agri/medicinal/turmeric" },
-              { label: "Tapioca Cultivation", href: "/projects/agri/medicinal/tapioca" },
+              { label: "Aloe Vera Farming", href: "/projects/agri/medicinal/aloe-vera", image: "/assets/new project images/aloe vera farming .png" },
+              { label: "Moringa Plantation", href: "/projects/agri/medicinal/moringa", image: "/assets/new project images/morenga farming .png" },
+              { label: "Ginger Farming", href: "/projects/agri/medicinal/ginger", image: "/assets/new project images/ginger farming .png" },
+              { label: "Turmeric Farming", href: "/projects/agri/medicinal/turmeric", image: "/assets/new project images/turmeric farming .png" },
+              { label: "Tapioca Cultivation", href: "/projects/agri/medicinal/tapioca", image: "/assets/new project images/tapioca cultivation .png" },
             ]
           },
           {
             label: "Floriculture Projects",
             href: "/projects/agri/floriculture",
             icon: Flower,
+            cardImage: "/assets/new project images/project-subcategories/subcategories/floriculture-projects.webp",
             children: [
-              { label: "Rose Farming", href: "/projects/agri/floriculture/rose" },
-              { label: "Jasmine Farming", href: "/projects/agri/floriculture/jasmine" },
-              { label: "Marigold Farming", href: "/projects/agri/floriculture/marigold" },
-              { label: "Exotic Flower Farming", href: "/projects/agri/floriculture/exotic" },
+              { label: "Rose Farming", href: "/projects/agri/floriculture/rose", image: "/assets/new project images/rose farming.png" },
+              { label: "Jasmine Farming", href: "/projects/agri/floriculture/jasmine", image: "/assets/new project images/jasmin farming .png" },
+              { label: "Marigold Farming", href: "/projects/agri/floriculture/marigold", image: "/assets/new project images/marigold farming .png" },
+              { label: "Exotic Flower Farming", href: "/projects/agri/floriculture/exotic", image: "/assets/new project images/exotic farming .png" },
             ]
           },
           {
             label: "Mushroom Farming Projects",
             href: "/projects/agri/mushroom",
             icon: Leaf,
+            cardImage: "/assets/new project images/project-subcategories/subcategories/mushroom-farming.webp",
             children: [
-              { label: "Oyster Mushroom Units", href: "/projects/agri/mushroom/oyster" },
-              { label: "Button Mushroom Units", href: "/projects/agri/mushroom/button" },
-              { label: "Commercial Mushroom Farms", href: "/projects/agri/mushroom/commercial" },
+              { label: "Oyster Mushroom Units", href: "/projects/agri/mushroom/oyster", image: "/assets/new project images/oyster mushrrom units .png" },
+              { label: "Button Mushroom Units", href: "/projects/agri/mushroom/button", image: "/assets/new project images/button mushroom .png" },
+              { label: "Commercial Mushroom Farms", href: "/projects/agri/mushroom/commercial", image: "/assets/new project images/commercial mushroom farm .png" },
             ]
           },
           {
             label: "Urban Farming Projects",
             href: "/projects/agri/urban",
             icon: Building,
+            cardImage: "/assets/new project images/project-subcategories/subcategories/urban-farming.webp",
             children: [
-              { label: "Rooftop Gardening Projects", href: "/projects/agri/urban/rooftop" },
-              { label: "Terrace Farming Projects", href: "/projects/agri/urban/terrace" },
-              { label: "Kitchen Garden Projects", href: "/projects/agri/urban/kitchen" },
-              { label: "Microgreens Production Units", href: "/projects/agri/urban/microgreens" },
+              { label: "Rooftop Gardening Projects", href: "/projects/agri/urban/rooftop", image: "/assets/new project images/rooftop gardening projects .png" },
+              { label: "Terrace Farming Projects", href: "/projects/agri/urban/terrace", image: "/assets/new project images/terrace garden projects  .png" },
+              { label: "Kitchen Garden Projects", href: "/projects/agri/urban/kitchen", image: "/assets/new project images/kitchen garden .png" },
+              { label: "Microgreens Production Units", href: "/projects/agri/urban/microgreens", image: "/assets/new project images/microgreens .png" },
             ]
           },
           {
             label: "Nursery Projects",
             href: "/projects/agri/nursery",
             icon: Sprout,
+            cardImage: "/assets/new project images/project-subcategories/subcategories/nursery-projects.webp",
             children: [
-              { label: "Commercial Plant Nursery", href: "/projects/agri/nursery/commercial" },
+              { label: "Commercial Plant Nursery", href: "/projects/agri/nursery/commercial", image: "/assets/new project images/commercial plan nursery .png" },
               { label: "Seedling Production Units", href: "/projects/agri/nursery/seedling" },
-              { label: "Tissue Culture Plant Nursery", href: "/projects/agri/nursery/tissue-culture" },
+              { label: "Tissue Culture Plant Nursery", href: "/projects/agri/nursery/tissue-culture", image: "/assets/new project images/tissue culture plant nursery .png" },
             ]
           }
         ]
@@ -705,52 +715,57 @@ export const navLinks = [
       {
         label: "Aquaculture Farming Projects",
         href: "/projects/aquaculture",
-        icon: "/assets/compressed/header/project-drop-down-icon/aquaculture-farming-projects-.webp",
+        icon: "/assets/header/project-drop-down-icon/aquaculture-farming-projects-.webp",
         cardImage: "/assets/compressed/projects/main-page/aquaculture-farming.webp",
         children: [
           {
             label: "Fish Farming Projects",
             href: "/projects/aquaculture/fish",
             icon: Fish,
+            cardImage: "/assets/new project images/project-subcategories/subcategories/fish-farming.webp",
             children: [
-              { label: "Traditional Fish Farming", href: "/projects/aquaculture/fish/traditional" },
-              { label: "Intensive Fish Farming", href: "/projects/aquaculture/fish/intensive" },
-              { label: "Cage Fish Farming", href: "/projects/aquaculture/fish/cage" },
+              { label: "Traditional Fish Farming", href: "/projects/aquaculture/fish/traditional", image: "/assets/new project images/traditional fish farming .png" },
+              { label: "Intensive Fish Farming", href: "/projects/aquaculture/fish/intensive", image: "/assets/new project images/intensive fish farming .png" },
+              { label: "Cage Fish Farming", href: "/projects/aquaculture/fish/cage", image: "/assets/new project images/cage fish farming .png" },
             ]
           },
           {
             label: "Biofloc Farming Projects",
             href: "/projects/aquaculture/biofloc",
             icon: Waves,
+            cardImage: "/assets/new project images/project-subcategories/subcategories/biofloc-farming.webp",
             children: [
-              { label: "Biofloc Fish Farming", href: "/projects/aquaculture/biofloc/fish" },
-              { label: "Biofloc Shrimp Farming", href: "/projects/aquaculture/biofloc/shrimp" },
+              { label: "Biofloc Fish Farming", href: "/projects/aquaculture/biofloc/fish", image: "/assets/new project images/biofloc fish farming .png" },
+              { label: "Biofloc Shrimp Farming", href: "/projects/aquaculture/biofloc/shrimp", image: "/assets/new project images/shrimp farming .png" },
             ]
           },
           {
             label: "Shrimp Farming Projects",
             href: "/projects/aquaculture/shrimp",
             icon: Waves,
+            cardImage: "/assets/new project images/project-subcategories/subcategories/shrimp-farming.webp",
             children: [
-              { label: "Vannamei Shrimp Farming", href: "/projects/aquaculture/shrimp/vannamei" },
-              { label: "Freshwater Prawn Farming", href: "/projects/aquaculture/shrimp/prawn" },
+              { label: "Vannamei Shrimp Farming", href: "/projects/aquaculture/shrimp/vannamei", image: "/assets/new project images/vannamei shrimp farming .png" },
+              { label: "Freshwater Prawn Farming", href: "/projects/aquaculture/shrimp/prawn", image: "/assets/new project images/shrimp farming .png" },
             ]
           },
           {
             label: "Crab Farming Projects",
             href: "/projects/aquaculture/crab",
             icon: Waves,
+            cardImage: "/assets/new project images/project-subcategories/subcategories/crab-farming.webp",
             children: [
-              { label: "Mud Crab Farming", href: "/projects/aquaculture/crab/mud-crab" },
+              { label: "Mud Crab Farming", href: "/projects/aquaculture/crab/mud-crab", image: "/assets/new project images/mud crab .png" },
             ]
           },
           {
             label: "Integrated Aquaculture",
             href: "/projects/aquaculture/integrated",
             icon: RefreshCcw,
+            cardImage: "/assets/new project images/project-subcategories/subcategories/integrated-aquaculture.webp",
             children: [
-              { label: "Aquaponics Systems", href: "/projects/aquaculture/integrated/aquaponics" },
-              { label: "Integrated Fish + Crop Farming", href: "/projects/aquaculture/integrated/fish-crop" },
+              { label: "Aquaponics Systems", href: "/projects/aquaculture/integrated/aquaponics", image: "/assets/new project images/aquaponics system .png" },
+              { label: "Integrated Fish + Crop Farming", href: "/projects/aquaculture/integrated/fish-crop", image: "/assets/new project images/integrated fish +crop farming .png" },
             ]
           }
         ]
@@ -758,51 +773,56 @@ export const navLinks = [
       {
         label: "Livestock Farming Projects",
         href: "/projects/livestock",
-        icon: "/assets/compressed/header/project-drop-down-icon/livestock-farming-projecs-.webp",
+        icon: "/assets/header/project-drop-down-icon/livestock-farming-projecs-.webp",
         cardImage: "/assets/compressed/projects/main-page/livestock-farming.webp",
         children: [
           {
             label: "Goat Farming",
             href: "/projects/livestock/goat",
             icon: Shield,
+            cardImage: "/assets/new project images/project-subcategories/subcategories/goat-farming.webp",
             children: [
-              { label: "Commercial Goat Farming", href: "/projects/livestock/goat/commercial" },
-              { label: "Integrated Goat Farming", href: "/projects/livestock/goat/integrated" },
+              { label: "Commercial Goat Farming", href: "/projects/livestock/goat/commercial", image: "/assets/new project images/goat farming .png" },
+              { label: "Integrated Goat Farming", href: "/projects/livestock/goat/integrated", image: "/assets/new project images/goat and fish farmign.png" },
             ]
           },
           {
             label: "Sheep Farming",
             href: "/projects/livestock/sheep",
             icon: Scissors,
+            cardImage: "/assets/new project images/project-subcategories/subcategories/sheep-farming.webp",
             children: [
-              { label: "Commercial Sheep Farming", href: "/projects/livestock/sheep/commercial" },
+              { label: "Commercial Sheep Farming", href: "/projects/livestock/sheep/commercial", image: "/assets/new project images/comercial sheep farming .png" },
             ]
           },
           {
             label: "Dairy Farming",
             href: "/projects/livestock/dairy",
             icon: Milk,
+            cardImage: "/assets/new project images/project-subcategories/subcategories/dairy-farming.webp",
             children: [
-              { label: "Dairy Farm Setup", href: "/projects/livestock/dairy/setup" },
-              { label: "Automated Dairy Systems", href: "/projects/livestock/dairy/automated" },
+              { label: "Dairy Farm Setup", href: "/projects/livestock/dairy/setup", image: "/assets/new project images/dairy farm setup .png" },
+              { label: "Automated Dairy Systems", href: "/projects/livestock/dairy/automated", image: "/assets/new project images/automated dairy system .png" },
             ]
           },
           {
             label: "Poultry Farming",
             href: "/projects/livestock/poultry",
             icon: Bird,
+            cardImage: "/assets/new project images/project-subcategories/subcategories/poultry-farming.webp",
             children: [
-              { label: "Broiler Chicken Farms", href: "/projects/livestock/poultry/broiler" },
-              { label: "Layer Chicken Farms", href: "/projects/livestock/poultry/layer" },
+              { label: "Broiler Chicken Farms", href: "/projects/livestock/poultry/broiler", image: "/assets/new project images/brolier chicken farm .png" },
+              { label: "Layer Chicken Farms", href: "/projects/livestock/poultry/layer", image: "/assets/new project images/layer chicken farming .png" },
             ]
           },
           {
             label: "Integrated Livestock Farming",
             href: "/projects/livestock/integrated",
             icon: Heart,
+            cardImage: "/assets/new project images/project-subcategories/subcategories/integrated-livestock-farming.webp",
             children: [
-              { label: "Goat + Fish Farming", href: "/projects/livestock/integrated/goat-fish" },
-              { label: "Dairy + Crop Farming", href: "/projects/livestock/integrated/dairy-crop" },
+              { label: "Goat + Fish Farming", href: "/projects/livestock/integrated/goat-fish", image: "/assets/new project images/goat and fish farmign.png" },
+              { label: "Dairy + Crop Farming", href: "/projects/livestock/integrated/dairy-crop", image: "/assets/new project images/dairy + crop farming .png" },
             ]
           }
         ]
@@ -810,51 +830,55 @@ export const navLinks = [
       {
         label: "Farm Engineering Projects",
         href: "/projects/engineering",
-        icon: "/assets/compressed/header/project-drop-down-icon/farm-engineering-projects.webp",
+        icon: "/assets/header/project-drop-down-icon/farm-engineering-projects.webp",
         cardImage: "/assets/compressed/projects/main-page/farm-engineering.webp",
         children: [
           {
             label: "Farm Infrastructure Projects",
             href: "/projects/engineering/infrastructure",
             icon: Factory,
+            cardImage: "/assets/new project images/project-subcategories/subcategories/farm-infrastructure.webp",
             children: [
-              { label: "Cold Storage", href: "/projects/engineering/infrastructure/cold-storage" },
-              { label: "Pack House", href: "/projects/engineering/infrastructure/pack-house" },
-              { label: "Farm Buildings", href: "/projects/engineering/infrastructure/buildings" },
-              { label: "Farm Roads", href: "/projects/engineering/infrastructure/roads" },
+              { label: "Cold Storage", href: "/projects/engineering/infrastructure/cold-storage", image: "/assets/new project images/project-subcategories/types/cold-storage.jpg" },
+              { label: "Pack House", href: "/projects/engineering/infrastructure/pack-house", image: "/assets/new project images/packing house .png" },
+              { label: "Farm Buildings", href: "/projects/engineering/infrastructure/buildings", image: "/assets/new project images/farm buildings .png" },
+              { label: "Farm Roads", href: "/projects/engineering/infrastructure/roads", image: "/assets/new project images/farm roads .png" },
             ]
           },
           {
             label: "Water Management Projects",
             href: "/projects/engineering/water",
             icon: Droplets,
+            cardImage: "/assets/new project images/project-subcategories/subcategories/water-management.webp",
             children: [
-              { label: "Rainwater Harvesting", href: "/projects/engineering/water/rainwater" },
-              { label: "Pond Liner Installation", href: "/projects/engineering/water/pond-liner" },
-              { label: "Farm Irrigation Systems", href: "/projects/engineering/water/irrigation" },
-              { label: "Borewell & Water Storage Systems", href: "/projects/engineering/water/borewell" },
+              { label: "Rainwater Harvesting", href: "/projects/engineering/water/rainwater", image: "/assets/new project images/rain water harwesting .png" },
+              { label: "Pond Liner Installation", href: "/projects/engineering/water/pond-liner", image: "/assets/new project images/pond liner  installation .png" },
+              { label: "Farm Irrigation Systems", href: "/projects/engineering/water/irrigation", image: "/assets/new project images/irrigation system .png" },
+              { label: "Borewell & Water Storage Systems", href: "/projects/engineering/water/borewell", image: "/assets/new project images/borewell & water storage system .png" },
             ]
           },
           {
             label: "Solar Agriculture Projects",
             href: "/projects/engineering/solar",
             icon: Sun,
+            cardImage: "/assets/new project images/project-subcategories/subcategories/solar-agriculture.webp",
             children: [
-              { label: "Solar Crop Dryer", href: "/projects/engineering/solar/crop-dryer" },
-              { label: "Solar Heater", href: "/projects/engineering/solar/heater" },
-              { label: "Solar Fencing", href: "/projects/engineering/solar/fencing" },
-              { label: "Solar Lighting", href: "/projects/engineering/solar/lighting" },
+              { label: "Solar Crop Dryer", href: "/projects/engineering/solar/crop-dryer", image: "/assets/new project images/solar driyer .png" },
+              { label: "Solar Heater", href: "/projects/engineering/solar/heater", image: "/assets/new project images/solar heater .png" },
+              { label: "Solar Fencing", href: "/projects/engineering/solar/fencing", image: "/assets/new project images/solar fencing .png" },
+              { label: "Solar Lighting", href: "/projects/engineering/solar/lighting", image: "/assets/new project images/solar lighting .png" },
             ]
           },
           {
             label: "Farm Development Projects",
             href: "/projects/engineering/development",
             icon: Map,
+            cardImage: "/assets/new project images/project-subcategories/subcategories/farm-development.webp",
             children: [
-              { label: "Land Surveying", href: "/projects/engineering/development/surveying" },
-              { label: "Topographic Mapping", href: "/projects/engineering/development/topographic" },
-              { label: "Contour Mapping", href: "/projects/engineering/development/contour" },
-              { label: "Land Leveling", href: "/projects/engineering/development/leveling" },
+              { label: "Land Surveying", href: "/projects/engineering/development/surveying", image: "/assets/new project images/lan surveying .png" },
+              { label: "Topographic Mapping", href: "/projects/engineering/development/topographic", image: "/assets/new project images/topography surveying .png" },
+              { label: "Contour Mapping", href: "/projects/engineering/development/contour", image: "/assets/new project images/contour mapping .png" },
+              { label: "Land Leveling", href: "/projects/engineering/development/leveling", image: "/assets/new project images/land leveling .png" },
             ]
           }
         ]

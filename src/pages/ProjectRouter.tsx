@@ -13,120 +13,132 @@ const fader: Variants = {
 
 // ─── Image maps (corrected paths) ─────────────────────────────────────────────
 const SUBCATEGORY_IMG: Record<string, string> = {
-  "Protected Farming Projects":       "/assets/compressed/projects/agri/protected-farming.webp",
-  "Hydroponic Farming Projects":      "/assets/compressed/projects/agri/hydroponic-farming.webp",
-  "Vertical Farming Projects":        "/assets/compressed/projects/agri/vertical-farming.webp",
-  "Open Field Cultivation Projects":  "/assets/compressed/projects/agri/open-field-cultivation.webp",
-  "Vegetable Cultivation Projects":   "/assets/compressed/projects/agri/vegetable-cultivation.webp",
-  "Medicinal Crop Projects":          "/assets/compressed/projects/agri/medicinal-crop-projects.webp",
-  "Floriculture Projects":            "/assets/compressed/projects/agri/floriculture-projects.webp",
-  "Mushroom Farming Projects":        "/assets/compressed/projects/agri/mushroom-farming-projects.webp",
-  "Urban Farming Projects":           "/assets/compressed/projects/agri/urban-farming-projects.webp",
-  "Nursery Projects":                 "/assets/compressed/projects/agri/nursery-projects.webp",
-  "Fish Farming Projects":            "/assets/compressed/projects/aquaculture/fish-farming-projects.webp",
-  "Biofloc Farming Projects":         "/assets/compressed/projects/aquaculture/biofloc-farming-projects.webp",
-  "Shrimp Farming Projects":          "/assets/compressed/projects/aquaculture/shrimp-farming-projects.webp",
-  "Crab Farming Projects":            "/assets/compressed/projects/aquaculture/crab-farming-projects.webp",
-  "Integrated Aquaculture":           "/assets/compressed/projects/aquaculture/integrated.webp",
-  "Goat Farming":                     "/assets/compressed/projects/project-subcategories/subcategories/goat-farming.webp",
-  "Sheep Farming":                    "/assets/compressed/projects/project-subcategories/subcategories/sheep-farming.webp",
-  "Dairy Farming":                    "/assets/compressed/projects/project-subcategories/subcategories/dairy-farming.webp",
-  "Poultry Farming":                  "/assets/compressed/projects/project-subcategories/subcategories/poultry-farming.webp",
-  "Integrated Livestock Farming":     "/assets/compressed/projects/project-subcategories/subcategories/integrated-livestock-farming.jpg",
-  "Farm Infrastructure Projects":     "/assets/compressed/projects/project-subcategories/subcategories/farm-infrastructure.webp",
-  "Water Management Projects":        "/assets/compressed/projects/project-subcategories/subcategories/water-management.webp",
-  "Solar Agriculture Projects":       "/assets/compressed/projects/project-subcategories/subcategories/solar-agriculture-project.webp",
-  "Farm Development Projects":        "/assets/compressed/projects/project-subcategories/subcategories/farm-development-project.jpg",
+  "Protected Farming Projects": "/assets/new project images/project-subcategories/subcategories/protected-farming.webp",
+  "Hydroponic Farming Projects": "/assets/new project images/project-subcategories/subcategories/hydroponic-farming.webp",
+  "Vertical Farming Projects": "/assets/new project images/project-subcategories/subcategories/vertical-farming.webp",
+  "Open Field Cultivation Projects": "/assets/new project images/project-subcategories/subcategories/open-field-cultivation.webp",
+  "Vegetable Cultivation Projects": "/assets/new project images/project-subcategories/subcategories/vegetable-cultivations.webp",
+  "Medicinal Crop Projects": "/assets/new project images/project-subcategories/subcategories/medicinal-crop.webp",
+  "Floriculture Projects": "/assets/new project images/project-subcategories/subcategories/floriculture-projects.webp",
+  "Mushroom Farming Projects": "/assets/new project images/project-subcategories/subcategories/mushroom-farming.webp",
+  "Urban Farming Projects": "/assets/new project images/project-subcategories/subcategories/urban-farming.webp",
+  "Nursery Projects": "/assets/new project images/project-subcategories/subcategories/nursery-projects.webp",
+  "Fish Farming Projects": "/assets/new project images/project-subcategories/subcategories/fish-farming-projects.webp",
+  "Biofloc Farming Projects": "/assets/new project images/project-subcategories/subcategories/biofloc-farming-projects.webp",
+  "Shrimp Farming Projects": "/assets/new project images/project-subcategories/subcategories/shrimp-farming-projects.webp",
+  "Crab Farming Projects": "/assets/new project images/project-subcategories/subcategories/crab-farming-projects.webp",
+  "Integrated Aquaculture": "/assets/new project images/project-subcategories/subcategories/integrated-farming-projects.webp",
+  "Goat Farming": "/assets/new project images/project-subcategories/subcategories/goat-farming.webp",
+  "Sheep Farming": "/assets/new project images/project-subcategories/subcategories/sheep-farming.webp",
+  "Dairy Farming": "/assets/new project images/project-subcategories/subcategories/dairy-farming.webp",
+  "Poultry Farming": "/assets/new project images/project-subcategories/subcategories/poultry-farming.webp",
+  "Integrated Livestock Farming": "/assets/new project images/project-subcategories/subcategories/integrated-livestock-farming.webp",
+  "Farm Infrastructure Projects": "/assets/new project images/project-subcategories/subcategories/farm-infrastructure.webp",
+  "Water Management Projects": "/assets/new project images/project-subcategories/subcategories/water-management.webp",
+  "Solar Agriculture Projects": "/assets/new project images/project-subcategories/subcategories/solar-agriculture-project.webp",
+  "Farm Development Projects": "/assets/new project images/project-subcategories/subcategories/farm-devedlopment-project.webp",
 };
 
 const TYPE_IMG: Record<string, string> = {
-  "Naturally Ventilated Polyhouse":    "/assets/compressed/projects/project-subcategories/types/naturally-ventilated-polyhouse.webp",
-  "Climate Controlled Polyhouse":      "/assets/compressed/projects/project-subcategories/types/climate-controlled-polyhouse.webp",
-  "Polycarbonate Greenhouse":          "/assets/compressed/projects/project-subcategories/types/polycarbonate-green-house.webp",
-  "Shade Net House":                   "/assets/compressed/projects/project-subcategories/types/shade-net-house.webp",
-  "Mist Chamber":                      "/assets/compressed/projects/project-subcategories/types/mist-chamber.webp",
-  "NFT Hydroponic System":             "/assets/compressed/projects/project-subcategories/types/nft-hydroponic-system.webp",
-  "Deep Water Culture System":         "/assets/compressed/projects/project-subcategories/types/deep-water-culture-dwc-what-is-it-and-how-to-get-started.webp",
-  "Vertical Hydroponic Towers":        "/assets/compressed/projects/project-subcategories/types/vertical-hydroponic-towers.webp",
-  "Commercial Hydroponic Farms":       "/assets/compressed/projects/project-subcategories/types/commercial-hydroponic-farms.webp",
-  "Indoor Hydroponic Units":           "/assets/compressed/projects/project-subcategories/types/indoor-hydroponic-farm.webp",
-  "Indoor Vertical Farms":             "/assets/compressed/projects/project-subcategories/types/indoor-vertical-farming.webp",
-  "Commercial Vertical Farming Units": "/assets/compressed/projects/project-subcategories/types/commercial-farming.webp",
-  "Smart Grow Room Systems":           "/assets/compressed/projects/project-subcategories/types/indoor-vertical-farming.webp",
-  "Dragon Fruit Plantation":           "/assets/compressed/projects/project-subcategories/types/dragon-fruit-plantation.webp",
-  "Guava Plantation":                  "/assets/compressed/projects/project-subcategories/types/guava-plantation.webp",
-  "Mango Plantation":                  "/assets/compressed/projects/project-subcategories/types/mango-plantation.jpg",
-  "Papaya Plantation":                 "/assets/compressed/projects/project-subcategories/types/papaya-plantation.jpg",
-  "Fig Plantation":                    "/assets/compressed/projects/project-subcategories/types/fig-plantation.webp",
-  "Blueberry Plantation":              "/assets/compressed/projects/project-subcategories/types/blueberry-plantation.webp",
-  "Cucumber Farming":                  "/assets/compressed/projects/project-subcategories/types/cucumber-farming.webp",
-  "Capsicum Farming":                  "/assets/compressed/projects/project-subcategories/types/capsicum-poject.webp",
-  "Tomato Farming":                    "/assets/compressed/projects/project-subcategories/types/tomato-farming.webp",
-  "Chilli Farming":                    "/assets/compressed/projects/project-subcategories/types/chilli-farming.webp",
-  "Muskmelon Farming":                 "/assets/compressed/projects/project-subcategories/types/muskmelon-farming.webp",
-  "Watermelon Farming":                "/assets/compressed/projects/project-subcategories/types/watermelon-farming.webp",
-  "Aloe Vera Farming":                 "/assets/compressed/projects/project-subcategories/types/aloe-vera-farming.webp",
-  "Moringa Plantation":                "/assets/compressed/projects/project-subcategories/types/moringa-plantation.jpg",
-  "Ginger Farming":                    "/assets/compressed/projects/project-subcategories/types/ginger-farming.webp",
-  "Turmeric Farming":                  "/assets/compressed/projects/project-subcategories/types/turmeric-farming.webp",
-  "Tapioca Cultivation":               "/assets/compressed/projects/project-subcategories/types/tapioca-cultivation.jpg",
-  "Rose Farming":                      "/assets/compressed/projects/project-subcategories/types/rose-farming.jpg",
-  "Jasmine Farming":                   "/assets/compressed/projects/project-subcategories/types/jasmine-farming.webp",
-  "Marigold Farming":                  "/assets/compressed/projects/project-subcategories/types/exotic-farming.webp",
-  "Exotic Flower Farming":             "/assets/compressed/projects/project-subcategories/types/exotic-farming.webp",
-  "Oyster Mushroom Units":             "/assets/compressed/projects/project-subcategories/types/oyster-mushroom-cultivation.webp",
-  "Button Mushroom Units":             "/assets/compressed/projects/project-subcategories/types/button-mushroom-farming.webp",
-  "Commercial Mushroom Farms":         "/assets/compressed/projects/project-subcategories/types/mushroom-farming.jpg",
-  "Rooftop Gardening Projects":        "/assets/compressed/projects/project-subcategories/types/rooftop-farming.webp",
-  "Terrace Farming Projects":          "/assets/compressed/projects/project-subcategories/types/terrace-farming.jpg",
-  "Kitchen Garden Projects":           "/assets/compressed/projects/project-subcategories/types/kitchen-gardening-projects.webp",
-  "Microgreens Production Units":      "/assets/compressed/projects/project-subcategories/types/microgreens-productions.webp",
-  "Commercial Plant Nursery":          "/assets/compressed/projects/project-subcategories/types/commercial-plant-nursery.webp",
-  "Seedling Production Units":         "/assets/compressed/projects/project-subcategories/types/seedling-productu.webp",
-  "Tissue Culture Plant Nursery":      "/assets/compressed/projects/project-subcategories/types/tissue-culture-plant-propagation-modern-agricultural-education.webp",
-  "Traditional Fish Farming":          "/assets/compressed/projects/project-subcategories/types/traditional-fish-farming.webp",
-  "Intensive Fish Farming":            "/assets/compressed/projects/project-subcategories/types/intensive-fish-farming.webp",
-  "Cage Fish Farming":                 "/assets/compressed/projects/project-subcategories/types/cage-fish-farming.webp",
-  "Biofloc Fish Farming":              "/assets/compressed/projects/project-subcategories/types/biofloc-fish-farming.webp",
-  "Biofloc Shrimp Farming":            "/assets/compressed/projects/project-subcategories/types/biofloc-shrimp-farming.jpg",
-  "Vannamei Shrimp Farming":           "/assets/compressed/projects/project-subcategories/types/biofloc-shrimp-farming.jpg",
-  "Freshwater Prawn Farming":          "/assets/compressed/projects/project-subcategories/types/freshwater-prawn-farming.webp",
-  "Mud Crab Farming":                  "/assets/compressed/projects/project-subcategories/types/mud-crab-farming.webp",
-  "Aquaponics Systems":                "/assets/compressed/projects/project-subcategories/types/aquaponics-system.webp",
-  "Integrated Fish + Crop Farming":    "/assets/compressed/projects/project-subcategories/types/integrated-farming.jpg",
-  "Commercial Goat Farming":           "/assets/compressed/projects/project-subcategories/types/commercial-goat-farming.webp",
-  "Integrated Goat Farming":           "/assets/compressed/projects/project-subcategories/types/integrated-goat-farming.jpg",
-  "Commercial Sheep Farming":          "/assets/compressed/projects/project-subcategories/types/commercial-sheep-farming.webp",
-  "Dairy Farm Setup":                  "/assets/compressed/projects/project-subcategories/types/dairy-farming.webp",
-  "Automated Dairy Systems":           "/assets/compressed/projects/project-subcategories/types/dairy-farming.webp",
-  "Broiler Chicken Farms":             "/assets/compressed/projects/project-subcategories/types/poultry-farming.webp",
-  "Layer Chicken Farms":               "/assets/compressed/projects/project-subcategories/types/poultry-farming.webp",
-  "Goat + Fish Farming":               "/assets/compressed/projects/project-subcategories/types/integrated-farming.jpg",
-  "Dairy + Crop Farming":              "/assets/compressed/projects/project-subcategories/types/integrated-farming.jpg",
-  "Cold Storage":                      "/assets/compressed/projects/project-subcategories/types/cold-storage.webp",
-  "Pack House":                        "/assets/compressed/projects/project-subcategories/types/pack-house.jpg",
-  "Farm Buildings":                    "/assets/compressed/projects/project-subcategories/types/farm-buildings.webp",
-  "Farm Roads":                        "/assets/compressed/projects/project-subcategories/types/farm-irrigation-system.webp",
-  "Rainwater Harvesting":              "/assets/compressed/projects/project-subcategories/types/rainwater-harvesting.webp",
-  "Pond Liner Installation":           "/assets/compressed/projects/project-subcategories/types/pond-liner-installation.webp",
-  "Farm Irrigation Systems":           "/assets/compressed/projects/project-subcategories/types/farm-irrigation-system.webp",
-  "Borewell & Water Storage Systems":  "/assets/compressed/projects/project-subcategories/types/borewell.webp",
-  "Solar Crop Dryer":                  "/assets/compressed/projects/project-subcategories/types/solar-crop-dryer.webp",
-  "Solar Heater":                      "/assets/compressed/projects/project-subcategories/types/solar-heater.jpg",
-  "Solar Fencing":                     "/assets/compressed/projects/project-subcategories/types/solar-fencing.webp",
-  "Solar Lighting":                    "/assets/compressed/projects/project-subcategories/types/solar-lighting.jpg",
-  "Land Surveying":                    "/assets/compressed/projects/project-subcategories/types/land-surveying.webp",
-  "Topographic Mapping":               "/assets/compressed/projects/project-subcategories/types/topographic-mapping.webp",
-  "Contour Mapping":                   "/assets/compressed/projects/project-subcategories/types/contour-mapping.webp",
-  "Land Leveling":                     "/assets/compressed/projects/project-subcategories/types/landleveling.webp",
+  // Agricultural Projects
+  "Naturally Ventilated Polyhouse": "/assets/new project images/naturally ventilated polyuhouse .png",
+  "Naturally Ventilated Polyhouse (Sawtooth Type)": "/assets/new project images/naturally ventilated polyuhouse .png",
+  "Polycarbonate Greenhouse": "/assets/new project images/polycarboate green house .png",
+  "Shade Net House": "/assets/new project images/shade net new .png",
+  "Mist Chamber": "/assets/new project images/mist chamber .jpeg",
+  "Climate Controlled Polyhouse": "/assets/new project images/climate controlled polyhouse .jpeg",
+  "NFT Hydroponic System": "/assets/new project images/nft hydroponic system .png",
+  "Deep Water Culture System": "/assets/new project images/deep water culture system .jpeg",
+  "Vertical Hydroponic Towers": "/assets/new project images/vertical hydroponic .png",
+  "Commercial Hydroponic Farms": "/assets/new project images/commercial  indoor hydroponic setup .png",
+  "Indoor Hydroponic Units": "/assets/new project images/indoor hydroponic .png",
+  "Indoor Vertical Farms": "/assets/new project images/vertical hydroponic toers .png",
+  "Commercial Vertical Farming Units": "/assets/new project images/vertical hydroponic toers .png",
+  "Compact Indoor Hydroponic Setup": "/assets/new project images/compact indoor hydroponic setup .png",
+  "Dragon Fruit Plantation": "/assets/new project images/dragon furit farming .png",
+  "Guava Plantation": "/assets/new project images/gova fruit farming .png",
+  "Mango Plantation": "/assets/new project images/mango cultivaion .png",
+  "Papaya Plantation": "/assets/new project images/papaya farming .png",
+  "Fig Plantation": "/assets/new project images/fig plantation .png",
+  "Smart Grow Room Systems": "/assets/new project images/smart grow with sensor .png",
+  "Cucumber Farming": "/assets/new project images/cucumber farming .png",
+  "Capsicum Farming": "/assets/new project images/capcium farming .png",
+  "Tomato Farming": "/assets/new project images/tamato farming .png",
+  "Chilli Farming": "/assets/new project images/chilli farming .png",
+  "Muskmelon Farming": "/assets/new project images/muskmelon farming .png",
+  "Watermelon Farming": "/assets/new project images/water melon farming .png",
+  "Aloe Vera Farming": "/assets/new project images/aloe vera farming .png",
+  "Moringa Plantation": "/assets/new project images/morenga farming .png",
+  "Ginger Farming": "/assets/new project images/ginger farming .png",
+  "Turmeric Farming": "/assets/new project images/turmeric farming .png",
+  "Rose Farming": "/assets/new project images/rose farming.png",
+  "Jasmine Farming": "/assets/new project images/jasmin farming .png",
+  "Marigold Farming": "/assets/new project images/marigold farming .png",
+  "Exotic Flower Farming": "/assets/new project images/exotic farming .png",
+  "Oyster Mushroom Units": "/assets/new project images/oyster mushrrom units .png",
+  "Button Mushroom Units": "/assets/new project images/button mushroom .png",
+  "Commercial Mushroom Farms": "/assets/new project images/commercial mushroom farm .png",
+  "Rooftop Gardening Projects": "/assets/new project images/rooftop gardening projects .png",
+  "Terrace Farming Projects": "/assets/new project images/terrace garden projects  .png",
+  "Kitchen Garden Projects": "/assets/new project images/kitchen garden .png",
+  "Microgreens Production Units": "/assets/new project images/microgreens .png",
+  "Commercial Plant Nursery": "/assets/new project images/commercial plan nursery .png",
+  "Seedling Production Units": "/assets/new project images/project-subcategories/types/seedling-productu.webp",
+  "Tissue Culture Plant Nursery": "/assets/new project images/tissue culture plant nursery .png",
+  "Blueberry Plantation": "/assets/new project images/blueberry plantation .png",
+  "Exotic Farming": "/assets/new project images/exotic farming .png",
+  "Tapioca Cultivation": "/assets/new project images/tapioca cultivation .png",
+
+  // Aquaculture Projects
+  "Traditional Fish Farming": "/assets/new project images/traditional fish farming .png",
+  "Intensive Fish Farming": "/assets/new project images/intensive fish farming .png",
+  "Cage Fish Farming": "/assets/new project images/cage fish farming .png",
+  "Biofloc Fish Farming": "/assets/new project images/biofloc fish farming .png",
+  "Biofloc Shrimp Farming": "/assets/new project images/shrimp farming .png",
+  "Freshwater Prawn Farming": "/assets/new project images/shrimp farming .png",
+  "Mud Crab Farming": "/assets/new project images/mud crab .png",
+  "Aquaponics Systems": "/assets/new project images/aquaponics system .png",
+  "Integrated Fish + Crop Farming": "/assets/new project images/integrated fish +crop farming .png",
+  "Crab Farming": "/assets/new project images/crab farming .png",
+  "Vannamei Shrimp Farming": "/assets/new project images/vannamei shrimp farming .png",
+
+  // Livestock Projects
+  "Commercial Goat Farming": "/assets/new project images/goat farming .png",
+  "Integrated Goat Farming": "/assets/new project images/goat and fish farmign.png",
+  "Commercial Sheep Farming": "/assets/new project images/comercial sheep farming .png",
+  "Dairy Farm Setup": "/assets/new project images/dairy farm setup .png",
+  "Automated Dairy Systems": "/assets/new project images/automated dairy system .png",
+  "Goat + Fish Farming": "/assets/new project images/goat and fish farmign.png",
+  "Dairy + Crop Farming": "/assets/new project images/dairy + crop farming .png",
+  "Broiler Chicken Farms": "/assets/new project images/brolier chicken farm .png",
+  "Layer Chicken Farms": "/assets/new project images/layer chicken farming .png",
+
+  // Engineering Projects
+  "Cold Storage": "/assets/new project images/project-subcategories/types/cold-storage.jpg",
+  "Pack House": "/assets/new project images/packing house .png",
+  "Farm Buildings": "/assets/new project images/farm buildings .png",
+  "Rainwater Harvesting": "/assets/new project images/rain water harwesting .png",
+  "Pond Liner Installation": "/assets/new project images/pond liner  installation .png",
+  "Farm Irrigation Systems": "/assets/new project images/irrigation system .png",
+  "Borewell & Water Storage Systems": "/assets/new project images/borewell & water storage system .png",
+  "Solar Crop Dryer": "/assets/new project images/solar driyer .png",
+  "Solar Heater": "/assets/new project images/solar heater .png",
+  "Solar Fencing": "/assets/new project images/solar fencing .png",
+  "Solar Lighting": "/assets/new project images/solar lighting .png",
+  "Land Surveying": "/assets/new project images/lan surveying .png",
+  "Topographic Mapping": "/assets/new project images/topography surveying .png",
+  "Contour Mapping": "/assets/new project images/contour mapping .png",
+  "Land Leveling": "/assets/new project images/land leveling .png",
+  "Farm Roads": "/assets/new project images/farm roads .png",
 };
 
 const CATEGORY_FALLBACK: Record<string, string> = {
-  agri:        "/assets/compressed/projects/main-page/agri-farming-project.webp",
-  aquaculture: "/assets/compressed/projects/main-page/aquaculture-farming.webp",
-  livestock:   "/assets/compressed/projects/main-page/livestock-farming.webp",
-  engineering: "/assets/compressed/projects/main-page/farm-engineering.webp",
+  agri: "/assets/new project images/project-subcategories/subcategories/protected-farming.webp",
+  aquaculture: "/assets/new project images/project-subcategories/subcategories/fish-farming.webp",
+  livestock: "/assets/new project images/project-subcategories/subcategories/goat-farming.webp",
+  engineering: "/assets/new project images/project-subcategories/subcategories/farm-infrastructure.webp",
 };
+
 
 const getImage = (label: string, cat: string) =>
   TYPE_IMG[label] || SUBCATEGORY_IMG[label] || CATEGORY_FALLBACK[cat] || "/assets/compressed/projects/main-page/agri-farming-project.webp";
@@ -152,126 +164,126 @@ const LazyCardImage: React.FC<{
 
 // ─── Rich content data ────────────────────────────────────────────────────────
 const SUBCATEGORY_DESC: Record<string, string> = {
-  "Protected Farming Projects":      "Climate-controlled polyhouses, shade nets, mist chambers & greenhouses for high-value crop production year-round.",
-  "Hydroponic Farming Projects":     "Soil-less NFT, DWC & vertical hydroponic systems for high-yield, water-efficient cultivation.",
-  "Vertical Farming Projects":       "Multi-tier indoor farms and smart grow rooms maximising yield per square metre with LED lighting.",
+  "Protected Farming Projects": "Climate-controlled polyhouses, shade nets, mist chambers & greenhouses for high-value crop production year-round.",
+  "Hydroponic Farming Projects": "Soil-less NFT, DWC & vertical hydroponic systems for high-yield, water-efficient cultivation.",
+  "Vertical Farming Projects": "Multi-tier indoor farms and smart grow rooms maximising yield per square metre with LED lighting.",
   "Open Field Cultivation Projects": "Dragon fruit, guava, mango, papaya, fig & blueberry plantation projects with precision irrigation.",
-  "Vegetable Cultivation Projects":  "Cucumber, capsicum, tomato, chilli, muskmelon & watermelon farming with drip irrigation systems.",
-  "Medicinal Crop Projects":         "Aloe vera, moringa, ginger, turmeric & tapioca cultivation for high-value medicinal and export markets.",
-  "Floriculture Projects":           "Rose, jasmine, marigold & exotic flower farming with climate-controlled precision.",
-  "Mushroom Farming Projects":       "Oyster, button & commercial mushroom production with controlled environment and substrate management.",
-  "Urban Farming Projects":          "Rooftop, terrace, kitchen garden & microgreens systems for urban and peri-urban spaces.",
-  "Nursery Projects":                "Commercial plant nursery, seedling production & tissue culture facilities for mass propagation.",
-  "Fish Farming Projects":           "Traditional, intensive & cage fish farming across freshwater species with full pond management.",
-  "Biofloc Farming Projects":        "Zero water exchange biofloc technology for fish and shrimp with high stocking density and low FCR.",
-  "Shrimp Farming Projects":         "Vannamei & freshwater prawn farming with professional biofloc pond setup and biosecurity.",
-  "Crab Farming Projects":           "Mud crab fattening and commercial crab aquaculture with specialised feeding and harvesting systems.",
-  "Integrated Aquaculture":          "Aquaponics combining fish and vegetable production; integrated fish-crop farming for dual income.",
-  "Goat Farming":                    "Commercial & integrated goat farming with breed selection, shed design and health management.",
-  "Sheep Farming":                   "Commercial sheep farming with scientific breed management and integrated crop systems.",
-  "Dairy Farming":                   "Dairy farm setup and automated milking systems for commercial milk production.",
-  "Poultry Farming":                 "Broiler & layer chicken farms with climate-controlled shed design and biosecurity protocols.",
-  "Integrated Livestock Farming":    "Goat-fish and dairy-crop integrated systems for diversified, resilient farm income.",
-  "Farm Infrastructure Projects":    "Cold storage, packhouses, farm buildings & roads for post-harvest logistics and processing.",
-  "Water Management Projects":       "Rainwater harvesting, pond liners, drip & sprinkler irrigation, and borewell installations.",
-  "Solar Agriculture Projects":      "Solar crop dryers, heaters, fencing & lighting for sustainable, off-grid farm energy.",
-  "Farm Development Projects":       "Land surveying, topographic & contour mapping, and precision land leveling for farm development.",
+  "Vegetable Cultivation Projects": "Cucumber, capsicum, tomato, chilli, muskmelon & watermelon farming with drip irrigation systems.",
+  "Medicinal Crop Projects": "Aloe vera, moringa, ginger, turmeric & tapioca cultivation for high-value medicinal and export markets.",
+  "Floriculture Projects": "Rose, jasmine, marigold & exotic flower farming with climate-controlled precision.",
+  "Mushroom Farming Projects": "Oyster, button & commercial mushroom production with controlled environment and substrate management.",
+  "Urban Farming Projects": "Rooftop, terrace, kitchen garden & microgreens systems for urban and peri-urban spaces.",
+  "Nursery Projects": "Commercial plant nursery, seedling production & tissue culture facilities for mass propagation.",
+  "Fish Farming Projects": "Traditional, intensive & cage fish farming across freshwater species with full pond management.",
+  "Biofloc Farming Projects": "Zero water exchange biofloc technology for fish and shrimp with high stocking density and low FCR.",
+  "Shrimp Farming Projects": "Vannamei & freshwater prawn farming with professional biofloc pond setup and biosecurity.",
+  "Crab Farming Projects": "Mud crab fattening and commercial crab aquaculture with specialised feeding and harvesting systems.",
+  "Integrated Aquaculture": "Aquaponics combining fish and vegetable production; integrated fish-crop farming for dual income.",
+  "Goat Farming": "Commercial & integrated goat farming with breed selection, shed design and health management.",
+  "Sheep Farming": "Commercial sheep farming with scientific breed management and integrated crop systems.",
+  "Dairy Farming": "Dairy farm setup and automated milking systems for commercial milk production.",
+  "Poultry Farming": "Broiler & layer chicken farms with climate-controlled shed design and biosecurity protocols.",
+  "Integrated Livestock Farming": "Goat-fish and dairy-crop integrated systems for diversified, resilient farm income.",
+  "Farm Infrastructure Projects": "Cold storage, packhouses, farm buildings & roads for post-harvest logistics and processing.",
+  "Water Management Projects": "Rainwater harvesting, pond liners, drip & sprinkler irrigation, and borewell installations.",
+  "Solar Agriculture Projects": "Solar crop dryers, heaters, fencing & lighting for sustainable, off-grid farm energy.",
+  "Farm Development Projects": "Land surveying, topographic & contour mapping, and precision land leveling for farm development.",
 };
 
 // Key highlights per project type — the most important content for client conversion
 const PROJECT_HIGHLIGHTS: Record<string, string[]> = {
   // Protected Farming
-  "Naturally Ventilated Polyhouse":    ["UV-stabilised poly film, 200-micron thickness", "Natural side & top vents for passive temperature control", "Suitable for vegetables, flowers & nursery crops", "Government subsidy up to 50% under NHM scheme", "Structural lifespan 10–15 years with minimal maintenance"],
-  "Climate Controlled Polyhouse":      ["Automated temperature, humidity & CO₂ control", "HVAC with evaporative cooling and fan-pad system", "Optimal for exotic vegetables, floriculture & tissue culture", "Sensor-based monitoring with remote alert system", "Subsidy eligible under NHM & state horticulture boards"],
-  "Polycarbonate Greenhouse":          ["Twin-wall polycarbonate panels — 90% diffused light transmission", "High-tensile galvanised steel structure with 20-year frame warranty", "Ideal for year-round cultivation in any Indian climate zone", "Integrated shading, drip irrigation & fertigation included", "Premium grade, suitable for institutional & export-grade produce"],
-  "Shade Net House":                   ["HDPE shade nets — 35% to 75% shade factor options", "Cost-effective protected cultivation for nursery, vegetables & flowers", "Wind-resistant structure design with UV-stabilised netting", "Pest & bird exclusion integrated into net design", "Quick installation — typically 7–14 days per acre"],
-  "Mist Chamber":                      ["High-pressure misting nozzles maintaining 95%+ relative humidity", "Ideal for cutting propagation, cloning & seedling hardening", "Timer-controlled misting cycles for precise moisture management", "Compatible with all rooting media types", "Used in commercial nurseries, tissue culture labs & R&D units"],
+  "Naturally Ventilated Polyhouse": ["UV-stabilised poly film, 200-micron thickness", "Natural side & top vents for passive temperature control", "Suitable for vegetables, flowers & nursery crops", "Government subsidy up to 50% under NHM scheme", "Structural lifespan 10–15 years with minimal maintenance"],
+  "Climate Controlled Polyhouse": ["Automated temperature, humidity & CO₂ control", "HVAC with evaporative cooling and fan-pad system", "Optimal for exotic vegetables, floriculture & tissue culture", "Sensor-based monitoring with remote alert system", "Subsidy eligible under NHM & state horticulture boards"],
+  "Polycarbonate Greenhouse": ["Twin-wall polycarbonate panels — 90% diffused light transmission", "High-tensile galvanised steel structure with 20-year frame warranty", "Ideal for year-round cultivation in any Indian climate zone", "Integrated shading, drip irrigation & fertigation included", "Premium grade, suitable for institutional & export-grade produce"],
+  "Shade Net House": ["HDPE shade nets — 35% to 75% shade factor options", "Cost-effective protected cultivation for nursery, vegetables & flowers", "Wind-resistant structure design with UV-stabilised netting", "Pest & bird exclusion integrated into net design", "Quick installation — typically 7–14 days per acre"],
+  "Mist Chamber": ["High-pressure misting nozzles maintaining 95%+ relative humidity", "Ideal for cutting propagation, cloning & seedling hardening", "Timer-controlled misting cycles for precise moisture management", "Compatible with all rooting media types", "Used in commercial nurseries, tissue culture labs & R&D units"],
   // Hydroponic
-  "NFT Hydroponic System":             ["Nutrient Film Technique with shallow channel continuous flow", "Ideal for leafy greens, lettuce, herbs & microgreens", "Water usage 90% less than conventional soil farming", "Food-grade HDPE or stainless steel channels", "Subsidy available under MIDH & state horticulture schemes"],
-  "Deep Water Culture System":         ["Plants suspended in aerated nutrient solution for fastest growth rates", "Dissolved oxygen maintained via industrial air pumps", "Ideal for lettuce, spinach, basil & leafy greens", "Scalable from 500 to 100,000 plant sites", "Simple maintenance with low operational cost"],
-  "Vertical Hydroponic Towers":        ["Tower-based growing maximising yield per square metre", "Gravity-fed or pump-driven nutrient delivery to each plant site", "Suitable for leafy greens, strawberries & herbs", "Perfect for urban rooftops, limited-space & indoor farms", "IoT monitoring for EC, pH and reservoir levels"],
-  "Commercial Hydroponic Farms":       ["Full turnkey commercial-scale setup with central nutrient management", "Automated EC, pH & temperature monitoring with data logging", "Crop planning and market linkage support provided", "Typical ROI within 2.5–3 years for commercial operations", "Subsidy eligible — we assist with NHM & MIDH applications"],
-  "Indoor Hydroponic Units":           ["Fully enclosed climate-controlled growing rooms", "Full-spectrum LED grow lights with programmable cycles", "Year-round production independent of season or weather", "Smart IoT monitoring, automation & remote dashboard", "Ideal for premium herbs, microgreens & pharmaceutical-grade produce"],
+  "NFT Hydroponic System": ["Nutrient Film Technique with shallow channel continuous flow", "Ideal for leafy greens, lettuce, herbs & microgreens", "Water usage 90% less than conventional soil farming", "Food-grade HDPE or stainless steel channels", "Subsidy available under MIDH & state horticulture schemes"],
+  "Deep Water Culture System": ["Plants suspended in aerated nutrient solution for fastest growth rates", "Dissolved oxygen maintained via industrial air pumps", "Ideal for lettuce, spinach, basil & leafy greens", "Scalable from 500 to 100,000 plant sites", "Simple maintenance with low operational cost"],
+  "Vertical Hydroponic Towers": ["Tower-based growing maximising yield per square metre", "Gravity-fed or pump-driven nutrient delivery to each plant site", "Suitable for leafy greens, strawberries & herbs", "Perfect for urban rooftops, limited-space & indoor farms", "IoT monitoring for EC, pH and reservoir levels"],
+  "Commercial Hydroponic Farms": ["Full turnkey commercial-scale setup with central nutrient management", "Automated EC, pH & temperature monitoring with data logging", "Crop planning and market linkage support provided", "Typical ROI within 2.5–3 years for commercial operations", "Subsidy eligible — we assist with NHM & MIDH applications"],
+  "Indoor Hydroponic Units": ["Fully enclosed climate-controlled growing rooms", "Full-spectrum LED grow lights with programmable cycles", "Year-round production independent of season or weather", "Smart IoT monitoring, automation & remote dashboard", "Ideal for premium herbs, microgreens & pharmaceutical-grade produce"],
   // Vertical Farming
-  "Indoor Vertical Farms":             ["Multi-tier racking systems with LED grow lights per tier", "Fully climate-controlled: temperature, humidity & CO₂", "Up to 10× higher yield per square metre vs. field farming", "Year-round continuous harvesting cycles", "Suitable for leafy greens, herbs & specialty crops"],
+  "Indoor Vertical Farms": ["Multi-tier racking systems with LED grow lights per tier", "Fully climate-controlled: temperature, humidity & CO₂", "Up to 10× higher yield per square metre vs. field farming", "Year-round continuous harvesting cycles", "Suitable for leafy greens, herbs & specialty crops"],
   "Commercial Vertical Farming Units": ["Institutional-scale multi-tier farming with automation", "Central nutrient management and irrigation control", "Integration with cold-chain and direct market supply", "Data-driven crop cycle management for consistent output", "Subsidy-eligible for agri-startup & horticulture schemes"],
-  "Smart Grow Room Systems":           ["Fully automated grow rooms with programmable climate control", "CO₂ enrichment, VPD management & precision lighting schedules", "Suitable for cannabis, microgreens, specialty herbs & propagation", "Remote monitoring via mobile dashboard", "Modular — scalable from 200 sqft to 10,000 sqft"],
+  "Smart Grow Room Systems": ["Fully automated grow rooms with programmable climate control", "CO₂ enrichment, VPD management & precision lighting schedules", "Suitable for cannabis, microgreens, specialty herbs & propagation", "Remote monitoring via mobile dashboard", "Modular — scalable from 200 sqft to 10,000 sqft"],
   // Open Field
-  "Dragon Fruit Plantation":           ["Trellised plantation with concrete post & wire support structure", "Varieties: Yellow (H. megalanthus), Red (H. polyrhizus)", "Drip irrigation with fertigation scheduling", "First harvest in 12–18 months; 25+ year productive lifespan", "High market value — ₹80–200/kg farm gate price"],
-  "Guava Plantation":                  ["High-density planting (600–1500 plants/acre) for maximum yield", "Varieties: Taiwan Pink, VNR Bihi, Allahabad Safeda", "Drip irrigation with micro-sprinklers for canopy cooling", "First harvest within 12 months of planting", "Excellent export potential to Gulf & Southeast Asian markets"],
-  "Mango Plantation":                  ["Ultra-high-density planting with dwarf rootstock varieties", "Varieties: Alphonso, Kesar, Banganapalli, Dashehari", "Drip irrigation with soil moisture sensors", "Canopy management for uniform light distribution & early bearing", "APEDA certified export-grade production possible"],
-  "Papaya Plantation":                 ["Hybrid varieties: Red Lady, Surya, CO-7 with 6-month bearing cycle", "High plant density — 800–1000 plants/acre", "Drip irrigation + fertigation for consistent fruit quality", "Multiple crops per year with proper canopy management", "Strong domestic & export demand from food processing industry"],
-  "Fig Plantation":                    ["Varieties: Poona Fig, Deanna, Brown Turkey suited to Indian climate", "Drip irrigation for water-efficient cultivation", "High-value fresh & dried fig market demand", "Low pesticide requirement — naturally pest-resistant crop", "Subsidy available under horticulture development schemes"],
-  "Blueberry Plantation":              ["Requires soil pH 4.5–5.5 — we handle soil amendment & preparation", "Varieties: O'Neal, Sharpblue suited to tropical & subtropical zones", "Drip irrigation with acidic water management", "Premium crop — ₹400–800/kg farm gate pricing", "High export value to Europe, Japan & Middle East markets"],
+  "Dragon Fruit Plantation": ["Trellised plantation with concrete post & wire support structure", "Varieties: Yellow (H. megalanthus), Red (H. polyrhizus)", "Drip irrigation with fertigation scheduling", "First harvest in 12–18 months; 25+ year productive lifespan", "High market value — ₹80–200/kg farm gate price"],
+  "Guava Plantation": ["High-density planting (600–1500 plants/acre) for maximum yield", "Varieties: Taiwan Pink, VNR Bihi, Allahabad Safeda", "Drip irrigation with micro-sprinklers for canopy cooling", "First harvest within 12 months of planting", "Excellent export potential to Gulf & Southeast Asian markets"],
+  "Mango Plantation": ["Ultra-high-density planting with dwarf rootstock varieties", "Varieties: Alphonso, Kesar, Banganapalli, Dashehari", "Drip irrigation with soil moisture sensors", "Canopy management for uniform light distribution & early bearing", "APEDA certified export-grade production possible"],
+  "Papaya Plantation": ["Hybrid varieties: Red Lady, Surya, CO-7 with 6-month bearing cycle", "High plant density — 800–1000 plants/acre", "Drip irrigation + fertigation for consistent fruit quality", "Multiple crops per year with proper canopy management", "Strong domestic & export demand from food processing industry"],
+  "Fig Plantation": ["Varieties: Poona Fig, Deanna, Brown Turkey suited to Indian climate", "Drip irrigation for water-efficient cultivation", "High-value fresh & dried fig market demand", "Low pesticide requirement — naturally pest-resistant crop", "Subsidy available under horticulture development schemes"],
+  "Blueberry Plantation": ["Requires soil pH 4.5–5.5 — we handle soil amendment & preparation", "Varieties: O'Neal, Sharpblue suited to tropical & subtropical zones", "Drip irrigation with acidic water management", "Premium crop — ₹400–800/kg farm gate pricing", "High export value to Europe, Japan & Middle East markets"],
   // Vegetable
-  "Cucumber Farming":                  ["Polyhouse or open field hybrid variety cultivation", "Drip irrigation with fertigation scheduling", "25–30 tonnes/acre yield achievable in polyhouse conditions", "Short crop cycle — harvest in 45–60 days", "Direct supply to supermarkets, hotels & export markets"],
-  "Capsicum Farming":                  ["Coloured capsicum (red, yellow, green) for premium markets", "Polyhouse cultivation for year-round production", "Drip & fertigation with precise nutrient management", "20–30 tonnes/acre expected yield", "High market value — export-grade capsicum fetches ₹60–200/kg"],
-  "Tomato Farming":                    ["Indeterminate hybrid varieties for polyhouse high-wire cultivation", "Drip irrigation with calcium & potassium management for shelf life", "40–60 tonnes/acre achievable under protected conditions", "Integrated pest management protocols included", "Market linkage support for wholesale & retail supply chains"],
-  "Chilli Farming":                    ["Hybrid varieties for commercial spice & fresh market production", "Drip irrigation for consistent pod development", "12–15 tonnes/acre fresh chilli yield", "Dry chilli processing support available", "Strong domestic demand + export opportunity to USA & EU"],
-  "Muskmelon Farming":                 ["Drip irrigation for water-efficient summer cultivation", "Polyhouse or mulched open field systems", "Short crop duration — 75–90 days from planting", "Premium table-grade muskmelon for hotel & retail supply", "2–3 crop cycles possible per year with proper planning"],
-  "Watermelon Farming":                ["Drip irrigation with plastic mulch for weed suppression", "Seedless & seeded hybrid varieties for premium market", "20–25 tonnes/acre achievable yield", "Short crop cycle — 70–85 days per cycle", "Direct supply partnerships with APMC & supermarket chains"],
+  "Cucumber Farming": ["Polyhouse or open field hybrid variety cultivation", "Drip irrigation with fertigation scheduling", "25–30 tonnes/acre yield achievable in polyhouse conditions", "Short crop cycle — harvest in 45–60 days", "Direct supply to supermarkets, hotels & export markets"],
+  "Capsicum Farming": ["Coloured capsicum (red, yellow, green) for premium markets", "Polyhouse cultivation for year-round production", "Drip & fertigation with precise nutrient management", "20–30 tonnes/acre expected yield", "High market value — export-grade capsicum fetches ₹60–200/kg"],
+  "Tomato Farming": ["Indeterminate hybrid varieties for polyhouse high-wire cultivation", "Drip irrigation with calcium & potassium management for shelf life", "40–60 tonnes/acre achievable under protected conditions", "Integrated pest management protocols included", "Market linkage support for wholesale & retail supply chains"],
+  "Chilli Farming": ["Hybrid varieties for commercial spice & fresh market production", "Drip irrigation for consistent pod development", "12–15 tonnes/acre fresh chilli yield", "Dry chilli processing support available", "Strong domestic demand + export opportunity to USA & EU"],
+  "Muskmelon Farming": ["Drip irrigation for water-efficient summer cultivation", "Polyhouse or mulched open field systems", "Short crop duration — 75–90 days from planting", "Premium table-grade muskmelon for hotel & retail supply", "2–3 crop cycles possible per year with proper planning"],
+  "Watermelon Farming": ["Drip irrigation with plastic mulch for weed suppression", "Seedless & seeded hybrid varieties for premium market", "20–25 tonnes/acre achievable yield", "Short crop cycle — 70–85 days per cycle", "Direct supply partnerships with APMC & supermarket chains"],
   // Medicinal
-  "Aloe Vera Farming":                 ["Low water requirement — ideal for arid & semi-arid zones", "Commercial varieties: IEC-111, AAL-1 for high gel content", "First harvest in 18–24 months, then every 3 months", "Strong demand from cosmetics, pharma & FMCG industries", "Minimum price support available under NHM in select states"],
-  "Moringa Plantation":                ["Annual & perennial cultivation options", "High-density planting for leaf, pod & seed production", "Drip irrigation — drought-tolerant once established", "Dried leaf powder commands ₹150–400/kg export price", "Strong demand from nutraceutical & food supplement industry"],
-  "Ginger Farming":                    ["Raised bed cultivation for improved drainage and yield", "Varieties: Rio-de-Janeiro, Maran for high rhizome yield", "Drip irrigation for optimal soil moisture management", "15–20 tonnes/acre achievable fresh ginger yield", "Post-harvest drying and storage support available"],
-  "Turmeric Farming":                  ["Varieties: Pratibha, Suguna, IISR Prabha for high curcumin content", "Raised bed or flat bed cultivation with mulching", "Drip irrigation for 30–35% water saving vs flood irrigation", "Export-grade curcumin content testing support available", "Strong global demand — India exports 80% of world turmeric supply"],
-  "Tapioca Cultivation":               ["High starch-yielding varieties for industrial & food use", "Drip irrigation with periodic earthing-up", "15–25 tonnes/acre fresh cassava root yield", "8–10 month crop duration with single or ratoon system", "Strong demand from starch, ethanol & bioplastics industries"],
+  "Aloe Vera Farming": ["Low water requirement — ideal for arid & semi-arid zones", "Commercial varieties: IEC-111, AAL-1 for high gel content", "First harvest in 18–24 months, then every 3 months", "Strong demand from cosmetics, pharma & FMCG industries", "Minimum price support available under NHM in select states"],
+  "Moringa Plantation": ["Annual & perennial cultivation options", "High-density planting for leaf, pod & seed production", "Drip irrigation — drought-tolerant once established", "Dried leaf powder commands ₹150–400/kg export price", "Strong demand from nutraceutical & food supplement industry"],
+  "Ginger Farming": ["Raised bed cultivation for improved drainage and yield", "Varieties: Rio-de-Janeiro, Maran for high rhizome yield", "Drip irrigation for optimal soil moisture management", "15–20 tonnes/acre achievable fresh ginger yield", "Post-harvest drying and storage support available"],
+  "Turmeric Farming": ["Varieties: Pratibha, Suguna, IISR Prabha for high curcumin content", "Raised bed or flat bed cultivation with mulching", "Drip irrigation for 30–35% water saving vs flood irrigation", "Export-grade curcumin content testing support available", "Strong global demand — India exports 80% of world turmeric supply"],
+  "Tapioca Cultivation": ["High starch-yielding varieties for industrial & food use", "Drip irrigation with periodic earthing-up", "15–25 tonnes/acre fresh cassava root yield", "8–10 month crop duration with single or ratoon system", "Strong demand from starch, ethanol & bioplastics industries"],
   // Floriculture
-  "Rose Farming":                      ["Polyhouse cultivation of Dutch Rose varieties for premium cut flower market", "Drip irrigation with fertigation for continuous bloom cycles", "12 months × 4–5 harvests per year production cycle", "Cold chain support for export-grade flower quality", "Subsidy available under NHM for protected floriculture"],
-  "Jasmine Farming":                   ["Madurai Malli & CO-1 varieties for south Indian garland market", "Drip irrigation with mulching for weed management", "Open field or shade net house cultivation", "Daily harvest from 2nd year onwards — strong local demand", "Minimum support price assured under state horticulture schemes"],
-  "Marigold Farming":                  ["African & French marigold for garland, dye & essential oil markets", "High-density planting under drip irrigation", "Short crop cycle — 45–60 days to first harvest", "Multiple crop cycles per year — 4–5 possible", "Strong demand from religious, FMCG & pharma dye sectors"],
-  "Exotic Flower Farming":             ["Gerbera, anthurium, orchid & bird-of-paradise in climate-controlled polyhouses", "Substrate-based cultivation with Dutch growing system", "Premium cut flower pricing — ₹5–50 per stem for export grade", "Cold chain & airport linkage for direct export", "High value, low volume — ideal for small landholding enterprises"],
+  "Rose Farming": ["Polyhouse cultivation of Dutch Rose varieties for premium cut flower market", "Drip irrigation with fertigation for continuous bloom cycles", "12 months × 4–5 harvests per year production cycle", "Cold chain support for export-grade flower quality", "Subsidy available under NHM for protected floriculture"],
+  "Jasmine Farming": ["Madurai Malli & CO-1 varieties for south Indian garland market", "Drip irrigation with mulching for weed management", "Open field or shade net house cultivation", "Daily harvest from 2nd year onwards — strong local demand", "Minimum support price assured under state horticulture schemes"],
+  "Marigold Farming": ["African & French marigold for garland, dye & essential oil markets", "High-density planting under drip irrigation", "Short crop cycle — 45–60 days to first harvest", "Multiple crop cycles per year — 4–5 possible", "Strong demand from religious, FMCG & pharma dye sectors"],
+  "Exotic Flower Farming": ["Gerbera, anthurium, orchid & bird-of-paradise in climate-controlled polyhouses", "Substrate-based cultivation with Dutch growing system", "Premium cut flower pricing — ₹5–50 per stem for export grade", "Cold chain & airport linkage for direct export", "High value, low volume — ideal for small landholding enterprises"],
   // Mushroom
-  "Oyster Mushroom Units":             ["Substrate bags with paddy straw, cotton waste or saw dust", "Controlled humidity 80–90%, temperature 20–28°C", "Harvest in 30–45 days per crop cycle", "Multiple flushes per batch — 3–4 harvests per bag", "Strong urban demand — ₹120–200/kg fresh oyster mushroom"],
-  "Button Mushroom Units":             ["Phase I & II composting with bulk spawning on beds", "Climate-controlled rooms with precise temperature & humidity", "Button mushroom price ranges ₹80–150/kg fresh weight", "Requires 55–65 days from spawning to harvest", "Canning & export market available for commercial volumes"],
-  "Commercial Mushroom Farms":         ["Multi-species commercial mushroom production facility", "Central climate control for multiple growing rooms", "Substrate preparation & spawn production included", "Market linkage to hotels, restaurants, supermarkets & exporters", "Subsidy available under NHM & state agriculture development schemes"],
+  "Oyster Mushroom Units": ["Substrate bags with paddy straw, cotton waste or saw dust", "Controlled humidity 80–90%, temperature 20–28°C", "Harvest in 30–45 days per crop cycle", "Multiple flushes per batch — 3–4 harvests per bag", "Strong urban demand — ₹120–200/kg fresh oyster mushroom"],
+  "Button Mushroom Units": ["Phase I & II composting with bulk spawning on beds", "Climate-controlled rooms with precise temperature & humidity", "Button mushroom price ranges ₹80–150/kg fresh weight", "Requires 55–65 days from spawning to harvest", "Canning & export market available for commercial volumes"],
+  "Commercial Mushroom Farms": ["Multi-species commercial mushroom production facility", "Central climate control for multiple growing rooms", "Substrate preparation & spawn production included", "Market linkage to hotels, restaurants, supermarkets & exporters", "Subsidy available under NHM & state agriculture development schemes"],
   // Urban Farming
-  "Rooftop Gardening Projects":        ["Structural load assessment before installation by our engineers", "Lightweight growing media & insulated containers to protect slab", "Drip irrigation & fertigation for minimal water use", "Suitable for residential, commercial & institutional rooftops", "Reduces urban heat island effect & building cooling costs"],
-  "Terrace Farming Projects":          ["Modular raised bed systems for terrace & balcony spaces", "Lightweight growing substrate — expanded clay, cocopeat mix", "Drip irrigation with timer-controlled watering", "Suitable for vegetables, herbs & small fruit crops", "Educational farming programmes available for schools & colleges"],
-  "Kitchen Garden Projects":           ["Custom-designed kitchen herb & vegetable gardens for homes", "Vertical planter, grow bag & raised bed systems", "Drip or manual irrigation options", "Suitable for year-round fresh herb, leafy & vegetable production", "Soil health management & organic growing protocols included"],
-  "Microgreens Production Units":      ["Tray-based cultivation with 7–14 day harvest cycle", "Varieties: sunflower, radish, pea shoot, wheatgrass & 20+ more", "LED lighting for indoor year-round production", "Premium pricing — ₹300–800/kg for hotel & restaurant supply", "Low capital, high ROI business model for urban entrepreneurs"],
+  "Rooftop Gardening Projects": ["Structural load assessment before installation by our engineers", "Lightweight growing media & insulated containers to protect slab", "Drip irrigation & fertigation for minimal water use", "Suitable for residential, commercial & institutional rooftops", "Reduces urban heat island effect & building cooling costs"],
+  "Terrace Farming Projects": ["Modular raised bed systems for terrace & balcony spaces", "Lightweight growing substrate — expanded clay, cocopeat mix", "Drip irrigation with timer-controlled watering", "Suitable for vegetables, herbs & small fruit crops", "Educational farming programmes available for schools & colleges"],
+  "Kitchen Garden Projects": ["Custom-designed kitchen herb & vegetable gardens for homes", "Vertical planter, grow bag & raised bed systems", "Drip or manual irrigation options", "Suitable for year-round fresh herb, leafy & vegetable production", "Soil health management & organic growing protocols included"],
+  "Microgreens Production Units": ["Tray-based cultivation with 7–14 day harvest cycle", "Varieties: sunflower, radish, pea shoot, wheatgrass & 20+ more", "LED lighting for indoor year-round production", "Premium pricing — ₹300–800/kg for hotel & restaurant supply", "Low capital, high ROI business model for urban entrepreneurs"],
   // Nursery
-  "Commercial Plant Nursery":          ["Mother plant block, propagation unit & hardening zone designed", "Shade net houses (50% shade) for seedling production", "Drip & mist irrigation with fertigation system", "Production capacity from 50,000 to 5,000,000 seedlings/year", "Subsidy available under NHM for commercial nursery units"],
-  "Seedling Production Units":         ["Tray propagation with coco peat substrate & plug trays", "Climate-controlled germination chambers for uniform sprouting", "Suitable for vegetable, flower & forestry seedling production", "Automated misting & drip irrigation in hardening zone", "Government subsidy available for certified nursery setup"],
-  "Tissue Culture Plant Nursery":      ["Laminar flow hood, autoclave & culture room infrastructure setup", "Compatible with banana, sugarcane, orchid, teak & cardamom TC plants", "ISO-grade cleanliness protocols & contamination control systems", "From lab design to establishment, training & protocol support", "NCBI/DST approved lab setup assistance available"],
+  "Commercial Plant Nursery": ["Mother plant block, propagation unit & hardening zone designed", "Shade net houses (50% shade) for seedling production", "Drip & mist irrigation with fertigation system", "Production capacity from 50,000 to 5,000,000 seedlings/year", "Subsidy available under NHM for commercial nursery units"],
+  "Seedling Production Units": ["Tray propagation with coco peat substrate & plug trays", "Climate-controlled germination chambers for uniform sprouting", "Suitable for vegetable, flower & forestry seedling production", "Automated misting & drip irrigation in hardening zone", "Government subsidy available for certified nursery setup"],
+  "Tissue Culture Plant Nursery": ["Laminar flow hood, autoclave & culture room infrastructure setup", "Compatible with banana, sugarcane, orchid, teak & cardamom TC plants", "ISO-grade cleanliness protocols & contamination control systems", "From lab design to establishment, training & protocol support", "NCBI/DST approved lab setup assistance available"],
   // Aquaculture
-  "Traditional Fish Farming":          ["Pond preparation, liming & soil treatment protocols", "Species: Rohu, Catla, Mrigal, Common Carp for Indian conditions", "Stocking density: 5,000–8,000 fingerlings/acre", "Supplementary feeding & water quality management included", "Average yield: 2–3 tonnes/acre/year in single-crop system"],
-  "Intensive Fish Farming":            ["Aeration-based intensive system with high stocking density", "Stocking: 15,000–25,000 fingerlings/acre with continuous aeration", "Feed conversion ratio (FCR) management protocols included", "Average yield: 6–10 tonnes/acre/year achievable", "Subsidy available under PMMSY for intensive aquaculture"],
-  "Cage Fish Farming":                 ["Floating cage systems for reservoir, river & lake farming", "HDPE cage frames with knotless nylon net enclosures", "Ideal for tilapia, rohu, catla & pangasius production", "High stocking density — 100–200 fish per cubic metre", "Subsidy eligible under PMMSY — up to 40% government support"],
-  "Biofloc Fish Farming":              ["Zero water exchange technology with microbial protein supplementation", "Stocking density 500–1000 fish/m³ in circular tanks", "Reduces feed cost by 20–30% via in-situ protein production", "Species: tilapia, catfish, pangasius & rohu", "Subsidy available under PMMSY & state fisheries departments"],
-  "Biofloc Shrimp Farming":            ["Lined ponds with biofloc technology for water quality management", "Vannamei stocking @ 100–150 PL/m² with zero water exchange", "Aerator installation for DO maintenance above 5 mg/L", "Average production: 8–15 tonnes/hectare/crop cycle", "Subsidy under PMMSY for shrimp biofloc units"],
-  "Vannamei Shrimp Farming":           ["Lined pond construction with HDPE liner installation", "Certified SPF (Specific Pathogen Free) post larvae sourcing", "Automatic paddle wheel & air diffuser aeration systems", "Biosecurity protocols — screens, bird nets & monitoring", "Average production: 5–12 tonnes/hectare in 90-day cycle"],
-  "Freshwater Prawn Farming":          ["Macrobrachium rosenbergii (giant river prawn) farming", "Polyculture compatible with carp species for dual income", "Nursery rearing phase management for juvenile survival", "Harvest size: 60–80 grams in 6-month production cycle", "Excellent price realisation — ₹400–600/kg live prawn"],
-  "Mud Crab Farming":                  ["Scylla serrata (mud crab) fattening pens or cage systems", "Brackish water requirement — 15–25 ppt salinity", "Fattening period: 4–6 weeks from soft shell to marketable size", "Premium pricing — ₹500–1500/kg for live export grade crab", "Strong demand from seafood exporters & high-end restaurants"],
-  "Aquaponics Systems":                ["Recirculating system combining fish tanks & grow beds/NFT", "Fish species: tilapia, catfish; plants: leafy greens, herbs", "Zero waste — fish effluent fertilises plants, plants clean water", "Water usage 90% less than conventional farming", "Dual income stream from fish and vegetable produce"],
-  "Integrated Fish + Crop Farming":    ["Rice-fish or vegetable-fish integrated farming systems", "Synergistic — fish control weeds, their waste fertilises crops", "30–40% higher income vs. mono-cropping on same land area", "Technical design of water management & crop rotation schedule", "Widely practiced in Andhra Pradesh, West Bengal & Kerala"],
+  "Traditional Fish Farming": ["Pond preparation, liming & soil treatment protocols", "Species: Rohu, Catla, Mrigal, Common Carp for Indian conditions", "Stocking density: 5,000–8,000 fingerlings/acre", "Supplementary feeding & water quality management included", "Average yield: 2–3 tonnes/acre/year in single-crop system"],
+  "Intensive Fish Farming": ["Aeration-based intensive system with high stocking density", "Stocking: 15,000–25,000 fingerlings/acre with continuous aeration", "Feed conversion ratio (FCR) management protocols included", "Average yield: 6–10 tonnes/acre/year achievable", "Subsidy available under PMMSY for intensive aquaculture"],
+  "Cage Fish Farming": ["Floating cage systems for reservoir, river & lake farming", "HDPE cage frames with knotless nylon net enclosures", "Ideal for tilapia, rohu, catla & pangasius production", "High stocking density — 100–200 fish per cubic metre", "Subsidy eligible under PMMSY — up to 40% government support"],
+  "Biofloc Fish Farming": ["Zero water exchange technology with microbial protein supplementation", "Stocking density 500–1000 fish/m³ in circular tanks", "Reduces feed cost by 20–30% via in-situ protein production", "Species: tilapia, catfish, pangasius & rohu", "Subsidy available under PMMSY & state fisheries departments"],
+  "Biofloc Shrimp Farming": ["Lined ponds with biofloc technology for water quality management", "Vannamei stocking @ 100–150 PL/m² with zero water exchange", "Aerator installation for DO maintenance above 5 mg/L", "Average production: 8–15 tonnes/hectare/crop cycle", "Subsidy under PMMSY for shrimp biofloc units"],
+  "Vannamei Shrimp Farming": ["Lined pond construction with HDPE liner installation", "Certified SPF (Specific Pathogen Free) post larvae sourcing", "Automatic paddle wheel & air diffuser aeration systems", "Biosecurity protocols — screens, bird nets & monitoring", "Average production: 5–12 tonnes/hectare in 90-day cycle"],
+  "Freshwater Prawn Farming": ["Macrobrachium rosenbergii (giant river prawn) farming", "Polyculture compatible with carp species for dual income", "Nursery rearing phase management for juvenile survival", "Harvest size: 60–80 grams in 6-month production cycle", "Excellent price realisation — ₹400–600/kg live prawn"],
+  "Mud Crab Farming": ["Scylla serrata (mud crab) fattening pens or cage systems", "Brackish water requirement — 15–25 ppt salinity", "Fattening period: 4–6 weeks from soft shell to marketable size", "Premium pricing — ₹500–1500/kg for live export grade crab", "Strong demand from seafood exporters & high-end restaurants"],
+  "Aquaponics Systems": ["Recirculating system combining fish tanks & grow beds/NFT", "Fish species: tilapia, catfish; plants: leafy greens, herbs", "Zero waste — fish effluent fertilises plants, plants clean water", "Water usage 90% less than conventional farming", "Dual income stream from fish and vegetable produce"],
+  "Integrated Fish + Crop Farming": ["Rice-fish or vegetable-fish integrated farming systems", "Synergistic — fish control weeds, their waste fertilises crops", "30–40% higher income vs. mono-cropping on same land area", "Technical design of water management & crop rotation schedule", "Widely practiced in Andhra Pradesh, West Bengal & Kerala"],
   // Livestock
-  "Commercial Goat Farming":           ["Breed selection: Boer, Sirohi, Black Bengal based on region", "Shed design: well-ventilated, slatted floor for hygiene", "20–50 goat capacity to 500+ animal commercial units", "Breeding, health management & vaccination schedule included", "Subsidy under National Livestock Mission — up to 25%"],
-  "Integrated Goat Farming":           ["Goat farming combined with crop production on same land", "Goat manure improves soil fertility — reduces fertiliser cost", "Stall-fed & semi-grazing systems designed per land availability", "Dual income: milk, meat & manure for crop farms", "Training in integrated farm management included"],
-  "Commercial Sheep Farming":          ["Breeds: Nellore, Deccani, Marwari selected for local conditions", "Shed design with paddock & feeding infrastructure", "Wool, meat & dairy dual-purpose systems designed", "Vaccination, deworming & disease management protocols", "Subsidy available under National Livestock Mission scheme"],
-  "Dairy Farm Setup":                  ["Breed selection: HF, Jersey, Sahiwal, Gir for climate suitability", "Milking parlour, milk storage & cooling infrastructure", "Automated TMR (Total Mixed Ration) feed system available", "Waste management with biogas unit integration", "Subsidy under National Dairy Plan — up to 25% capital subsidy"],
-  "Automated Dairy Systems":           ["Robotic milking parlour with automated teat prep & post dipping", "Milk yield & health monitoring via ear tag sensors", "Automated feed dispensing by yield group", "Milk cooling & bulk tank with remote temperature monitoring", "Ideal for 50+ cow commercial dairy operations"],
-  "Broiler Chicken Farms":             ["Shed design: fully enclosed with tunnel ventilation system", "Capacity from 5,000 to 100,000 birds per shed", "Automated feeding, drinking & climate control systems", "Poultry litter management & biogas integration", "Contract farming tie-ups with major integrators arranged"],
-  "Layer Chicken Farms":               ["Cage-based or cage-free shed systems per client preference", "Automated nipple drinking & chain feeding systems", "Egg collection, washing & grading infrastructure", "Production: 300–320 eggs per bird per year expected", "APEDA & FSSAI compliant facility design for export market"],
-  "Goat + Fish Farming":               ["Goat shed constructed over fish pond for space efficiency", "Goat droppings supplement fish nutrition — reduces feed cost", "Dual income from fish, milk & meat on same land", "Water quality maintained via natural biofloc formation", "Widely practiced integrated model in coastal Andhra Pradesh"],
-  "Dairy + Crop Farming":              ["Dairy manure biogas plant feeding energy needs of farm", "Digested slurry used as organic fertiliser for crops", "Crop fodder production reduces feed purchase cost", "Zero-waste circular farming model design included", "Higher combined income vs. standalone dairy or crop farm"],
+  "Commercial Goat Farming": ["Breed selection: Boer, Sirohi, Black Bengal based on region", "Shed design: well-ventilated, slatted floor for hygiene", "20–50 goat capacity to 500+ animal commercial units", "Breeding, health management & vaccination schedule included", "Subsidy under National Livestock Mission — up to 25%"],
+  "Integrated Goat Farming": ["Goat farming combined with crop production on same land", "Goat manure improves soil fertility — reduces fertiliser cost", "Stall-fed & semi-grazing systems designed per land availability", "Dual income: milk, meat & manure for crop farms", "Training in integrated farm management included"],
+  "Commercial Sheep Farming": ["Breeds: Nellore, Deccani, Marwari selected for local conditions", "Shed design with paddock & feeding infrastructure", "Wool, meat & dairy dual-purpose systems designed", "Vaccination, deworming & disease management protocols", "Subsidy available under National Livestock Mission scheme"],
+  "Dairy Farm Setup": ["Breed selection: HF, Jersey, Sahiwal, Gir for climate suitability", "Milking parlour, milk storage & cooling infrastructure", "Automated TMR (Total Mixed Ration) feed system available", "Waste management with biogas unit integration", "Subsidy under National Dairy Plan — up to 25% capital subsidy"],
+  "Automated Dairy Systems": ["Robotic milking parlour with automated teat prep & post dipping", "Milk yield & health monitoring via ear tag sensors", "Automated feed dispensing by yield group", "Milk cooling & bulk tank with remote temperature monitoring", "Ideal for 50+ cow commercial dairy operations"],
+  "Broiler Chicken Farms": ["Shed design: fully enclosed with tunnel ventilation system", "Capacity from 5,000 to 100,000 birds per shed", "Automated feeding, drinking & climate control systems", "Poultry litter management & biogas integration", "Contract farming tie-ups with major integrators arranged"],
+  "Layer Chicken Farms": ["Cage-based or cage-free shed systems per client preference", "Automated nipple drinking & chain feeding systems", "Egg collection, washing & grading infrastructure", "Production: 300–320 eggs per bird per year expected", "APEDA & FSSAI compliant facility design for export market"],
+  "Goat + Fish Farming": ["Goat shed constructed over fish pond for space efficiency", "Goat droppings supplement fish nutrition — reduces feed cost", "Dual income from fish, milk & meat on same land", "Water quality maintained via natural biofloc formation", "Widely practiced integrated model in coastal Andhra Pradesh"],
+  "Dairy + Crop Farming": ["Dairy manure biogas plant feeding energy needs of farm", "Digested slurry used as organic fertiliser for crops", "Crop fodder production reduces feed purchase cost", "Zero-waste circular farming model design included", "Higher combined income vs. standalone dairy or crop farm"],
   // Engineering
-  "Cold Storage":                      ["Insulated PUF panel construction for temperature uniformity", "Capacity: 10 MT to 5,000 MT as per client requirement", "Temperature range: -25°C to +10°C multizone options", "Energy-efficient reciprocating & screw compressor units", "Subsidy under NHM — up to ₹35/MT capacity for horticulture produce"],
-  "Pack House":                        ["Grading, sorting, washing & packing line infrastructure design", "APEDA & GlobalG.A.P. compliant facility layout", "Pre-cooling & cold room integration for post-harvest quality", "Covered area design as per crop type and throughput requirement", "Subsidy under PMKSY, NHM & state post-harvest development schemes"],
-  "Farm Buildings":                    ["RCC & pre-engineered building (PEB) options for storage, workshops", "Wind-load and seismic zone compliant structural design", "FSSAI & APEDA compliant layout for processing facilities", "Low-maintenance industrial-grade materials and finishes", "Full civil engineering drawings & government approval assistance"],
-  "Farm Roads":                        ["WBM (Water Bound Macadam) or CC road design for farm access", "Culverts, drainage channels & slope stabilisation included", "PMGSY & RKVY linked farm road subsidy assistance provided", "Road width design as per machinery & transport requirement", "Improves post-harvest logistics & reduces crop damage losses"],
-  "Rainwater Harvesting":              ["Farm pond, percolation tank & check dam design & construction", "Lined storage ponds with HDPE liner for water conservation", "Capacity from 500 m³ to 50,000 m³ as per requirement", "Recharge structures to restore groundwater table", "Subsidy under PMKSY Har Khet Ko Paani & MGNREGA schemes"],
-  "Pond Liner Installation":           ["HDPE liner — 500 micron to 1500 micron as per application", "Aquaculture, rainwater storage & seepage prevention use cases", "Professional welding & installation with leak testing", "UV stabilised — 25+ year material lifespan guaranteed", "Improves water use efficiency by eliminating pond seepage"],
-  "Farm Irrigation Systems":           ["Drip, sprinkler & micro-irrigation system design & installation", "Subsidy up to 90% under PM Krishi Sinchayee Yojana (PMKSY)", "Fertigation unit integration for nutrition management", "Soil moisture sensor integration for smart irrigation", "Covers crops from vegetables to plantations, paddy & sugarcane"],
-  "Borewell & Water Storage Systems":  ["Hydrogeological survey before borewell siting for best yield", "Borewell drilling, casing, pump & motor installation", "Ground-level sump & overhead tank design & construction", "Solar pump systems for energy-independent water supply", "Subsidy under PM-KUSUM scheme for solar pump installation"],
-  "Solar Crop Dryer":                  ["Indirect & direct type solar dryers for fruits, vegetables & spices", "Reduces post-harvest losses by 30–40% vs. open sun drying", "Consistent drying temperature for better colour & quality", "Stainless steel mesh trays — food-grade & easy to clean", "Subsidy under PM-KUSUM & state renewable energy schemes"],
-  "Solar Heater":                      ["Flat plate & evacuated tube collector systems for farm use", "Dairy milk pasteurisation, water heating & biogas pre-heating", "Reduces LPG & electricity cost for heating applications", "25-year system design life with 5-year warranty on collectors", "Subsidy under MNRE & state energy department schemes"],
-  "Solar Fencing":                     ["Energiser-powered electric fence for crop & livestock protection", "Solar powered — no grid dependency for remote fields", "15–20 km perimeter coverage per energiser unit", "Non-lethal pulse shock — safe for humans & animals", "Reduces crop losses from wildlife, cattle & straying animals"],
-  "Solar Lighting":                    ["Off-grid LED solar street lights for farm roads & perimeter", "Integrated LED lighting for polyhouse & livestock sheds", "Solar lanterns & task lights for night farm operations", "System design: 10W to 1000W as per requirement", "Subsidy under PM-KUSUM Component C & MNRE schemes"],
-  "Land Surveying":                    ["Total station & GPS DGPS survey for legal & engineering purpose", "Survey of India compliant boundary & area measurement", "Topographic survey with contour interval as low as 0.5m", "Digital output: DXF / DWG / PDF format delivery", "Required for farm development, irrigation & land registration"],
-  "Topographic Mapping":               ["Drone-based photogrammetry & LiDAR topographic mapping", "Contour maps at 0.5m to 1m interval for irrigation planning", "Digital Terrain Model (DTM) & Digital Surface Model (DSM) output", "Orthorectified aerial imagery for crop planning & land use", "Turnaround: typically 3–7 working days for up to 100 acres"],
-  "Contour Mapping":                   ["Critical for design of bunds, terraces & water harvesting structures", "Identifies natural drainage lines & catchment areas", "Combined with slope analysis for precision land development", "GIS-compatible output for integration with farm planning tools", "Used in PMKSY, watershed development & land leveling projects"],
-  "Land Leveling":                     ["Laser-guided precision land leveling for improved water distribution", "Reduces water use by 20–30% in flood-irrigated crops", "Improves crop uniformity & reduces weed pressure", "Earth cut & fill calculation for minimum soil movement", "Eligible for subsidy under PMKSY & state land development schemes"],
+  "Cold Storage": ["Insulated PUF panel construction for temperature uniformity", "Capacity: 10 MT to 5,000 MT as per client requirement", "Temperature range: -25°C to +10°C multizone options", "Energy-efficient reciprocating & screw compressor units", "Subsidy under NHM — up to ₹35/MT capacity for horticulture produce"],
+  "Pack House": ["Grading, sorting, washing & packing line infrastructure design", "APEDA & GlobalG.A.P. compliant facility layout", "Pre-cooling & cold room integration for post-harvest quality", "Covered area design as per crop type and throughput requirement", "Subsidy under PMKSY, NHM & state post-harvest development schemes"],
+  "Farm Buildings": ["RCC & pre-engineered building (PEB) options for storage, workshops", "Wind-load and seismic zone compliant structural design", "FSSAI & APEDA compliant layout for processing facilities", "Low-maintenance industrial-grade materials and finishes", "Full civil engineering drawings & government approval assistance"],
+  "Farm Roads": ["WBM (Water Bound Macadam) or CC road design for farm access", "Culverts, drainage channels & slope stabilisation included", "PMGSY & RKVY linked farm road subsidy assistance provided", "Road width design as per machinery & transport requirement", "Improves post-harvest logistics & reduces crop damage losses"],
+  "Rainwater Harvesting": ["Farm pond, percolation tank & check dam design & construction", "Lined storage ponds with HDPE liner for water conservation", "Capacity from 500 m³ to 50,000 m³ as per requirement", "Recharge structures to restore groundwater table", "Subsidy under PMKSY Har Khet Ko Paani & MGNREGA schemes"],
+  "Pond Liner Installation": ["HDPE liner — 500 micron to 1500 micron as per application", "Aquaculture, rainwater storage & seepage prevention use cases", "Professional welding & installation with leak testing", "UV stabilised — 25+ year material lifespan guaranteed", "Improves water use efficiency by eliminating pond seepage"],
+  "Farm Irrigation Systems": ["Drip, sprinkler & micro-irrigation system design & installation", "Subsidy up to 90% under PM Krishi Sinchayee Yojana (PMKSY)", "Fertigation unit integration for nutrition management", "Soil moisture sensor integration for smart irrigation", "Covers crops from vegetables to plantations, paddy & sugarcane"],
+  "Borewell & Water Storage Systems": ["Hydrogeological survey before borewell siting for best yield", "Borewell drilling, casing, pump & motor installation", "Ground-level sump & overhead tank design & construction", "Solar pump systems for energy-independent water supply", "Subsidy under PM-KUSUM scheme for solar pump installation"],
+  "Solar Crop Dryer": ["Indirect & direct type solar dryers for fruits, vegetables & spices", "Reduces post-harvest losses by 30–40% vs. open sun drying", "Consistent drying temperature for better colour & quality", "Stainless steel mesh trays — food-grade & easy to clean", "Subsidy under PM-KUSUM & state renewable energy schemes"],
+  "Solar Heater": ["Flat plate & evacuated tube collector systems for farm use", "Dairy milk pasteurisation, water heating & biogas pre-heating", "Reduces LPG & electricity cost for heating applications", "25-year system design life with 5-year warranty on collectors", "Subsidy under MNRE & state energy department schemes"],
+  "Solar Fencing": ["Energiser-powered electric fence for crop & livestock protection", "Solar powered — no grid dependency for remote fields", "15–20 km perimeter coverage per energiser unit", "Non-lethal pulse shock — safe for humans & animals", "Reduces crop losses from wildlife, cattle & straying animals"],
+  "Solar Lighting": ["Off-grid LED solar street lights for farm roads & perimeter", "Integrated LED lighting for polyhouse & livestock sheds", "Solar lanterns & task lights for night farm operations", "System design: 10W to 1000W as per requirement", "Subsidy under PM-KUSUM Component C & MNRE schemes"],
+  "Land Surveying": ["Total station & GPS DGPS survey for legal & engineering purpose", "Survey of India compliant boundary & area measurement", "Topographic survey with contour interval as low as 0.5m", "Digital output: DXF / DWG / PDF format delivery", "Required for farm development, irrigation & land registration"],
+  "Topographic Mapping": ["Drone-based photogrammetry & LiDAR topographic mapping", "Contour maps at 0.5m to 1m interval for irrigation planning", "Digital Terrain Model (DTM) & Digital Surface Model (DSM) output", "Orthorectified aerial imagery for crop planning & land use", "Turnaround: typically 3–7 working days for up to 100 acres"],
+  "Contour Mapping": ["Critical for design of bunds, terraces & water harvesting structures", "Identifies natural drainage lines & catchment areas", "Combined with slope analysis for precision land development", "GIS-compatible output for integration with farm planning tools", "Used in PMKSY, watershed development & land leveling projects"],
+  "Land Leveling": ["Laser-guided precision land leveling for improved water distribution", "Reduces water use by 20–30% in flood-irrigated crops", "Improves crop uniformity & reduces weed pressure", "Earth cut & fill calculation for minimum soil movement", "Eligible for subsidy under PMKSY & state land development schemes"],
 };
 
 // Subsidy-eligible project types
@@ -293,17 +305,17 @@ const SUBSIDY_ELIGIBLE = new Set([
 
 // Context-aware description by category
 const CATEGORY_CONTEXT: Record<string, string> = {
-  agri:        "Our team handles complete civil structure, growing media, irrigation, crop protocol training, and ongoing AMC — delivered turnkey at your farm gate.",
+  agri: "Our team handles complete civil structure, growing media, irrigation, crop protocol training, and ongoing AMC — delivered turnkey at your farm gate.",
   aquaculture: "We manage pond or tank construction, liner installation, aeration systems, water quality protocols, and species-specific stocking plans from start to harvest.",
-  livestock:   "We handle breed consultation, shed construction with ventilation systems, feed infrastructure, veterinary tie-ups, and full operational handover.",
+  livestock: "We handle breed consultation, shed construction with ventilation systems, feed infrastructure, veterinary tie-ups, and full operational handover.",
   engineering: "We manage civil and structural engineering, certified material procurement, on-site precision execution, and commissioning with full documentation.",
 };
 
 // ─── navLinks helpers ──────────────────────────────────────────────────────────
 const getProjectLinks = () => navLinks.find(l => l.label === "Projects")?.children || [];
-const getCategoryItem   = (cat: string) => getProjectLinks().find((c: any) => c.href === `/projects/${cat}`) as any;
+const getCategoryItem = (cat: string) => getProjectLinks().find((c: any) => c.href === `/projects/${cat}`) as any;
 const getSubcategoryItem = (cat: string, sub: string) => getCategoryItem(cat)?.children?.find((s: any) => s.href === `/projects/${cat}/${sub}`) as any;
-const getFeatureItem     = (cat: string, sub: string, feat: string) => getSubcategoryItem(cat, sub)?.children?.find((f: any) => f.href === `/projects/${cat}/${sub}/${feat}`) as any;
+const getFeatureItem = (cat: string, sub: string, feat: string) => getSubcategoryItem(cat, sub)?.children?.find((f: any) => f.href === `/projects/${cat}/${sub}/${feat}`) as any;
 
 // ─── Category View ─────────────────────────────────────────────────────────────
 const CategoryView: React.FC<{ category: string }> = ({ category }) => {
@@ -373,11 +385,10 @@ const CategoryView: React.FC<{ category: string }> = ({ category }) => {
               <Link
                 key={c.href}
                 to={c.href}
-                className={`shrink-0 px-5 py-2 rounded-full text-[11px] font-bold uppercase tracking-widest border transition-all ${
-                  active
+                className={`shrink-0 px-5 py-2 rounded-full text-[11px] font-bold uppercase tracking-widest border transition-all ${active
                     ? "bg-agri-green-800 text-white border-agri-green-800"
                     : "bg-white text-black/50 border-black/10 hover:border-agri-green-800 hover:text-agri-green-800"
-                }`}
+                  }`}
               >
                 {c.label}
               </Link>
@@ -573,12 +584,12 @@ const SubcategoryView: React.FC<{ category: string; subcategory: string }> = ({ 
 
 // ─── Detail View ───────────────────────────────────────────────────────────────
 const DetailView: React.FC<{ category: string; subcategory: string; feature: string }> = ({ category, subcategory, feature }) => {
-  const catItem  = getCategoryItem(category);
-  const subItem  = getSubcategoryItem(category, subcategory);
+  const catItem = getCategoryItem(category);
+  const subItem = getSubcategoryItem(category, subcategory);
   const featItem = getFeatureItem(category, subcategory, feature);
   if (!featItem || !subItem || !catItem) return <Navigate to={`/projects/${category}/${subcategory}`} />;
 
-  const heroImg    = getImage(featItem.label, category);
+  const heroImg = getImage(featItem.label, category);
   const highlights = PROJECT_HIGHLIGHTS[featItem.label] || [
     "Turnkey installation by IGO's expert engineering teams",
     "Precision site survey and structural design",
@@ -596,10 +607,10 @@ const DetailView: React.FC<{ category: string; subcategory: string; feature: str
     .slice(0, 3) || [];
 
   const deliverables = [
-    { title: "Site Survey",       desc: "Comprehensive land assessment, soil or water analysis, and engineering feasibility report." },
-    { title: "Turnkey Setup",     desc: "End-to-end installation by expert teams using institutional-grade, certified materials." },
-    { title: "Training",          desc: "Hands-on operational training covering system management, crop protocol, and troubleshooting." },
-    { title: "AMC Support",       desc: "Annual maintenance contracts ensuring long-term performance, yield consistency and uptime." },
+    { title: "Site Survey", desc: "Comprehensive land assessment, soil or water analysis, and engineering feasibility report." },
+    { title: "Turnkey Setup", desc: "End-to-end installation by expert teams using institutional-grade, certified materials." },
+    { title: "Training", desc: "Hands-on operational training covering system management, crop protocol, and troubleshooting." },
+    { title: "AMC Support", desc: "Annual maintenance contracts ensuring long-term performance, yield consistency and uptime." },
   ];
 
   const featBreadcrumb = {
@@ -763,8 +774,8 @@ const DetailView: React.FC<{ category: string; subcategory: string; feature: str
               <div className="space-y-12">
                 {[
                   { title: "Technical Feasibility", desc: "Rigorous site assessment and precision engineering design tailored to your land, climate, and budget." },
-                  { title: "Expert Installation",   desc: "Professional on-site execution using certified materials, precision equipment, and our trained field teams." },
-                  { title: "Handover & Training",   desc: "Comprehensive handover documentation, operational training, and long-term AMC support for sustained performance." },
+                  { title: "Expert Installation", desc: "Professional on-site execution using certified materials, precision equipment, and our trained field teams." },
+                  { title: "Handover & Training", desc: "Comprehensive handover documentation, operational training, and long-term AMC support for sustained performance." },
                 ].map((step, i) => (
                   <div key={i} className="flex gap-8 group">
                     <div className="text-6xl font-serif text-white/5 group-hover:text-agri-gold-500/25 transition-colors duration-500 leading-none pt-1">{i + 1}</div>
@@ -905,9 +916,9 @@ const ProjectRouter: React.FC = () => {
 
   React.useEffect(() => { window.scrollTo({ top: 0, behavior: "smooth" }); }, [category, subcategory, feature]);
 
-  if (!category)    return <Navigate to="/projects" />;
+  if (!category) return <Navigate to="/projects" />;
   if (!subcategory) return <CategoryView category={category} />;
-  if (!feature)     return <SubcategoryView category={category} subcategory={subcategory} />;
+  if (!feature) return <SubcategoryView category={category} subcategory={subcategory} />;
   return <DetailView category={category} subcategory={subcategory} feature={feature} />;
 };
 
