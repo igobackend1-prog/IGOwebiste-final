@@ -298,7 +298,7 @@ const WhyChooseSection = () => (
           className="rounded-3xl overflow-hidden aspect-[4/3] shadow-2xl"
         >
           <img
-            src="/assets/compressed/award-ceremony-ceo.webp"
+            src="/assets/new image foe the 2nd page .jpeg"
             alt="Agriculture Innovation Award"
             loading="lazy"
             decoding="async"
