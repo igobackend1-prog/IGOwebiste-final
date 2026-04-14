@@ -129,7 +129,8 @@ const AppRoutes = () => {
           <Route path="/careers" element={<Careers />} />
           <Route path="/products" element={<Products />} />
           <Route path="/products/:category" element={<ProductRouter />} />
-          <Route path="/products/:category/:productSlug" element={<ProductRouter />} />
+          <Route path="/products/:category/:subcategory" element={<ProductRouter />} />
+          <Route path="/products/:category/:subcategory/:productSlug" element={<ProductRouter />} />
           <Route path="/agri-startup-platform" element={<AgriStartupPlatform />} />
           <Route path="/igo-groups" element={<IgoGroupBrands />} />
           <Route path="/startup-enquiry" element={<AgriStartupEnquiry />} />

@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { navLinks, companyInfo } from "@/data/siteData";
+import { getEnrichedNavLinks } from "@/utils/navUtils";
 import { motion, AnimatePresence, LayoutGroup, Variants } from "framer-motion";
 import { Menu, X, ChevronDown, ChevronRight, Leaf, Droplets, Fish, Settings, ArrowRight, ShieldCheck, Truck } from "lucide-react";
 
@@ -56,6 +57,8 @@ const MegaMenu = ({ link }: { link: any }) => {
               <div className={`relative z-10 w-12 h-12 shrink-0 rounded-full overflow-hidden flex items-center justify-center border border-black/5 shadow-sm bg-white transition-transform duration-300 ${activeSector === sector.label ? "scale-110 shadow-md ring-2 ring-primary/20" : "group-hover:scale-110"}`}>
                 {sector.icon && typeof sector.icon === 'string' && sector.icon.startsWith('/') ? (
                   <img src={sector.icon} alt={sector.label} loading="lazy" className="w-full h-full object-cover object-center" />
+                ) : typeof sector.icon === 'function' || (typeof sector.icon === 'object' && sector.icon !== null) ? (
+                  <sector.icon className="w-7 h-7 text-primary" strokeWidth={1.5} />
                 ) : (
                   <span className="text-2xl drop-shadow-sm">{sector.icon}</span>
                 )}
@@ -84,7 +87,11 @@ const MegaMenu = ({ link }: { link: any }) => {
                         <img src={currentSector.icon} alt={currentSector.label} loading="lazy" className="w-full h-full object-cover object-center" />
                       ) : (
                         <div className="w-full h-full flex items-center justify-center bg-slate-50">
-                          <span className="text-3xl drop-shadow-md">{currentSector.icon}</span>
+                          {typeof currentSector.icon === 'function' || (typeof currentSector.icon === 'object' && currentSector.icon !== null) ? (
+                            <currentSector.icon className="w-8 h-8 text-primary" strokeWidth={1.5} />
+                          ) : (
+                            <span className="text-3xl drop-shadow-md">{currentSector.icon}</span>
+                          )}
                         </div>
                       )}
                     </div>
@@ -131,7 +138,7 @@ const MegaMenu = ({ link }: { link: any }) => {
                           <ArrowRight className="w-3.5 h-3.5 opacity-0 group-hover/sub:opacity-100 ml-auto transition-all -translate-x-2 group-hover/sub:translate-x-0" />
                         </Link>
 
-                        <div className="flex flex-col gap-1.5 pl-11">
+                        <div className={`grid ${subSector.children.length > 8 ? "grid-cols-2 lg:grid-cols-2 gap-x-4" : "flex flex-col"} gap-1.5 pl-11`}>
                           {subSector.children.map((project: any) => (
                             <Link
                               key={project.label}
@@ -236,10 +243,29 @@ const MobileNavLink = ({ link, depth = 0 }: { link: any, depth?: number }) => {
             className="overflow-hidden bg-slate-50"
           >
             <div className={`${depth === 0 ? "pl-4" : depth === 1 ? "pl-8" : "pl-8"} pr-4 py-2 flex flex-col`}>
-              {/* Optional: Add a "View All" link for the current category in mobile if needed */}
-              {link.children.map((child: any) => (
-                <MobileNavLink key={child.label} link={child} depth={depth + 1} />
-              ))}
+              {/* If this is a product sub-category and we have many children, cap at 10 for mobile as requested */}
+              {(() => {
+                const isProductCategory = link.href.includes('/products/');
+                const displayChildren = (isProductCategory && depth >= 2) 
+                  ? link.children.slice(0, 10) 
+                  : link.children;
+                
+                return (
+                  <>
+                    {displayChildren.map((child: any) => (
+                      <MobileNavLink key={child.label} link={child} depth={depth + 1} />
+                    ))}
+                    {isProductCategory && depth >= 2 && link.children.length > 10 && (
+                      <Link 
+                        to={link.href}
+                        className="py-3 px-4 text-sm font-bold text-primary flex items-center gap-2 border-t border-black/5 mt-2"
+                      >
+                        View All {link.children.length} Products <ArrowRight className="w-4 h-4" />
+                      </Link>
+                    )}
+                  </>
+                );
+              })()}
             </div>
           </motion.div>
         )}
@@ -252,7 +278,13 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const [enrichedNav, setEnrichedNav] = useState(navLinks);
   const hoverTimeout = useRef<NodeJS.Timeout | null>(null);
+
+  useEffect(() => {
+    // Dynamically load enriched nav with all 100+ products
+    setEnrichedNav(getEnrichedNavLinks());
+  }, []);
 
   const handleMouseEnter = (label: string) => {
     if (hoverTimeout.current) clearTimeout(hoverTimeout.current);
@@ -299,7 +331,7 @@ const Navbar = () => {
         {/* Desktop Navigation */}
         <div className="hidden lg:flex items-center gap-1.5 xl:gap-4 2xl:gap-6 ml-2 xl:ml-6 2xl:ml-10 min-w-0 flex-1 justify-end">
           <LayoutGroup>
-            {navLinks.map((link) => {
+            {enrichedNav.map((link) => {
               const isMega = link.label === "Projects" || link.label === "Services" || link.label === "Products";
 
               return (
@@ -376,7 +408,7 @@ const Navbar = () => {
             className="fixed inset-0 bg-white z-40 flex flex-col p-6 pt-24 overflow-y-auto"
           >
             <div className="flex flex-col">
-              {navLinks.map((link) => (
+              {enrichedNav.map((link) => (
                 <MobileNavLink key={link.label} link={link} />
               ))}
 

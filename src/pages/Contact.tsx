@@ -129,7 +129,7 @@ const Contact = () => {
       toast.success("Enquiry submitted! We'll respond within 24 hours.");
     } else {
       // Still mark as submitted — Supabase backup was saved
-      toast.success("Enquiry received! We'll contact you within 24 hours.");
+      toast.warning("Enquiry saved, but email notification failed. Our team will still see your request.");
     }
   };
 

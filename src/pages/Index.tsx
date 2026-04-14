@@ -13,9 +13,8 @@ const PERMANENT_SLIDE = { src: "/assets/demo-poster/main image v2.png", label: "
 
 // Changeable slides — add, remove, or reorder freely
 const CHANGEABLE_SLIDES = [
-  { src: "/assets/compressed/demo-poster/NEW POSTER 2JPG.webp", label: "Easter Sale", alt: "Celebrate Easter — Save up to 5 Lakhs", isPoster: true },
-  { src: "/assets/compressed/demo-poster/NEW POSTER IMAGE 1 .webp", label: "Easter Offer", alt: "Easter Exclusive — Free Holiday Stay", isPoster: true },
-  { src: "/assets/compressed/demo-poster/NEW POSTER 3.JPG.webp", label: "Legacy of Trust", alt: "15+ Years of Agri Excellence", isPoster: true },
+  { src: "/assets/compressed/demo-poster/updated-poster-1.webp", label: "New Arrival", alt: "Latest Innovations in Smart Farming", isPoster: true },
+  { src: "/assets/compressed/demo-poster/updated-poster-2.webp", label: "Special Offer", alt: "Limited Time Agricultural Excellence Offer", isPoster: true },
 ];
 
 const HERO_SLIDES = [PERMANENT_SLIDE, ...CHANGEABLE_SLIDES];
@@ -1014,7 +1013,7 @@ const BarleyBannerSection = () => (
       className="relative w-full overflow-hidden"
     >
       <img
-        src="/assets/compressed/barley_hero_clean.png"
+        src="/assets/makeup/barley-hero-clean.webp"
         alt="IGO Agritech Farms — Innovating the Future of Farming"
         loading="lazy"
         decoding="async"

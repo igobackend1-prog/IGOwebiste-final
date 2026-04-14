@@ -239,7 +239,7 @@ const Careers = () => {
     if (success) {
       toast.success("Application submitted! We'll review and contact you within 48 hours.");
     } else {
-      toast.success("Application received! Our HR team will be in touch.");
+      toast.warning("Application saved, but email notification failed. Our HR team will still see your request.");
     }
   };
 
@@ -292,7 +292,7 @@ const Careers = () => {
                   Browse Openings <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </a>
                 <a
-                  href="mailto:bankingbackend.indiagreen@gmail.com"
+                  href="mailto:hr.admin@igogroups.com"
                   className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-white/10 text-white font-bold text-sm hover:bg-white/20 transition-all border border-white/20"
                 >
                   <Mail className="w-4 h-4" /> Send Your CV

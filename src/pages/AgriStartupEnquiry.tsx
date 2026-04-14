@@ -125,7 +125,7 @@ const AgriStartupEnquiry = () => {
     if (success) {
       toast.success("Startup enquiry submitted! Our venture team will reach out within 24 hours.");
     } else {
-      toast.success("Enquiry received! We'll contact you within 24 hours.");
+      toast.warning("Enquiry saved, but email notification failed. Our team will still see your request.");
     }
   };
 

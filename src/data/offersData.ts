@@ -98,7 +98,7 @@ export const CTA_PRESETS = [
 ];
 
 // ─── Default seed posters (shown on first load before any uploads) ───────────
-const SEED_KEY = "igo_offers_seeded_v10";
+const SEED_KEY = "igo_offers_seeded_v11";
 
 const DEFAULT_OFFERS: OfferPoster[] = [
   {
@@ -121,49 +121,33 @@ const DEFAULT_OFFERS: OfferPoster[] = [
     id: "seed_2",
     title: "",
     subtitle: "",
-    badge: "SPECIAL",
-    ctaLabel: "Save up to 5 Lakhs",
+    badge: "NEW ARRIVAL",
+    ctaLabel: "View Details",
     ctaLink: "/contact",
-    image: "/assets/compressed/demo-poster/NEW POSTER 2JPG.webp",
+    image: "/assets/compressed/demo-poster/updated-poster-1.webp",
     bgColor: "#1a5c1a",
     isActive: true,
     displayOrder: 1,
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
     expiryDate: null,
-    note: "Easter Sale Offer",
+    note: "Latest Innovations in Smart Farming",
   },
   {
     id: "seed_3",
     title: "",
     subtitle: "",
-    badge: "NEW",
-    ctaLabel: "Partner With Us",
+    badge: "SPECIAL OFFER",
+    ctaLabel: "Contact Us",
     ctaLink: "/contact",
-    image: "/assets/compressed/demo-poster/NEW POSTER IMAGE 1 .webp",
+    image: "/assets/compressed/demo-poster/updated-poster-2.webp",
     bgColor: "#1a5c1a",
     isActive: true,
     displayOrder: 2,
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
     expiryDate: null,
-    note: "Easter Exclusive Offer",
-  },
-  {
-    id: "seed_4",
-    title: "",
-    subtitle: "",
-    badge: "PROUD LEGACY",
-    ctaLabel: "Our Core Mission",
-    ctaLink: "/about",
-    image: "/assets/compressed/demo-poster/NEW POSTER 3.JPG.webp",
-    bgColor: "#1a5c1a",
-    isActive: true,
-    displayOrder: 3,
-    createdAt: new Date().toISOString(),
-    updatedAt: new Date().toISOString(),
-    expiryDate: null,
-    note: "Legacy of Trust Brand Slide — Highlighting 15+ Years of Excellence",
+    note: "Limited Time Agricultural Excellence Offer",
   },
 ];
 
@@ -173,7 +157,7 @@ export const initDefaultOffers = (): void => {
   if (currentSeed === "1") return;
 
   // Clear ALL old seed keys so stale data is wiped
-  ["igo_offers_seeded_v3", "igo_offers_seeded_v4", "igo_offers_seeded_v5", "igo_offers_seeded_v6", "igo_offers_seeded_v7", "igo_offers_seeded_v8"].forEach(k => localStorage.removeItem(k));
+  ["igo_offers_seeded_v3", "igo_offers_seeded_v4", "igo_offers_seeded_v5", "igo_offers_seeded_v6", "igo_offers_seeded_v7", "igo_offers_seeded_v8", "igo_offers_seeded_v10"].forEach(k => localStorage.removeItem(k));
 
   // Force-write corrected default offers
   saveOffers(DEFAULT_OFFERS);

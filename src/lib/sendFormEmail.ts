@@ -13,7 +13,7 @@
  * Email routing:
  *   Contact / Project Enquiry  → bd2@igogroups.com           (BD Team)
  *   Career Application         → hr.admin@igogroups.com      (HR Team)
- *   IGO Academy Enrollment     → igotnskills@gmail.com       (Academy Team)
+ *   IGO Academy Enrollment     → igoacademy2026@gmail.com    (Academy Team)
  *   Agri Startup Enquiry       → bankingbackend.indiagreen@gmail.com (Startup Cell)
  *
  * Formsubmit AJAX docs: https://formsubmit.co/ajax-documentation
@@ -24,7 +24,7 @@
 const FORM_RECIPIENTS: Record<string, string> = {
   "Contact Enquiry":       "bd2@igogroups.com",
   "Career Application":    "hr.admin@igogroups.com",
-  "IGO Academy Enrollment":"igotnskills@gmail.com",
+  "IGO Academy Enrollment":"igoacademy2026@gmail.com",
   "Agri Startup Enquiry":  "bankingbackend.indiagreen@gmail.com",
 };
 
@@ -78,12 +78,14 @@ export async function sendFormEmail(payload: EmailPayload): Promise<{ success: b
         _captcha: "false",       // Disable captcha (we handle spam at form level)
         _template: "table",      // Clean table format in email
         _replyto: payload.email, // Reply goes back to visitor
+        _honey: "",              // Honeypot field for spam prevention
       }),
     });
 
     const result = await response.json();
+    console.log(`[FormSubmit] Response for ${payload.formType}:`, result);
 
-    if (result.success === "true" || result.success === true) {
+    if (result.success === "true" || result.success === true || response.ok) {
       return { success: true };
     } else {
       return { success: false, error: result.message || "Unknown error from email service" };
@@ -128,32 +130,30 @@ function buildMessageBody(p: EmailPayload): string {
     value && value.trim() ? `${label}: ${value.trim()}` : "";
 
   const rows: string[] = [
-    // ── Prominent form-type header ──────────────────────────────────────────
-    `${"━".repeat(54)}`,
-    `${icon}  ${tag}`,
+    // ── Header ──
+    `${icon} ${tag}`,
     `${heading}`,
-    `IGO Agritech Farms — igoagritechfarms.com`,
-    `${"━".repeat(54)}`,
+    `----------------------------------------------------`,
     ``,
-    // ── Sender details ───────────────────────────────────────────────────────
+    // ── Sender details ──
     line("Name",          p.name),
     line("Email",         p.email),
     line("Phone",         p.phone),
     line("Location",      p.location),
-    // ── Form-specific fields ─────────────────────────────────────────────────
+    // ── Form-specific fields ──
     line("Enquiry Type",  p.enquiryType),
     line("Interest Area", p.subjectArea || p.interestArea),
     line("Course",        p.course),
     line("Department",    p.department),
     line("Position",      p.position),
     ``,
-    `${"─".repeat(54)}`,
-    // ── Message / details ────────────────────────────────────────────────────
-    p.message ? `${p.message}` : "",
-    `${"─".repeat(54)}`,
+    `----------------------------------------------------`,
+    // ── Message ──
+    p.message ? `${p.message}` : "(No message provided)",
+    `----------------------------------------------------`,
     ``,
-    `Submitted : ${new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" })} IST`,
-    `Source    : IGO Agritech Website`,
+    `Submitted at: ${new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" })} IST`,
+    `Source: IGO Agritech Website`,
   ];
 
   return rows.filter(r => r !== undefined).join("\n");

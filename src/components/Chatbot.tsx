@@ -155,7 +155,7 @@ const KNOWLEDGE: KB[] = [
   // Careers
   {
     keywords: ["career", "job", "vacancy", "hiring", "employment", "work", "join", "apply", "opening", "opportunity", "recruit"],
-    answer: `💼 **Careers at IGO Agritech Farms:**\n\nWe're always looking for passionate people to join our growing team!\n\n**Current Opportunities:**\n• Agri Engineers & Project Managers\n• Farm Technicians & Supervisors\n• Sales & Business Development Executives\n• Hydroponic & Aquaculture Specialists\n• Marketing & Digital Content Creators\n• Admin & Operations Staff\n\n📍 Positions across Chennai, Mysore & field locations pan-India\n\n📧 Send your CV to: bankingbackend.indiagreen@gmail.com\n📞 Call **+91 73977 89803** for openings\n\nVisit our **Careers** page for current listings!`,
+    answer: `💼 **Careers at IGO Agritech Farms:**\n\nWe're always looking for passionate people to join our growing team!\n\n**Current Opportunities:**\n• Agri Engineers & Project Managers\n• Farm Technicians & Supervisors\n• Sales & Business Development Executives\n• Hydroponic & Aquaculture Specialists\n• Marketing & Digital Content Creators\n• Admin & Operations Staff\n\n📍 Positions across Chennai, Mysore & field locations pan-India\n\n📧 Send your CV to: hr.admin@igogroups.com\n📞 Call **+91 73977 89803** for openings\n\nVisit our **Careers** page for current listings!`,
   },
   // Internship
   {
