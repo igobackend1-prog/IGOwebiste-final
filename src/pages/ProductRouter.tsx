@@ -13,8 +13,6 @@ import {
   ArrowLeft,
   Minus,
   Plus,
-  Info,
-  Beaker,
   Zap,
   Package,
   TrendingUp,
@@ -22,570 +20,827 @@ import {
 } from 'lucide-react';
 import OptimizedImage from '@/components/ui/OptimizedImage';
 import { productDetailData, ProductDetail } from '@/data/productDetailData';
-import { navLinks, navLinks as siteNavLinks } from '@/data/siteData';
+import { navLinks as siteNavLinks } from '@/data/siteData';
 
 const fader: any = {
   hidden: { opacity: 0, y: 30 },
   show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
 };
 
-const LOCAL_FALLBACK = "/assets/compressed/product/main-page-image/farm-equipment-.jpg";
+const LOCAL_FALLBACK = '/assets/compressed/product/main-page-image/farm-equipment-.jpg';
 
 const siteNavLinks_clean = siteNavLinks.map(l => ({ ...l, label: l.label.trim() }));
-const productsNav = siteNavLinks_clean.find(l => l.label === "Products")?.children || [];
+const productsNav = siteNavLinks_clean.find(l => l.label === 'Products')?.children || [];
 
-// ── helpers ──────────────────────────────────────────────────────────────────
-
+// ── Category metadata (slug → display info) ──────────────────────────────────
 const CATEGORY_META: Record<string, { label: string; cardImage: string; desc: string }> = {
-  'agri-farming': {
+  'agri-inputs': {
     label: 'Agri-Farming Solutions',
-    cardImage: '/assets/compressed/product/main-page-image/agri-essentials.jpg',
+    cardImage: '/assets/product-images/new main image for product/agri inputs .jpg',
     desc: 'Premium seeds, organic inputs, and advanced propagation materials for high-yield farming.'
   },
-  'polyhouse-engineering': {
+  'structure': {
     label: 'Polyhouse & Engineering',
-    cardImage: '/assets/compressed/product/main-page-image/farm-equipment-.jpg',
+    cardImage: '/assets/product-images/new main image for product/polyhouse structure .jpg',
     desc: 'Turn-key polyhouse structures, advanced cladding, and precision irrigation engineering.'
   },
-  'automation-control': {
+  'automation': {
     label: 'Automation & Control',
-    cardImage: '/assets/compressed/product/main-page-image/crop-solutions.jpg',
+    cardImage: '/assets/product-images/new main image for product/automation and cotroller .jpg',
     desc: 'Smart IoT controllers, precision sensors, and automated fertigation systems.'
   },
-  'aquaculture': {
-    label: 'Aquaculture Solutions',
-    cardImage: '/assets/header/product-dropdown-icon/aquaculture-prodcut-icon-.webp',
-    desc: 'Complete nutrition and equipment range for professional fish and shrimp farming.'
+  'horticulture': {
+    label: 'Horticulture Solutions',
+    cardImage: '/assets/product-images/new main image for product/horticulture catlog .png',
+    desc: 'Elite varieties of vegetables, flowers, fruits, and herbs for commercial cultivation.'
   },
-  'livestock': {
-    label: 'Livestock Solutions',
-    cardImage: '/assets/header/product-dropdown-icon/live-stock-product-.webp',
-    desc: 'Professional feed, healthcare, and equipment for modern livestock management.'
-  },
-  'digital-iot': {
+  'digital': {
     label: 'Digital & IoT Services',
-    cardImage: '/assets/compressed/brands/igo-foundation.webp',
+    cardImage: '/assets/product-images/new main image for product/digital agri and iot .jpg',
     desc: 'Data-driven farming with smart hardware nodes and integrated software dashboards.'
   },
   'specialized': {
     label: 'Post-Harvest & Specialized',
-    cardImage: '/assets/compressed/product/types/solar-dryers-.webp',
+    cardImage: '/assets/product-images/new main image for product/post harvest and legacy .jpg',
     desc: 'Solar cold storage, advanced sorting, and specialized aquaculture/livestock solutions.'
   }
 };
 
+// ── Subcategory metadata (slug → display info) ────────────────────────────────
 const SUBCATEGORY_META: Record<string, { label: string; image: string; desc: string }> = {
-  // agri-inputs
-  'seeds': { 
-    label: 'High-Yield Seeds', 
-    image: '/assets/product-images/product type new images/vegetable-seeds.png', 
-    desc: 'Commercial grade hybrid and open-pollinated seeds optimized for precision farming and stable yields.' 
+  'seeds': {
+    label: 'High-Yield Seeds',
+    image: '/assets/product-images/product type new images/Soil Mix Media.jpg',
+    desc: 'Commercial grade hybrid and open-pollinated seeds optimized for precision farming and stable yields.'
   },
-  'media': { 
-    label: 'Growing Substrates', 
-    image: '/assets/compressed/product/types/organic-fertilizer-.webp', 
-    desc: 'Professional-grade media including buffered cocopeat, perlite, and custom nursery mixes.' 
+  'veg-seeds': {
+    label: 'Vegetable Seeds',
+    image: '/assets/product-images/product type new images/vegetables seeds/Tomato seeds.jpg',
+    desc: '20 premium vegetable seed varieties — from tomato and capsicum to leafy greens — for polyhouse and open-field cultivation.'
   },
-  'nutrition': { 
-    label: 'Plant Nutrition', 
-    image: '/assets/product-images/product type new images/npk-fertilizer.png', 
-    desc: 'Water-soluble NPKs, nano-fertilizers, and organic growth promoters for targeted feeding.' 
+  'fruit-seeds': {
+    label: 'Fruit Seeds',
+    image: '/assets/product-images/product type new images/fruit seeds/Mango seeds.jpg',
+    desc: '7 high-value fruit seed varieties for orchard establishment, rootstock propagation, and commercial fruit production.'
   },
-  'protection': { 
-    label: 'Plant Protection', 
-    image: '/assets/product-images/product type new images/biofertilizer-azospirillum.png', 
-    desc: 'Biological and organic crop protection protocols for sustainable pest and disease management.' 
+  'leafy-seeds': {
+    label: 'Leafy & Herb Seeds',
+    image: '/assets/product-images/product type new images/Leafy Seeds/Basil seeds.jpg',
+    desc: '12 premium leafy and herb seed varieties for hydroponic systems, fresh herb markets, and specialty culinary supply chains.'
   },
-  'pgrs': { 
-    label: 'Growth Regulators', 
-    image: '/assets/compressed/product/types/amino-acid-.webp', 
-    desc: 'Advanced plant growth regulators for controlled bloom, fruit setting, and stress recovery.' 
+  'media': {
+    label: 'Growing Substrates',
+    image: '/assets/product-images/product type new images/Grow Media.jpg',
+    desc: 'Professional-grade media including buffered cocopeat, perlite, and custom nursery mixes.'
   },
-  'mulching': { 
-    label: 'Mulching Systems', 
-    image: '/assets/compressed/product/types/mulching-s.webp', 
-    desc: 'UV-stabilized silver-black mulch and weed mats to optimize moisture and eliminate competition.' 
+  'nutrition': {
+    label: 'Plant Nutrition',
+    image: '/assets/product-images/product type new images/NPK Fertilizers.jpg',
+    desc: 'Water-soluble NPKs, nano-fertilizers, and organic growth promoters for targeted feeding.'
   },
-  // structure
-  'frames': { 
-    label: 'Structural Engineering', 
-    image: '/assets/compressed/product/types/gi-pipes-.webp', 
-    desc: 'Hot-dip galvanized structural components and precision engineering for protected cultivation.' 
+  'protection': {
+    label: 'Plant Protection',
+    image: '/assets/product-images/product type new images/Bio Pesticides (Neem Oil, Trichoderma, Bacillus).png',
+    desc: 'Biological and organic crop protection protocols for sustainable pest and disease management.'
   },
-  'covering': { 
-    label: 'Greenhouse Covering', 
-    image: '/assets/compressed/product/types/polyhouse-sheets.webp', 
-    desc: 'Multi-layer UV stabilized poly-films and specialized cladding for light and temperature management.' 
+  'pgrs': {
+    label: 'Growth Regulators',
+    image: '/assets/product-images/product type new images/Amino Acid Nutrients.png',
+    desc: 'Advanced plant growth regulators for controlled bloom, fruit setting, and stress recovery.'
   },
-  'nets': { 
-    label: 'Specialized Netting', 
-    image: '/assets/compressed/product/types/shade-nets-.webp', 
-    desc: 'High-tenacity insect nets, shade nets, and anti-bird solutions for crop security.' 
+  'mulching': {
+    label: 'Mulching Systems',
+    image: '/assets/product-images/product type new images/Silver Mulch.jpg',
+    desc: 'UV-stabilized silver-black mulch and weed mats to optimize moisture and eliminate competition.'
   },
-  'ventilation': { 
-    label: 'Climate Control', 
-    image: '/assets/compressed/product/types/aerators-.webp', 
-    desc: 'Exhaust fans, cooling pads, and automated vent systems for precise internal climate management.' 
+  'frames': {
+    label: 'Structural Engineering',
+    image: '/assets/product-images/product type new images/gi pipes .jpg',
+    desc: 'Hot-dip galvanized structural components and precision engineering for protected cultivation.'
   },
-  'misting': { 
-    label: 'Misting & Humidity', 
-    image: '/assets/compressed/product/types/waterpumpn.webp', 
-    desc: 'High-pressure fogging and misting systems to maintain ideal VPD and cooling levels.' 
+  'covering': {
+    label: 'Greenhouse Covering',
+    image: '/assets/product-images/product type new images/Polyhouse Sheets.png',
+    desc: 'Multi-layer UV stabilized poly-films and specialized cladding for light and temperature management.'
   },
-  'plumbing': { 
-    label: 'Plumbing & Filtration', 
-    image: '/assets/compressed/product/types/irrigation-pipes-.webp', 
-    desc: 'Industrial-grade PVC/CPVC distribution lines and advanced filtration for irrigation longevity.' 
+  'nets': {
+    label: 'Specialized Netting',
+    image: '/assets/product-images/product type new images/Shade Nets.png',
+    desc: 'High-tenacity insect nets, shade nets, and anti-bird solutions for crop security.'
   },
-  // automation
-  'dosing': { 
-    label: 'Fertigation Systems', 
-    image: '/assets/compressed/product/types/drip-irrigation-system-.webp', 
-    desc: 'Automated fertilizer dosing and pH/EC control systems for repeatable crop performance.' 
+  'ventilation': {
+    label: 'Climate Control',
+    image: '/assets/product-images/product type new images/Exhaust Fans.jpg',
+    desc: 'Exhaust fans, cooling pads, and automated vent systems for precise internal climate management.'
   },
-  'controllers': { 
-    label: 'Smart Farm Control', 
-    image: '/assets/compressed/product/types/smart-farm-surveillance.webp', 
-    desc: 'Centralized IGO-Link controllers for automated farm management via IoT and mobile platforms.' 
+  'misting': {
+    label: 'Misting & Humidity',
+    image: '/assets/product-images/product type new images/Misting Systems.jpg',
+    desc: 'High-pressure fogging and misting systems to maintain ideal VPD and cooling levels.'
   },
-  'motors': { 
-    label: 'Precision Actuators', 
-    image: '/assets/compressed/product/types/spec-motors.webp', 
-    desc: 'Heavy-duty actuators and motors for automated vent and shade control in complex structures.' 
+  'plumbing': {
+    label: 'Plumbing & Filtration',
+    image: '/assets/product-images/product type new images/Irrigation Pipes (PVC, HDPE).jpg',
+    desc: 'Industrial-grade PVC/CPVC distribution lines and advanced filtration for irrigation longevity.'
   },
-  'electrical': { 
-    label: 'Industrial Electrical', 
-    image: '/assets/compressed/product/types/electrical-s.webp', 
-    desc: 'Control panels, VFDs, and power management systems designed for harsh agricultural environments.' 
+  'dosing': {
+    label: 'Fertigation Systems',
+    image: '/assets/product-images/product type new images/Fertigation Units.png',
+    desc: 'Automated fertilizer dosing and pH/EC control systems for repeatable crop performance.'
   },
-  // horticulture
-  'vegetables': { 
-    label: 'Vegetable Crops', 
-    image: '/assets/product-images/product type new images/vegetable-seeds.png', 
-    desc: 'Elite varieties of commercial vegetables bred for market dominance and yield stability.' 
+  'controllers': {
+    label: 'Smart Farm Control',
+    image: '/assets/product-images/product type new images/Polyhouse Controllers.png',
+    desc: 'Centralized IGO-Link controllers for automated farm management via IoT and mobile platforms.'
   },
-  'flowers': { 
-    label: 'Commercial Flowers', 
-    image: '/assets/product-images/product type new images/flower-seeds.png', 
-    desc: 'High-density floriculture inputs for the cut-flower and religious-garland industries.' 
+  'motors': {
+    label: 'Precision Actuators',
+    image: '/assets/product-images/product type new images/Motors & Actuators.jpg',
+    desc: 'Heavy-duty actuators and motors for automated vent and shade control in complex structures.'
   },
-  'fruits': { 
-    label: 'Ornamental & Fruits', 
-    image: '/assets/product-images/product type new images/fruits-plants.png', 
-    desc: 'Premium fruit saplings and exotic cultivars for commercial orchards and boutique farms.' 
+  'electrical': {
+    label: 'Industrial Electrical',
+    image: '/assets/product-images/product type new images/Control Panels.jpg',
+    desc: 'Control panels, VFDs, and power management systems designed for harsh agricultural environments.'
   },
-  'herbs': { 
-    label: 'Aromatic & Herbs', 
-    image: '/assets/product-images/product type new images/medicinal-plant.png', 
-    desc: 'Medicinal plants and culinary herbs for pharmaceutical extraction and fresh markets.' 
+  'vegetables': {
+    label: 'Vegetable Crops',
+    image: '/assets/product-images/new main image for product/horticulture catlog .png',
+    desc: 'Elite varieties of commercial vegetables bred for market dominance and yield stability.'
   },
-  // digital
-  'hardware': { 
-    label: 'IoT Hardware Nodes', 
-    image: '/assets/compressed/brands/igo-foundation.webp', 
-    desc: 'Ruggedized sensor nodes and gateways for real-time field data telemetry.' 
+  'flowers': {
+    label: 'Commercial Flowers',
+    image: '/assets/product-images/product type new images/Organic Fertilizers.jpg',
+    desc: 'High-density floriculture inputs for the cut-flower and religious-garland industries.'
   },
-  'software': { 
-    label: 'Digital Dashboards', 
-    image: '/assets/compressed/product/types/igo-erp-pro.webp', 
-    desc: 'Enterprise-grade agri-ERP and analytics software for farm management at scale.' 
+  'fruits': {
+    label: 'Ornamental & Fruits',
+    image: '/assets/product-images/new main image for product/horticulture catlog .png',
+    desc: 'Premium fruit saplings and exotic cultivars for commercial orchards and boutique farms.'
   },
-  'services': { 
-    label: 'Precision Services', 
-    image: '/assets/compressed/brands/valluvam.webp', 
-    desc: 'Satellite monitoring, soil mapping, and digital consultancy for data-driven decisions.' 
+  'herbs': {
+    label: 'Aromatic & Herbs',
+    image: '/assets/product-images/product type new images/Tulsi  seeds.jpg',
+    desc: 'Medicinal plants and culinary herbs for pharmaceutical extraction and fresh markets.'
   },
-  // specialized (post-harvest)
-  'post-harvest': { 
-    label: 'Harvesting Tech', 
-    image: '/assets/compressed/product/types/solar-dryers-.webp', 
-    desc: 'Advanced tools and systems for efficient harvest, storage, and cold-chain logistics.' 
+  'hardware': {
+    label: 'IoT Hardware Nodes',
+    image: '/assets/product-images/product type new images/IoT Devices.jpg',
+    desc: 'Ruggedized sensor nodes and gateways for real-time field data telemetry.'
   },
-  'aquaculture': { 
-    label: 'Aquaculture Systems', 
-    image: '/assets/header/product-dropdown-icon/aquaculture-prodcut-icon-.webp', 
-    desc: 'Tier-1 nutrition and oxygenation systems for intensive fish and shrimp farming.' 
+  'software': {
+    label: 'Digital Dashboards',
+    image: '/assets/product-images/product type new images/Automation Dashboards.jpg',
+    desc: 'Enterprise-grade agri-ERP and analytics software for farm management at scale.'
   },
-  'livestock': { 
-    label: 'Livestock Ecosystems', 
-    image: '/assets/header/product-dropdown-icon/live-stock-product-.webp', 
-    desc: 'Professional-grade feed, housing, and veterinary care products for modern livestock.' 
+  'services': {
+    label: 'Precision Services',
+    image: '/assets/product-images/product type new images/AI Crop Advisory.jpg',
+    desc: 'Satellite monitoring, soil mapping, and digital consultancy for data-driven decisions.'
   },
+  'post-harvest': {
+    label: 'Harvesting Tech',
+    image: '/assets/product-images/product type new images/Solar Dryers.jpg',
+    desc: 'Advanced tools and systems for efficient harvest, storage, and cold-chain logistics.'
+  },
+  'aquaculture': {
+    label: 'Aquaculture Systems',
+    image: '/assets/product-images/product type new images/Fish Feed.jpg',
+    desc: 'Tier-1 nutrition and oxygenation systems for intensive fish and shrimp farming.'
+  },
+  'livestock': {
+    label: 'Livestock Ecosystems',
+    image: '/assets/product-images/product type new images/Goat Feed.png',
+    desc: 'Professional-grade feed, housing, and veterinary care products for modern livestock.'
+  }
 };
 
-const SUBCATEGORY_DETAILS: Record<string, string[]> = {
-  "Seeds & Planting Material": ["Hybrid vegetable seeds with 99% germination", "Tissue-cultured fruit saplings for rapid growth", "Professional-grade flower seeds for commercial use"],
-  "Soil, Media & Substrates": ["Premium coco-peat for nursery use", "Vermicompost and organic potting soil", "Specialized growing bags for hydroponics"],
-  "Fertilizers & Nutrients": ["Water-soluble NPK fertilizers (19:19:19, etc.)", "Organic growth promoters and bio-stimulants", "Chelated micronutrient blends for precision feeding"],
-  "Plant Protection & PGRs": ["Biological and organic pest control inputs", "Fungicides and disease management protocols", "Growth regulators for flower and fruit setting"],
-  "Mulching & Ground Covers": ["UV-stabilized silver-black plastic mulch", "Biodegradable weed mats for open fields", "Ground covers for nursery and landscape use"],
-  "Structures & Frames": ["Hot-dip galvanized GI structures for durability", "Naturally ventilated and climate-controlled designs", "Custom engineering for extreme wind and rain areas"],
-  "Covering & Nets": ["UV-coated polyhouse films (200-micron+)", "Aluminet and Shade nets for temperature control", "Anti-insect and bird nets for crop safety"],
-  "Ventilation & Cooling": ["Industrial exhaust fans and cooling pad systems", "Automated roof vents and side rolling mechanisms", "Axial fans for uniform air distribution"],
-  "Fogging & Misting": ["High-pressure fogging for humidity control", "Low-flow misting for seedling hardening", "Precision nozzles with anti-leak valves"],
-  "Pipes, Valves & Filters": ["CPVC, UPVC, and HDPE pipes for all applications", "Screen and disc filters for irrigation longevity", "Pressure-reducing and air-release valves"],
-  "Irrigation & Fertigation": ["Online and inline drip irrigation systems", "Venturi and automated fertigation machines", "Micro-sprinklers for canopy and landscape cooling"],
-  "Controllers & Timers": ["IoT-connected farm management controllers", "Simple timer-based solenoid valve control", "Mobile app integration for remote operation"],
-  "Sensors & Monitoring": ["Soil moisture, pH, and EC telemetry nodes", "Real-time temperature and humidity tracking", "WSN (Wireless Sensor Networks) for large farms"],
-  "Actuators & Valves": ["Electric and hydraulic solenoid valves", "Motorized actuators for roof/vent system control", "Proportional fertigation dosing pumps"],
-  "Fish Farming Products": ["Premium floating and sinking fish feed", "Industrial paddle wheel and air-tube aerators", "Water quality testing and probiotic supplements"],
-  "Shrimp Farming Products": ["HDPE pond liners and biosecurity nets", "Vannamei-specific feed and nutrient blends", "Mineral mixtures for shell health and growth"],
-  "Goat & Sheep Products": ["Concentrated grow pellets for stall-fed goats", "Mineral licks and vitamin supplements", "Automatic nipple waterers and feeding troughs"],
-  "Poultry Farming Products": ["Automated feeding and drinking lines", "Tunnel ventilation and climate control for sheds", "Chilled water systems for heat stress management"],
-  "Dairy Farming Products": ["High-fat cattle feed and Bypass protein pellets", "Milking machines and cooling tank solutions", "Rubber mats and automatic grooming brushes"],
-  "Hardware Nodes": ["LoRaWAN and GSM based farm telemetry hardware", "Solar-powered sensor pods and gateways", "Heavy-duty environmental sensors"],
-  "Software & Dashboards": ["Cloud-based farm management dashboards", "Predictive pest and disease alerts", "Yield monitoring and inventory management tools"],
-  "Advanced Digital Services": ["Satellite-based crop monitoring and mapping", "AI-driven soil health analysis", "Blockchain-based farm-to-fork traceability"],
-  "Harvesting & Packing": ["Precision harvesting tools and secateurs", "Automated grading and sorting conveyor lines", "Hygienic packing and crate solutions"],
-  "Cold Chain & Storage": ["Solar-powered cold storage units", "Refrigerated transport and van solutions", "Insulated storage bins for long shelf life"],
-  "Processing & Value Add": ["Solar crop dryers and dehydrators", "Pulpers, grinders, and oil extraction units", "Value-addition consulting and brand building"],
-  "Logistics Solutions": ["Farm-to-market fleet management", "Temperature-controlled distribution networks", "Last-mile delivery and export assistance"],
-};
-
-// ── Individual product images (mapped to product ID) ─────────────────────────
+// ── Individual product images ─────────────────────────────────────────────────
 const PRODUCT_IMAGES: Record<string, string> = {
-  // Agri Essentials
-  'vegetable-seeds':               '/assets/product-images/product type new images/vegetable-seeds.png',
-  'fruit-plants':                  '/assets/product-images/product type new images/fruits-plants.png',
-  'flower-seeds':                  '/assets/product-images/product type new images/flower-seeds.png',
-  'medicinal-plants':              '/assets/product-images/product type new images/medicinal-plant.png',
-  // Crop Solutions
-  'npk':                           '/assets/product-images/product type new images/npk-fertilizer.png',
-  'organic':                       '/assets/product-images/product type new images/organic-compost-vermicompost.png',
-  'bio':                           '/assets/product-images/product type new images/biofertilizer-azospirillum.png', 
-  'liquid-fertilizers':            '/assets/product-images/product type new images/liquid-fertilizer.png',
-  'micronutrients':                '/assets/product-images/product type new images/fine-powder-micronutrients.png',
-  'insecticides':                  '/assets/compressed/product/types/insecticide-.webp',
-  'fungicides':                    '/assets/compressed/product/types/fungicides-.webp',
-  'herbicides':                    '/assets/compressed/product/types/herbisides-.webp',
-  'biological':                    '/assets/compressed/product/types/bio-bestiscide-.webp',
-  'seaweed':                       '/assets/compressed/product/types/amino-acid-.webp', // Placeholder
-  'liquid':                        '/assets/compressed/product/types/luquide-fertilizers-.webp', // Placeholder
-  // Animal Solutions
-  'fish-feed':                     '/assets/compressed/product/types/fish-feed-.webp',
-  'aerators':                      '/assets/compressed/product/types/aerators-.webp',
-  'biofloc-tanks':                 '/assets/compressed/product/types/biofloc-tank-.webp',
-  'pond-liners':                   '/assets/compressed/product/types/pond-liner-.webp',
-  'water-testing-kits':            '/assets/compressed/product/types/wter-testing-kits-.webp',
-  'fish-medicines':                '/assets/compressed/product/types/fish-medicins-.webp',
-  'goat-feed':                     '/assets/compressed/product/types/goat-feed-s.webp',
-  'cattle-feed':                   '/assets/compressed/product/types/cattle-feeds-.webp',
-  'mineral-mixtures':              '/assets/compressed/product/types/mineral-mixtures-.webp',
-  'livestock-medicines':           '/assets/compressed/product/types/live-stock-medicines-.webp',
-  'livestock-equipment':           '/assets/compressed/product/types/live-stock-equipmemts-.webp',
-  // Farm Equipment
-  'polyhouse-sheets':              '/assets/compressed/product/types/polyhouse-sheets.webp',
-  'shade-nets':                    '/assets/compressed/product/types/shade-nets-.webp',
-  'insect-nets':                   '/assets/compressed/product/types/insect-net-.webp',
-  'gi-pipes':                      '/assets/compressed/product/types/gi-pipes-.webp',
-  'nft-channels':                  '/assets/compressed/product/types/nft-channels-.webp',
-  'net-pots':                      '/assets/compressed/product/types/net-pots-.webp',
-  'hydroponic-nutrients':          '/assets/compressed/product/types/hydroponic-nutrients-.webp',
-  'grow-lights':                   '/assets/compressed/product/types/grow-lights.webp',
-  'water-pumps':                   '/assets/compressed/product/types/waterpumpn.webp',
-  'drip-irrigation-systems':       '/assets/compressed/product/types/drip-irrigation-system-.webp',
-  'sprinklers':                    '/assets/compressed/product/types/sprinklers-.webp',
-  'irrigation-pipes':              '/assets/compressed/product/types/irrigation-pipes-.webp',
-  'solar-dryers':                  '/assets/compressed/product/types/solar-dryers-.webp',
-  'solar-pumps':                   '/assets/compressed/product/types/solar-pumps-.webp',
-  'solar-fencing-systems':         '/assets/compressed/product/types/solar-fencing-system-.webp',
-  // Digital & IoT
-  'soil-nutrient-scanner':         '/assets/compressed/product/types/wter-testing-kits-.webp', // Best match fallback
-  'smart-farm-surveillance':       '/assets/compressed/product/types/smart-farm-surveillance.webp',
-  'igo-erp-pro':                  '/assets/compressed/brands/igo-foundation.webp',
-  // Post-Harvest
-  'vacuum-packer-pro':             '/assets/compressed/product/types/solar-dryers-.webp', // Placeholder
-  'cold-chain-iot':                '/assets/compressed/product/types/wter-testing-kits-.webp', // Placeholder
-  'hybrid-seed-master-kit':        '/assets/compressed/product/types/vegetable-seed-.webp',
+  'vegetable-seeds-precision':   '/assets/product-images/product type new images/vegetables seeds/Tomato seeds.jpg',
+  'fruit-seeds-exotic':          '/assets/product-images/product type new images/fruit seeds/Papaya seeds.jpg',
+  'flower-seeds-pro':            '/assets/product-images/product type new images/flowers seeds/flowers seeds',
+  'medicinal-seeds':             '/assets/product-images/product type new images/Tulsi  seeds.jpg',
+  'herbs-seeds':                 '/assets/product-images/product type new images/Leafy Seeds/Basil seeds.jpg',
+  // Vegetable Seeds — individual
+  'seed-tomato':        '/assets/product-images/product type new images/vegetables seeds/Tomato seeds.jpg',
+  'seed-capsicum':      '/assets/product-images/product type new images/vegetables seeds/Capsicum seeds.jpg',
+  'seed-cucumber':      '/assets/product-images/product type new images/vegetables seeds/Cucumber seeds.jpg',
+  'seed-brinjal':       '/assets/product-images/product type new images/vegetables seeds/Brinjal seeds.jpg',
+  'seed-cabbage':       '/assets/product-images/product type new images/vegetables seeds/Cabbage seeds.jpg',
+  'seed-cauliflower':   '/assets/product-images/product type new images/vegetables seeds/Cauliflower Seeds.jpg',
+  'seed-broccoli':      '/assets/product-images/product type new images/vegetables seeds/Broccoli seeds.jpg',
+  'seed-carrot':        '/assets/product-images/product type new images/vegetables seeds/Carrot seed.jpg',
+  'seed-radish':        '/assets/product-images/product type new images/vegetables seeds/Radish seeds.jpg',
+  'seed-beetroot':      '/assets/product-images/product type new images/vegetables seeds/Beetroot seeds.jpg',
+  'seed-onion':         '/assets/product-images/product type new images/vegetables seeds/Onion seeds.jpg',
+  'seed-peas':          '/assets/product-images/product type new images/vegetables seeds/Peas seeds.jpg',
+  'seed-pumpkin':       '/assets/product-images/product type new images/vegetables seeds/Pumpkin seeds.jpg',
+  'seed-bittergourd':   '/assets/product-images/product type new images/vegetables seeds/Bitter Gourd seeds.jpg',
+  'seed-ridgegourd':    '/assets/product-images/product type new images/vegetables seeds/Ridge Gourd seeds.jpg',
+  'seed-bottlegourd':   '/assets/product-images/product type new images/vegetables seeds/Bottle gourd seeds.jpg',
+  'seed-spinach':       '/assets/product-images/product type new images/vegetables seeds/Spinach seeds.jpg',
+  'seed-lettuce':       '/assets/product-images/product type new images/vegetables seeds/Lettuce seeds.jpg',
+  'seed-coriander':     '/assets/product-images/product type new images/vegetables seeds/Coriander seeds.jpg',
+  'seed-methi':         '/assets/product-images/product type new images/vegetables seeds/Methi seeds.jpg',
+  // Fruit Seeds — individual
+  'seed-mango':         '/assets/product-images/product type new images/fruit seeds/Mango seeds.jpg',
+  'seed-papaya':        '/assets/product-images/product type new images/fruit seeds/Papaya seeds.jpg',
+  'seed-guava':         '/assets/product-images/product type new images/fruit seeds/Guava seeds.jpg',
+  'seed-lemon':         '/assets/product-images/product type new images/fruit seeds/Lemon seeds.jpg',
+  'seed-pomegranate':   '/assets/product-images/product type new images/fruit seeds/Pomegranate seeds.jpg',
+  'seed-chikoo':        '/assets/product-images/product type new images/fruit seeds/Chikoo  seeds.jpg',
+  'seed-custardapple':  '/assets/product-images/product type new images/fruit seeds/Custard Apple seeds.jpg',
+  // Leafy & Herb Seeds — individual
+  'seed-basil':         '/assets/product-images/product type new images/Leafy Seeds/Basil seeds.jpg',
+  'seed-mint':          '/assets/product-images/product type new images/Leafy Seeds/Mint Seeds.jpg',
+  'seed-parsley':       '/assets/product-images/product type new images/Leafy Seeds/Parsley seeds.jpg',
+  'seed-dill':          '/assets/product-images/product type new images/Leafy Seeds/Dill seeds.jpg',
+  'seed-kale':          '/assets/product-images/product type new images/Leafy Seeds/Kale seeds.jpg',
+  'seed-arugula':       '/assets/product-images/product type new images/Leafy Seeds/Arugula  seeds.jpg',
+  'seed-amaranth':      '/assets/product-images/product type new images/Leafy Seeds/Amaranth seeds.jpg',
+  'seed-swisschard':    '/assets/product-images/product type new images/Leafy Seeds/Swiss Chard seeds.jpg',
+  'seed-fenugreek-leafy': '/assets/product-images/product type new images/Leafy Seeds/Fenugreek  seeds.jpg',
+  'seed-mustardgreens': '/assets/product-images/product type new images/Leafy Seeds/Mustard Greens  seeds.jpg',
+  'seed-lettuce-leafy': '/assets/product-images/product type new images/Leafy Seeds/Lettuce seeds.jpg',
+  'seed-spinach-leafy': '/assets/product-images/product type new images/Leafy Seeds/Spinach  seeds.jpg',
+
+  'premium-cocopeat':            '/assets/product-images/product type new images/Grow Media.jpg',
+  'expanded-perlite':            '/assets/product-images/product type new images/Perlite Coarse.jpg',
+  'water-soluble-npk':           '/assets/product-images/product type new images/NPK Fertilizers.jpg',
+  'nano-urea-liquid':            '/assets/product-images/product type new images/Liquid Fertilizers.jpg',
+  'organic-ipm-kit':             '/assets/product-images/product type new images/Bio Pesticides (Neem Oil, Trichoderma, Bacillus).png',
+  'bio-fungicide-pro':           '/assets/product-images/product type new images/Bio Fungicides & Bio Nematicides.png',
+  'bloom-booster-nitro':         '/assets/product-images/product type new images/Amino Acid Nutrients.png',
+  'silver-black-mulch':          '/assets/product-images/product type new images/Silver Mulch.jpg',
+  'gi-pipe-structure':           '/assets/product-images/product type new images/gi pipes .jpg',
+  'polyhouse-polyethylene':      '/assets/product-images/product type new images/Polyhouse Sheets.png',
+  'insect-net-uv-pro':           '/assets/product-images/product type new images/Insect Nets.png',
+  'axial-exhaust-fan-50':        '/assets/product-images/product type new images/Exhaust Fans.jpg',
+  'cooling-pad-cellulose':       '/assets/product-images/product type new images/Cooling Pads.jpg',
+  'misting-nozzle-kit':          '/assets/product-images/product type new images/Misting Systems.jpg',
+  'disc-filter-industrial':      '/assets/product-images/product type new images/Valves.jpg',
+  'drip-line-pressure-comp':     '/assets/product-images/product type new images/Drip Irrigation Systems.jpg',
+  'fertigation-machine-classic': '/assets/product-images/product type new images/Fertigation Units.png',
+  'igolink-smarthub':            '/assets/product-images/product type new images/Polyhouse Controllers.png',
+  'vent-actuator-ac':            '/assets/product-images/product type new images/Vent Motors.jpg',
+  'farm-vfd-panel':              '/assets/product-images/product type new images/Control Panels.jpg',
+  'capsicum-seeds-hybrid':       '/assets/product-images/new main image for product/horticulture catlog .png',
+  'grafted-fruit-plants-combo':  '/assets/product-images/new main image for product/horticulture catlog .png',
+  'marigold-pro-tray':           '/assets/product-images/product type new images/Organic Fertilizers.jpg',
+  'fresh-herb-starter-kit':      '/assets/product-images/product type new images/Tulsi  seeds.jpg',
+  'iot-soil-node-v2':            '/assets/product-images/product type new images/Sensors (Temp, Humidity, Soil, pH, EC).jpg',
+  'igo-erp-farm-pro':            '/assets/product-images/product type new images/Automation Dashboards.jpg',
+  'satellite-yield-monitor':     '/assets/product-images/product type new images/Yield Prediction Tools in india.png',
+  'paddle-wheel-aerator-pro':    '/assets/product-images/product type new images/Aerators.jpg',
+  'floating-fish-feed-premium':  '/assets/product-images/product type new images/Fish Feed.jpg',
+  'cattle-feed-premium':         '/assets/product-images/product type new images/Cattle Feed.png',
+  'solar-tunnel-dryer-igo':      '/assets/product-images/product type new images/Solar Dryers.jpg',
+  'plastic-harvesting-crates':   '/assets/product-images/product type new images/Crates & Bins.jpg',
+  // Legacy IDs
+  'vegetable-seeds':             '/assets/product-images/product type new images/Soil Mix Media.jpg',
+  'fruit-plants':                '/assets/product-images/product type new images/Rubber Plant seeds.jpg',
+  'flower-seeds':                '/assets/product-images/product type new images/Organic Fertilizers.jpg',
+  'medicinal-plants':            '/assets/product-images/product type new images/Tulsi  seeds.jpg',
+  'npk':                         '/assets/product-images/product type new images/NPK Fertilizers.jpg',
+  'organic':                     '/assets/product-images/product type new images/Organic Fertilizers.jpg',
+  'bio':                         '/assets/product-images/product type new images/Azospirillum.png',
+  'liquid-fertilizers':          '/assets/product-images/product type new images/Liquid Fertilizers.jpg',
+  'micronutrients':              '/assets/product-images/product type new images/Micronutrients (Fe, Zn, Mn, B, Cu).png',
+  'insecticides':                '/assets/product-images/product type new images/Insecticides.png',
+  'fungicides':                  '/assets/product-images/product type new images/Fungicides.png',
+  'herbicides':                  '/assets/product-images/product type new images/Herbicides.png',
+  'biological':                  '/assets/product-images/product type new images/Bio Pesticides (Neem Oil, Trichoderma, Bacillus).png',
+  'seaweed':                     '/assets/product-images/product type new images/Seaweed Extract.png',
+  'liquid':                      '/assets/product-images/product type new images/Water Soluble Fertilizers.jpg',
+  'fish-feed':                   '/assets/product-images/product type new images/Fish Feed.jpg',
+  'aerators':                    '/assets/product-images/product type new images/Aerators.jpg',
+  'biofloc-tanks':               '/assets/product-images/product type new images/Biofloc Tanks.jpg',
+  'pond-liners':                 '/assets/product-images/product type new images/Pond Liners.jpg',
+  'water-testing-kits':          '/assets/product-images/product type new images/Water Testing Kits.jpg',
+  'fish-medicines':              '/assets/product-images/product type new images/Fish Medicines.jpg',
+  'goat-feed':                   '/assets/product-images/product type new images/Goat Feed.jpg',
+  'cattle-feed':                 '/assets/product-images/product type new images/Cattle Feed.png',
+  'mineral-mixtures':            '/assets/product-images/product type new images/Mineral Mixtures.png',
+  'livestock-medicines':         '/assets/product-images/product type new images/Veterinary Medicines.png',
+  'livestock-equipment':         '/assets/product-images/product type new images/Livestock Equipment.png',
+  'polyhouse-sheets':            '/assets/product-images/product type new images/Polyhouse Sheets.png',
+  'shade-nets':                  '/assets/product-images/product type new images/Shade Nets.png',
+  'insect-nets':                 '/assets/product-images/product type new images/Insect Nets.png',
+  'gi-pipes':                    '/assets/product-images/product type new images/gi pipes .jpg',
+  'nft-channels':                '/assets/product-images/product type new images/NFT Channels.png',
+  'net-pots':                    '/assets/product-images/product type new images/Net Pots.jpg',
+  'hydroponic-nutrients':        '/assets/product-images/product type new images/Hydroponic Nutrients.png',
+  'grow-lights':                 '/assets/product-images/product type new images/IoT Devices.jpg',
+  'water-pumps':                 '/assets/product-images/product type new images/pumps .jpg',
+  'drip-irrigation-systems':     '/assets/product-images/product type new images/Drip Irrigation Systems.jpg',
+  'sprinklers':                  '/assets/product-images/product type new images/Sprinklers.jpg',
+  'irrigation-pipes':            '/assets/product-images/product type new images/Irrigation Pipes (PVC, HDPE).jpg',
+  'solar-dryers':                '/assets/product-images/product type new images/Solar Dryers.jpg',
+  'solar-pumps':                 '/assets/product-images/product type new images/Solar Pumps.jpg',
+  'solar-fencing-systems':       '/assets/product-images/product type new images/Solar Fencing Systems.jpg',
+  'soil-nutrient-scanner':       '/assets/product-images/product type new images/Water Testing Kits.jpg',
+  'smart-farm-surveillance':     '/assets/product-images/product type new images/IoT Sensor Systems.jpg',
+  'igo-erp-pro':                 '/assets/product-images/product type new images/Automation Dashboards.jpg',
+  'vacuum-packer-pro':           '/assets/product-images/product type new images/Vacuum Packing Machines.jpg',
+  'cold-chain-iot':              '/assets/product-images/product type new images/Cold Storage Units.jpg',
+  'hybrid-seed-master-kit':      '/assets/product-images/product type new images/Soil Mix Media.jpg'
 };
 
-const CategoryView: React.FC<{ category: string; subcategory?: string }> = ({ category, subcategory }) => {
-  const navigate = useNavigate();
-  const categoryMeta = CATEGORY_META[category];
-  const subMeta = subcategory ? SUBCATEGORY_META[subcategory] : null;
-  const activeMeta = {
-    label: subMeta?.label || categoryMeta?.label || category,
-    image: subMeta?.image || categoryMeta?.cardImage || LOCAL_FALLBACK,
-    desc: subMeta?.desc || categoryMeta?.desc || ""
-  };
+// ── Shared CTA Strip ──────────────────────────────────────────────────────────
+const CTAStrip: React.FC<{ label: string }> = ({ label }) => (
+  <section className="py-24 bg-agri-green-800 text-white overflow-hidden relative">
+    <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white via-transparent to-transparent pointer-events-none" />
+    <div className="container mx-auto px-6 relative z-10 flex flex-col md:flex-row items-center justify-between gap-10">
+      <div className="max-w-2xl">
+        <h2 className="text-4xl md:text-5xl font-serif mb-4 leading-tight">
+          Need volume pricing for {label}?
+        </h2>
+        <p className="text-white/60 text-lg font-light">
+          Connect with our institutional sales desk for GST billing, formal quotes, and logistics scheduling across India.
+        </p>
+      </div>
+      <Link
+        to="/contact?subject=Institutional%20Sales"
+        className="group shrink-0 inline-flex items-center gap-3 px-10 py-5 bg-white text-agri-green-800 text-[11px] font-bold rounded-full hover:bg-agri-gold-500 hover:text-white transition-all uppercase tracking-widest shadow-2xl"
+      >
+        Institutional Sales Desk
+        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+      </Link>
+    </div>
+  </section>
+);
 
-  const catItem = productsNav.find(c => c.href === `/products/${category}`);
-  const subcategoryNode = subcategory ? catItem?.children?.find((s: any) => s.href === `/products/${category}/${subcategory}`) : null;
-  const displayChildren = subcategory ? (subcategoryNode as any)?.children : (catItem as any)?.children;
-  const products = subcategory ? productDetailData.filter(p => p.category === category && p.subcategory === subcategory) : [];
+// ══════════════════════════════════════════════════════════════════════════════
+// CategoryPage — /products/:category
+// Shows the category hero and a grid of all subcategory cards
+// ══════════════════════════════════════════════════════════════════════════════
+const CategoryPage: React.FC<{ category: string }> = ({ category }) => {
+  const meta = CATEGORY_META[category];
+  const catItem = productsNav.find((c: any) => c.href === `/products/${category}`);
 
-  if (!categoryMeta || !catItem) return <Navigate to="/products" />;
+  if (!meta || !catItem) return <Navigate to="/products" />;
 
-  const catBreadcrumb = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.igoagritechfarms.com/" },
-      { "@type": "ListItem", "position": 2, "name": "Products", "item": "https://www.igoagritechfarms.com/products" },
-      { "@type": "ListItem", "position": 3, "name": categoryMeta.label, "item": `https://www.igoagritechfarms.com/products/${category}` },
-      ...(subcategory ? [{ "@type": "ListItem" as const, "position": 4, "name": activeMeta.label, "item": `https://www.igoagritechfarms.com/products/${category}/${subcategory}` }] : [])
+  const subcategories: any[] = (catItem as any).children || [];
+  const totalProducts = productDetailData.filter(p => p.category === category).length;
+
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.igoagritechfarms.com/' },
+      { '@type': 'ListItem', position: 2, name: 'Products', item: 'https://www.igoagritechfarms.com/products' },
+      { '@type': 'ListItem', position: 3, name: meta.label, item: `https://www.igoagritechfarms.com/products/${category}` }
     ]
   };
 
   return (
     <div className="bg-white min-h-screen selection:bg-agri-green-50 selection:text-agri-green-800">
       <SEO
-        title={`${activeMeta.label} Products`}
-        description={`${activeMeta.desc} Buy premium agri-solutions from IGO Agritech Farms.`}
-        keywords={`${activeMeta.label}, ${category}, agricultural products India`}
-        url={`/products/${category}${subcategory ? '/' + subcategory : ''}`}
-        image={activeMeta.image}
-        jsonLd={catBreadcrumb}
+        title={`${meta.label} | Product Catalog — IGO Agritech Farms`}
+        description={`${meta.desc} Shop our complete ${meta.label} range with institutional pricing and pan-India delivery.`}
+        keywords={`${meta.label}, agri products India, ${category}, IGO Agritech`}
+        url={`/products/${category}`}
+        image={meta.cardImage}
+        jsonLd={jsonLd}
       />
 
-      {/* Premium Hero — Card Style */}
-      <section className="bg-white pt-24 sm:pt-32 pb-16 sm:pb-20">
+      {/* ── Header section ── */}
+      <section className="bg-white pt-28 sm:pt-36 pb-16">
         <div className="container mx-auto px-6">
-          {/* Breadcrumb — Minimal & Premium */}
-          <nav className="flex items-center gap-4 text-[10px] font-black uppercase tracking-[0.25em] text-black/30 mb-16 overflow-x-auto no-scrollbar whitespace-nowrap">
-            <Link to="/" className="hover:text-primary transition-colors flex items-center gap-1.5">
-               Home
-            </Link>
-            <div className="w-6 h-px bg-black/10" />
-            <Link to="/products" className="hover:text-primary transition-colors">Products</Link>
-            {subcategory && (
-              <>
-                <div className="w-6 h-px bg-black/10" />
-                <Link to={`/products/${category}`} className="hover:text-primary transition-colors">{categoryMeta.label}</Link>
-              </>
-            )}
-            <div className="w-6 h-px bg-black/10" />
-            <span className="text-agri-gold-600">
-              {activeMeta.label}
-            </span>
+
+          {/* Breadcrumb */}
+          <nav className="flex items-center gap-3 text-[10px] font-black uppercase tracking-[0.25em] text-black/25 mb-14 overflow-x-auto no-scrollbar whitespace-nowrap">
+            <Link to="/" className="hover:text-agri-green-800 transition-colors">Home</Link>
+            <div className="w-5 h-px bg-black/10" />
+            <Link to="/products" className="hover:text-agri-green-800 transition-colors">Products</Link>
+            <div className="w-5 h-px bg-black/10" />
+            <span className="text-agri-gold-600">{meta.label}</span>
           </nav>
 
-          <div className="flex flex-col lg:flex-row gap-20">
-            {/* LEFT — Image Card */}
-            <div className="lg:w-[45%]">
-              <motion.div 
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                className="relative aspect-[4/3] rounded-[2.5rem] overflow-hidden bg-slate-100 shadow-2xl border border-black/5 group"
+          <div className="flex flex-col lg:flex-row gap-16 lg:gap-24 items-center">
+
+            {/* Left — Title block */}
+            <motion.div
+              className="lg:w-1/2"
+              initial="hidden"
+              animate="show"
+              variants={{ show: { transition: { staggerChildren: 0.12 } } }}
+            >
+              <motion.div variants={fader} className="flex items-center gap-3 mb-6">
+                <div className="w-10 h-px bg-agri-gold-500/50" />
+                <span className="text-agri-gold-500 text-[10px] font-black uppercase tracking-[0.4em]">
+                  IGO Product Division
+                </span>
+              </motion.div>
+
+              <motion.h1
+                variants={fader}
+                className="text-[4rem] sm:text-[5.5rem] md:text-[7rem] font-serif text-agri-green-800 leading-[0.88] tracking-tight mb-8"
               >
+                {meta.label}
+              </motion.h1>
+
+              <motion.p
+                variants={fader}
+                className="text-xl text-black/45 font-light leading-relaxed italic border-l-4 border-agri-gold-500/20 pl-6 mb-10"
+              >
+                {meta.desc}
+              </motion.p>
+
+              <motion.div variants={fader} className="flex flex-wrap items-center gap-8">
+                <div className="flex flex-col">
+                  <span className="text-4xl font-serif text-agri-green-800">{subcategories.length}</span>
+                  <span className="text-[9px] font-black uppercase tracking-widest text-black/30 mt-1">Subcategories</span>
+                </div>
+                <div className="w-px h-12 bg-black/5" />
+                <div className="flex flex-col">
+                  <span className="text-4xl font-serif text-agri-green-800">{totalProducts > 0 ? totalProducts : '—'}</span>
+                  <span className="text-[9px] font-black uppercase tracking-widest text-black/30 mt-1">Products Listed</span>
+                </div>
+                <div className="w-px h-12 bg-black/5" />
+                <Link
+                  to="/contact?subject=Catalog"
+                  className="flex items-center gap-2 text-agri-gold-500 text-[10px] font-black uppercase tracking-widest group"
+                >
+                  Get Catalog
+                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </motion.div>
+            </motion.div>
+
+            {/* Right — Hero Image */}
+            <motion.div
+              className="lg:w-1/2"
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+            >
+              <div className="relative aspect-[4/3] rounded-[2.5rem] overflow-hidden shadow-2xl border border-black/5 group">
                 <OptimizedImage
-                  src={activeMeta.image}
-                  alt={activeMeta.label}
+                  src={meta.cardImage}
+                  alt={meta.label}
                   loading="eager"
-                  decoding="async"
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
                 />
-                <div className="absolute top-8 left-8">
-                  <div className="bg-white/95 backdrop-blur-md px-5 py-2 rounded-full text-[10px] font-black uppercase tracking-widest text-agri-green-800 shadow-xl border border-black/5 flex items-center gap-2">
-                    <div className="h-1.5 w-1.5 rounded-full bg-agri-gold-500 animate-pulse" /> IGO {subcategory ? "Sub-Category" : "Primary Catalog"}
+                <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-agri-green-800/20" />
+                <div className="absolute bottom-8 left-8 right-8 flex items-center justify-between">
+                  <div className="bg-white/95 backdrop-blur-md px-5 py-2.5 rounded-full flex items-center gap-2 shadow-xl border border-black/5">
+                    <div className="w-2 h-2 rounded-full bg-agri-gold-500 animate-pulse" />
+                    <span className="text-[10px] font-black uppercase tracking-widest text-agri-green-800">Active Division</span>
+                  </div>
+                  <div className="bg-agri-gold-500 text-white px-4 py-2.5 rounded-full text-[10px] font-black uppercase tracking-widest shadow-xl">
+                    ISO 9001
                   </div>
                 </div>
-              </motion.div>
-            </div>
-
-            {/* RIGHT — Info Side */}
-            <div className="lg:w-[55%] lg:pt-4">
-              <motion.div
-                initial="hidden" animate="show" variants={{ show: { transition: { staggerChildren: 0.15 } } }}
-              >
-                <motion.div variants={fader} className="flex items-center gap-3 text-agri-gold-500 font-bold text-[10px] uppercase tracking-[0.3em] mb-6">
-                  <div className="w-10 h-px bg-agri-gold-500/40" />
-                  {subcategory ? "Technical Catalog" : "Institutional Division"}
-                </motion.div>
-                
-                <motion.h1 variants={fader} className="text-5xl md:text-8xl font-serif text-agri-green-800 mb-8 tracking-tight leading-[0.95]">
-                  {activeMeta.label}
-                </motion.h1>
-
-                <motion.p variants={fader} className="text-xl text-black/60 font-light leading-relaxed mb-10 border-l-4 border-agri-gold-500/20 pl-6 italic">
-                  {activeMeta.desc} Precision engineered for performance, scale, and maximum agricultural yield.
-                </motion.p>
-
-                {/* Status Card / Counts */}
-                <motion.div variants={fader} className="bg-agri-earth-15 p-8 rounded-[2rem] border border-black/5 mb-8 shadow-inner inline-flex items-center gap-8">
-                  <div className="flex items-center gap-5">
-                    <div className="text-5xl font-serif text-agri-green-800 leading-none">
-                      {subcategory ? products.length : (catItem as any).children?.length || 0}
-                    </div>
-                    <div className="text-[10px] font-black uppercase tracking-widest text-black/40 leading-tight">
-                      {subcategory ? "Validated\nProducts" : "Specialized\nCategories"}
-                    </div>
-                  </div>
-                  <div className="w-px h-12 bg-black/5" />
-                  <div className="flex flex-col">
-                    <span className="text-[10px] font-bold text-agri-gold-600 uppercase tracking-widest mb-1">Status</span>
-                    <span className="text-xs font-black text-agri-green-800 uppercase tracking-widest">Active Division</span>
-                  </div>
-                </motion.div>
-
-                {/* Category Action Link (Mobile view usually) */}
-                <motion.div variants={fader}>
-                  <Link to="/products" className="inline-flex items-center gap-3 text-agri-gold-500 font-bold text-[10px] uppercase tracking-[0.3em] group/back transition-all">
-                    View Entire Collection
-                    <ArrowRight className="w-4 h-4 group-hover/back:translate-x-1 transition-transform" /> 
-                  </Link>
-                </motion.div>
-              </motion.div>
-            </div>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Sibling category pills — Sticky navigation */}
-      <div className="bg-white border-b border-black/5 sticky top-[72px] z-30">
-        <div className="container mx-auto px-6 py-4 flex gap-3 overflow-x-auto no-scrollbar">
-          {productsNav.map((c: any) => {
-            const active = c.href === `/products/${category}`;
-            return (
-              <Link
-                key={c.href}
-                to={c.href}
-                className={`shrink-0 px-5 py-2 rounded-full text-[11px] font-bold uppercase tracking-widest border transition-all ${active
-                  ? "bg-agri-green-800 text-white border-agri-green-800 shadow-lg shadow-agri-green-800/10"
-                  : "bg-white text-black/50 border-black/10 hover:border-agri-green-800 hover:text-agri-green-800"
-                  }`}
-              >
-                {c.label}
-              </Link>
-            );
-          })}
-        </div>
-      </div>
 
-      {/* Grid: Sub-categories or Products */}
-      <section className="py-20 container mx-auto px-6 content-defer">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-8">
-          {(!subcategory && displayChildren && displayChildren.length > 0) ? (
-            /* Sub-category Cards — Premium Overlay Style */
-            displayChildren.map((child: any, i: number) => {
-              const img = PRODUCT_IMAGES[child.href.split('/').pop() || ''] || activeMeta.image;
-              const details = SUBCATEGORY_DETAILS[child.label] || [];
+
+      {/* ── Subcategory Grid ── */}
+      <section className="py-24 md:py-32">
+        <div className="container mx-auto px-6">
+          <div className="flex items-end justify-between mb-16 gap-8">
+            <div>
+              <span className="text-[10px] font-black text-agri-gold-500 uppercase tracking-[0.4em] mb-3 block">
+                Browse by Type
+              </span>
+              <h2 className="text-4xl md:text-6xl font-serif text-agri-green-800 leading-[0.95]">
+                Select a Category
+              </h2>
+            </div>
+            <span className="hidden md:block text-[7rem] font-serif text-black/[0.04] leading-none select-none pointer-events-none">
+              {subcategories.length.toString().padStart(2, '0')}
+            </span>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+            {subcategories.map((sub: any, i: number) => {
+              const slug = sub.href.split('/').pop() || '';
+              const subMeta = SUBCATEGORY_META[slug];
+              const img = subMeta?.image || meta.cardImage;
+              const desc = subMeta?.desc || 'Professional-grade agricultural inputs for modern farming.';
+              const productCount = productDetailData.filter(p => p.category === category && p.subcategory === slug).length;
+
               return (
                 <motion.div
-                  key={child.label}
+                  key={sub.href}
                   initial={{ opacity: 0, y: 40 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.9, delay: i * 0.05, ease: [0.16, 1, 0.3, 1] }}
+                  viewport={{ once: true, margin: '-50px' }}
+                  transition={{ duration: 0.7, delay: i * 0.07, ease: [0.16, 1, 0.3, 1] }}
                 >
                   <Link
-                    to={child.href}
-                    className="group relative block aspect-[4/5] rounded-[2.5rem] overflow-hidden shadow-2xl hover:shadow-[0_40px_80px_-15px_rgba(0,0,0,0.3)] transition-all duration-700 bg-slate-50 border border-black/5"
+                    to={sub.href}
+                    className="group flex flex-col rounded-[2rem] overflow-hidden bg-white border border-black/[0.06] hover:border-agri-gold-500/40 hover:shadow-[0_30px_70px_-15px_rgba(0,0,0,0.15)] transition-all duration-700 h-full"
                   >
-                    <OptimizedImage
-                      src={img}
-                      alt={child.label}
-                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-                    
-                    {/* Hover Decoration */}
-                    <div className="absolute inset-0 border-[0.5px] border-white/0 group-hover:border-white/20 m-6 rounded-[1.5rem] transition-all duration-700" />
-
-                    <div className="relative p-10 z-10 w-full h-full flex flex-col justify-end">
-                      <div className="mb-6 transform group-hover:-translate-y-2 transition-transform duration-500">
-                        <span className="px-4 py-1.5 rounded-full bg-agri-gold-500 text-[10px] text-white font-black uppercase tracking-widest shadow-xl">
-                          Explore Catalog
+                    {/* Image */}
+                    <div className="relative aspect-[4/3] overflow-hidden bg-slate-50">
+                      <OptimizedImage
+                        src={img}
+                        alt={sub.label}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                      <div className="absolute top-4 right-4">
+                        <span className="bg-agri-gold-500 text-white text-[9px] font-black uppercase tracking-widest px-3 py-1.5 rounded-full shadow-lg">
+                          {productCount > 0 ? `${productCount} Products` : 'Premium'}
                         </span>
                       </div>
-                      <h3 className="text-4xl font-serif text-white mb-6 leading-[0.9] tracking-tight group-hover:-translate-y-2 transition-transform duration-500 delay-75">
-                         {child.label}
-                      </h3>
-                      
-                      <div className="space-y-3 opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-700 delay-150">
-                        {details.slice(0, 3).map((d: string, idx: number) => (
-                          <div key={idx} className="flex items-start gap-3">
-                            <div className="w-1.5 h-1.5 rounded-full bg-agri-gold-500 mt-1.5 shrink-0 shadow-[0_0_8px_rgba(196,160,82,0.8)]" />
-                            <p className="text-white/60 text-[11px] font-medium leading-tight tracking-tight uppercase">{d}</p>
-                          </div>
-                        ))}
+                      <div className="absolute bottom-4 left-6">
+                        <span className="text-5xl font-serif text-white/15 leading-none select-none">
+                          {(i + 1).toString().padStart(2, '0')}
+                        </span>
                       </div>
+                    </div>
 
-                      <div className="mt-8 flex items-center gap-3 text-agri-gold-500 font-black text-[10px] uppercase tracking-[0.4em] opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-300">
-                         View Details <ArrowRight className="w-4 h-4" />
+                    {/* Info */}
+                    <div className="p-8 flex flex-col flex-1">
+                      <h3 className="text-2xl font-serif text-agri-green-800 mb-3 group-hover:text-agri-gold-600 transition-colors duration-500 leading-tight">
+                        {sub.label}
+                      </h3>
+                      <p className="text-sm text-black/40 font-light leading-relaxed mb-7 flex-1 line-clamp-2">
+                        {desc}
+                      </p>
+                      <div className="flex items-center gap-2 text-agri-gold-500 text-[10px] font-black uppercase tracking-[0.3em] group-hover:gap-4 transition-all duration-500">
+                        Explore Range
+                        <ArrowRight className="w-3.5 h-3.5" />
                       </div>
                     </div>
                   </Link>
                 </motion.div>
               );
-            })
-          ) : (
-            /* Product Cards for Leaf levels — More Spacing and Refined UI */
-            products.map((product, i) => (
-              <motion.div
-                key={product.id}
-                initial={{ opacity: 0, y: 28 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.05, duration: 0.5 }}
-              >
-                <Link
-                  to={`/products/${category}/${subcategory ? subcategory + '/' : ''}${product.id}`}
-                  className="group flex flex-col bg-white rounded-[1.75rem] overflow-hidden border border-black/[0.06] shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-1 h-full"
-                >
-                  {/* Image */}
-                  <div className="relative aspect-[4/3] overflow-hidden bg-agri-earth-50">
-                    <OptimizedImage
-                      src={PRODUCT_IMAGES[product.id] || activeMeta.image}
-                      alt={product.name}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                      fallbackSrc={activeMeta.image}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
-                    <div className="absolute top-4 left-4">
-                      <span className="px-3 py-1.5 rounded-full bg-white/90 backdrop-blur-md text-[9px] font-black uppercase tracking-widest text-agri-green-800 shadow-sm border border-black/5">
-                        {subcategoryNode?.label || activeMeta.label}
-                      </span>
-                    </div>
-                  </div>
-                  {/* Info */}
-                  <div className="p-7 flex flex-col flex-1">
-                    <div className="flex items-center gap-2 text-agri-gold-500 font-bold text-[9px] uppercase tracking-widest mb-3">
-                      <TrendingUp className="w-3 h-3" /> Professional Input
-                    </div>
-                    <h3 className="text-xl font-serif text-agri-green-800 mb-2 leading-snug group-hover:text-agri-gold-500 transition-colors line-clamp-2">
-                      {product.name}
-                    </h3>
-                    <p className="text-xs text-black/40 leading-relaxed line-clamp-2 mb-6 flex-1 italic font-light">
-                      {product.description}
-                    </p>
-                    <div className="flex items-center justify-between mt-auto pt-5 border-t border-black/[0.06]">
-                      <div>
-                        <span className="text-[9px] font-bold text-black/30 uppercase tracking-widest block mb-0.5">Commercial Price</span>
-                        <span className="text-xl font-black text-agri-green-800">₹{product.pricing.retail.toLocaleString()}</span>
-                      </div>
-                      <div className="w-10 h-10 rounded-full bg-agri-earth-50 group-hover:bg-agri-green-800 flex items-center justify-center transition-colors shadow-sm">
-                        <ArrowRight className="w-5 h-5 text-agri-green-800 group-hover:text-white transition-colors" />
-                      </div>
-                    </div>
-                  </div>
-                </Link>
-              </motion.div>
-            ))
-          )}
+            })}
+          </div>
         </div>
       </section>
 
-      {/* CTA strip — Matching Project style */}
-      <section className="py-24 bg-agri-green-800 text-white overflow-hidden relative">
-        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white via-transparent to-transparent pointer-events-none" />
-        <div className="container mx-auto px-6 relative z-10 flex flex-col md:flex-row items-center justify-between gap-10">
-          <div className="max-w-2xl">
-            <h2 className="text-4xl md:text-5xl font-serif mb-4 leading-tight">Need volume pricing for your {activeMeta.label}?</h2>
-            <p className="text-white/60 text-lg font-light">Connect with our institutional sales desk for GST billing, formal quotes, and logistics scheduling across India.</p>
-          </div>
-          <Link
-            to="/contact?subject=Institutional%20Sales"
-            className="group shrink-0 inline-flex items-center gap-3 px-10 py-5 bg-white text-agri-green-800 text-[11px] font-bold rounded-full hover:bg-agri-gold-500 hover:text-white transition-all uppercase tracking-widest shadow-2xl"
-          >
-            Institutional Sales Desk <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </Link>
-        </div>
-      </section>
+      <CTAStrip label={meta.label} />
     </div>
   );
 };
 
+// ══════════════════════════════════════════════════════════════════════════════
+// SubcategoryPage — /products/:category/:subcategory
+// Shows the subcategory hero, sibling pill nav, and products grid
+// ══════════════════════════════════════════════════════════════════════════════
+const SubcategoryPage: React.FC<{ category: string; subcategory: string }> = ({ category, subcategory }) => {
+  const catMeta = CATEGORY_META[category];
+  const subMeta = SUBCATEGORY_META[subcategory];
+  const catItem = productsNav.find((c: any) => c.href === `/products/${category}`);
+  const allSiblings: any[] = (catItem as any)?.children || [];
+  const subcategoryNode = allSiblings.find((s: any) => s.href === `/products/${category}/${subcategory}`);
+  const products = productDetailData.filter(p => p.category === category && p.subcategory === subcategory);
+
+  if (!catMeta || !catItem) return <Navigate to="/products" />;
+
+  const activeMeta = {
+    label: subMeta?.label || (subcategoryNode as any)?.label || subcategory,
+    image: subMeta?.image || catMeta.cardImage,
+    desc:  subMeta?.desc  || catMeta.desc
+  };
+
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home',       item: 'https://www.igoagritechfarms.com/' },
+      { '@type': 'ListItem', position: 2, name: 'Products',   item: 'https://www.igoagritechfarms.com/products' },
+      { '@type': 'ListItem', position: 3, name: catMeta.label, item: `https://www.igoagritechfarms.com/products/${category}` },
+      { '@type': 'ListItem', position: 4, name: activeMeta.label, item: `https://www.igoagritechfarms.com/products/${category}/${subcategory}` }
+    ]
+  };
+
+  return (
+    <div className="bg-white min-h-screen selection:bg-agri-green-50 selection:text-agri-green-800">
+      <SEO
+        title={`${activeMeta.label} | ${catMeta.label} — IGO Agritech Farms`}
+        description={`${activeMeta.desc} Buy ${activeMeta.label} from IGO Agritech Farms. Institutional pricing available.`}
+        keywords={`${activeMeta.label}, ${catMeta.label}, agri products, IGO Agritech`}
+        url={`/products/${category}/${subcategory}`}
+        image={activeMeta.image}
+        jsonLd={jsonLd}
+      />
+
+      {/* ── Hero ── */}
+      <section className="bg-white pt-28 sm:pt-36 pb-12">
+        <div className="container mx-auto px-6">
+
+          {/* Breadcrumb */}
+          <nav className="flex items-center gap-3 text-[10px] font-black uppercase tracking-[0.25em] text-black/25 mb-14 overflow-x-auto no-scrollbar whitespace-nowrap">
+            <Link to="/" className="hover:text-agri-green-800 transition-colors">Home</Link>
+            <div className="w-5 h-px bg-black/10" />
+            <Link to="/products" className="hover:text-agri-green-800 transition-colors">Products</Link>
+            <div className="w-5 h-px bg-black/10" />
+            <Link to={`/products/${category}`} className="hover:text-agri-green-800 transition-colors">{catMeta.label}</Link>
+            <div className="w-5 h-px bg-black/10" />
+            <span className="text-agri-gold-600">{activeMeta.label}</span>
+          </nav>
+
+          <div className="flex flex-col lg:flex-row gap-16 items-center">
+
+            {/* Left — Subcategory image */}
+            <motion.div
+              className="lg:w-[42%]"
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <div className="relative aspect-[4/3] rounded-[2.5rem] overflow-hidden shadow-2xl border border-black/5 group">
+                <OptimizedImage
+                  src={activeMeta.image}
+                  alt={activeMeta.label}
+                  loading="eager"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+                <div className="absolute top-6 left-6">
+                  <div className="bg-white/95 backdrop-blur-md px-5 py-2 rounded-full text-[10px] font-black uppercase tracking-widest text-agri-green-800 shadow-xl border border-black/5 flex items-center gap-2">
+                    <BadgeCheck className="w-3.5 h-3.5 text-agri-gold-600" />
+                    IGO Subcategory
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Right — Info */}
+            <div className="lg:w-[58%]">
+              <motion.div
+                initial="hidden"
+                animate="show"
+                variants={{ show: { transition: { staggerChildren: 0.12 } } }}
+              >
+                <motion.div variants={fader} className="flex items-center gap-3 text-agri-gold-500 text-[10px] font-black uppercase tracking-[0.3em] mb-6">
+                  <div className="w-8 h-px bg-agri-gold-500/40" />
+                  {catMeta.label}
+                </motion.div>
+
+                <motion.h1
+                  variants={fader}
+                  className="text-5xl md:text-7xl font-serif text-agri-green-800 mb-6 leading-[0.9] tracking-tight"
+                >
+                  {activeMeta.label}
+                </motion.h1>
+
+                <motion.p
+                  variants={fader}
+                  className="text-xl text-black/45 font-light leading-relaxed italic border-l-4 border-agri-gold-500/20 pl-6 mb-10"
+                >
+                  {activeMeta.desc}
+                </motion.p>
+
+                <motion.div variants={fader} className="flex flex-wrap items-center gap-6">
+                  <div className="bg-agri-earth-15 px-8 py-5 rounded-2xl inline-flex items-center gap-6 border border-black/5">
+                    <div>
+                      <span className="text-3xl font-serif text-agri-green-800">{products.length > 0 ? products.length : '—'}</span>
+                      <span className="text-[9px] font-black uppercase tracking-widest text-black/30 block mt-0.5">Products</span>
+                    </div>
+                    <div className="w-px h-10 bg-black/5" />
+                    <div>
+                      <span className="text-[9px] font-bold text-agri-gold-600 uppercase tracking-widest block mb-0.5">Status</span>
+                      <span className="text-xs font-black text-agri-green-800 uppercase tracking-widest">Active</span>
+                    </div>
+                  </div>
+                  <Link
+                    to={`/products/${category}`}
+                    className="flex items-center gap-2 text-black/30 text-[10px] font-black uppercase tracking-widest hover:text-agri-green-800 transition-colors group"
+                  >
+                    <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+                    All {catMeta.label}
+                  </Link>
+                </motion.div>
+              </motion.div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+
+      {/* ── Products Grid or Empty State ── */}
+      <section className="py-20 md:py-28">
+        <div className="container mx-auto px-6">
+          {products.length > 0 ? (
+            <>
+              <div className="flex items-end justify-between mb-14 gap-8">
+                <div>
+                  <span className="text-[10px] font-black text-agri-gold-500 uppercase tracking-[0.3em] mb-3 block">
+                    Institutional Catalog
+                  </span>
+                  <h2 className="text-3xl md:text-5xl font-serif text-agri-green-800 leading-[0.95]">
+                    {activeMeta.label} Products
+                  </h2>
+                </div>
+                <span className="hidden md:block text-[6rem] font-serif text-black/[0.04] leading-none select-none pointer-events-none">
+                  {products.length.toString().padStart(2, '0')}
+                </span>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                {products.map((product, i) => (
+                  <motion.div
+                    key={product.id}
+                    initial={{ opacity: 0, y: 28 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.06, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                  >
+                    <Link
+                      to={`/products/${category}/${subcategory}/${product.id}`}
+                      className="group flex flex-col bg-white rounded-[2rem] overflow-hidden border border-black/[0.06] shadow-sm hover:shadow-[0_25px_60px_-10px_rgba(0,0,0,0.12)] transition-all duration-500 hover:-translate-y-1.5 h-full"
+                    >
+                      {/* Image */}
+                      <div className="relative aspect-[4/3] overflow-hidden bg-slate-50">
+                        <OptimizedImage
+                          src={PRODUCT_IMAGES[product.id] || activeMeta.image}
+                          alt={product.name}
+                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                          fallbackSrc={catMeta.cardImage}
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/25 to-transparent" />
+                        <div className="absolute top-4 left-4">
+                          <span className="px-3 py-1.5 rounded-full bg-white/90 backdrop-blur-md text-[9px] font-black uppercase tracking-widest text-agri-green-800 shadow-sm border border-black/5">
+                            {activeMeta.label}
+                          </span>
+                        </div>
+                      </div>
+
+                      {/* Info */}
+                      <div className="p-7 flex flex-col flex-1">
+                        <div className="flex items-center gap-2 text-agri-gold-500 font-bold text-[9px] uppercase tracking-widest mb-3">
+                          <TrendingUp className="w-3 h-3" />
+                          Institutional Grade
+                        </div>
+                        <h3 className="text-xl font-serif text-agri-green-800 mb-2.5 leading-snug group-hover:text-agri-gold-500 transition-colors line-clamp-2">
+                          {product.name}
+                        </h3>
+                        <p className="text-xs text-black/35 leading-relaxed line-clamp-2 mb-6 flex-1 italic font-light">
+                          {product.description}
+                        </p>
+                        <div className="flex items-center justify-between mt-auto pt-5 border-t border-black/[0.05]">
+                          <div>
+                            <span className="text-[9px] font-bold text-black/25 uppercase tracking-widest block mb-0.5">From</span>
+                            <span className="text-xl font-black text-agri-green-800">₹{product.pricing.retail.toLocaleString()}</span>
+                          </div>
+                          <div className="w-10 h-10 rounded-full bg-slate-50 group-hover:bg-agri-green-800 flex items-center justify-center transition-colors duration-500 shadow-sm">
+                            <ArrowRight className="w-5 h-5 text-agri-green-800 group-hover:text-white transition-colors duration-500" />
+                          </div>
+                        </div>
+                      </div>
+                    </Link>
+                  </motion.div>
+                ))}
+              </div>
+            </>
+          ) : (
+            /* ── Empty State ── */
+            <motion.div
+              className="text-center py-32"
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.7 }}
+            >
+              <div className="w-24 h-24 rounded-[2rem] bg-agri-earth-15 flex items-center justify-center mx-auto mb-8 shadow-inner">
+                <Package className="w-10 h-10 text-agri-gold-500" />
+              </div>
+              <h3 className="text-3xl md:text-4xl font-serif text-agri-green-800 mb-4">
+                Premium Range Available
+              </h3>
+              <p className="text-black/40 font-light text-lg mb-10 max-w-md mx-auto">
+                Our <span className="text-agri-green-800 font-medium">{activeMeta.label}</span> catalog is available on institutional request. Contact our sales team for full product sheets and pricing.
+              </p>
+              <div className="flex flex-col sm:flex-row justify-center gap-4">
+                <Link
+                  to={`/contact?subject=Catalog%20Request%20–%20${encodeURIComponent(activeMeta.label)}`}
+                  className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-agri-green-800 text-white rounded-full text-[11px] font-bold uppercase tracking-widest hover:bg-agri-gold-500 transition-all shadow-xl"
+                >
+                  Request Catalog <ArrowRight className="w-4 h-4" />
+                </Link>
+                <Link
+                  to={`/products/${category}`}
+                  className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-white border-2 border-agri-green-800 text-agri-green-800 rounded-full text-[11px] font-bold uppercase tracking-widest hover:bg-agri-green-50 transition-all"
+                >
+                  <ArrowLeft className="w-4 h-4" /> Back to {catMeta.label}
+                </Link>
+              </div>
+            </motion.div>
+          )}
+        </div>
+      </section>
+
+      <CTAStrip label={activeMeta.label} />
+    </div>
+  );
+};
+
+// ══════════════════════════════════════════════════════════════════════════════
+// DetailView — /products/:category/:subcategory/:productSlug
+// Full product detail page (unchanged from original)
+// ══════════════════════════════════════════════════════════════════════════════
 const DetailView: React.FC<{ product: ProductDetail; category: string }> = ({ product, category }) => {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState<'description' | 'howToUse' | 'specifications'>('description');
@@ -619,36 +874,36 @@ const DetailView: React.FC<{ product: ProductDetail; category: string }> = ({ pr
   };
 
   const priceTiers = [
-    { id: 'retail' as const, label: 'Retail Price', value: product.pricing.retail },
-    { id: 'wholesale' as const, label: 'Wholesale (Min 50)', value: product.pricing.wholesale },
-    { id: 'bulk' as const, label: 'Bulk Institutional', value: product.pricing.bulk }
+    { id: 'retail'    as const, label: 'Retail Price',         value: product.pricing.retail },
+    { id: 'wholesale' as const, label: 'Wholesale (Min 50)',   value: product.pricing.wholesale },
+    { id: 'bulk'      as const, label: 'Bulk Institutional',   value: product.pricing.bulk }
   ];
 
   const productSchema = {
-    "@context": "https://schema.org",
-    "@type": "Product",
-    "name": product.name,
-    "description": product.description,
-    "image": imgUrl.startsWith("/") ? `https://www.igoagritechfarms.com${imgUrl}` : imgUrl,
-    "brand": { "@type": "Brand", "name": "IGO Agritech Farms" },
-    "category": product.categoryName,
-    "offers": {
-      "@type": "Offer",
-      "priceCurrency": "INR",
-      "price": product.pricing.retail,
-      "availability": "https://schema.org/InStock",
-      "seller": { "@type": "Organization", "name": "IGO Agritech Farms" }
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: product.name,
+    description: product.description,
+    image: imgUrl.startsWith('/') ? `https://www.igoagritechfarms.com${imgUrl}` : imgUrl,
+    brand: { '@type': 'Brand', name: 'IGO Agritech Farms' },
+    category: product.categoryName,
+    offers: {
+      '@type': 'Offer',
+      priceCurrency: 'INR',
+      price: product.pricing.retail,
+      availability: 'https://schema.org/InStock',
+      seller: { '@type': 'Organization', name: 'IGO Agritech Farms' }
     }
   };
 
   const productBreadcrumb = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.igoagritechfarms.com/" },
-      { "@type": "ListItem", "position": 2, "name": "Products", "item": "https://www.igoagritechfarms.com/products" },
-      { "@type": "ListItem", "position": 3, "name": meta?.label || category, "item": `https://www.igoagritechfarms.com/products/${category}` },
-      { "@type": "ListItem", "position": 4, "name": product.name, "item": `https://www.igoagritechfarms.com/products/${category}/${product.id}` }
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home',          item: 'https://www.igoagritechfarms.com/' },
+      { '@type': 'ListItem', position: 2, name: 'Products',      item: 'https://www.igoagritechfarms.com/products' },
+      { '@type': 'ListItem', position: 3, name: meta?.label || category, item: `https://www.igoagritechfarms.com/products/${category}` },
+      { '@type': 'ListItem', position: 4, name: product.name,    item: `https://www.igoagritechfarms.com/products/${category}/${product.id}` }
     ]
   };
 
@@ -659,32 +914,26 @@ const DetailView: React.FC<{ product: ProductDetail; category: string }> = ({ pr
         description={`Buy ${product.name} from IGO Agritech Farms. ${product.description.slice(0, 100)} Starting from ₹${product.pricing.retail.toLocaleString()}. Pan-India delivery.`}
         keywords={`${product.name}, ${product.categoryName}, buy ${product.categoryName.toLowerCase()}, IGO Agritech Farms, agricultural products`}
         url={`/products/${category}/${product.id}`}
-        image={imgUrl.startsWith("/") ? imgUrl : undefined}
-        jsonLd={{ "@context": "https://schema.org", "@graph": [productBreadcrumb, productSchema] }}
+        image={imgUrl.startsWith('/') ? imgUrl : undefined}
+        jsonLd={{ '@context': 'https://schema.org', '@graph': [productBreadcrumb, productSchema] }}
       />
-      <div className="container mx-auto px-6">
 
+      <div className="container mx-auto px-6">
         {/* Breadcrumb */}
-        {/* Breadcrumb — Minimal & Premium */}
         <nav className="flex items-center gap-4 text-[10px] font-black uppercase tracking-[0.25em] text-black/30 mb-16 overflow-x-auto no-scrollbar whitespace-nowrap">
-          <Link to="/" className="hover:text-primary transition-colors flex items-center gap-1.5">
-             Home
-          </Link>
+          <Link to="/" className="hover:text-primary transition-colors">Home</Link>
           <div className="w-6 h-px bg-black/10" />
           <Link to="/products" className="hover:text-primary transition-colors">Products</Link>
           <div className="w-6 h-px bg-black/10" />
-          <Link to={`/products/${category}`} className="hover:text-primary transition-colors">
-            {meta?.label || category}
-          </Link>
+          <Link to={`/products/${category}`} className="hover:text-primary transition-colors">{meta?.label || category}</Link>
           <div className="w-6 h-px bg-black/10" />
           <span className="text-agri-gold-600 truncate">{product.name}</span>
         </nav>
 
         <div className="flex flex-col lg:flex-row gap-20">
-
           {/* LEFT — Image + Trust Badges */}
           <div className="lg:w-[45%]">
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               className="relative aspect-[4/3] rounded-[2.5rem] overflow-hidden bg-slate-100 shadow-2xl border border-black/5 group"
@@ -705,18 +954,18 @@ const DetailView: React.FC<{ product: ProductDetail; category: string }> = ({ pr
               </div>
             </motion.div>
 
-            {/* Trust badges — Refined */}
+            {/* Trust badges */}
             <div className="grid grid-cols-3 gap-6 mt-10">
               {[
-                { icon: Shield, label: 'Quality Assured' },
+                { icon: Shield,    label: 'Quality Assured' },
                 { icon: Headphones, label: 'Expert Support' },
-                { icon: Truck, label: 'Pan India Express' }
+                { icon: Truck,     label: 'Pan India Express' }
               ].map((badge, idx) => (
-                <motion.div 
-                  key={idx} 
+                <motion.div
+                  key={idx}
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.4 + (idx * 0.1) }}
+                  transition={{ delay: 0.4 + idx * 0.1 }}
                   className="flex flex-col items-center text-center p-5 rounded-3xl bg-slate-50 border border-black/[0.03] hover:border-agri-gold-500/20 transition-colors"
                 >
                   <div className="w-12 h-12 rounded-2xl bg-white shadow-sm flex items-center justify-center mb-4 border border-black/[0.02]">
@@ -730,11 +979,7 @@ const DetailView: React.FC<{ product: ProductDetail; category: string }> = ({ pr
 
           {/* RIGHT — Info */}
           <div className="lg:w-[55%] lg:pt-4">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-            >
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
               <div className="flex items-center gap-3 text-agri-gold-500 font-bold text-[10px] uppercase tracking-[0.3em] mb-6">
                 <div className="w-10 h-px bg-agri-gold-500/40" />
                 {product.categoryName}
@@ -746,25 +991,48 @@ const DetailView: React.FC<{ product: ProductDetail; category: string }> = ({ pr
                 {product.description}
               </p>
 
+              {/* Pack Size selector */}
+              <div className="mb-8">
+                <span className="text-[10px] font-bold text-black/30 uppercase tracking-[0.2em] block mb-4">Pack Size</span>
+                <div className="flex flex-wrap gap-3">
+                  {product.packSizes.map(size => (
+                    <button
+                      key={size}
+                      onClick={() => setSelectedPackSize(size)}
+                      className={`px-5 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-widest border transition-all ${
+                        selectedPackSize === size
+                          ? 'bg-agri-green-800 text-white border-agri-green-800 shadow-md'
+                          : 'bg-white text-black/50 border-black/10 hover:border-agri-green-800 hover:text-agri-green-800'
+                      }`}
+                    >
+                      {size}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
               {/* Price Card */}
               <div className="bg-agri-earth-15 p-8 rounded-[2rem] border border-black/5 mb-12 shadow-inner">
                 <div className="flex flex-wrap items-center justify-between gap-8">
                   <div>
                     <span className="text-[10px] font-bold text-black/30 uppercase tracking-[0.2em] block mb-2">Institutional Pricing</span>
                     <div className="flex items-baseline gap-2">
-                      <span className="text-4xl font-black text-agri-green-800">₹{selectedPackSize === product.packSizes[0] ? product.pricing[selectedPriceTier].toLocaleString() : (product.pricing[selectedPriceTier] * 1.5).toLocaleString()}</span>
+                      <span className="text-4xl font-black text-agri-green-800">
+                        ₹{selectedPackSize === product.packSizes[0]
+                          ? product.pricing[selectedPriceTier].toLocaleString()
+                          : (product.pricing[selectedPriceTier] * 1.5).toLocaleString()}
+                      </span>
                       <span className="text-black/30 text-sm font-medium">/ unit</span>
                     </div>
                   </div>
-                  
                   <div className="flex gap-2">
                     {priceTiers.map(tier => (
                       <button
                         key={tier.id}
                         onClick={() => setSelectedPriceTier(tier.id)}
                         className={`px-5 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-widest transition-all border ${
-                          selectedPriceTier === tier.id 
-                            ? 'bg-agri-green-800 text-white border-agri-green-800 shadow-lg' 
+                          selectedPriceTier === tier.id
+                            ? 'bg-agri-green-800 text-white border-agri-green-800 shadow-lg'
                             : 'bg-white text-black/40 border-black/5 hover:border-agri-green-800 hover:text-agri-green-800'
                         }`}
                       >
@@ -775,13 +1043,13 @@ const DetailView: React.FC<{ product: ProductDetail; category: string }> = ({ pr
                 </div>
               </div>
 
-              {/* Tabs Section — More Spacing */}
+              {/* Tabs */}
               <div className="mt-12">
                 <div className="flex border-b border-black/5 mb-10 overflow-x-auto no-scrollbar">
                   {[
-                    { id: 'description', label: 'Overview' },
+                    { id: 'description',    label: 'Overview' },
                     { id: 'specifications', label: 'Technical Details' },
-                    { id: 'howToUse', label: 'Usage Protocol' }
+                    { id: 'howToUse',       label: 'Usage Protocol' }
                   ].map(tab => (
                     <button
                       key={tab.id}
@@ -878,7 +1146,7 @@ const DetailView: React.FC<{ product: ProductDetail; category: string }> = ({ pr
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-              {product.relatedProducts.map((relatedId) => {
+              {product.relatedProducts.map(relatedId => {
                 const related = productDetailData.find(p => p.id === relatedId);
                 if (!related) return null;
                 const relatedMeta = CATEGORY_META[related.category];
@@ -921,26 +1189,38 @@ const DetailView: React.FC<{ product: ProductDetail; category: string }> = ({ pr
   );
 };
 
-// ── Smart Router — 2-mode detection ──────────────────────────────────────────
-
+// ══════════════════════════════════════════════════════════════════════════════
+// Smart Router — 3-tier detection
+// ══════════════════════════════════════════════════════════════════════════════
 const ProductRouter: React.FC = () => {
-  const { category, subcategory, productSlug } = useParams<{ category: string; subcategory?: string; productSlug?: string }>();
+  const { category, subcategory, productSlug } = useParams<{
+    category: string;
+    subcategory?: string;
+    productSlug?: string;
+  }>();
 
-  useEffect(() => { window.scrollTo({ top: 0, behavior: "smooth" }); }, [category, subcategory, productSlug]);
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [category, subcategory, productSlug]);
 
-  // Priority detection:
-  // 1. productSlug exists -> definitely a product (/products/cat/sub/slug)
-  // 2. subcategory exists AND is a product ID -> product (/products/cat/slug)
-  const actualProductSlug = productSlug || subcategory;
-  const product = productDetailData.find(p => p.id === actualProductSlug && p.category === category);
-
-  if (product) {
-    return <DetailView product={product} category={category || ''} />;
+  // Priority 1: 3-segment URL (/cat/sub/slug) → always product detail
+  if (productSlug) {
+    const product = productDetailData.find(p => p.id === productSlug && p.category === category);
+    if (product) return <DetailView product={product} category={category || ''} />;
   }
 
-  // Otherwise, it's a listing view
-  return <CategoryView category={category || ''} subcategory={subcategory} />;
+  // Priority 2: 2-segment URL — detect if it's a direct product ID or a subcategory
+  if (subcategory) {
+    const product = productDetailData.find(p => p.id === subcategory && p.category === category);
+    if (product) return <DetailView product={product} category={category || ''} />;
+    // It's a real subcategory slug → show subcategory listing page
+    return <SubcategoryPage category={category || ''} subcategory={subcategory} />;
+  }
+
+  // Priority 3: Category-only URL → show category page with subcategory grid
+  if (category) return <CategoryPage category={category} />;
+
+  return <Navigate to="/products" />;
 };
 
 export default ProductRouter;
-

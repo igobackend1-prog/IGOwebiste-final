@@ -965,7 +965,10 @@ export const navLinks = [
         icon: Sprout,
         cardImage: "/assets/product-images/new main image for product/agri inputs .jpg",
         children: [
-          { label: "High-Yield Seeds", href: "/products/agri-inputs/seeds", icon: Sprout },
+          { label: "Vegetable Seeds", href: "/products/agri-inputs/veg-seeds", icon: Sprout },
+          { label: "Fruit Seeds", href: "/products/agri-inputs/fruit-seeds", icon: Cherry },
+          { label: "Leafy & Herb Seeds", href: "/products/agri-inputs/leafy-seeds", icon: Leaf },
+
           { label: "Growing Media & Substrates", href: "/products/agri-inputs/media", icon: Layers },
           { label: "Plant Nutrition & Fertilizers", href: "/products/agri-inputs/nutrition", icon: FlaskConical },
           { label: "Plant Protection (IPM)", href: "/products/agri-inputs/protection", icon: ShieldCheck },
