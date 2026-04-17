@@ -587,13 +587,13 @@ export const navLinks = [
         label: "Agri Farming Projects",
         href: "/projects/agri",
         icon: "/assets/header/project-drop-down-icon/agri-farm-projects-.webp",
-        cardImage: "/assets/compressed/projects/main-page/agri-farming-project.webp",
+        cardImage: "/assets/new project images/main-page/agri farming projects .png",
         children: [
           {
             label: "Protected Farming Projects",
             href: "/projects/agri/protected",
             icon: Tent,
-            cardImage: "/assets/new project images/project-subcategories/subcategories/protected-farming.webp",
+            cardImage: "/assets/new project images/project-subcategories/subcategories/protected farming project.png",
             children: [
               { label: "Naturally Ventilated Polyhouse", href: "/projects/agri/protected/naturally-ventilated", image: "/assets/new project images/naturally ventilated polyuhouse .png" },
               { label: "Climate Controlled Polyhouse", href: "/projects/agri/protected/climate-controlled", image: "/assets/new project images/climate controlled polyhouse .jpeg" },
@@ -606,7 +606,7 @@ export const navLinks = [
             label: "Hydroponic Farming Projects",
             href: "/projects/agri/hydroponic",
             icon: Droplets,
-            cardImage: "/assets/new project images/project-subcategories/subcategories/hydroponic-farming.webp",
+            cardImage: "/assets/new project images/project-subcategories/subcategories/hydroponic farming projects.png",
             children: [
               { label: "NFT Hydroponic System", href: "/projects/agri/hydroponic/nft", image: "/assets/new project images/nft hydroponic system .png" },
               { label: "Deep Water Culture System", href: "/projects/agri/hydroponic/dwc", image: "/assets/new project images/deep water culture system .jpeg" },
@@ -619,7 +619,7 @@ export const navLinks = [
             label: "Vertical Farming Projects",
             href: "/projects/agri/vertical",
             icon: Layers,
-            cardImage: "/assets/new project images/project-subcategories/subcategories/vertical-farming.webp",
+            cardImage: "/assets/new project images/project-subcategories/subcategories/verticall farming projects.png",
             children: [
               { label: "Indoor Vertical Farms", href: "/projects/agri/vertical/indoor", image: "/assets/new project images/vertical hydroponic toers .png" },
               { label: "Commercial Vertical Farming Units", href: "/projects/agri/vertical/commercial", image: "/assets/new project images/vertical hydroponic toers .png" },
@@ -630,7 +630,7 @@ export const navLinks = [
             label: "Open Field Cultivation Projects",
             href: "/projects/agri/open-field",
             icon: TreeDeciduous,
-            cardImage: "/assets/new project images/project-subcategories/subcategories/open-field-cultivation.webp",
+            cardImage: "/assets/new project images/project-subcategories/subcategories/open cultivation project .png",
             children: [
               { label: "Dragon Fruit Plantation", href: "/projects/agri/open-field/dragon-fruit", image: "/assets/new project images/dragon furit farming .png" },
               { label: "Guava Plantation", href: "/projects/agri/open-field/guava", image: "/assets/new project images/gova fruit farming .png" },
@@ -644,7 +644,7 @@ export const navLinks = [
             label: "Vegetable Cultivation Projects",
             href: "/projects/agri/vegetable",
             icon: Carrot,
-            cardImage: "/assets/new project images/project-subcategories/subcategories/vegetable-cultivations.webp",
+            cardImage: "/assets/new project images/project-subcategories/subcategories/vegetable cultivation .png",
             children: [
               { label: "Cucumber Farming", href: "/projects/agri/vegetable/cucumber", image: "/assets/new project images/cucumber farming .png" },
               { label: "Capsicum Farming", href: "/projects/agri/vegetable/capsicum", image: "/assets/new project images/capcium farming .png" },
@@ -658,7 +658,7 @@ export const navLinks = [
             label: "Medicinal Crop Projects",
             href: "/projects/agri/medicinal",
             icon: Pill,
-            cardImage: "/assets/new project images/project-subcategories/subcategories/medicinal-farming.webp",
+            cardImage: "/assets/new project images/project-subcategories/subcategories/medicnl crop farming .png",
             children: [
               { label: "Aloe Vera Farming", href: "/projects/agri/medicinal/aloe-vera", image: "/assets/new project images/aloe vera farming .png" },
               { label: "Moringa Plantation", href: "/projects/agri/medicinal/moringa", image: "/assets/new project images/morenga farming .png" },
@@ -671,7 +671,7 @@ export const navLinks = [
             label: "Floriculture Projects",
             href: "/projects/agri/floriculture",
             icon: Flower,
-            cardImage: "/assets/new project images/project-subcategories/subcategories/floriculture-projects.webp",
+            cardImage: "/assets/new project images/project-subcategories/subcategories/floriculture farming .png",
             children: [
               { label: "Rose Farming", href: "/projects/agri/floriculture/rose", image: "/assets/new project images/rose farming.png" },
               { label: "Jasmine Farming", href: "/projects/agri/floriculture/jasmine", image: "/assets/new project images/jasmin farming .png" },
@@ -683,7 +683,7 @@ export const navLinks = [
             label: "Mushroom Farming Projects",
             href: "/projects/agri/mushroom",
             icon: Leaf,
-            cardImage: "/assets/new project images/project-subcategories/subcategories/mushroom-farming.webp",
+            cardImage: "/assets/new project images/project-subcategories/subcategories/mushroom  farming projects  .png",
             children: [
               { label: "Oyster Mushroom Units", href: "/projects/agri/mushroom/oyster", image: "/assets/new project images/oyster mushrrom units .png" },
               { label: "Button Mushroom Units", href: "/projects/agri/mushroom/button", image: "/assets/new project images/button mushroom .png" },
@@ -694,7 +694,7 @@ export const navLinks = [
             label: "Urban Farming Projects",
             href: "/projects/agri/urban",
             icon: Building,
-            cardImage: "/assets/new project images/project-subcategories/subcategories/urban-farming.webp",
+            cardImage: "/assets/new project images/project-subcategories/subcategories/urban farming project .png",
             children: [
               { label: "Rooftop Gardening Projects", href: "/projects/agri/urban/rooftop", image: "/assets/new project images/rooftop gardening projects .png" },
               { label: "Terrace Farming Projects", href: "/projects/agri/urban/terrace", image: "/assets/new project images/terrace garden projects  .png" },
@@ -706,7 +706,7 @@ export const navLinks = [
             label: "Nursery Projects",
             href: "/projects/agri/nursery",
             icon: Sprout,
-            cardImage: "/assets/new project images/project-subcategories/subcategories/nursery-projects.webp",
+            cardImage: "/assets/new project images/project-subcategories/subcategories/nursery project .png",
             children: [
               { label: "Commercial Plant Nursery", href: "/projects/agri/nursery/commercial", image: "/assets/new project images/commercial plan nursery .png" },
               { label: "Seedling Production Units", href: "/projects/agri/nursery/seedling" },
@@ -719,13 +719,13 @@ export const navLinks = [
         label: "Aquaculture Farming Projects",
         href: "/projects/aquaculture",
         icon: "/assets/header/project-drop-down-icon/aquaculture-farming-projects-.webp",
-        cardImage: "/assets/compressed/projects/main-page/aquaculture-farming.webp",
+        cardImage: "/assets/new project images/main-page/aquaculture projects .png",
         children: [
           {
             label: "Fish Farming Projects",
             href: "/projects/aquaculture/fish",
             icon: Fish,
-            cardImage: "/assets/new project images/project-subcategories/subcategories/fish-farming.webp",
+            cardImage: "/assets/new project images/project-subcategories/subcategories/frish farming .png",
             children: [
               { label: "Traditional Fish Farming", href: "/projects/aquaculture/fish/traditional", image: "/assets/new project images/traditional fish farming .png" },
               { label: "Intensive Fish Farming", href: "/projects/aquaculture/fish/intensive", image: "/assets/new project images/intensive fish farming .png" },
@@ -736,7 +736,7 @@ export const navLinks = [
             label: "Biofloc Farming Projects",
             href: "/projects/aquaculture/biofloc",
             icon: Waves,
-            cardImage: "/assets/new project images/project-subcategories/subcategories/biofloc-farming.webp",
+            cardImage: "/assets/new project images/project-subcategories/subcategories/biofloc  farming project .png",
             children: [
               { label: "Biofloc Fish Farming", href: "/projects/aquaculture/biofloc/fish", image: "/assets/new project images/biofloc fish farming .png" },
               { label: "Biofloc Shrimp Farming", href: "/projects/aquaculture/biofloc/shrimp", image: "/assets/new project images/shrimp farming .png" },
@@ -746,7 +746,7 @@ export const navLinks = [
             label: "Shrimp Farming Projects",
             href: "/projects/aquaculture/shrimp",
             icon: Waves,
-            cardImage: "/assets/new project images/project-subcategories/subcategories/shrimp-farming.webp",
+            cardImage: "/assets/new project images/project-subcategories/subcategories/shrimp farming .png",
             children: [
               { label: "Vannamei Shrimp Farming", href: "/projects/aquaculture/shrimp/vannamei", image: "/assets/new project images/vannamei shrimp farming .png" },
               { label: "Freshwater Prawn Farming", href: "/projects/aquaculture/shrimp/prawn", image: "/assets/new project images/shrimp farming .png" },
@@ -756,7 +756,7 @@ export const navLinks = [
             label: "Crab Farming Projects",
             href: "/projects/aquaculture/crab",
             icon: Waves,
-            cardImage: "/assets/new project images/project-subcategories/subcategories/crab-farming.webp",
+            cardImage: "/assets/new project images/project-subcategories/subcategories/crab farming projects .jpeg",
             children: [
               { label: "Mud Crab Farming", href: "/projects/aquaculture/crab/mud-crab", image: "/assets/new project images/mud crab .png" },
             ]
@@ -765,7 +765,7 @@ export const navLinks = [
             label: "Integrated Aquaculture",
             href: "/projects/aquaculture/integrated",
             icon: RefreshCcw,
-            cardImage: "/assets/new project images/project-subcategories/subcategories/integrated-aquaculture.webp",
+            cardImage: "/assets/new project images/project-subcategories/subcategories/intergarated aqua farming .png",
             children: [
               { label: "Aquaponics Systems", href: "/projects/aquaculture/integrated/aquaponics", image: "/assets/new project images/aquaponics system .png" },
               { label: "Integrated Fish + Crop Farming", href: "/projects/aquaculture/integrated/fish-crop", image: "/assets/new project images/integrated fish +crop farming .png" },
@@ -777,13 +777,13 @@ export const navLinks = [
         label: "Livestock Farming Projects",
         href: "/projects/livestock",
         icon: "/assets/header/project-drop-down-icon/livestock-farming-projecs-.webp",
-        cardImage: "/assets/compressed/projects/main-page/livestock-farming.webp",
+        cardImage: "/assets/new project images/main-page/live stock project .png",
         children: [
           {
             label: "Goat Farming",
             href: "/projects/livestock/goat",
             icon: Shield,
-            cardImage: "/assets/new project images/project-subcategories/subcategories/goat-farming.webp",
+            cardImage: "/assets/new project images/project-subcategories/subcategories/goat farming .png",
             children: [
               { label: "Commercial Goat Farming", href: "/projects/livestock/goat/commercial", image: "/assets/new project images/goat farming .png" },
               { label: "Integrated Goat Farming", href: "/projects/livestock/goat/integrated", image: "/assets/new project images/goat and fish farmign.png" },
@@ -793,7 +793,7 @@ export const navLinks = [
             label: "Sheep Farming",
             href: "/projects/livestock/sheep",
             icon: Scissors,
-            cardImage: "/assets/new project images/project-subcategories/subcategories/sheep-farming.webp",
+            cardImage: "/assets/new project images/project-subcategories/subcategories/ship farming .png",
             children: [
               { label: "Commercial Sheep Farming", href: "/projects/livestock/sheep/commercial", image: "/assets/new project images/comercial sheep farming .png" },
             ]
@@ -802,7 +802,7 @@ export const navLinks = [
             label: "Dairy Farming",
             href: "/projects/livestock/dairy",
             icon: Milk,
-            cardImage: "/assets/new project images/project-subcategories/subcategories/dairy-farming.webp",
+            cardImage: "/assets/new project images/project-subcategories/subcategories/dairy farming .png",
             children: [
               { label: "Dairy Farm Setup", href: "/projects/livestock/dairy/setup", image: "/assets/new project images/dairy farm setup .png" },
               { label: "Automated Dairy Systems", href: "/projects/livestock/dairy/automated", image: "/assets/new project images/automated dairy system .png" },
@@ -812,7 +812,7 @@ export const navLinks = [
             label: "Poultry Farming",
             href: "/projects/livestock/poultry",
             icon: Bird,
-            cardImage: "/assets/new project images/project-subcategories/subcategories/poultry-farming.webp",
+            cardImage: "/assets/new project images/project-subcategories/subcategories/poultry farming .png",
             children: [
               { label: "Broiler Chicken Farms", href: "/projects/livestock/poultry/broiler", image: "/assets/new project images/brolier chicken farm .png" },
               { label: "Layer Chicken Farms", href: "/projects/livestock/poultry/layer", image: "/assets/new project images/layer chicken farming .png" },
@@ -822,7 +822,7 @@ export const navLinks = [
             label: "Integrated Livestock Farming",
             href: "/projects/livestock/integrated",
             icon: Heart,
-            cardImage: "/assets/new project images/project-subcategories/subcategories/integrated-livestock-farming.webp",
+            cardImage: "/assets/new project images/project-subcategories/subcategories/intergrated live stock farming .png",
             children: [
               { label: "Goat + Fish Farming", href: "/projects/livestock/integrated/goat-fish", image: "/assets/new project images/goat and fish farmign.png" },
               { label: "Dairy + Crop Farming", href: "/projects/livestock/integrated/dairy-crop", image: "/assets/new project images/dairy + crop farming .png" },
@@ -834,13 +834,13 @@ export const navLinks = [
         label: "Farm Engineering Projects",
         href: "/projects/engineering",
         icon: "/assets/header/project-drop-down-icon/farm-engineering-projects.webp",
-        cardImage: "/assets/compressed/projects/main-page/farm-engineering.webp",
+        cardImage: "/assets/new project images/main-page/farm engineering project .png",
         children: [
           {
             label: "Farm Infrastructure Projects",
             href: "/projects/engineering/infrastructure",
             icon: Factory,
-            cardImage: "/assets/new project images/project-subcategories/subcategories/farm-infrastructure.webp",
+            cardImage: "/assets/new project images/project-subcategories/subcategories/farm infrastructure project .png",
             children: [
               { label: "Cold Storage", href: "/projects/engineering/infrastructure/cold-storage", image: "/assets/new project images/project-subcategories/types/cold-storage.jpg" },
               { label: "Pack House", href: "/projects/engineering/infrastructure/pack-house", image: "/assets/new project images/packing house .png" },
@@ -852,7 +852,7 @@ export const navLinks = [
             label: "Water Management Projects",
             href: "/projects/engineering/water",
             icon: Droplets,
-            cardImage: "/assets/new project images/project-subcategories/subcategories/water-management.webp",
+            cardImage: "/assets/new project images/project-subcategories/subcategories/water management project .png",
             children: [
               { label: "Rainwater Harvesting", href: "/projects/engineering/water/rainwater", image: "/assets/new project images/rain water harwesting .png" },
               { label: "Pond Liner Installation", href: "/projects/engineering/water/pond-liner", image: "/assets/new project images/pond liner  installation .png" },
@@ -864,7 +864,7 @@ export const navLinks = [
             label: "Solar Agriculture Projects",
             href: "/projects/engineering/solar",
             icon: Sun,
-            cardImage: "/assets/new project images/project-subcategories/subcategories/solar-agriculture.webp",
+            cardImage: "/assets/new project images/project-subcategories/subcategories/solar agriculture project   .png",
             children: [
               { label: "Solar Crop Dryer", href: "/projects/engineering/solar/crop-dryer", image: "/assets/new project images/solar driyer .png" },
               { label: "Solar Heater", href: "/projects/engineering/solar/heater", image: "/assets/new project images/solar heater .png" },
@@ -876,7 +876,7 @@ export const navLinks = [
             label: "Farm Development Projects",
             href: "/projects/engineering/development",
             icon: Map,
-            cardImage: "/assets/new project images/project-subcategories/subcategories/farm-development.webp",
+            cardImage: "/assets/new project images/project-subcategories/subcategories/farm development project .png",
             children: [
               { label: "Land Surveying", href: "/projects/engineering/development/surveying", image: "/assets/new project images/lan surveying .png" },
               { label: "Topographic Mapping", href: "/projects/engineering/development/topographic", image: "/assets/new project images/topography surveying .png" },
@@ -1046,26 +1046,26 @@ export const navLinks = [
 ];
 
 export const igoBrands = [
-  { id: "igo-agritech-farms", name: "IGO Agritech Farms", logo: "/assets/compressed/brands/brand-1-jpg.webp", tag: "Core Business", desc: "India's leading Agri Engineering & Consulting brand — polyhouse, hydroponics, vertical farming, precision farming and livestock projects. Pan-India. MSME Award 2024." },
-  { id: "farmers-factory", name: "Farmers Factory", logo: "/assets/compressed/brands/brand-2-jpg.webp", tag: "Processing & Mfg", desc: "Farm to shop distribution brand. Bringing fresh farm produce directly to retail stores and consumers across India." },
-  { id: "valluvam", name: "Valluvam", logo: "/assets/compressed/brands/brand-3-jpg.webp", tag: "Agri Consultancy", desc: "Branded grocery staples celebrating Tamil heritage. Quality everyday essentials — As Pure As Nature." },
-  { id: "protein-cuts", name: "Protein Cuts", logo: "/assets/compressed/brands/brand-4-jpg.webp", tag: "Farm-to-Table", desc: "Premium meat, fish, and eggs retail brand. Fresh protein products straight from IGO's own livestock farms." },
-  { id: "igo-agrimart", name: "IGO Agri Mart", logo: "/assets/compressed/brands/brand-5-jpg.webp", tag: "Distribution", desc: "Farm inputs and distribution network connecting quality agricultural inputs directly to farmers across India." },
-  { id: "igo-nursery", name: "IGO Nursery", logo: "/assets/compressed/brands/brand-6-jpg.webp", tag: "Plant Propagation", desc: "Premium nursery and landscaping solutions — supplying quality plants, seeds and horticultural products pan-India." },
-  { id: "palm-cafe", name: "Palm Cafe", logo: "/assets/compressed/brands/palm-cafe.webp", tag: "F&B", desc: "The Healthy Food Joint — farm-to-table F&B brand creating 5,000 jobs for youth using IGO's own farm produce." },
-  { id: "igo-exports-imports", name: "IGO Exports & Imports", logo: "/assets/compressed/brands/igo-exports.webp", tag: "Trade", desc: "International trade division connecting Indian agri products to global markets and bringing world-class inputs to India." },
-  { id: "igo-tech-farming-scientists", name: "IGO Tech Farming Scientist Foundation", logo: "/assets/compressed/brands/igo-foundation.webp", tag: "Foundation", desc: "Research and education foundation advancing agri-science and technology for the next generation of tech farming scientists." },
-  { id: "igo-mart", name: "IGO Mart", logo: "", tag: "Retail", desc: "Supermarket chain offering quality products at accessible prices — part of IGO Group's consumer retail vision." },
-  { id: "igo-fintech", name: "IGO Fintech", logo: "", tag: "Fintech", desc: "Micro finance unit providing financial access and support to farmers and agricultural entrepreneurs across India." },
+  { id: "igo-agritech-farms", name: "IGO Agritech Farms", logo: "/assets/brands/igo agritech farms .jpg", tag: "Core Business", desc: "India's leading Agri Engineering & Consulting brand — polyhouse, hydroponics, vertical farming, precision farming and livestock projects. Pan-India. MSME Award 2024." },
+  { id: "farmers-factory", name: "Farmers Factory", logo: "/assets/brands/farmers factory .jpg", tag: "Processing & Mfg", desc: "Farm to shop distribution brand. Bringing fresh farm produce directly to retail stores and consumers across India." },
+  { id: "valluvam", name: "Valluvam", logo: "/assets/brands/valluvam .jpg", tag: "Agri Consultancy", desc: "Branded grocery staples celebrating Tamil heritage. Quality everyday essentials — As Pure As Nature." },
+  { id: "protein-cuts", name: "Protein Cuts", logo: "/assets/brands/proten cuts .jpg", tag: "Farm-to-Table", desc: "Premium meat, fish, and eggs retail brand. Fresh protein products straight from IGO's own livestock farms." },
+  { id: "igo-agrimart", name: "IGO Agri Mart", logo: "/assets/brands/igo agri mart .jpg", tag: "Distribution", desc: "Farm inputs and distribution network connecting quality agricultural inputs directly to farmers across India." },
+  { id: "igo-nursery", name: "IGO Nursery", logo: "/assets/brands/igo nursery .jpg", tag: "Plant Propagation", desc: "Premium nursery and landscaping solutions — supplying quality plants, seeds and horticultural products pan-India." },
+  { id: "palm-cafe", name: "Palm Cafe", logo: "/assets/brands/palm cafe .jpg", tag: "F&B", desc: "The Healthy Food Joint — farm-to-table F&B brand creating 5,000 jobs for youth using IGO's own farm produce." },
+  { id: "igo-exports-imports", name: "IGO Exports & Imports", logo: "/assets/brands/tech farming export .jpg", tag: "Trade", desc: "International trade division connecting Indian agri products to global markets and bringing world-class inputs to India." },
+  { id: "igo-tech-farming-scientists", name: "IGO Tech Farming Scientist Foundation", logo: "/assets/brands/igo-foundation.jpeg", tag: "Foundation", desc: "Research and education foundation advancing agri-science and technology for the next generation of tech farming scientists." },
+  { id: "igo-mart", name: "IGO Mart", logo: "/assets/brands/igo mart .jpg", tag: "Retail", desc: "Supermarket chain offering quality products at accessible prices — part of IGO Group's consumer retail vision." },
+  { id: "igo-fintech", name: "IGO Fintech", logo: "/assets/brands/igo fintech .jpg", tag: "Fintech", desc: "Micro finance unit providing financial access and support to farmers and agricultural entrepreneurs across India." },
   { id: "igo-farm-land-estates", name: "IGO Farm Land Estates", logo: "", tag: "Real Estate", desc: "Agricultural land and property development — creating investment opportunities in farmland across India." },
   { id: "igo-wealth-management", name: "IGO Wealth Management Services", logo: "", tag: "Investment", desc: "JV investment project providing wealth management and financial planning services to IGO Group stakeholders." },
   { id: "igo-franchise", name: "IGO Franchise", logo: "", tag: "Franchise", desc: "Franchise operations division expanding IGO Group brands across India through a structured franchise model." },
-  { id: "igo-farmgate-mandi", name: "IGO Farmgate Mandi", logo: "", tag: "Programme", desc: "Guaranteed buy-back programme for farmers — empowering agricultural entrepreneurs with assured market access." },
+  { id: "igo-farmgate-mandi", name: "IGO Farmgate Mandi", logo: "/assets/brands/igo farm gate mandi.jpg", tag: "Programme", desc: "Guaranteed buy-back programme for farmers — empowering agricultural entrepreneurs with assured market access." },
   { id: "igo-crop-care", name: "IGO Crop Care", logo: "", tag: "Agri Input", desc: "Quality crop care solutions for optimum yield and sustainable farming practices across all crop types." },
   { id: "igo-organic-pharmacy", name: "IGO Organic Pharmacy", logo: "", tag: "Healthcare", desc: "Future division developing organic pharmaceutical products from IGO's farm network — bridging agriculture and health." },
   { id: "igo-natural-cosmetics", name: "IGO Natural Cosmetics", logo: "", tag: "Lifestyle", desc: "Future personal care brand using natural farm-sourced ingredients. Farm to skin — the next frontier for IGO Group." },
   { id: "igo-farm-factories", name: "IGO Farm Factories", logo: "", tag: "Infrastructure", desc: "Industrial-scale farm facilities integrating processing, storage, and logistics for high-efficiency agri-chains." },
-  { id: "igo-agrimart-sub", name: "IGO AgriMart", logo: "", tag: "Distribution", desc: "Specialized input supply centers for advanced farming technologies and sustainable inputs." },
+  { id: "igo-agrimart-sub", name: "IGO AgriMart", logo: "/assets/brands/igo agri mart .jpg", tag: "Distribution", desc: "Specialized input supply centers for advanced farming technologies and sustainable inputs." },
   { id: "india-green", name: "India Green", logo: "", tag: "Sustainability", desc: "Environmental conservation and green initiative division focused on carbon neutrality and sustainable agri-ecosystems." },
   { id: "india-green-organics", name: "India Green Organics", desc: "Certified organic production and distribution arm ensuring chemical-free food for a healthier India.", logo: "", tag: "Organic" },
   { id: "igo-farm-loans-subsidy", name: "IGO Farm Loans, Subsidy & Grants", logo: "", tag: "Finance", desc: "Expert guidance and financial facilitation for farmers to access government agricultural subsidies and low-interest loans." },

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useMemo, useRef, useCallback } from "react";
 import { useImagePreloader } from "@/hooks/useImagePreloader";
 import { Link, useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import SEO from "@/components/SEO";
 import { ArrowRight, Wheat, Fish, Tractor, Droplets, Leaf, Shield, Hammer, Microscope, Cog, Database, Zap, Binary, PencilRuler, Box, ChevronLeft, ChevronRight } from "lucide-react";
 import { stats, projects, services, navLinks, igoBrands } from "@/data/siteData";
@@ -960,14 +961,15 @@ const BrandsSection = () => {
           {displayBrands.map((b, i) => (
             <div
               key={`${b.id}-${i}`}
+              aria-hidden={i >= igoBrands.length ? "true" : undefined}
               className="shrink-0 w-80 group bg-white border border-black/8 hover:border-agri-gold-500/40 rounded-[2.5rem] p-8 transition-all duration-700 hover:-translate-y-4 hover:shadow-2xl hover:shadow-black/10 flex flex-col"
             >
-              <div className="w-full h-40 rounded-3xl bg-slate-50 border border-black/5 flex items-center justify-center mb-8 p-6 transition-all duration-500 group-hover:bg-white group-hover:border-black/10 overflow-hidden relative">
+              <div className="w-full h-56 rounded-3xl bg-slate-50 border border-black/5 flex items-center justify-center mb-8 transition-all duration-500 group-hover:bg-white group-hover:border-black/10 overflow-hidden relative">
                 {b.logo ? (
                   <img
                     src={b.logo}
                     alt={b.name}
-                    className="max-w-full max-h-full w-auto h-auto object-contain transition-transform duration-700 group-hover:scale-110"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                 ) : (
                   <div className="flex flex-col items-center gap-3">
@@ -1038,12 +1040,16 @@ const Index = () => {
 
   return (
     <div className="bg-white min-h-screen selection:bg-agri-green-50 selection:text-agri-green-800 overflow-x-hidden">
+      <h1 className="sr-only">IGO Agritech Farms — India's Leading Agri Engineering & Consulting</h1>
       <SEO
         title="IGO Agritech Farms | India's Leading Agri Engineering & Consulting"
         description="IGO Agritech Farms — India's leading Agri Engineering & Agri Consulting brand. 15+ years, 15,000+ projects in precision farming, polyhouse, hydroponics, vertical farming & agri infrastructure across India."
         keywords="agri engineering, agri consulting, precision farming, polyhouse farming, hydroponics, vertical farming, mushroom farming, biofloc, agri startup India, IGO Agritech, farm infrastructure Chennai"
         url="/"
       />
+      <Helmet>
+        <meta name="description" content="IGO Agritech Farms — India's leading Agri Engineering & Consulting brand. Precision farming, polyhouse, hydroponics & agri startup solutions across India." />
+      </Helmet>
       {hasOffers ? <OffersBanner heroMode /> : <HeroSection />}
       <WhyChooseSection />
       <VisionSection />

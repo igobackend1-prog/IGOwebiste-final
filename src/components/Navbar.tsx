@@ -278,7 +278,7 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
-  const [enrichedNav, setEnrichedNav] = useState(navLinks);
+  const [enrichedNav, setEnrichedNav] = useState<any[]>(navLinks);
   const hoverTimeout = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
@@ -321,7 +321,14 @@ const Navbar = () => {
   const logoInvertClass = "";
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${navClasses}`}>
+    <>
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[9999] focus:px-4 focus:py-2 focus:bg-white focus:text-black focus:rounded focus:shadow-lg focus:font-semibold"
+      >
+        Skip to main content
+      </a>
+    <nav aria-label="Main navigation" className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${navClasses}`}>
       <div className="container mx-auto px-4 lg:px-5 xl:px-6 flex items-center justify-between h-[72px] lg:h-[80px] xl:h-[88px] max-w-full overflow-visible">
         <Link to="/" className="flex items-center gap-2 lg:gap-3 group z-50 shrink-0">
           <img src={companyInfo.logo} alt="IGO Logo" loading="eager" className={`h-[56px] lg:h-[64px] xl:h-[72px] w-auto group-hover:scale-105 transition-transform mix-blend-multiply contrast-125 brightness-105 ${logoInvertClass}`} />
@@ -383,7 +390,7 @@ const Navbar = () => {
 
           <Link
             to="/agri-startup-platform"
-            className="px-3 py-1.5 lg:px-3 lg:py-2 xl:px-5 xl:py-2.5 text-[9px] lg:text-[10px] xl:text-xs font-bold rounded-full transition-all uppercase tracking-wider xl:tracking-widest bg-black text-white shadow-lg shadow-black/10 whitespace-nowrap shrink-0 max-w-[160px] xl:max-w-none truncate"
+            className="px-3 py-1.5 lg:px-3 lg:py-2 xl:px-5 xl:py-2.5 text-[9px] lg:text-[10px] xl:text-xs font-bold rounded-full transition-all uppercase tracking-wider xl:tracking-widest bg-black text-white shadow-lg shadow-black/10 whitespace-nowrap shrink-0 lg:max-w-[200px] xl:max-w-none"
           >
             Agri Startup Platform
           </Link>
@@ -392,6 +399,8 @@ const Navbar = () => {
         {/* Mobile Toggle */}
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
+          aria-label={mobileOpen ? "Close navigation menu" : "Open navigation menu"}
+          aria-expanded={mobileOpen}
           className={`lg:hidden p-2 z-50 rounded-full hover:bg-black/5 transition-colors ${textColorClass}`}
         >
           {mobileOpen ? <X className="w-6 h-6 text-black" /> : <Menu className="w-6 h-6" />}
@@ -426,6 +435,7 @@ const Navbar = () => {
         )}
       </AnimatePresence>
     </nav>
+    </>
   );
 };
 

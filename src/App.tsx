@@ -33,6 +33,8 @@ const AdminDashboard = lazy(() => import("./pages/AdminDashboard"));
 const AdsLogin = lazy(() => import("./pages/AdsLogin"));
 const AdsDashboard = lazy(() => import("./pages/AdsDashboard"));
 const OffersPage = lazy(() => import("./pages/OffersPage"));
+const Privacy = lazy(() => import("./pages/Privacy"));
+const Terms = lazy(() => import("./pages/Terms"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 import PageLoader from "@/components/ui/PageLoader";
 
@@ -88,7 +90,7 @@ const SiteLayout = ({ children }: { children: React.ReactNode }) => {
     <>
       {!isAdmin && <Navbar />}
       <ErrorBoundary>
-        <main className="min-h-screen relative z-10">{children}</main>
+        <main id="main-content" className="min-h-screen relative z-10">{children}</main>
       </ErrorBoundary>
       {!isAdmin && <Footer />}
       {!isAdmin && <Chatbot />}
@@ -139,6 +141,8 @@ const AppRoutes = () => {
           <Route path="/offers" element={<OffersPage />} />
           <Route path="/ads/login" element={<AdsLogin />} />
           <Route path="/ads/dashboard" element={<AdsDashboard />} />
+          <Route path="/privacy" element={<Privacy />} />
+          <Route path="/terms" element={<Terms />} />
           {/* /startup-platform is an alias handled by /agri-startup-platform above */}
           <Route path="*" element={<NotFound />} />
         </Routes>
