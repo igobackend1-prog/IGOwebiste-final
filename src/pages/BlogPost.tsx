@@ -25,7 +25,7 @@ const BlogPost = () => {
   }
 
   return (
-    <div className="pt-20 bg-white">
+    <div className="pt-24 bg-white">
       <SEO
         title={post.title}
         description={post.excerpt}
@@ -109,6 +109,11 @@ const BlogPost = () => {
                   <img
                     src={post.image}
                     alt={post.title}
+                    width={800}
+                    height={500}
+                    loading="eager"
+                    decoding="async"
+                    fetchPriority="high"
                     className="w-full h-full object-cover hover:scale-105 transition-transform duration-700 ease-out"
                   />
                 </div>
@@ -189,7 +194,7 @@ const BlogPost = () => {
               <Link key={related.id} to={`/blog/${related.id}`} className="group h-full">
                 <div className="flex flex-col h-full space-y-8">
                   <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-md group-hover:shadow-xl transition-shadow duration-500">
-                    <img src={related.image} alt={related.title} loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                    <img src={related.image} alt={related.title} width={600} height={450} loading="lazy" decoding="async" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                   </div>
                   <div className="space-y-3 px-1">
                     <div className="text-[10px] font-black text-primary uppercase tracking-[0.3em]">{related.date}</div>

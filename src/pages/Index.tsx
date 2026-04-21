@@ -47,13 +47,13 @@ const HeroSection = () => {
     return () => clearTimeout(timer);
   }, [current]);
 
-  // Navbar scales: h-[72px] mobile → h-[80px] lg → h-[88px] xl.
+  // Navbar scales: h-[88px] mobile → h-[104px] lg → h-[120px] xl.
   // Detect current navbar height based on screen width for responsive layout.
-  const [navH, setNavH] = useState(72);
+  const [navH, setNavH] = useState(88);
   useEffect(() => {
     const update = () => {
       const w = window.innerWidth;
-      setNavH(w >= 1280 ? 88 : w >= 1024 ? 80 : 72);
+      setNavH(w >= 1280 ? 120 : w >= 1024 ? 104 : 88);
     };
     update();
     window.addEventListener("resize", update);
@@ -381,7 +381,7 @@ const VisionSection = () => (
             {/* large quote mark */}
             <div className="text-agri-gold-500/20 text-[9rem] font-serif leading-none select-none -mb-8 -mt-4">&ldquo;</div>
             <p className="text-white text-2xl md:text-3xl font-black leading-snug tracking-tight">
-              To be the leading pan-India brand in precision agriculture and Agri Engineering space.
+              To become India&rsquo;s most trusted and innovative agri-tech brand, transforming every available space into sustainable and high-yield farming ecosystems.
             </p>
           </div>
 
@@ -668,7 +668,7 @@ const ProductEcosystem = () => {
           </Link>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-6 md:gap-8 xl:gap-4">
           {productLinks.map((cat, i) => (
             <motion.div
               key={cat.label}
@@ -676,7 +676,7 @@ const ProductEcosystem = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="group relative h-[320px] sm:h-[400px] md:h-[500px] rounded-[2rem] sm:rounded-[3rem] overflow-hidden bg-slate-100 border border-black/5 shadow-sm hover:shadow-2xl transition-all duration-700"
+              className="group relative h-[320px] sm:h-[400px] md:h-[500px] xl:h-[420px] rounded-[2rem] sm:rounded-[3rem] overflow-hidden bg-slate-100 border border-black/5 shadow-sm hover:shadow-2xl transition-all duration-700"
             >
               <Link to={cat.href} className="absolute inset-0 z-20" />
               <img
@@ -685,9 +685,9 @@ const ProductEcosystem = () => {
                 loading="lazy"
                 className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
               />
-              <div className="absolute inset-x-0 bottom-0 p-10 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-10 transition-opacity duration-500 opacity-90 group-hover:opacity-100">
+              <div className="absolute inset-x-0 bottom-0 p-10 xl:p-6 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-10 transition-opacity duration-500 opacity-90 group-hover:opacity-100">
                 <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-white/50 mb-3 block">Product Sector {i + 1}</span>
-                <h3 className="text-3xl font-black text-white mb-6 leading-tight group-hover:translate-x-2 transition-transform duration-500 drop-shadow-lg">{cat.label}</h3>
+                <h3 className="text-3xl xl:text-xl font-black text-white mb-6 xl:mb-3 leading-tight group-hover:translate-x-2 transition-transform duration-500 drop-shadow-lg">{cat.label}</h3>
                 <div className="flex items-center gap-3 text-[11px] font-bold uppercase tracking-widest text-agri-gold-500 opacity-0 group-hover:opacity-100 transition-all transform translate-y-4 group-hover:translate-y-0">
                   View Catalog <ArrowRight className="w-4 h-4" />
                 </div>

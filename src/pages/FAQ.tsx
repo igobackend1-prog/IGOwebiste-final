@@ -16,7 +16,7 @@ const FAQ = () => {
   );
 
   return (
-    <div className="pt-20 bg-agri-earth-15">
+    <div className="pt-24 bg-agri-earth-15">
       <SEO
         title="FAQ | Frequently Asked Questions — IGO Agritech Farms"
         description="Find answers to common questions about IGO Agritech Farms' services, polyhouse construction, hydroponics setup, agri consulting, pricing, and project timelines."

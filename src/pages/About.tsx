@@ -1,4 +1,5 @@
-import { stats, companyInfo } from "@/data/siteData";
+import { useRef, useEffect } from "react";
+import { stats, companyInfo, igoBrands } from "@/data/siteData";
 import SEO from "@/components/SEO";
 import { motion, Variants } from "framer-motion";
 import { Award, Leaf, Lightbulb, Handshake, Star, ArrowRight, CheckCircle } from "lucide-react";
@@ -8,6 +9,69 @@ import OptimizedImage from "@/components/ui/OptimizedImage";
 const fader: Variants = {
   hidden: { opacity: 0, y: 32 },
   show: { opacity: 1, y: 0, transition: { duration: 0.9, ease: [0.16, 1, 0.3, 1] } },
+};
+
+// ─── Logo-only ticker ───────────────────────────────────────────────────────
+const L_LOGO = 180; // px per logo slot width
+const L_GAP  = 40;  // gap between logos
+const L_STEP = L_LOGO + L_GAP;
+const L_HALF = igoBrands.length * L_STEP;
+const L_SPEED = 0.8; // px per frame
+
+const AboutBrandsMarquee = () => {
+  const stripRef = useRef<HTMLDivElement>(null);
+  const rafRef   = useRef<number>(0);
+  const pos      = useRef(0);
+
+  const displayBrands = [...igoBrands, ...igoBrands];
+
+  useEffect(() => {
+    const strip = stripRef.current;
+    if (!strip) return;
+    const tick = () => {
+      pos.current += L_SPEED;
+      if (pos.current >= L_HALF) pos.current -= L_HALF;
+      strip.style.transform = `translateX(${-pos.current}px)`;
+      rafRef.current = requestAnimationFrame(tick);
+    };
+    rafRef.current = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(rafRef.current);
+  }, []);
+
+  return (
+    <div className="relative overflow-hidden py-4 mt-8">
+      {/* Edge fades */}
+      <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-agri-green-950 to-transparent z-10 pointer-events-none" />
+      <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-agri-green-950 to-transparent z-10 pointer-events-none" />
+
+      {/* Ticker strip */}
+      <div
+        ref={stripRef}
+        className="flex will-change-transform"
+        style={{ gap: `${L_GAP}px` }}
+      >
+        {displayBrands.map((b, i) => (
+          <div
+            key={`${b.id}-${i}`}
+            aria-hidden={i >= igoBrands.length ? "true" : undefined}
+            className="shrink-0 flex items-center justify-center bg-white/10 rounded-2xl border border-white/10 hover:border-white/25 transition-all duration-300 overflow-hidden"
+            style={{ width: `${L_LOGO}px`, height: `${L_LOGO}px` }}
+          >
+            {b.logo ? (
+              <img
+                src={b.logo}
+                alt={b.name}
+                draggable={false}
+                className="w-full h-full object-contain select-none"
+              />
+            ) : (
+              <span className="text-[9px] font-bold uppercase tracking-widest text-white text-center px-2 leading-tight">{b.name}</span>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 };
 
 const AWARDS = [
@@ -496,36 +560,7 @@ const About = () => (
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-5">
-          {[
-            { name: "Farmers Factory", logo: "https://www.igoagritechfarms.com/images/foot1.png", desc: "Processing & Manufacturing" },
-            { name: "Valluvam",        logo: "https://www.igoagritechfarms.com/images/foot2.png", desc: "Agri Consultancy" },
-            { name: "IGO Nursery",    logo: "https://www.igoagritechfarms.com/images/foot3.png", desc: "Plant Propagation" },
-            { name: "Protein Cuts",   logo: "https://www.igoagritechfarms.com/images/foot4.png", desc: "Farm-to-Table" },
-            { name: "Financial Svcs", logo: "https://www.igoagritechfarms.com/images/foot5.png", desc: "Agri Finance" },
-          ].map((brand, i) => (
-            <motion.div
-              key={brand.name}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: i * 0.09 }}
-              className="group bg-white/10 border border-white/20 hover:bg-white hover:border-white rounded-2xl p-6 text-center transition-all duration-400 hover:-translate-y-1 hover:shadow-2xl"
-            >
-              {/* Logo */}
-              <div className="w-16 h-16 rounded-xl bg-white/15 group-hover:bg-primary/10 flex items-center justify-center mx-auto mb-4 p-2.5 transition-colors">
-                <img
-                  src={brand.logo}
-                  alt={brand.name}
-                  className="w-full h-full object-contain"
-                  onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }}
-                />
-              </div>
-              <p className="text-white group-hover:text-agri-earth-900 font-bold text-sm mb-1.5 leading-snug transition-colors">{brand.name}</p>
-              <p className="text-white/60 group-hover:text-black/50 text-[10px] font-semibold uppercase tracking-wider transition-colors">{brand.desc}</p>
-            </motion.div>
-          ))}
-        </div>
+        <AboutBrandsMarquee />
       </div>
     </section>
 

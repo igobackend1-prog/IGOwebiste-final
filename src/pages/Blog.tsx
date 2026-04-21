@@ -1,10 +1,60 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, User, Search, BookOpen } from "lucide-react";
 import { blogPosts } from "@/data/siteData";
 import SEO from "@/components/SEO";
 
+// Smooth-loading image with skeleton shimmer + fade-in.
+// `priority` gives above-the-fold cards eager loading + high fetch priority
+// so the browser doesn't defer them behind lazy images further down.
+const BlogImage = ({
+  src,
+  alt,
+  priority = false,
+}: {
+  src: string;
+  alt: string;
+  priority?: boolean;
+}) => {
+  const [loaded, setLoaded] = useState(false);
+  const [error, setError] = useState(false);
+
+  return (
+    <div className="relative w-full h-full">
+      {/* Skeleton shimmer — shown while loading */}
+      {!loaded && !error && (
+        <div className="absolute inset-0 bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 animate-pulse rounded-none" />
+      )}
+
+      {/* Actual image — fades in once loaded */}
+      {!error ? (
+        <img
+          src={src}
+          alt={alt}
+          width={800}
+          height={500}
+          loading={priority ? "eager" : "lazy"}
+          decoding="async"
+          fetchPriority={priority ? "high" : "low"}
+          onLoad={() => setLoaded(true)}
+          onError={() => setError(true)}
+          className={`w-full h-full object-cover group-hover:scale-105 transition-all duration-1000 ${
+            loaded ? "opacity-100" : "opacity-0"
+          }`}
+          style={{ transition: "opacity 0.6s ease, transform 1s ease" }}
+        />
+      ) : (
+        /* Fallback if image fails */
+        <div className="absolute inset-0 bg-agri-green-950/10 flex items-center justify-center">
+          <span className="text-xs text-muted-foreground font-medium">Image unavailable</span>
+        </div>
+      )}
+    </div>
+  );
+};
+
 const Blog = () => (
-  <div className="pt-20">
+  <div className="pt-24">
     <SEO
       title="Blog | Agriculture Insights & News — IGO Agritech Farms"
       description="Read the latest agriculture insights, company news, awards, and farming tips from IGO Agritech Farms. Articles on polyhouse, hydroponics, vertical farming, agri careers, and more."
@@ -22,7 +72,7 @@ const Blog = () => (
               IGO Journal
             </div>
             <h1 className="text-3xl md:text-4xl font-bold leading-tight tracking-tight mb-4">
-              Agri <span className="text-primary italic font-serif">Insights</span> & News
+              Agri <span className="text-primary italic font-serif">Insights</span> &amp; News
             </h1>
             <p className="text-base text-muted-foreground font-medium leading-relaxed">
               Perspectives on modern farming technology, sustainable agriculture, company milestones, and agritech breakthroughs.
@@ -62,12 +112,12 @@ const Blog = () => (
     <section className="py-16 bg-white">
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
-          {blogPosts.map((post) => (
+          {blogPosts.map((post, index) => (
             <article key={post.id} className="premium-card overflow-hidden group">
               <Link to={`/blog/${post.id}`}>
-                <div className="aspect-[16/10] overflow-hidden bg-muted relative">
-                  <img src={post.image} alt={post.title} loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" />
-                  <div className="absolute top-8 left-8 glass px-5 py-2.5 rounded-2xl text-[10px] font-black text-primary uppercase tracking-[0.3em] border border-white/40">
+                <div className="aspect-[16/10] overflow-hidden bg-gray-100 relative">
+                  <BlogImage src={post.image} alt={post.title} priority={index < 3} />
+                  <div className="absolute top-8 left-8 glass px-5 py-2.5 rounded-2xl text-[10px] font-black text-primary uppercase tracking-[0.3em] border border-white/40 z-10">
                     {post.date}
                   </div>
                 </div>
@@ -89,8 +139,8 @@ const Blog = () => (
                 <p className="text-muted-foreground text-lg mb-10 line-clamp-3 leading-[1.6] font-medium">
                   {post.excerpt}
                 </p>
-                <Link 
-                  to={`/blog/${post.id}`} 
+                <Link
+                  to={`/blog/${post.id}`}
                   className="inline-flex items-center gap-3 text-[10px] font-black uppercase tracking-[0.4em] text-foreground group-hover:text-primary group-hover:gap-6 transition-all border-b-2 border-primary/10 pb-2 group-hover:border-primary"
                 >
                   Read Full Article <ArrowRight className="w-5 h-5" />
@@ -114,9 +164,9 @@ const Blog = () => (
             Farming insights and agritech trends delivered to your inbox every week.
           </p>
           <form className="flex flex-col md:flex-row gap-6 max-w-2xl mx-auto relative z-10">
-            <input 
-              type="email" 
-              placeholder="Corporate email address..." 
+            <input
+              type="email"
+              placeholder="Corporate email address..."
               className="flex-1 px-10 py-7 rounded-full bg-white/5 border border-white/10 text-white placeholder:text-white/30 focus:ring-4 focus:ring-primary/20 focus:border-primary outline-none transition-all font-medium text-lg backdrop-blur-3xl"
               required
             />

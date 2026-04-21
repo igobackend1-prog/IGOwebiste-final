@@ -132,22 +132,22 @@ export const blogPosts = [
     title: "IGO Agrimart: Your One-Stop Shop for Cutting-Edge Farming Solutions",
     excerpt: "In the world of modern agriculture, innovation and efficiency reign supreme. IGO Agrimart is your comprehensive destination for polyhouse products, hydroponics, fertilizers, and cutting-edge farming equipment.",
     date: "June 12, 2024",
-    image: "https://www.igoagritechfarms.com/images/blog1.png",
+    image: "/assets/blog/blog1.webp",
     author: "IGO Admin",
     category: "Products",
     content: `<p>In the world of modern agriculture, innovation and efficiency reign supreme. As farmers and cultivators continue to embrace advanced techniques and technologies to improve yields and sustainability, the need for a reliable partner in agritech becomes increasingly critical. That is where IGO Agrimart steps in — your one-stop shop for all cutting-edge farming solutions.</p>
 
-<img src="https://www.igoagritechfarms.com/images/blog11.webp" alt="IGO Agrimart Farming Solutions" style="width:100%;border-radius:1.5rem;margin:2rem 0;" />
+<img src="/assets/blog/blog11.webp" alt="IGO Agrimart Farming Solutions" style="width:100%;border-radius:1.5rem;margin:2rem 0;" />
 
 <h2>Polyhouse Products: Embrace Controlled Environment Agriculture</h2>
 <p>Polyhouse farming represents the future of modern agriculture. These innovative structures provide a controlled environment that optimizes crop growth by regulating temperature, humidity, and light conditions. At IGO Agrimart, we offer a comprehensive range of polyhouse products including structures, UV-stabilized covering materials, shading systems, and advanced ventilation equipment — everything you need to build and maintain a world-class polyhouse facility.</p>
 
-<img src="https://www.igoagritechfarms.com/images/blog111.webp" alt="Polyhouse Products" style="width:100%;border-radius:1.5rem;margin:2rem 0;" />
+<img src="/assets/blog/blog111.webp" alt="Polyhouse Products" style="width:100%;border-radius:1.5rem;margin:2rem 0;" />
 
 <h2>Hydroponic Products: Nurturing Plants without Soil</h2>
 <p>Hydroponics is revolutionizing how we grow food. By cultivating plants in nutrient-rich water solutions rather than soil, hydroponic farming achieves faster growth, higher yields, and dramatically reduced water usage. IGO Agrimart stocks a full range of hydroponic equipment including NFT channels, DWC systems, nutrient solutions, growing mediums, and accessories — all designed to support commercial-scale production.</p>
 
-<img src="https://www.igoagritechfarms.com/images/blog1111.webp" alt="Hydroponic Products" style="width:100%;border-radius:1.5rem;margin:2rem 0;" />
+<img src="/assets/blog/blog1111.webp" alt="Hydroponic Products" style="width:100%;border-radius:1.5rem;margin:2rem 0;" />
 
 <h2>Fertilizers: Enrich Your Soil for Bountiful Harvests</h2>
 <p>Soil health is the foundation of successful farming. Our curated selection of fertilizers — both organic and synthetic — is tailored to meet the specific nutrient requirements of different crops and soil types. Whether you are growing vegetables in open fields or running a commercial hydroponic operation, IGO Agrimart has the right fertilizer solution to maximize your yields.</p>
@@ -155,7 +155,7 @@ export const blogPosts = [
 <h2>Motors and Irrigation Systems: Power Your Farming Ventures</h2>
 <p>Efficient water management is critical for sustainable agriculture. IGO Agrimart offers high-performance motors and irrigation systems including drip irrigation networks, sprinkler systems, and high-capacity pumps. Our products are engineered to ensure precise water delivery, minimize wastage, and support large-scale farming operations with reliability and ease.</p>
 
-<img src="https://www.igoagritechfarms.com/images/blog11111.webp" alt="Irrigation Systems" style="width:100%;border-radius:1.5rem;margin:2rem 0;" />
+<img src="/assets/blog/blog11111.webp" alt="Irrigation Systems" style="width:100%;border-radius:1.5rem;margin:2rem 0;" />
 
 <h2>Farming Tools and Accessories: Elevate Your Productivity</h2>
 <p>The right tools make all the difference in daily farming operations. From precision hand tools to protective gear and specialty accessories, IGO Agrimart's range of farming equipment is designed to enhance productivity, reduce labor, and ensure the highest standards of farm management at every scale.</p>
@@ -163,7 +163,7 @@ export const blogPosts = [
 <h2>Expert Guidance: Navigating Your Farming Journey</h2>
 <p>At IGO Agrimart, we believe that success in modern farming is not just about the products — it is about the knowledge and support behind them. Our team of experienced agri-experts is always ready to guide you in selecting the right products, understanding best practices, and optimizing your farming operations for maximum profitability.</p>
 
-<img src="https://www.igoagritechfarms.com/images/blog111111.webp" alt="Expert Guidance" style="width:100%;border-radius:1.5rem;margin:2rem 0;" />
+<img src="/assets/blog/blog111111.webp" alt="Expert Guidance" style="width:100%;border-radius:1.5rem;margin:2rem 0;" />
 
 <h2>Online Convenience: Shop Anytime, Anywhere</h2>
 <p>We understand that farmers and agri-entrepreneurs have demanding schedules. That is why IGO Agrimart offers a seamless online shopping experience with secure payment options and reliable delivery services across India. Whether you are a seasoned farmer or just starting your agri journey, you can access our complete product catalog and expert support from the comfort of your home or farm.</p>
@@ -175,12 +175,12 @@ export const blogPosts = [
     title: "Celebrating Excellence in Agriculture: Dr. John Yesudhas Named Icon of India for Positive Change",
     excerpt: "Dr. John Yesudhas, CEO and Founder of IGO Agritech Farms, has been selected as one of the Icons of India for his outstanding contributions to fostering positive change within the realm of Indian agriculture.",
     date: "June 12, 2024",
-    image: "https://www.igoagritechfarms.com/images/blog2.webp",
+    image: "/assets/blog/blog2.webp",
     author: "IGO News",
     category: "Awards & Recognition",
     content: `<p>In a landmark recognition of dedication and innovation in Indian agriculture, Dr. John Yesudhas, the visionary CEO and Founder of IGO Agritech Farms, has been selected as one of the <strong>Icons of India for Positive Change</strong>. This prestigious honor celebrates individuals who have made extraordinary contributions to transforming sectors critical to India's growth and welfare.</p>
 
-<img src="https://www.igoagritechfarms.com/images/blog2.webp" alt="Dr. John Yesudhas - Icon of India" style="width:100%;border-radius:1.5rem;margin:2rem 0;" />
+<img src="/assets/blog/blog2.webp" alt="Dr. John Yesudhas - Icon of India" style="width:100%;border-radius:1.5rem;margin:2rem 0;" />
 
 <h2>Pioneering the Future: Tech Farming Expert</h2>
 <p>Dr. Yesudhas's unwavering commitment to innovation and sustainable agriculture has earned him the distinguished title of <em>Tech Farming Expert</em>. Under his visionary leadership, IGO Agritech Farms has developed cutting-edge solutions that merge technology and farming to optimize productivity, efficiency, and sustainability across India's agricultural landscape.</p>
@@ -204,19 +204,19 @@ export const blogPosts = [
     title: "Celebrating 77th Independence Day with Pride: Flag Hosting at IGO Agritechfarms",
     excerpt: "Freedom is a gift that demands to be cherished. IGO Agritechfarms celebrated India's 77th Independence Day with a heartfelt flag hoisting ceremony, honoring both the nation's independence and the dedication of the IGO family.",
     date: "August 15, 2023",
-    image: "https://www.igoagritechfarms.com/images/blog3.webp",
+    image: "/assets/blog/blog3.webp",
     author: "IGO News",
     category: "Company News",
     content: `<p>Freedom is a gift that demands to be cherished, and as a nation, we celebrate this precious gift every year on Independence Day with immense pride and joy. This year, IGO Agritechfarms marked India's <strong>77th Independence Day</strong> with a memorable flag hoisting ceremony that honored not only our nation's great heritage but also celebrated the growth, unity, and dedication of the IGO family.</p>
 
-<img src="https://www.igoagritechfarms.com/images/blog3.webp" alt="Independence Day Flag Hoisting at IGO" style="width:100%;border-radius:1.5rem;margin:2rem 0;" />
+<img src="/assets/blog/blog3.webp" alt="Independence Day Flag Hoisting at IGO" style="width:100%;border-radius:1.5rem;margin:2rem 0;" />
 
 <h2>A Patriotic Morning at IGO Agritechfarms</h2>
 <p>The morning began with a sense of patriotic fervor as the entire IGO team gathered together in the company premises. Dr. John Yesudhas, CEO and Founder of IGO Agritechfarms, proudly hoisted the national flag, marking the occasion with dignity and reverence. The ceremony was a moment of collective pride — a reminder of the sacrifices made by freedom fighters and the responsibility we carry to build a stronger, more prosperous India.</p>
 
 <p>As part of the celebration, the organization recognized employees with awards for exceptional performance in their respective roles, reinforcing the company's core values of excellence, innovation, and teamwork. These recognitions served as a powerful reminder that individual dedication contributes to collective progress — both within IGO and across India's agricultural sector.</p>
 
-<img src="https://www.igoagritechfarms.com/images/blog33.webp" alt="IGO Independence Day Celebration" style="width:100%;border-radius:1.5rem;margin:2rem 0;" />
+<img src="/assets/blog/blog33.webp" alt="IGO Independence Day Celebration" style="width:100%;border-radius:1.5rem;margin:2rem 0;" />
 
 <h2>A Unified Vision: Growth, Independence, and Innovation</h2>
 <p>The celebration went beyond ceremony — it became a moment of reflection and renewal for the entire IGO team. Just as India's independence was built on the vision of a better future, IGO Agritechfarms draws inspiration from that same spirit in its mission to transform Indian agriculture through technology, innovation, and sustainable practices.</p>
@@ -233,12 +233,12 @@ export const blogPosts = [
     title: "IGO Agritech Farms Provides IV to JNN Institute of Engineering Students on Polyhouse Farming",
     excerpt: "IGO Agritech Farms facilitated a comprehensive industrial visit for JNN Institute of Engineering students, offering hands-on exposure to modern polyhouse farming techniques and bridging the gap between academia and industry.",
     date: "June 12, 2024",
-    image: "https://www.igoagritechfarms.com/images/blog4.webp",
+    image: "/assets/blog/blog4.webp",
     author: "IGO Admin",
     category: "Education",
     content: `<p>IGO Agritech Farms, India's leading agricultural technology company, recently facilitated a comprehensive industrial visit (IV) for students from <strong>JNN Institute of Engineering</strong>. The program offered students valuable hands-on exposure to modern polyhouse farming techniques, bridging the critical gap between academic learning and real-world agri-industry practices.</p>
 
-<img src="https://www.igoagritechfarms.com/images/blog4.webp" alt="JNN Students at IGO Agritech Farms" style="width:100%;border-radius:1.5rem;margin:2rem 0;" />
+<img src="/assets/blog/blog4.webp" alt="JNN Students at IGO Agritech Farms" style="width:100%;border-radius:1.5rem;margin:2rem 0;" />
 
 <h2>What is Polyhouse Farming?</h2>
 <p>Polyhouse farming is a modern technique of agriculture that involves growing plants in a controlled environment. By enclosing crops within a polyethylene-covered structure, farmers can regulate temperature, humidity, and light conditions throughout the year — enabling crop production irrespective of external season and climate. This approach is transforming Indian agriculture by dramatically improving yields, reducing pest incidence, and enabling year-round cultivation of high-value crops.</p>
@@ -254,11 +254,11 @@ export const blogPosts = [
   <li style="margin-bottom:0.75rem;">Operational management and day-to-day farm practices</li>
 </ul>
 
-<img src="https://www.igoagritechfarms.com/images/blog44.webp" alt="Polyhouse Farming Demonstration" style="width:100%;border-radius:1.5rem;margin:2rem 0;" />
+<img src="/assets/blog/blog44.webp" alt="Polyhouse Farming Demonstration" style="width:100%;border-radius:1.5rem;margin:2rem 0;" />
 
 <p>The IGO Agritech team provided hands-on training sessions where students could directly interact with equipment, observe automated systems in action, and understand the commercial aspects of running a modern polyhouse operation.</p>
 
-<img src="https://www.igoagritechfarms.com/images/blog444.webp" alt="Students Learning Polyhouse Techniques" style="width:100%;border-radius:1.5rem;margin:2rem 0;" />
+<img src="/assets/blog/blog444.webp" alt="Students Learning Polyhouse Techniques" style="width:100%;border-radius:1.5rem;margin:2rem 0;" />
 
 <h2>Bridging Academia and Industry</h2>
 <p>The industrial visit program represents IGO Agritech Farms' commitment to building the next generation of agri-tech professionals. By exposing engineering students to real-world polyhouse operations, the program helps bridge the gap between academic theory and practical application — creating a win-win situation for both students and the industry.</p>
@@ -272,40 +272,40 @@ export const blogPosts = [
     title: "IGO was awarded the Best Innovative Start-up Agri tech brand 2022",
     excerpt: "IGO Agritech Farms received the prestigious recognition as the Best Innovative Start-up Agri Tech Brand at the India Trade Awards 2022, as the company expands its vision across Asia, Australia, and the UAE.",
     date: "June 12, 2024",
-    image: "https://www.igoagritechfarms.com/images/blog5.webp",
+    image: "/assets/blog/blog5.webp",
     author: "IGO Admin",
     category: "Awards & Recognition",
     content: `<p>We are proud and honored to announce that <strong>IGO Agritech Farms</strong> has been recognized as the <strong>Best Innovative Start-up Agri Tech Brand at the India Trade Awards 2022</strong>. This prestigious recognition is a testament to the hard work, innovation, and dedication of our entire team and every stakeholder who has been part of the IGO journey.</p>
 
-<img src="https://www.igoagritechfarms.com/images/blog5.webp" alt="IGO Award 2022" style="width:100%;border-radius:1.5rem;margin:2rem 0;" />
+<img src="/assets/blog/blog5.webp" alt="IGO Award 2022" style="width:100%;border-radius:1.5rem;margin:2rem 0;" />
 
 <h2>A Milestone That Inspires Greater Purpose</h2>
 <p>Receiving this award at the India Trade Awards 2022 is not just a celebration of what we have achieved — it is a powerful motivation to aim higher. IGO Agritech Farms has always been committed to delivering agricultural projects, products, and services that meet global standards, and this recognition reaffirms that we are on the right path.</p>
 
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0;">
-  <img src="https://www.igoagritechfarms.com/images/b51.jpg" alt="IGO Award Ceremony" style="width:100%;border-radius:1rem;" />
-  <img src="https://www.igoagritechfarms.com/images/b52.jpg" alt="IGO Award Recognition" style="width:100%;border-radius:1rem;" />
+  <img src="/assets/blog/b51.webp" alt="IGO Award Ceremony" style="width:100%;border-radius:1rem;" />
+  <img src="/assets/blog/b52.webp" alt="IGO Award Recognition" style="width:100%;border-radius:1rem;" />
 </div>
 
 <h2>Expanding Our Vision Globally</h2>
 <p>Alongside this recognition, IGO Agritech Farms is actively pursuing expansion initiatives across <strong>Asia, Australia, and the United Arab Emirates</strong>. Our mission is to bring world-class agri-engineering solutions, polyhouse farming technologies, and sustainable agricultural practices to international markets — creating impact far beyond India's borders.</p>
 
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0;">
-  <img src="https://www.igoagritechfarms.com/images/b53.webp" alt="IGO Global Expansion" style="width:100%;border-radius:1rem;" />
-  <img src="https://www.igoagritechfarms.com/images/b54.webp" alt="IGO International Projects" style="width:100%;border-radius:1rem;" />
+  <img src="/assets/blog/b53.webp" alt="IGO Global Expansion" style="width:100%;border-radius:1rem;" />
+  <img src="/assets/blog/b54.webp" alt="IGO International Projects" style="width:100%;border-radius:1rem;" />
 </div>
 
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0;">
-  <img src="https://www.igoagritechfarms.com/images/b55.webp" alt="IGO Team" style="width:100%;border-radius:1rem;" />
-  <img src="https://www.igoagritechfarms.com/images/b56.webp" alt="IGO Projects" style="width:100%;border-radius:1rem;" />
+  <img src="/assets/blog/b55.webp" alt="IGO Team" style="width:100%;border-radius:1rem;" />
+  <img src="/assets/blog/b56.webp" alt="IGO Projects" style="width:100%;border-radius:1rem;" />
 </div>
 
 <h2>Gratitude to Our Stakeholders</h2>
 <p>This achievement belongs to every person who has believed in the IGO Agritech Farms vision — our farmers, investors, partners, clients, employees, and supporters. We are deeply grateful to all who have stood beside us through every challenge and every milestone. Your trust and support are what make achievements like this possible.</p>
 
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0;">
-  <img src="https://www.igoagritechfarms.com/images/b57.webp" alt="IGO Community" style="width:100%;border-radius:1rem;" />
-  <img src="https://www.igoagritechfarms.com/images/b58.webp" alt="IGO Stakeholders" style="width:100%;border-radius:1rem;" />
+  <img src="/assets/blog/b57.webp" alt="IGO Community" style="width:100%;border-radius:1rem;" />
+  <img src="/assets/blog/b58.webp" alt="IGO Stakeholders" style="width:100%;border-radius:1rem;" />
 </div>
 
 <blockquote>This award is not a destination — it is a new beginning. We dedicate this recognition to every farmer we have served and every agricultural dream we will help realize in the years ahead.</blockquote>
@@ -317,12 +317,12 @@ export const blogPosts = [
     title: "IGO Agritech Farms Selects 200+ Students in Campus Drive for AgriTech Careers",
     excerpt: "IGO Group successfully conducted a landmark campus recruitment drive at Paavai Engineering College, selecting over 200 talented students to join India's most dynamic agritech company.",
     date: "February 24, 2024",
-    image: "https://www.igoagritechfarms.com/images/blogs/b7-4.webp",
+    image: "/assets/blog/b7-4.webp",
     author: "IGO Careers",
     category: "Careers",
     content: `<p>IGO Group is proud to announce the resounding success of its recent campus recruitment drive at <strong>Paavai Engineering College</strong>, one of Tamil Nadu's premier engineering institutions. The drive resulted in the selection of over <strong>200 talented students</strong> for diverse roles within our rapidly expanding organization — marking a significant milestone in our mission to build India's most capable agritech workforce.</p>
 
-<img src="https://www.igoagritechfarms.com/images/blogs/b7-4.webp" alt="IGO Campus Drive at Paavai Engineering College" style="width:100%;border-radius:1.5rem;margin:2rem 0;" />
+<img src="/assets/blog/b7-4.webp" alt="IGO Campus Drive at Paavai Engineering College" style="width:100%;border-radius:1.5rem;margin:2rem 0;" />
 
 <h2>Innovation Meets Talent</h2>
 <p>The key to solving today's agricultural challenges lies in smart solutions, sustainability, and skilled professionals. IGO Agritech Farms has always believed that the future of Indian agriculture will be built by bright, driven young minds who combine technical expertise with a passion for transforming the sector. The campus drive at Paavai Engineering College was designed to identify exactly those individuals.</p>
@@ -337,14 +337,14 @@ export const blogPosts = [
   <li style="margin-bottom:0.75rem;">Business development and market expansion</li>
 </ul>
 
-<img src="https://www.igoagritechfarms.com/images/blogs/b7-2.webp" alt="Students Selected in IGO Campus Drive" style="width:100%;border-radius:1.5rem;margin:2rem 0;" />
+<img src="/assets/blog/b7-2.webp" alt="Students Selected in IGO Campus Drive" style="width:100%;border-radius:1.5rem;margin:2rem 0;" />
 
 <h2>Building the Agritech Workforce of Tomorrow</h2>
 <p>IGO Group's commitment to industry-academia partnerships goes beyond recruitment. We work closely with engineering colleges and universities to provide real-world exposure through industrial visits, internships, and collaborative research programs — ensuring that students are career-ready from day one.</p>
 
 <p>This campus drive is just the beginning. As part of our ambitious expansion plans, IGO Agritech Farms aims to create thousands of agritech job opportunities across India, empowering youth with meaningful careers that contribute directly to the nation's food security and agricultural transformation.</p>
 
-<img src="https://www.igoagritechfarms.com/images/blogs/b7-3.webp" alt="IGO Agritech Career Opportunities" style="width:100%;border-radius:1.5rem;margin:2rem 0;" />
+<img src="/assets/blog/b7-3.webp" alt="IGO Agritech Career Opportunities" style="width:100%;border-radius:1.5rem;margin:2rem 0;" />
 
 <blockquote>"We are not just hiring — we are cultivating the next generation of agritech leaders who will redefine what Indian agriculture can achieve." — IGO Agritech Farms</blockquote>
 
@@ -355,7 +355,7 @@ export const blogPosts = [
     title: "Subsidy in Agriculture: A Boon for Farmers and the Backbone of Food Security",
     excerpt: "Agriculture is the lifeline of India. This comprehensive guide explores what agricultural subsidies are, how to avail them, the nine key types available to Indian farmers, and the path forward for a more equitable farming sector.",
     date: "June 12, 2024",
-    image: "https://www.igoagritechfarms.com/images/blog8.jpg",
+    image: "/assets/blog/blog8.webp",
     author: "IGO Admin",
     category: "Agriculture Insights",
     content: `<p>Agriculture is the lifeline of India, employing over half the population and significantly contributing to the country's GDP. Yet, farmers face a constant set of challenges — unpredictable weather patterns, expensive inputs, volatile market pricing, and limited access to modern farming technologies. In this context, <strong>government agricultural subsidies</strong> play an essential role in supporting farmers and ensuring stable, consistent food production for the nation.</p>
@@ -420,17 +420,17 @@ export const blogPosts = [
     title: "Press & Media Reporters Union Honours Dr. John Yesudhas for Agritech Leadership",
     excerpt: "The Tamil Nadu Press & Media Reporters Union honored Dr. John Yesudhas, Founder & CEO of IGO Group, for his visionary leadership in agricultural technology innovation and commitment to creating employment through agritech initiatives.",
     date: "December 14, 2024",
-    image: "https://www.igoagritechfarms.com/images/blogs/b9-1.webp",
+    image: "/assets/blog/b9-1.webp",
     author: "IGO News",
     category: "Awards & Recognition",
     content: `<p>India's agricultural sector is undergoing a profound transformation, driven by technology adoption, sustainable practices, and a new generation of visionary leaders who see farming not just as a livelihood, but as a high-growth industry with global potential. In recognition of one such leader, the <strong>Tamil Nadu Press & Media Reporters Union</strong> organized a special felicitation event honoring individuals who have made extraordinary contributions to agricultural transformation.</p>
 
-<img src="https://www.igoagritechfarms.com/images/blogs/b9-1.webp" alt="Press & Media Reporters Union Honour" style="width:100%;border-radius:1.5rem;margin:2rem 0;" />
+<img src="/assets/blog/b9-1.webp" alt="Press & Media Reporters Union Honour" style="width:100%;border-radius:1.5rem;margin:2rem 0;" />
 
 <h2>Recognizing Visionary Leadership</h2>
 <p>Dr. John Yesudhas, <strong>Founder & CEO of IGO Group</strong> and recognized as a <em>Tech Farming Scientist</em>, was honored at the event for his outstanding contributions to modern agriculture and agritech development across India. The award particularly acknowledged his visionary leadership and commitment to making farming profitable, structured, and technology-driven — transforming the way Indian farming is perceived and practiced.</p>
 
-<img src="https://www.igoagritechfarms.com/images/blogs/b9-2.webp" alt="Dr. John Yesudhas Receiving Award" style="width:100%;border-radius:1.5rem;margin:2rem 0;" />
+<img src="/assets/blog/b9-2.webp" alt="Dr. John Yesudhas Receiving Award" style="width:100%;border-radius:1.5rem;margin:2rem 0;" />
 
 <h2>25,000+ Jobs and Counting</h2>
 <p>One of the most remarkable aspects of IGO Group's journey under Dr. Yesudhas' leadership is its impact on employment generation. IGO Group has <strong>successfully created over 25,000 job opportunities</strong> through its diversified agritech initiatives, spanning a wide range of operations including:</p>
@@ -446,7 +446,7 @@ export const blogPosts = [
 
 <p>This employment impact underscores the broader social responsibility that IGO Group embraces — creating dignified, skilled employment in rural and semi-urban communities while driving agricultural modernization.</p>
 
-<img src="https://www.igoagritechfarms.com/images/blogs/b9-3.webp" alt="IGO Employment and Community Impact" style="width:100%;border-radius:1.5rem;margin:2rem 0;" />
+<img src="/assets/blog/b9-3.webp" alt="IGO Employment and Community Impact" style="width:100%;border-radius:1.5rem;margin:2rem 0;" />
 
 <h2>Discussions on the Future of Indian Agriculture</h2>
 <p>The event also featured substantive discussions among media leaders, agricultural experts, and policy advocates on topics including:</p>
