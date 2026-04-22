@@ -98,7 +98,7 @@ export const CTA_PRESETS = [
 ];
 
 // ─── Default seed posters (shown on first load before any uploads) ───────────
-const SEED_KEY = "igo_offers_seeded_v11";
+const SEED_KEY = "igo_offers_seeded_v13";
 
 const DEFAULT_OFFERS: OfferPoster[] = [
   {
@@ -108,7 +108,7 @@ const DEFAULT_OFFERS: OfferPoster[] = [
     badge: "IGO GROUP",
     ctaLabel: "View All Offers",
     ctaLink: "/offers",
-    image: "/assets/compressed/main-page-image.webp",
+    image: "/assets/demo-poster/main image v2.png",
     bgColor: "#1a5c1a",
     isActive: true,
     displayOrder: 0,
@@ -124,7 +124,7 @@ const DEFAULT_OFFERS: OfferPoster[] = [
     badge: "NEW ARRIVAL",
     ctaLabel: "View Details",
     ctaLink: "/contact",
-    image: "/assets/compressed/demo-poster/updated-poster-1.webp",
+    image: "/assets/compressed/demo-poster/updated-poster-1.jpeg",
     bgColor: "#1a5c1a",
     isActive: true,
     displayOrder: 1,
@@ -140,7 +140,7 @@ const DEFAULT_OFFERS: OfferPoster[] = [
     badge: "SPECIAL OFFER",
     ctaLabel: "Contact Us",
     ctaLink: "/contact",
-    image: "/assets/compressed/demo-poster/updated-poster-2.webp",
+    image: "/assets/compressed/demo-poster/updated-poster-2.jpeg",
     bgColor: "#1a5c1a",
     isActive: true,
     displayOrder: 2,
@@ -157,7 +157,7 @@ export const initDefaultOffers = (): void => {
   if (currentSeed === "1") return;
 
   // Clear ALL old seed keys so stale data is wiped
-  ["igo_offers_seeded_v3", "igo_offers_seeded_v4", "igo_offers_seeded_v5", "igo_offers_seeded_v6", "igo_offers_seeded_v7", "igo_offers_seeded_v8", "igo_offers_seeded_v10"].forEach(k => localStorage.removeItem(k));
+  ["igo_offers_seeded_v3", "igo_offers_seeded_v4", "igo_offers_seeded_v5", "igo_offers_seeded_v6", "igo_offers_seeded_v7", "igo_offers_seeded_v8", "igo_offers_seeded_v10", "igo_offers_seeded_v11", "igo_offers_seeded_v12"].forEach(k => localStorage.removeItem(k));
 
   // Force-write corrected default offers
   saveOffers(DEFAULT_OFFERS);

@@ -14,11 +14,21 @@ const PERMANENT_SLIDE = { src: "/assets/demo-poster/main image v2.png", label: "
 
 // Changeable slides — add, remove, or reorder freely
 const CHANGEABLE_SLIDES = [
-  { src: "/assets/compressed/demo-poster/updated-poster-1.webp", label: "New Arrival", alt: "Latest Innovations in Smart Farming", isPoster: true },
-  { src: "/assets/compressed/demo-poster/updated-poster-2.webp", label: "Special Offer", alt: "Limited Time Agricultural Excellence Offer", isPoster: true },
+  { src: "/assets/compressed/demo-poster/updated-poster-1.jpeg", label: "New Arrival", alt: "Latest Innovations in Smart Farming", isPoster: true },
+  { src: "/assets/compressed/demo-poster/updated-poster-2.jpeg", label: "Special Offer", alt: "Limited Time Agricultural Excellence Offer", isPoster: true },
 ];
 
 const HERO_SLIDES = [PERMANENT_SLIDE, ...CHANGEABLE_SLIDES];
+
+// CEO photo carousel images
+const CEO_PHOTOS = [
+  "/assets/ceo page image/about-copy.webp",
+  "/assets/ceo page image/award2-jpg.jpeg",
+  "/assets/ceo page image/award3-jpg.jpeg",
+  "/assets/ceo page image/award4-jpg.jpeg",
+  "/assets/ceo page image/most-trustwd-agri-brand-in-india-2026.jpg",
+  "/assets/ceo page image/new image foe the 2nd page .webp",
+];
 
 const fader: Variants = {
   hidden: { opacity: 0, y: 30 },
@@ -247,6 +257,58 @@ const MiniStatCard = ({ value, label }: { value: string; label: string }) => {
   );
 };
 
+// ── CEO Photo Carousel ────────────────────────────────────────────────────
+const CeoPhotoCarousel = () => {
+  const [current, setCurrent] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrent(prev => (prev + 1) % CEO_PHOTOS.length);
+    }, 3500);
+    return () => clearInterval(timer);
+  }, []);
+
+  return (
+    <div className="relative rounded-3xl overflow-hidden aspect-[4/3] shadow-2xl">
+      {/* Slides */}
+      <AnimatePresence mode="sync">
+        <motion.img
+          key={current}
+          src={CEO_PHOTOS[current]}
+          alt={`IGO CEO photo ${current + 1}`}
+          initial={{ opacity: 0, scale: 1.08 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 1.2, ease: "easeInOut" }}
+          className="absolute inset-0 w-full h-full object-cover select-none"
+          style={{ objectPosition: "center 15%" }}
+          loading="lazy"
+          decoding="async"
+        />
+      </AnimatePresence>
+
+      {/* Bottom gradient for dot visibility */}
+      <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/50 to-transparent pointer-events-none z-10" />
+
+      {/* Dot indicators */}
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex gap-2 items-center">
+        {CEO_PHOTOS.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => setCurrent(i)}
+            aria-label={`CEO photo ${i + 1}`}
+            className={`rounded-full transition-all duration-500 ${
+              i === current
+                ? "w-6 h-2 bg-white"
+                : "w-2 h-2 bg-white/50 hover:bg-white/80"
+            }`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
+
 const WhyChooseSection = () => (
   <section className="py-24 bg-white">
     <TickerBanner />
@@ -295,15 +357,8 @@ const WhyChooseSection = () => (
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-          className="rounded-3xl overflow-hidden aspect-[4/3] shadow-2xl"
         >
-          <img
-            src="/assets/new image foe the 2nd page .jpeg"
-            alt="Agriculture Innovation Award"
-            loading="lazy"
-            decoding="async"
-            className="w-full h-full object-cover object-center"
-          />
+          <CeoPhotoCarousel />
         </motion.div>
       </div>
     </div>
@@ -646,11 +701,24 @@ const FeatureSection = () => {
 
 const ProductEcosystem = () => {
   const productLinks = navLinks.find(l => l.label === "Products")?.children || [];
+  const displayCards = [...productLinks, ...productLinks, ...productLinks];
+  const CARD_W = 360;
+  const CARD_GAP = 24;
+  const LOOP_W = productLinks.length * (CARD_W + CARD_GAP);
 
   return (
-    <section className="py-20 md:py-40 bg-white overflow-hidden border-t border-black/5 content-defer">
-      <div className="container mx-auto px-4 sm:px-6">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-24 gap-8">
+    <section className="py-20 md:py-32 bg-white overflow-hidden border-t border-black/5 content-defer">
+      <style>{`
+        @keyframes productScroll {
+          0%   { transform: translateX(0); }
+          100% { transform: translateX(-${LOOP_W}px); }
+        }
+        .product-strip { animation: productScroll 28s linear infinite; }
+        .product-strip:hover { animation-play-state: paused; }
+      `}</style>
+
+      <div className="container mx-auto px-4 sm:px-6 mb-16">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
           <div className="max-w-2xl">
             <div className="flex items-center gap-4 text-primary font-bold text-[10px] uppercase tracking-[0.3em] mb-6">
               <div className="w-12 h-[1px] bg-primary/30" />
@@ -667,36 +735,44 @@ const ProductEcosystem = () => {
             </div>
           </Link>
         </div>
+      </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-6 md:gap-8 xl:gap-4">
-          {productLinks.map((cat, i) => (
-            <motion.div
-              key={cat.label}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              className="group relative h-[320px] sm:h-[400px] md:h-[500px] xl:h-[420px] rounded-[2rem] sm:rounded-[3rem] overflow-hidden bg-slate-100 border border-black/5 shadow-sm hover:shadow-2xl transition-all duration-700"
+      <div className="relative overflow-hidden">
+        <div className="absolute left-0 top-0 bottom-0 w-24 md:w-40 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-24 md:w-40 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
+
+        <div
+          className="product-strip flex"
+          style={{ gap: `${CARD_GAP}px`, paddingLeft: `${CARD_GAP}px` }}
+        >
+          {displayCards.map((cat, i) => (
+            <div
+              key={i}
+              className="flex-shrink-0 relative overflow-hidden bg-slate-100 border border-black/5 shadow-sm hover:shadow-2xl transition-all duration-700 rounded-[2.5rem] cursor-pointer group"
+              style={{ width: `${CARD_W}px`, height: "520px" }}
             >
-              <Link to={cat.href} className="absolute inset-0 z-20" />
+              <Link to={(cat as any).href} className="absolute inset-0 z-20" />
               <img
-                src={(cat as any).cardImage || (cat.icon && typeof cat.icon === 'string' ? cat.icon : "/assets/compressed/projects/agri_farming.jpg")}
+                src={(cat as any).cardImage || (cat.icon && typeof cat.icon === "string" ? cat.icon : "/assets/compressed/projects/agri_farming.jpg")}
                 alt={cat.label}
                 loading="lazy"
                 className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
               />
-              <div className="absolute inset-x-0 bottom-0 p-10 xl:p-6 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-10 transition-opacity duration-500 opacity-90 group-hover:opacity-100">
-                <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-white/50 mb-3 block">Product Sector {i + 1}</span>
-                <h3 className="text-3xl xl:text-xl font-black text-white mb-6 xl:mb-3 leading-tight group-hover:translate-x-2 transition-transform duration-500 drop-shadow-lg">{cat.label}</h3>
+              <div className="absolute inset-x-0 bottom-0 p-8 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-10">
+                <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-white/50 mb-2 block">
+                  Product Sector {(i % productLinks.length) + 1}
+                </span>
+                <h3 className="text-2xl font-black text-white mb-4 leading-tight group-hover:translate-x-2 transition-transform duration-500 drop-shadow-lg">
+                  {cat.label}
+                </h3>
                 <div className="flex items-center gap-3 text-[11px] font-bold uppercase tracking-widest text-agri-gold-500 opacity-0 group-hover:opacity-100 transition-all transform translate-y-4 group-hover:translate-y-0">
                   View Catalog <ArrowRight className="w-4 h-4" />
                 </div>
               </div>
-
-              <div className="absolute top-10 right-10 w-12 h-12 rounded-2xl bg-white/10 backdrop-blur-xl border border-white/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 transform scale-75 group-hover:scale-100">
-                <Leaf className="w-5 h-5 text-white" />
+              <div className="absolute top-6 right-6 w-10 h-10 rounded-2xl bg-white/10 backdrop-blur-xl border border-white/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 transform scale-75 group-hover:scale-100">
+                <Leaf className="w-4 h-4 text-white" />
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>
