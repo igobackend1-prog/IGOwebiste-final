@@ -9,14 +9,14 @@ import { motion, AnimatePresence, Variants, useScroll, useTransform } from "fram
 import OffersBanner from "@/components/OffersBanner";
 import { getActiveOffers, initDefaultOffers } from "@/data/offersData";
 
-// PERMANENT first slide — do NOT remove or reorder this entry
-const PERMANENT_SLIDE = { src: "/assets/demo-poster/main-banner.png", label: "IGO Group", alt: "IGO Group Main Banner", isPoster: true };
-
 // Changeable slides — add, remove, or reorder freely
 const CHANGEABLE_SLIDES = [
-  { src: "/assets/hero-banners/active/bakrid-banner-1.png", label: "Bakrid Mubarak", alt: "Happy Bakrid Day Banner", isPoster: true },
+  { src: "/assets/demo-poster/main-banner.png", label: "IGO Group", alt: "IGO Group Main Banner", isPoster: true },
   { src: "/assets/hero-banners/active/bakrid-banner-2.png", label: "Special Offer", alt: "Bakrid Day Special Project Offer", isPoster: true },
 ];
+
+// PERMANENT first slide — Now set to Bakrid to ensure it shows up first live
+const PERMANENT_SLIDE = { src: "/assets/hero-banners/active/bakrid-banner-1.png", label: "Bakrid Mubarak", alt: "Happy Bakrid Day Banner", isPoster: true };
 
 const HERO_SLIDES = [PERMANENT_SLIDE, ...CHANGEABLE_SLIDES];
 

@@ -157,7 +157,11 @@ export const initDefaultOffers = (): void => {
   if (currentSeed === "1") return;
 
   // Clear ALL old seed keys so stale data is wiped
-  ["igo_offers_seeded_v3", "igo_offers_seeded_v4", "igo_offers_seeded_v5", "igo_offers_seeded_v6", "igo_offers_seeded_v7", "igo_offers_seeded_v8", "igo_offers_seeded_v10", "igo_offers_seeded_v11", "igo_offers_seeded_v12", "igo_offers_seeded_v13"].forEach(k => localStorage.removeItem(k));
+  Object.keys(localStorage).forEach(k => {
+    if (k.startsWith("igo_offers_seeded_v") || k === "igo_offer_posters") {
+      localStorage.removeItem(k);
+    }
+  });
 
   // Force-write corrected default offers
   saveOffers(DEFAULT_OFFERS);
