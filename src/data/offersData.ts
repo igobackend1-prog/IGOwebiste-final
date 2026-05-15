@@ -98,7 +98,7 @@ export const CTA_PRESETS = [
 ];
 
 // ─── Default seed posters (shown on first load before any uploads) ───────────
-const SEED_KEY = "igo_offers_seeded_v13";
+const SEED_KEY = "igo_offers_seeded_v14";
 
 const DEFAULT_OFFERS: OfferPoster[] = [
   {
@@ -106,48 +106,48 @@ const DEFAULT_OFFERS: OfferPoster[] = [
     title: "",
     subtitle: "",
     badge: "IGO GROUP",
-    ctaLabel: "View All Offers",
-    ctaLink: "/offers",
-    image: "/assets/demo-poster/main image v2.png",
+    ctaLabel: "View Projects",
+    ctaLink: "/projects",
+    image: "/assets/demo-poster/main-banner.png",
     bgColor: "#1a5c1a",
     isActive: true,
     displayOrder: 0,
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
     expiryDate: null,
-    note: "Main Banner Poster",
+    note: "Permanent Main Banner",
   },
   {
     id: "seed_2",
-    title: "",
-    subtitle: "",
-    badge: "NEW ARRIVAL",
-    ctaLabel: "View Details",
+    title: "Happy Bakrid Day",
+    subtitle: "Celebrate the bounty that sustains.",
+    badge: "BAKRID MUBARAK",
+    ctaLabel: "Register Your Project",
     ctaLink: "/contact",
-    image: "/assets/compressed/demo-poster/updated-poster-1.jpeg",
+    image: "/assets/hero-banners/active/bakrid-banner-1.png",
     bgColor: "#1a5c1a",
     isActive: true,
     displayOrder: 1,
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
     expiryDate: null,
-    note: "Latest Innovations in Smart Farming",
+    note: "Bakrid Main Banner",
   },
   {
     id: "seed_3",
-    title: "",
-    subtitle: "",
+    title: "Bakrid Special Offer",
+    subtitle: "Save from ₹75,000 to ₹5 Lakhs on Agri-Farming Projects.",
     badge: "SPECIAL OFFER",
     ctaLabel: "Contact Us",
     ctaLink: "/contact",
-    image: "/assets/compressed/demo-poster/updated-poster-2.jpeg",
+    image: "/assets/hero-banners/active/bakrid-banner-2.png",
     bgColor: "#1a5c1a",
     isActive: true,
     displayOrder: 2,
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
     expiryDate: null,
-    note: "Limited Time Agricultural Excellence Offer",
+    note: "Bakrid Offer Poster",
   },
 ];
 
@@ -157,7 +157,7 @@ export const initDefaultOffers = (): void => {
   if (currentSeed === "1") return;
 
   // Clear ALL old seed keys so stale data is wiped
-  ["igo_offers_seeded_v3", "igo_offers_seeded_v4", "igo_offers_seeded_v5", "igo_offers_seeded_v6", "igo_offers_seeded_v7", "igo_offers_seeded_v8", "igo_offers_seeded_v10", "igo_offers_seeded_v11", "igo_offers_seeded_v12"].forEach(k => localStorage.removeItem(k));
+  ["igo_offers_seeded_v3", "igo_offers_seeded_v4", "igo_offers_seeded_v5", "igo_offers_seeded_v6", "igo_offers_seeded_v7", "igo_offers_seeded_v8", "igo_offers_seeded_v10", "igo_offers_seeded_v11", "igo_offers_seeded_v12", "igo_offers_seeded_v13"].forEach(k => localStorage.removeItem(k));
 
   // Force-write corrected default offers
   saveOffers(DEFAULT_OFFERS);

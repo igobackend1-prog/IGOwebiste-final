@@ -10,12 +10,12 @@ import OffersBanner from "@/components/OffersBanner";
 import { getActiveOffers, initDefaultOffers } from "@/data/offersData";
 
 // PERMANENT first slide — do NOT remove or reorder this entry
-const PERMANENT_SLIDE = { src: "/assets/demo-poster/main image v2.png", label: "IGO Group", alt: "IGO Group Main Banner", isPoster: true };
+const PERMANENT_SLIDE = { src: "/assets/demo-poster/main-banner.png", label: "IGO Group", alt: "IGO Group Main Banner", isPoster: true };
 
 // Changeable slides — add, remove, or reorder freely
 const CHANGEABLE_SLIDES = [
-  { src: "/assets/compressed/demo-poster/updated-poster-1.jpeg", label: "New Arrival", alt: "Latest Innovations in Smart Farming", isPoster: true },
-  { src: "/assets/compressed/demo-poster/updated-poster-2.jpeg", label: "Special Offer", alt: "Limited Time Agricultural Excellence Offer", isPoster: true },
+  { src: "/assets/hero-banners/active/bakrid-banner-1.png", label: "Bakrid Mubarak", alt: "Happy Bakrid Day Banner", isPoster: true },
+  { src: "/assets/hero-banners/active/bakrid-banner-2.png", label: "Special Offer", alt: "Bakrid Day Special Project Offer", isPoster: true },
 ];
 
 const HERO_SLIDES = [PERMANENT_SLIDE, ...CHANGEABLE_SLIDES];
@@ -1126,7 +1126,11 @@ const Index = () => {
       <Helmet>
         <meta name="description" content="IGO Agritech Farms — India's leading Agri Engineering & Consulting brand. Precision farming, polyhouse, hydroponics & agri startup solutions across India." />
       </Helmet>
+<<<<<<< HEAD
       {hasOffers ? <OffersBanner heroMode /> : <HeroSection />}
+=======
+      <HeroSection />
+>>>>>>> 4e990ab (feat: update Bakrid banners and organize hero-banners structure)
       <WhyChooseSection />
       <VisionSection />
       <ProjectGallerySection />
