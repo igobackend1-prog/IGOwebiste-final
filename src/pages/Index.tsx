@@ -41,194 +41,108 @@ const fader: Variants = {
 
 const HeroSection = () => {
   const [current, setCurrent] = useState(0);
-  const [direction, setDirection] = useState(0); // 1 for right, -1 for left
   const slide = HERO_SLIDES[current];
   const isPoster = !!slide.isPoster;
-
-  const slideVariants = {
-    enter: (direction: number) => ({
-      x: direction > 0 ? "100%" : "-100%",
-      opacity: 0,
-    }),
-    center: {
-      zIndex: 1,
-      x: 0,
-      opacity: 1,
-    },
-    exit: (direction: number) => ({
-      zIndex: 0,
-      x: direction < 0 ? "100%" : "-100%",
-      opacity: 0,
-    }),
-  };
 
   // Prefetch next 2 hero slides for seamless transitions
   const heroImageUrls = useMemo(() => HERO_SLIDES.map(s => s.src), []);
   useImagePreloader(heroImageUrls, current, 2);
 
   useEffect(() => {
-    // Slide 0 (main-page ad) stays 5s; all others 4.5s
-    const delay = current === 0 ? 5000 : 4500;
     const timer = setTimeout(() => {
-      setDirection(1);
       setCurrent((prev) => (prev + 1) % HERO_SLIDES.length);
-    }, delay);
+    }, current === 0 ? 5000 : 4500);
     return () => clearTimeout(timer);
   }, [current]);
 
-  // Navbar scales: h-[88px] mobile → h-[104px] lg → h-[120px] xl.
-  // Detect current navbar height based on screen width for responsive layout.
-  const [navH, setNavH] = useState(88);
-  useEffect(() => {
-    const update = () => {
-      const w = window.innerWidth;
-      setNavH(w >= 1280 ? 120 : w >= 1024 ? 104 : 88);
-    };
-    update();
-    window.addEventListener("resize", update);
-    return () => window.removeEventListener("resize", update);
-  }, []);
-  const NAVBAR_H = navH;
+  const NAVBAR_H = 88;
 
   return (
     <section
-      className={`relative overflow-hidden bg-black text-white transition-all duration-700 ${isPoster ? "aspect-[21/9] sm:aspect-[21/7] md:aspect-[21/6] lg:aspect-[21/5]" : "h-[95vh]"}`}
-      style={isPoster
-        ? { marginTop: NAVBAR_H }
-        : {}
-      }
+      className="relative overflow-hidden bg-black text-white"
+      style={{
+        marginTop: isPoster ? NAVBAR_H : 0,
+        height: isPoster ? "auto" : "95vh",
+        minHeight: isPoster ? "300px" : "auto"
+      }}
     >
-      {/* ── POSTER SLIDES: full-width, height adapts to image ── */}
-      {isPoster && (
-        <div className="relative w-full h-full overflow-hidden">
-          <AnimatePresence initial={false} custom={direction}>
-            <motion.div
-              key={current}
-              custom={direction}
-              variants={slideVariants}
-              initial="enter"
-              animate="center"
-              exit="exit"
-              transition={{
-                x: { type: "spring", stiffness: 300, damping: 30 },
-                opacity: { duration: 0.6 }
-              }}
-              className="absolute inset-0"
-            >
-            <img
-              src={slide.src}
-              alt={slide.alt}
-              decoding="async"
-              className="w-full h-full object-cover"
-            />
-            </motion.div>
-          </AnimatePresence>
-        </div>
-      )}
-
-      {/* ── FARM SLIDES: full-viewport, cover, with text overlay ── */}
-      {!isPoster && (
-        <div className="relative w-full h-full overflow-hidden">
-          <AnimatePresence initial={false} custom={direction}>
-            <motion.div
-              key={current}
-              custom={direction}
-              variants={slideVariants}
-              initial="enter"
-              animate="center"
-              exit="exit"
-              transition={{
-                x: { type: "spring", stiffness: 300, damping: 30 },
-                opacity: { duration: 0.6 }
-              }}
-              className="absolute inset-0"
-            >
+      <div className="relative w-full h-full">
+        {HERO_SLIDES.map((s, i) => (
+          <motion.div
+            key={i}
+            initial={false}
+            animate={{
+              x: `${(i - current) * 100}%`,
+              opacity: i === current ? 1 : 0
+            }}
+            transition={{
+              x: { type: "spring", stiffness: 300, damping: 30 },
+              opacity: { duration: 0.4 }
+            }}
+            className="absolute inset-0 w-full h-full"
+          >
+            {s.isPoster ? (
               <img
-                src={slide.src}
-                alt={slide.alt}
-                decoding="async"
-                className="w-full h-full object-cover"
+                src={s.src}
+                alt={s.alt}
+                className="w-full h-full object-cover sm:object-contain"
+                style={{ backgroundColor: "#000" }}
               />
-
-
-          {/* Dark gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/50 pointer-events-none z-[1]" />
-
-          {/* Hero text */}
-          <div className="container mx-auto px-4 sm:px-6 relative z-10 text-center">
-            <motion.div
-              initial="hidden"
-              animate="show"
-              variants={{ show: { transition: { staggerChildren: 0.2 } } }}
-              className="max-w-4xl mx-auto"
-            >
-              <motion.p
-                variants={fader}
-                className="inline-block px-5 py-1.5 mb-8 text-[11px] font-black uppercase tracking-[0.25em] text-primary-foreground bg-primary rounded-full shadow-lg"
-              >
-                India's Best Agri Engineering & Consulting Group
-              </motion.p>
-              <motion.h1 variants={fader} className="text-white mb-6 sm:mb-10 tracking-tight leading-[0.95] text-2xl sm:text-4xl md:text-5xl lg:text-7xl font-black">
-                Building Profitable Smart Farms <br className="hidden sm:block" /> Across India.
-              </motion.h1>
-              <motion.div variants={fader} className="flex flex-wrap justify-center gap-4">
-                <Link to="/projects" className="px-6 sm:px-8 md:px-12 py-2.5 sm:py-3 md:py-4 bg-white text-black text-[10px] sm:text-xs font-semibold rounded-full hover:bg-white/90 transition-all uppercase tracking-wider sm:tracking-widest">
-                  View Projects
-                </Link>
-                <Link to="/contact" className="px-6 sm:px-8 md:px-12 py-2.5 sm:py-3 md:py-4 bg-transparent border border-white/30 text-white text-[10px] sm:text-xs font-semibold rounded-full hover:bg-white hover:text-black transition-all uppercase tracking-wider sm:tracking-widest">
-                  Contact
-                </Link>
-              </motion.div>
-              </motion.div>
-            </div>
+            ) : (
+              <div className="relative w-full h-full">
+                <img
+                  src={s.src}
+                  alt={s.alt}
+                  className="w-full h-full object-cover opacity-60"
+                />
+                <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/50" />
+                <div className="absolute inset-0 flex items-center justify-center text-center p-4">
+                  <div className="max-w-4xl">
+                    <p className="inline-block px-5 py-1.5 mb-8 text-[11px] font-black uppercase tracking-[0.25em] text-primary-foreground bg-primary rounded-full shadow-lg">
+                      India's Best Agri Engineering & Consulting Group
+                    </p>
+                    <h1 className="text-white mb-10 text-3xl sm:text-5xl md:text-7xl font-black leading-[0.95]">
+                      Building Profitable Smart Farms <br className="hidden sm:block" /> Across India.
+                    </h1>
+                    <div className="flex justify-center gap-4">
+                      <Link to="/projects" className="px-8 py-3 bg-white text-black text-xs font-semibold rounded-full uppercase tracking-widest hover:bg-gray-200 transition-all">
+                        View Projects
+                      </Link>
+                      <Link to="/contact" className="px-8 py-3 border border-white/30 text-white text-xs font-semibold rounded-full uppercase tracking-widest hover:bg-white hover:text-black transition-all">
+                        Contact
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
           </motion.div>
-        </AnimatePresence>
-        </div>
-      )}
+        ))}
+      </div>
 
-      {/* Left / Right arrows
-          For poster slides the section has paddingTop=NAVBAR_H, so top-1/2 of the section
-          overshoots the center of the image. We shift the arrows down by NAVBAR_H/2 to
-          re-centre them on the visible image. */}
+      {/* Navigation Arrows */}
       <button
-        onClick={() => {
-          setDirection(-1);
-          setCurrent((prev) => (prev - 1 + HERO_SLIDES.length) % HERO_SLIDES.length);
-        }}
-        className="absolute left-5 z-20 w-11 h-11 rounded-full bg-white/15 backdrop-blur-sm border border-white/25 flex items-center justify-center hover:bg-white/30 transition-all -translate-y-1/2"
-        style={{ top: isPoster ? `calc(50% + ${NAVBAR_H / 2}px)` : "50%" }}
+        onClick={() => setCurrent((prev) => (prev - 1 + HERO_SLIDES.length) % HERO_SLIDES.length)}
+        className="absolute left-5 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-black/20 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all"
       >
-        <ArrowRight className="w-4 h-4 text-white rotate-180" />
+        <ArrowRight className="w-5 h-5 rotate-180" />
       </button>
       <button
-        onClick={() => {
-          setDirection(1);
-          setCurrent((prev) => (prev + 1) % HERO_SLIDES.length);
-        }}
-        className="absolute right-5 z-20 w-11 h-11 rounded-full bg-white/15 backdrop-blur-sm border border-white/25 flex items-center justify-center hover:bg-white/30 transition-all -translate-y-1/2"
-        style={{ top: isPoster ? `calc(50% + ${NAVBAR_H / 2}px)` : "50%" }}
+        onClick={() => setCurrent((prev) => (prev + 1) % HERO_SLIDES.length)}
+        className="absolute right-5 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-black/20 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all"
       >
-        <ArrowRight className="w-4 h-4 text-white" />
+        <ArrowRight className="w-5 h-5" />
       </button>
 
-      {/* Slide label + dots bottom bar */}
-      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2">
-        <span className="text-white/70 text-[10px] font-bold uppercase tracking-[0.3em] drop-shadow">
-          {slide.label}
-        </span>
-        <div className="flex gap-2">
-          {HERO_SLIDES.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => setCurrent(i)}
-              className={`rounded-full transition-all duration-500 ${i === current ? "w-8 h-2 bg-white" : "w-2 h-2 bg-white/35 hover:bg-white/60"
-                }`}
-            />
-          ))}
-        </div>
-        <span className="text-white/40 text-[9px] font-bold tracking-widest drop-shadow">
-          {current + 1} / {HERO_SLIDES.length}
-        </span>
+      {/* Dots */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-2">
+        {HERO_SLIDES.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => setCurrent(i)}
+            className={`h-2 rounded-full transition-all duration-300 ${i === current ? "w-8 bg-white" : "w-2 bg-white/40"}`}
+          />
+        ))}
       </div>
     </section>
   );
