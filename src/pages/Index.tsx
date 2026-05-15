@@ -42,9 +42,8 @@ const fader: Variants = {
 const HeroSection = () => {
   const [current, setCurrent] = useState(0);
   const slide = HERO_SLIDES[current];
-  const isPoster = !!slide.isPoster;
 
-  // Prefetch next 2 hero slides for seamless transitions
+  // Prefetch hero slides
   const heroImageUrls = useMemo(() => HERO_SLIDES.map(s => s.src), []);
   useImagePreloader(heroImageUrls, current, 2);
 
@@ -55,16 +54,22 @@ const HeroSection = () => {
     return () => clearTimeout(timer);
   }, [current]);
 
-  const NAVBAR_H = 88;
+  // Responsive Navbar Height matching Navbar.tsx
+  const [navH, setNavH] = useState(88);
+  useEffect(() => {
+    const update = () => {
+      const w = window.innerWidth;
+      setNavH(w >= 1280 ? 120 : w >= 1024 ? 104 : 88);
+    };
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
 
   return (
     <section
-      className="relative overflow-hidden bg-black text-white"
-      style={{
-        marginTop: isPoster ? NAVBAR_H : 0,
-        height: isPoster ? "auto" : "95vh",
-        minHeight: isPoster ? "300px" : "auto"
-      }}
+      className="relative w-full h-[85vh] lg:h-[95vh] overflow-hidden bg-black text-white"
+      style={{ marginTop: navH }}
     >
       <div className="relative w-full h-full">
         {HERO_SLIDES.map((s, i) => (
@@ -73,75 +78,89 @@ const HeroSection = () => {
             initial={false}
             animate={{
               x: `${(i - current) * 100}%`,
-              opacity: i === current ? 1 : 0
+              opacity: i === current ? 1 : 0.4
             }}
             transition={{
-              x: { type: "spring", stiffness: 300, damping: 30 },
-              opacity: { duration: 0.4 }
+              x: { type: "spring", stiffness: 180, damping: 25 },
+              opacity: { duration: 0.6 }
             }}
-            className="absolute inset-0 w-full h-full"
+            className="absolute inset-0 w-full h-full flex items-center justify-center"
           >
-            {s.isPoster ? (
-              <img
-                src={s.src}
-                alt={s.alt}
-                className="w-full h-full object-cover sm:object-contain"
-                style={{ backgroundColor: "#000" }}
-              />
-            ) : (
-              <div className="relative w-full h-full">
-                <img
-                  src={s.src}
-                  alt={s.alt}
-                  className="w-full h-full object-cover opacity-60"
-                />
-                <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/50" />
-                <div className="absolute inset-0 flex items-center justify-center text-center p-4">
-                  <div className="max-w-4xl">
-                    <p className="inline-block px-5 py-1.5 mb-8 text-[11px] font-black uppercase tracking-[0.25em] text-primary-foreground bg-primary rounded-full shadow-lg">
+            {/* Background Image - Always full size */}
+            <img
+              src={s.src}
+              alt={s.alt}
+              className="absolute inset-0 w-full h-full object-cover"
+              style={{ filter: s.isPoster ? "none" : "brightness(0.6)" }}
+            />
+
+            {!s.isPoster && (
+              <>
+                <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/60 z-10" />
+                <div className="relative z-20 container mx-auto px-6 text-center">
+                  <div className="max-w-5xl mx-auto">
+                    <motion.p
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={i === current ? { opacity: 1, y: 0 } : {}}
+                      className="inline-block px-6 py-2 mb-8 text-[11px] font-black uppercase tracking-[0.3em] text-primary-foreground bg-primary rounded-full shadow-2xl"
+                    >
                       India's Best Agri Engineering & Consulting Group
-                    </p>
-                    <h1 className="text-white mb-10 text-3xl sm:text-5xl md:text-7xl font-black leading-[0.95]">
-                      Building Profitable Smart Farms <br className="hidden sm:block" /> Across India.
-                    </h1>
-                    <div className="flex justify-center gap-4">
-                      <Link to="/projects" className="px-8 py-3 bg-white text-black text-xs font-semibold rounded-full uppercase tracking-widest hover:bg-gray-200 transition-all">
-                        View Projects
+                    </motion.p>
+                    <motion.h1
+                      initial={{ opacity: 0, y: 30 }}
+                      animate={i === current ? { opacity: 1, y: 0 } : {}}
+                      transition={{ delay: 0.2 }}
+                      className="text-white mb-12 text-4xl sm:text-6xl md:text-8xl font-black leading-[0.9] tracking-tighter"
+                    >
+                      Building Profitable <br /> Smart Farms.
+                    </motion.h1>
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={i === current ? { opacity: 1, y: 0 } : {}}
+                      transition={{ delay: 0.4 }}
+                      className="flex flex-wrap justify-center gap-5"
+                    >
+                      <Link to="/projects" className="px-12 py-4 bg-white text-black text-xs font-bold rounded-full uppercase tracking-widest hover:scale-105 transition-all shadow-xl">
+                        Explore Projects
                       </Link>
-                      <Link to="/contact" className="px-8 py-3 border border-white/30 text-white text-xs font-semibold rounded-full uppercase tracking-widest hover:bg-white hover:text-black transition-all">
-                        Contact
+                      <Link to="/contact" className="px-12 py-4 border-2 border-white/40 text-white text-xs font-bold rounded-full uppercase tracking-widest hover:bg-white hover:text-black transition-all">
+                        Get In Touch
                       </Link>
-                    </div>
+                    </motion.div>
                   </div>
                 </div>
-              </div>
+              </>
             )}
           </motion.div>
         ))}
       </div>
 
-      {/* Navigation Arrows */}
-      <button
-        onClick={() => setCurrent((prev) => (prev - 1 + HERO_SLIDES.length) % HERO_SLIDES.length)}
-        className="absolute left-5 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-black/20 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all"
-      >
-        <ArrowRight className="w-5 h-5 rotate-180" />
-      </button>
-      <button
-        onClick={() => setCurrent((prev) => (prev + 1) % HERO_SLIDES.length)}
-        className="absolute right-5 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-black/20 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all"
-      >
-        <ArrowRight className="w-5 h-5" />
-      </button>
+      {/* Modern Navigation Controls */}
+      <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 z-30 flex justify-between px-6 pointer-events-none">
+        <button
+          onClick={() => setCurrent((prev) => (prev - 1 + HERO_SLIDES.length) % HERO_SLIDES.length)}
+          className="w-14 h-14 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 flex items-center justify-center text-white hover:bg-primary hover:border-primary transition-all pointer-events-auto group"
+        >
+          <ChevronLeft className="w-6 h-6 group-hover:-translate-x-1 transition-transform" />
+        </button>
+        <button
+          onClick={() => setCurrent((prev) => (prev + 1) % HERO_SLIDES.length)}
+          className="w-14 h-14 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 flex items-center justify-center text-white hover:bg-primary hover:border-primary transition-all pointer-events-auto group"
+        >
+          <ChevronRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
+        </button>
+      </div>
 
-      {/* Dots */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-2">
+      {/* Visual Pagination */}
+      <div className="absolute bottom-12 left-1/2 -translate-x-1/2 z-30 flex items-center gap-4">
         {HERO_SLIDES.map((_, i) => (
           <button
             key={i}
             onClick={() => setCurrent(i)}
-            className={`h-2 rounded-full transition-all duration-300 ${i === current ? "w-8 bg-white" : "w-2 bg-white/40"}`}
-          />
+            className="group py-4"
+          >
+            <div className={`h-1.5 rounded-full transition-all duration-500 ${i === current ? "w-12 bg-primary shadow-[0_0_20px_rgba(var(--primary),0.5)]" : "w-3 bg-white/30 group-hover:bg-white/60"}`} />
+          </button>
         ))}
       </div>
     </section>
