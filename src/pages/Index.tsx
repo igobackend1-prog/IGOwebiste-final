@@ -1126,11 +1126,7 @@ const Index = () => {
       <Helmet>
         <meta name="description" content="IGO Agritech Farms — India's leading Agri Engineering & Consulting brand. Precision farming, polyhouse, hydroponics & agri startup solutions across India." />
       </Helmet>
-<<<<<<< HEAD
-      {hasOffers ? <OffersBanner heroMode /> : <HeroSection />}
-=======
       <HeroSection />
->>>>>>> 4e990ab (feat: update Bakrid banners and organize hero-banners structure)
       <WhyChooseSection />
       <VisionSection />
       <ProjectGallerySection />
