@@ -102,7 +102,7 @@ const About = () => (
   <div className="bg-white min-h-screen selection:bg-agri-green-50 selection:text-agri-green-800">
     <SEO
       title="About Us | IGO Agritech Farms"
-      description="Learn about IGO Agritech Farms — 15+ years of excellence in agri engineering & consulting, 75+ awards, 2,000+ team members, and a mission to transform Indian agriculture with precision farming."
+      description="Learn about IGO Agritech Farms — 10+ years of excellence in agri engineering & consulting, 75+ awards, 2,000+ team members, and a mission to transform Indian agriculture with precision farming."
       keywords="about IGO Agritech, agri consulting company India, agri engineering Chennai, MSME award agri, precision farming company"
       url="/about"
     />
