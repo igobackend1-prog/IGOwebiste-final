@@ -63,7 +63,7 @@ const STEPS = [
 ];
 
 const WHY = [
-  { icon: <Star className="w-5 h-5" />,       title: "15+ Years of Real Experience",      desc: "Not just consultants — we have built and run 15,000+ profitable agri projects across India." },
+  { icon: <Star className="w-5 h-5" />,       title: "10+ Years of Real Experience",      desc: "Not just consultants — we have built and run 15,000+ profitable agri projects across India." },
   { icon: <Globe className="w-5 h-5" />,       title: "Pan-India Network",                 desc: "Active presence in 28 states with an established supply chain, buyer network and logistics." },
   { icon: <Award className="w-5 h-5" />,       title: "75+ Industry Awards",               desc: "MSME, National Excellence, and State-level awards that validate our quality and trust." },
   { icon: <BarChart3 className="w-5 h-5" />,   title: "Real ROI — Not Projections",        desc: "Every financial model is backed by live farm data — transparent, audited, and achievable." },
@@ -75,7 +75,7 @@ const IMPACT = [
   { value: "15,000+", label: "Projects Delivered",  sub: "Across all agriculture disciplines" },
   { value: "28",     label: "States Covered",       sub: "True pan-India operational reach" },
   { value: "₹500Cr+",label: "Value Executed",      sub: "Total value of projects delivered" },
-  { value: "15+",    label: "Years of Excellence",  sub: "Since 2009, trusted by thousands" },
+  { value: "10+",    label: "Years of Excellence",  sub: "Since 2009, trusted by thousands" },
 ];
 
 const STORIES = [
@@ -201,7 +201,7 @@ const AgriStartupPlatform = () => (
               {[
                 "Open to agri founders, farmers & young entrepreneurs",
                 "End-to-end support — from idea to scale",
-                "Backed by 15+ years of real farming experience",
+                "Backed by 10+ years of real farming experience",
                 "No complex jargon — just clear, honest guidance",
               ].map((pt) => (
                 <div key={pt} className="flex items-start gap-3">

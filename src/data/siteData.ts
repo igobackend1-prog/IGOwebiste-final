@@ -42,7 +42,7 @@ export const companyInfo = {
 };
 
 export const stats = [
-  { label: "Years of Experience", value: "15+", sublabel: "VERIFIED" },
+  { label: "Years of Experience", value: "10+", sublabel: "VERIFIED" },
   { label: "Happy Clients", value: "15,000+", sublabel: "VERIFIED" },
   { label: "Successful Projects", value: "15,000+", sublabel: "VERIFIED" },
   { label: "Awards Won", value: "75+", sublabel: "VERIFIED" },
@@ -1078,7 +1078,7 @@ export const indiaPresence = {
   stats: [
     { label: "Happy Clients", value: "15,000+", sublabel: "VERIFIED" },
     { label: "Projects Done", value: "15,000+", sublabel: "VERIFIED" },
-    { label: "Experience", value: "15+ Years", sublabel: "VERIFIED" },
+    { label: "Experience", value: "10+ Years", sublabel: "VERIFIED" },
     { label: "Experts", value: "2,000+", sublabel: "VERIFIED" },
   ],
   states: [

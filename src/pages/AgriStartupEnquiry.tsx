@@ -176,7 +176,7 @@ const AgriStartupEnquiry = () => {
     <div className="bg-white min-h-screen selection:bg-agri-green-50 selection:text-agri-green-800">
       <SEO
         title="Agri Startup Enquiry"
-        description="IGO Agritech Farms — India's leading Agri Engineering & Agri Consulting brand. 15+ years, 15,000+ projects in precision farming, polyhouse, hydroponics, vertical farming & agri infrastructure across India."
+        description="IGO Agritech Farms — India's leading Agri Engineering & Agri Consulting brand. 10+ years, 15,000+ projects in precision farming, polyhouse, hydroponics, vertical farming & agri infrastructure across India."
         keywords="agri startup enquiry, agriculture startup registration India, IGO incubation programme, farming startup support"
         url="/startup-enquiry"
       />

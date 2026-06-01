@@ -13,15 +13,15 @@ const fader: Variants = {
 
 // ─── Logo-only ticker ───────────────────────────────────────────────────────
 const L_LOGO = 180; // px per logo slot width
-const L_GAP  = 40;  // gap between logos
+const L_GAP = 40;  // gap between logos
 const L_STEP = L_LOGO + L_GAP;
 const L_HALF = igoBrands.length * L_STEP;
 const L_SPEED = 0.8; // px per frame
 
 const AboutBrandsMarquee = () => {
   const stripRef = useRef<HTMLDivElement>(null);
-  const rafRef   = useRef<number>(0);
-  const pos      = useRef(0);
+  const rafRef = useRef<number>(0);
+  const pos = useRef(0);
 
   const displayBrands = [...igoBrands, ...igoBrands];
 
@@ -75,14 +75,14 @@ const AboutBrandsMarquee = () => {
 };
 
 const AWARDS = [
-  { year: 2026, name: "Most Trusted Agri Brand",        sub: "In India",                           img: "/assets/compressed/ceo-awrds-image/most-trustwd-agri-brand-in-india-2026.webp" },
-  { year: 2025, name: "Best Farm Engineering Company",  sub: "In India",                           img: "/assets/compressed/ceo-awrds-image/best-farm-engineering-company-i-india-2025.webp" },
-  { year: 2024, name: "MSME Awards 2024",               sub: "Best Agri-Consulting Brand",         img: "/assets/compressed/ceo-awrds-image/award1-jpg.webp" },
-  { year: 2022, name: "Best Innovative Start-up",       sub: "Agri Tech Brand",                    img: "/assets/compressed/ceo-awrds-image/award-jpg.webp" },
-  { year: null, name: "SISI Award",                     sub: "Industrial Development",              img: "/assets/compressed/ceo-awrds-image/award2-jpg.webp" },
-  { year: null, name: "Trade Award",                    sub: "Export Excellence",                   img: "/assets/compressed/ceo-awrds-image/award3-jpg.webp" },
-  { year: null, name: "Valluvam Award",                 sub: "Agricultural Excellence",             img: "/assets/compressed/ceo-awrds-image/award4-jpg.webp" },
-  { year: null, name: "National Excellence Award",      sub: "National Recognition",               img: "/assets/compressed/ceo-awrds-image/about-copy.webp" },
+  { year: 2026, name: "Most Trusted Agri Brand", sub: "In India", img: "/assets/compressed/ceo-awrds-image/most-trustwd-agri-brand-in-india-2026.webp" },
+  { year: 2025, name: "Best Farm Engineering Company", sub: "In India", img: "/assets/compressed/ceo-awrds-image/best-farm-engineering-company-i-india-2025.webp" },
+  { year: 2024, name: "MSME Awards 2024", sub: "Best Agri-Consulting Brand", img: "/assets/compressed/ceo-awrds-image/award1-jpg.webp" },
+  { year: 2022, name: "Best Innovative Start-up", sub: "Agri Tech Brand", img: "/assets/compressed/ceo-awrds-image/award-jpg.webp" },
+  { year: null, name: "SISI Award", sub: "Industrial Development", img: "/assets/compressed/ceo-awrds-image/award2-jpg.webp" },
+  { year: null, name: "Trade Award", sub: "Export Excellence", img: "/assets/compressed/ceo-awrds-image/award3-jpg.webp" },
+  { year: null, name: "Valluvam Award", sub: "Agricultural Excellence", img: "/assets/compressed/ceo-awrds-image/award4-jpg.webp" },
+  { year: null, name: "National Excellence Award", sub: "National Recognition", img: "/assets/compressed/ceo-awrds-image/about-copy.webp" },
 ];
 
 const AWARD_BANNER = [
@@ -92,10 +92,10 @@ const AWARD_BANNER = [
 ];
 
 const VALUES = [
-  { icon: <Leaf className="w-5 h-5" />,       title: "Sustainability",  desc: "Environmentally sustainable, socially responsible, and economically viable farming for the long term." },
-  { icon: <Lightbulb className="w-5 h-5" />,  title: "Innovation",      desc: "Leveraging cutting-edge tools, technology, and continuous R&D investment across all disciplines." },
-  { icon: <Handshake className="w-5 h-5" />,  title: "Collaboration",   desc: "Working cooperatively with clients, partners, and stakeholders through full transparency." },
-  { icon: <Star className="w-5 h-5" />,       title: "Excellence",      desc: "Providing exceptional service and uncompromising quality across all operations and projects." },
+  { icon: <Leaf className="w-5 h-5" />, title: "Sustainability", desc: "Environmentally sustainable, socially responsible, and economically viable farming for the long term." },
+  { icon: <Lightbulb className="w-5 h-5" />, title: "Innovation", desc: "Leveraging cutting-edge tools, technology, and continuous R&D investment across all disciplines." },
+  { icon: <Handshake className="w-5 h-5" />, title: "Collaboration", desc: "Working cooperatively with clients, partners, and stakeholders through full transparency." },
+  { icon: <Star className="w-5 h-5" />, title: "Excellence", desc: "Providing exceptional service and uncompromising quality across all operations and projects." },
 ];
 
 const About = () => (
@@ -143,7 +143,7 @@ const About = () => (
           </motion.h1>
 
           <motion.p variants={fader} className="text-white/60 text-base sm:text-xl md:text-2xl font-light leading-relaxed mb-14 max-w-3xl mx-auto">
-            India's leading agri engineering and consulting brand — 15,000+ successful projects, 28+ states, 15+ years of transforming the way India farms.
+            India's leading agri engineering and consulting brand — 15,000+ successful projects, 28+ states, 10+ years of transforming the way India farms.
           </motion.p>
 
           <motion.div variants={fader} className="flex flex-wrap justify-center gap-4">

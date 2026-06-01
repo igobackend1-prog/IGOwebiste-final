@@ -167,7 +167,7 @@ const Projects = () => {
               { value: "15,000+", label: "Projects Completed", sub: "Across all disciplines" },
               { value: "4",      label: "Core Disciplines",   sub: "Agri, Aqua, Livestock, Engg" },
               { value: "Pan-India", label: "Delivery Reach",  sub: "28 states & UTs covered" },
-              { value: "15+",    label: "Years Excellence",   sub: "Since 2009" },
+              { value: "10+",    label: "Years Excellence",   sub: "Since 2009" },
             ].map((stat, i) => (
               <motion.div
                 key={stat.label}

@@ -15,7 +15,7 @@ const KNOWLEDGE: KB[] = [
   // About company
   {
     keywords: ["about", "who are you", "what is igo", "company", "overview", "tell me about"],
-    answer: `**IGO Agritech Farms** is India's Leading Agri Engineering & Consulting Brand 🌿\n\n• **15,000+** projects completed across India\n• **15+ years** of experience (since 2009)\n• **28 states** & UTs covered\n• **2,000+** expert team members\n• **75+** awards & recognitions\n\nFounded by Dr. John Yesudhas, we specialize in Agri Farming, Aquaculture, Livestock, and Farm Engineering.`,
+    answer: `**IGO Agritech Farms** is India's Leading Agri Engineering & Consulting Brand 🌿\n\n• **15,000+** projects completed across India\n• **10+ years** of experience (since 2009)\n• **28 states** & UTs covered\n• **2,000+** expert team members\n• **75+** awards & recognitions\n\nFounded by Dr. John Yesudhas, we specialize in Agri Farming, Aquaculture, Livestock, and Farm Engineering.`,
   },
   // Founder
   {
@@ -125,7 +125,7 @@ const KNOWLEDGE: KB[] = [
   // Projects stats / experience
   {
     keywords: ["experience", "how many", "completed", "years", "track record", "projects done", "states"],
-    answer: `📊 **IGO Track Record:**\n\n• **15,000+** projects completed\n• **15+ years** of experience (since 2009)\n• **28 states** & UTs covered\n• **2,000+** expert team members\n• **75+ awards** & recognitions\n• **4 core disciplines** — Agri, Aqua, Livestock, Engineering`,
+    answer: `📊 **IGO Track Record:**\n\n• **15,000+** projects completed\n• **10+ years** of experience (since 2009)\n• **28 states** & UTs covered\n• **2,000+** expert team members\n• **75+ awards** & recognitions\n• **4 core disciplines** — Agri, Aqua, Livestock, Engineering`,
   },
   // Products overview
   {
@@ -200,7 +200,7 @@ const KNOWLEDGE: KB[] = [
   // FAQ - Is IGO registered
   {
     keywords: ["registered", "legal", "msme", "certified", "license", "verified", "authentic", "genuine", "trust"],
-    answer: `✅ **IGO Agritech Farms — Verified & Certified:**\n\n• **MSME Registered** — Certified by the Government of India\n• **MSME Awards 2024** winner — Best Agri-Consulting Brand\n• **75+ national awards** from government & industry bodies\n• Operating since **2009** — 15+ years of verified track record\n• Formal legal agreements for all JV, franchise & project contracts\n\nYou can trust IGO — we've built 15,000+ farms across India with full transparency.`,
+    answer: `✅ **IGO Agritech Farms — Verified & Certified:**\n\n• **MSME Registered** — Certified by the Government of India\n• **MSME Awards 2024** winner — Best Agri-Consulting Brand\n• **75+ national awards** from government & industry bodies\n• Operating since **2009** — 10+ years of verified track record\n• Formal legal agreements for all JV, franchise & project contracts\n\nYou can trust IGO — we've built 15,000+ farms across India with full transparency.`,
   },
   // FAQ - Which states
   {

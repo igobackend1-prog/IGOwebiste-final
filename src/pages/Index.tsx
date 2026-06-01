@@ -198,7 +198,7 @@ const useCounter = (target: number, duration = 2000, startCounting: boolean = fa
 };
 
 const tickerItems = [
-  "15+ Years of Excellence", "15,000+ Successful Projects", "2000+ Team Members",
+  "10+ Years of Excellence", "15,000+ Successful Projects", "2000+ Team Members",
   "75+ Winning Awards", "Pan-India Presence", "Precision Farming Experts",
   "ISO Certified Organisation", "Trusted by 15,000+ Farmers"
 ];
@@ -320,7 +320,7 @@ const WhyChooseSection = () => (
           </div>
 
           <div className="grid grid-cols-2 gap-4">
-            <MiniStatCard value="15+" label="Years of Experience" />
+            <MiniStatCard value="10+" label="Years of Experience" />
             <MiniStatCard value="15,000+" label="Successful Projects" />
             <MiniStatCard value="15,000+" label="Happy Clients" />
             <MiniStatCard value="2,000+" label="Team Members" />
@@ -1101,7 +1101,7 @@ const Index = () => {
       <h1 className="sr-only">IGO Agritech Farms — India's Leading Agri Engineering & Consulting</h1>
       <SEO
         title="IGO Agritech Farms | India's Leading Agri Engineering & Consulting"
-        description="IGO Agritech Farms — India's leading Agri Engineering & Agri Consulting brand. 15+ years, 15,000+ projects in precision farming, polyhouse, hydroponics, vertical farming & agri infrastructure across India."
+        description="IGO Agritech Farms — India's leading Agri Engineering & Agri Consulting brand. 10+ years, 15,000+ projects in precision farming, polyhouse, hydroponics, vertical farming & agri infrastructure across India."
         keywords="agri engineering, agri consulting, precision farming, polyhouse farming, hydroponics, vertical farming, mushroom farming, biofloc, agri startup India, IGO Agritech, farm infrastructure Chennai"
         url="/"
       />

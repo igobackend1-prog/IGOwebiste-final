@@ -93,7 +93,7 @@ const TRUST = [
   { icon: Award,    label: "75+ Winning Awards" },
   { icon: Users,    label: "2,000+ Team Members" },
   { icon: Briefcase, label: "15,000+ Projects Done" },
-  { icon: Star,     label: "15+ Years Excellence" },
+  { icon: Star,     label: "10+ Years Excellence" },
 ];
 
 /* ─── main-page ─────────────────────────────────────────────── */
